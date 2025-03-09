@@ -35,7 +35,7 @@
               {
                 "group": "HRIS",
                 "icon": "pen-paintbrush",
-                "pages": ["essentials/markdown", "essentials/code",]
+                "pages": ["essentials/markdown", "essentials/code"]
               },
               "essentials/images",
               "essentials/settings",

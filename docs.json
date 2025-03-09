@@ -42,11 +42,11 @@
               {
                 "group": "HRIS",
                 "pages": [
-                  "data-integrations/rippling",
-                  "data-integrations/deel",
-                  "data-integrations/justworks",
-                  "data-integrations/gusto",
-                  "data-integrations/hibob"]
+                  "hris/rippling",
+                  "hris/deel",
+                  "hris/justworks",
+                  "hris/gusto",
+                  "hris/hibob"]
               },
               {
                 "group": "Revenue",

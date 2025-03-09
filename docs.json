@@ -46,7 +46,18 @@
                   "data-integrations/deel",
                   "data-integrations/justworks",
                   "data-integrations/gusto",
-                  "data-integrations/hibpb"]
+                  "data-integrations/hibob"]
+              },
+              {
+                "group": "Revenue",
+                "pages": [
+                  "reveue/hubspot",
+                  "revenue/salesforce"]
+              },
+              {
+                "group": "Data storage",
+                "pages": [
+                  "data-storage/google-sheets"]
               },
               "essentials/images",
               "essentials/settings",

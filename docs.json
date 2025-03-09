@@ -32,38 +32,36 @@
           {
             "group": "Data integrations",
             "pages": [
+              "integrations/intro-to-integrations",
+              "integrations/integrations-directory",
               {
                 "group": "Accounting",
                 "pages": [
-                  "accounting/quickbooks-online",
-                  "accounting/xero",
-                  "accounting/netsuite"]
+                  "integrations/accounting/quickbooks-online",
+                  "integrations/accounting/xero",
+                  "integrations/accounting/netsuite"]
               },
               {
                 "group": "HRIS",
                 "pages": [
-                  "hris/rippling",
-                  "hris/deel",
+                  "integrations/hris/rippling",
+                  "integrations/hris/deel",
                   "hris/justworks",
-                  "hris/gusto",
-                  "hris/hibob"]
+                  "integrations/hris/gusto",
+                  "integrations/hris/hibob"]
               },
               {
                 "group": "Revenue",
                 "pages": [
-                  "revenue/hubspot",
-                  "revenue/salesforce"]
+                  "integrations/revenue/hubspot",
+                  "integrations/revenue/salesforce"]
               },
               {
                 "group": "Data storage",
                 "pages": [
-                  "data-storage/google-sheets"]
+                  "integrations/data-storage/google-sheets"]
               },
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
-            ]
+              "integrations/multi-entity-integrations"            ]
           },
           {
             "group": "Guides",

@@ -1,58 +1,117 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Runway Docs",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#F9A600",
+    "light": "#FDFCFC",
+    "dark": "#1D2122"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.png",
   "navigation": {
     "groups": [
           {
-            "group": "Get Started",
+            "group": "Get started",
             "pages": [
-              "introduction",
-              "quickstart",
-              "development"
+              "get-started/start-guide",
+              "get-started/getting-around"]
+          },
+          {
+            "group": "Concepts",
+            "pages": [
+              {
+                "group": "Databases",
+                "icon": "database",
+                "pages": [
+                  "concepts/databases/databases-basics",
+                  "concepts/databases/filtering-sorting-grouping",
+                  "concepts/databases/rename-export-delete",
+                  "concepts/databases/formulas-in-databases",
+                  "concepts/databases/hris-databases"]
+              },
+              "concepts/scenarios",
+              "concepts/sidebar"
             ]
           },
           {
-            "group": "Essentials",
+            "group": "Data integrations",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
+              "integrations/intro-to-integrations",
+              "integrations/integrations-directory",
+              {
+                "group": "Accounting",
+                "icon": "pen-paintbrush",
+                "pages": [
+                  "integrations/accounting/quickbooks-online",
+                  "integrations/accounting/xero",
+                  "integrations/accounting/netsuite"]
+              },
+              {
+                "group": "HRIS",
+                "icon": "pen-paintbrush",
+                "pages": [
+                  "integrations/hris/rippling",
+                  "integrations/hris/deel",
+                  "integrations/hris/justworks",
+                  "integrations/hris/gusto",
+                  "integrations/hris/hibob"]
+              },
+              {
+                "group": "Revenue",
+                "icon": "pen-paintbrush",
+                "pages": [
+                  "integrations/revenue/hubspot",
+                  "integrations/revenue/salesforce"]
+              },
+              {
+                "group": "Data storage",
+                "icon": "pen-paintbrush",
+                "pages": [
+                  "integrations/data-storage/google-sheets"]
+              },
+              "integrations/multi-entity-integrations"            ]
+          },
+          {
+            "group": "Guides",
+            "icon": "pen-paintbrush",
+            "pages": [
+              {
+                "group": "Modeling workflows",
+                "pages": ["guides/modeling/lookups"]
+              },
+              {
+                "group": "Reporting workflows",
+                "pages": ["guides/reporting/bva"]
+              },
+              {
+                "group": "Sharing workflow",
+                "pages": ["guides/sharing/data-anonymization"]
+              }
             ]
           }
         ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/RunwayLogo.png",
+    "dark": "/logo/RunwayLogoWhite.png"
   },
   "navbar": {
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@runway.com"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "href": "https://app.runway.com"
     }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/runwayco",
+      "linkedin": "https://linkedin.com/company/runway"
     }
   }
 }

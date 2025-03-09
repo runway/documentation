@@ -51,7 +51,7 @@
               {
                 "group": "Revenue",
                 "pages": [
-                  "reveue/hubspot",
+                  "revenue/hubspot",
                   "revenue/salesforce"]
               },
               {

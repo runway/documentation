@@ -33,11 +33,22 @@
             "group": "Data integrations",
             "pages": [
               {
+                "group": "Accounting",
+                "pages": [
+                  "data-integrations/rippling",
+                  "data-integrations/deel",
+                  "data-integrations/justworks",
+                  "data-integrations/gusto",
+                  "data-integrations/hibpb"]
+              },
+              {
                 "group": "HRIS",
                 "pages": [
                   "data-integrations/rippling",
                   "data-integrations/deel",
-                  "data-integrations/justworks"]
+                  "data-integrations/justworks",
+                  "data-integrations/gusto",
+                  "data-integrations/hibpb"]
               },
               "essentials/images",
               "essentials/settings",

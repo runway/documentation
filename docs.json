@@ -21,12 +21,17 @@
           {
             "group": "Concepts",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
+              {
+                "group": "Databases",
+                "pages": [
+                  "concepts/databases/databases-basics",
+                  "concepts/databases/filtering-sorting-grouping",
+                  "concepts/databases/rename-export-delete",
+                  "concepts/databases/formulas-in-databases",
+                  "concepts/databases/hris-databases"]
+              },
+              "concepts/scenarios",
+              "concepts/sidebar"
             ]
           },
           {
@@ -46,7 +51,7 @@
                 "pages": [
                   "integrations/hris/rippling",
                   "integrations/hris/deel",
-                  "hris/justworks",
+                  "integrations/hris/justworks",
                   "integrations/hris/gusto",
                   "integrations/hris/hibob"]
               },

@@ -77,15 +77,15 @@
             "pages": [
               {
                 "group": "Modeling workflows",
-                "pages": []
+                "pages": ["guides/modeling/lookups"]
               },
               {
                 "group": "Reporting workflows",
-                "pages": []
+                "pages": ["guides/reporting/bva"]
               },
               {
                 "group": "Sharing workflow",
-                "pages": []
+                "pages": ["guides/sharing/data-anonymization"]
               }
             ]
           }

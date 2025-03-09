@@ -2,3 +2,66 @@
 title: "Rippling"
 description: "Connect Rippling to Runway to automatically sync your employee data, keeping workforce information up to date and seamlessly incorporating headcount and salaries into your financial models."
 ---
+
+Runway offers two ways to integrate with Rippling:
+
+* **Quick-Start connection (Recommended)** – A fast and simple setup.
+
+* **SQL-powered integration via Fivetran** – For advanced data customization.
+
+## Setting up Rippling via quick-start
+
+![CleanShot 2025-03-08 at 20.42.17@2x.png](attachment:ecc3c3a3-a43c-4822-9901-d8267c1ff898:CleanShot_2025-03-08_at_20.42.172x.png)![](/images/rippling.png)
+
+1. Open your [Runway instance](https://app.runway.com/).
+
+2. In the sidebar, hover over **Integrations** and click the **+** button to open the **Integrations Directory**.
+
+3. Search for **Rippling** and click **+ Set up** under the **HRIS** option.
+
+4. You’ll be redirected to **Rippling**. **Sign in** to authenticate and complete the setup questions.
+
+5. Click **Continue** to finish setup. A confirmation message will appear, and the **initial sync will begin automatically**.
+
+6. Once the sync is complete, a new **Employee database** will appear in your Runway sidebar, containing the imported data.
+
+## Rippling supported data
+
+Runway automatically imports the following data from Rippling.
+
+
+
+| Data name                      | Example           | Runway data Type  |
+| ------------------------------ | ----------------- | ----------------- |
+| Name                           | John Smith        | *Name*            |
+| Title                          | Software Engineer | *Dimension Field* |
+| Team                           | Engineering       | *Dimension Field* |
+| Pay Rate                       | $100,000          | *Number Field*    |
+| Pay Period                     | YEAR              | *Dimension Field* |
+| Pay Currency                   | USD               | *Dimension Field* |
+| Type                           | SALARIED\_FT      | *Dimension Field* |
+| Office                         | Remote            | *Dimension Field* |
+| Department                     | Engineering       | *Dimension Field* |
+| Start Date                     | Jul 1, ‘24        | *Date Field*      |
+| Termination Date               | Jul 1, ‘25        | *Date Field*      |
+| Target Annual Bonus            | $0.00             | *Number Field*    |
+| Target Annual Bonus Percentage | 0%                | *Number Field*    |
+| On Track Commission            | $0.00             | *Number Field*    |
+
+## Rippling FAQs
+
+<Accordion title="If I enable login authentication for Runway via Rippling, do I still need to set up the Rippling integration through Runway to enable the data sync?" defaultOpen={false}>
+  Yes. Login authentication and integration authentication are separate. You still need to set up the Rippling integration in Runway to sync data.
+</Accordion>
+
+<Accordion title="Does the Runway write data back to Rippling?" defaultOpen={false}>
+  No, Runway supports read-only integrations. No data is written back to Rippling.
+</Accordion>
+
+<Accordion title="Does the Rippling integration send only base salary values or fully-loaded employee costs?" defaultOpen={false}>
+  Runway currently only syncs base salary values for each employee.
+</Accordion>
+
+<Accordion title="Can I connect additional HRIS sources?" defaultOpen={false}>
+  Yes! To add more HRIS integrations, go to the Integrations Directory in Runway, search for the integration you need, and follow the setup flow. Check out our Integration documentation for guidance on our most popular integrations.
+</Accordion>

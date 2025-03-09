@@ -32,6 +32,7 @@
           },
           {
             "group": "Data integrations",
+            "icon": "database",
             "pages": [
               "integrations/intro-to-integrations",
               "integrations/integrations-directory",

@@ -32,8 +32,11 @@
           {
             "group": "Data integrations",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
+              {
+                "group": "HRIS",
+                "icon": "pen-paintbrush",
+                "pages": ["essentials/markdown", "essentials/code",]
+              },
               "essentials/images",
               "essentials/settings",
               "essentials/navigation",

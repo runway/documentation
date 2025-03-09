@@ -35,11 +35,9 @@
               {
                 "group": "Accounting",
                 "pages": [
-                  "data-integrations/rippling",
-                  "data-integrations/deel",
-                  "data-integrations/justworks",
-                  "data-integrations/gusto",
-                  "data-integrations/hibpb"]
+                  "accounting/quickbooks-online",
+                  "accounting/xero",
+                  "accounting/netsuite"
               },
               {
                 "group": "HRIS",

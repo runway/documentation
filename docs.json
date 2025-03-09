@@ -12,11 +12,7 @@
     "groups": [
           {
             "group": "Get started",
-            "pages": [
-              "introduction",
-              "quickstart",
-              "development"
-            ]
+            "pages": []
           },
           {
             "group": "Concepts",
@@ -71,12 +67,18 @@
           {
             "group": "Guides",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
+              {
+                "group": "Modeling workflows",
+                "pages": []
+              },
+              {
+                "group": "Reporting workflows",
+                "pages": []
+              },
+              {
+                "group": "Sharing workflow",
+                "pages": []
+              }
             ]
           }
         ]

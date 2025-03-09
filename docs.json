@@ -37,7 +37,7 @@
                 "pages": [
                   "accounting/quickbooks-online",
                   "accounting/xero",
-                  "accounting/netsuite"
+                  "accounting/netsuite"]
               },
               {
                 "group": "HRIS",

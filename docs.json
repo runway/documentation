@@ -12,16 +12,14 @@
     "groups": [
           {
             "group": "Get started",
-            "icon": "pen-paintbrush",
             "pages": []
           },
           {
             "group": "Concepts",
-            "icon": "pen-paintbrush",
             "pages": [
               {
                 "group": "Databases",
-                "icon": "pen-paintbrush",
+                "icon": "database",
                 "pages": [
                   "concepts/databases/databases-basics",
                   "concepts/databases/filtering-sorting-grouping",
@@ -35,7 +33,6 @@
           },
           {
             "group": "Data integrations",
-            "icon": "database",
             "pages": [
               "integrations/intro-to-integrations",
               "integrations/integrations-directory",

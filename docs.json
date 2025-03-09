@@ -90,8 +90,8 @@
         ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/RunwayLogo.png",
+    "dark": "/logo/RunwayLogoWhite.png"
   },
   "navbar": {
     "links": [

@@ -34,7 +34,10 @@
             "pages": [
               {
                 "group": "HRIS",
-                "pages": []
+                "pages": [
+                  "data-integrations/rippling",
+                  "data-integrations/deel",
+                  "data-integrations/justworks"]
               },
               "essentials/images",
               "essentials/settings",

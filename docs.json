@@ -12,7 +12,9 @@
     "groups": [
           {
             "group": "Get started",
-            "pages": []
+            "pages": [
+              "get-started/start-guide",
+              "get-started/getting-around"]
           },
           {
             "group": "Concepts",

@@ -1,5 +1,66 @@
 ---
-title: 'Justworks'
-description: 'Description of your new file.'
+title: "Justworks"
+description: "Connect Justworks to Runway to automatically sync your employee data, ensuring your workforce information stays up to date. "
 ---
 
+## Connecting to Justworks
+
+Follow these steps to connect **Justworks** to Runway and automatically sync your employee data:![](/images/justworks.png)
+
+1. Open your [Runway instance](https://app.runway.com/).
+
+2. In sidebar, hover over **Integrations** and click the **+** button to open the **Integrations Directory**.
+
+3. Search for **Justworks** and click **+ Set up** under the **HRIS** option.
+
+4. Follow the onscreen prompts to create and connect a **Justworks Service Account**.
+
+5. Once authentication is complete, a confirmation message will appear, and the **initial sync will begin automatically**.
+
+6. When the sync is finished, a new **Employee database** will appear in your Runway sidebar, containing the imported data.
+
+## Justworks supported data
+
+Runway automatically imports the following data from **Justworks**.
+
+| Data name        | Example           | Runway data type  |
+| ---------------- | ----------------- | ----------------- |
+| Name             | John Smith        | *Name*            |
+| Title            | Software Engineer | *Dimension Field* |
+| Team             | Engineering       | *Dimension Field* |
+| Pay Rate         | $100,000          | *Number Field*    |
+| Pay Period       | YEAR              | *Dimension Field* |
+| Pay Currency     | USD               | *Dimension Field* |
+| Type             | SALARIED\_FT      | *Dimension Field* |
+| Office           | Remote            | *Dimension Field* |
+| Department       | Engineering       | *Dimension Field* |
+| Start Date       | Jul 1, ‘24        | *Date Field*      |
+| Termination Date | Jan 1, ‘25        | *Date Field*      |
+
+## Justworks FAQs
+
+<Accordion title="My connection keeps failing. How should I troubleshoot?" defaultOpen={false}>
+  1. In **Justworks**, delete any **Service Accounts** that have attempted to connect to Runway.
+
+  2. In **Runway**, delete the **Justworks integration**.
+
+  3. Repeat the setup process:
+
+     * Create a **new Service Account** in Justworks.
+
+     * Grant it **all permissions**.
+
+     * Connect it to Runway.
+</Accordion>
+
+<Accordion title="Does the Runway write data back to Justworks?" defaultOpen={false}>
+  No, Runway supports **read-only** integrations. No data is written back to Justworks.
+</Accordion>
+
+<Accordion title="Does the Justworks integration send only base salary values or fully-loaded employee costs?" defaultOpen={false}>
+  Runway currently only syncs **base salary** values for each employee.
+</Accordion>
+
+<Accordion title="Can I connect additional HRIS sources?" defaultOpen={false}>
+  Yes! To add more HRIS integrations, go to the **Integrations Directory** in Runway, search for the integration you need, and follow the setup flow. Check out our **Integration documentation** for guidance on our most popular integrations.
+</Accordion>

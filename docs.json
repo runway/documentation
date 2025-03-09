@@ -12,6 +12,7 @@
     "groups": [
           {
             "group": "Get started",
+            "icon": "pen-paintbrush",
             "pages": []
           },
           {
@@ -68,6 +69,7 @@
           },
           {
             "group": "Guides",
+            "icon": "pen-paintbrush",
             "pages": [
               {
                 "group": "Modeling workflows",

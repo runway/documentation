@@ -28,8 +28,7 @@
                   "concepts/databases/rename-export-delete",
                   "concepts/databases/formulas-in-databases",
                   "concepts/databases/hris-databases"]
-              },
-              "pages": [
+              }
               {
                 "group": "Pages",
                 "icon": "fa-file",
@@ -38,7 +37,6 @@
                   "concepts/pages/charts-block"
                 ]
               },
-
               "concepts/scenarios",
               "concepts/sidebar"
             ]

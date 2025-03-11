@@ -1,5 +1,68 @@
 ---
-title: 'Filtering, sorting & grouping'
-description: 'Description of your new file.'
+title: "Filtering, sorting & grouping"
+description: "When working with a database in Runway, you often need to adjust how data is displayed to focus on what matters most. Whether you're filtering specific rows, sorting for better readability, grouping relevant items, or adjusting the date range, Runway provides powerful tools to help you tailor your view."
 ---
 
+## Filtering
+
+Filtering is useful when modifying or debugging database data, allowing you to focus on a specific subset of rows. It also helps when adding a database block to a page to share with your team without exposing the entire database. For example, you can filter a GL database by **department**, so each department head only sees the vendors they are responsible for.
+
+To apply a filter, click on the **Add filter** pill at the top of a database, then select the **dimension** or **driver** you want to filter by.
+
+* **Filtering by a dimension** allows you to use operators like **is one of, is none of, is empty,** and **is not empty.** When using **is one of** or **is none of,** you can select one, multiple, or all dimension values.
+
+* **Filtering by a number driver** supports operators like **is, is not, greater than, greater or equal,** and more. After selecting an operator, you can enter the comparison value in a free-text field.
+
+* **Filtering by a date driver** supports operators like **is, is not, is after, is on or after,** and more. After selecting the operator, you can choose from a wide range of date options, such as **this month, last month, custom months ago,** or even reference another driver to dynamically set the number of months.
+
+![](/images/databases/2/filters.png)
+
+Since drivers store time-series data that can change from month to month, you might wonder—**which month's data does Runway use when applying a filter?**
+
+By default, driver filters evaluate data based on **this month’s** values. You can change this to filter based on **last close month** or a specific custom month.
+
+To adjust this, click on the **As of** pill at the top of a database, set the **Time period** to **As of,** and modify the date.
+
+![](/images/databases/2/as-of.png)
+
+<Note>
+  When you add multiple filters, they are **ANDed** together, meaning only rows that meet all conditions will be shown.
+</Note>
+
+## Sorting
+
+You can sort your database data based on one or multiple **dimensions** or **drivers**.
+
+![](/images/databases/2/sorting.png)
+
+When sorting by a **dimension**, you can choose:
+
+* **Alphabetically / Reverse Alphabetically**
+
+* **Numerically** – Useful when dimension values contain numbers. Even if a number is part of a text string, Runway isolates it and sorts accordingly.
+
+* **Manual** – Allows you to manually reorder rows.
+
+When sorting by a **number driver**, you can choose **ascending** or **descending** order. When sorting by a **date driver**, you can sort from **earliest to latest** or **latest to earliest**.
+
+Similar to filtering, sorting by a driver evaluates data based on **this month’s** values. You can change this to sort based on **last close month** or a specific custom month by adjusting the **As of** pill.
+
+## Group by
+
+For better readability, you can **group** your database rows by any of your dimensions. Click the **Customize** button in the top-right corner of the database, go to **Group by,** and select the dimension you want to group by.
+
+![](/images/databases/2/group-by.png)
+
+## Date range
+
+Changing the date range for a database primarily affects **drivers**, as they hold data that can change over time and be displayed as a time series. **Dimensions**, on the other hand, are static and remain unaffected by date range changes.
+
+When displaying **one or all drivers as a time series**, each **month** within the selected date range is shown as a separate column.
+
+To change the date range, click on the “**Date range”** pill at the top of the database and select the **start** and **end** months.
+
+![](/images/databases/2/date-range.png)
+
+When displaying a driver column as a value, the values shown in that column are also defined by the date range. You will see Value of first month in the date range → Value of last month in the date range. If the first and last values are the same, only that single value is displayed without the → annotation.
+
+![](/images/databases/2/rollup.png)

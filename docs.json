@@ -14,7 +14,7 @@
         {
           "anchor": "Overview",
           "icon": "slack",
-          "page": "concepts/databases/databases-basics"   
+          "pages": ["concepts/databases/databases-basics"]   
         }
       ]
     },

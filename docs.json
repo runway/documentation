@@ -13,8 +13,10 @@
       "anchors": [
         {
           "anchor": "Overview",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
+          "icon": "slack",
+          "pages": [
+            "concepts/databases/databases-basics"
+          ]
         }
       ]
     },

@@ -13,7 +13,7 @@
       "anchors": [
         {
           "anchor": "Start guide",
-          "pages": ["top-level/overview"],
+          "pages": "top-level/overview",
           "icon": "book-open-cover"
         },
         {

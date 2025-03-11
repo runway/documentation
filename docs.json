@@ -14,14 +14,14 @@
             "anchor": "Start guide",
             "icon": "book-open",
             "pages": [
-              "anchors/start-guide"
+              "top-level/start-guide"
             ]
           },
           {
             "anchor": "Overview",
             "icon": "sqaure-terminal",
             "pages": [
-              "anchors/overview"
+              "top-level/overview"
             ]
           }
   ],

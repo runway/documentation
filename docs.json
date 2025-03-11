@@ -13,7 +13,7 @@
       "anchors": [
         {
           "anchor": "Start guide",
-          "href": "https://mintlify.com/docs",
+          "pages": ["top-level/overview"],
           "icon": "book-open-cover"
         },
         {

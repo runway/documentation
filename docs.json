@@ -12,8 +12,7 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Start guide",
-          "pages": "top-level/overview",
+          "anchor": "top-level/overview",
           "icon": "book-open-cover"
         },
         {

@@ -9,22 +9,20 @@
   },
   "favicon": "/favicon.png",
   "navigation": {
-    "anchors": [
-          {
-            "anchor": "Start guide",
-            "icon": "book-open",
-            "pages": [
-              "top-level/start-guide"
-            ]
-          },
-          {
-            "anchor": "Overview",
-            "icon": "sqaure-terminal",
-            "pages": [
-              "top-level/overview"
-            ]
-          }
-  ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Start guide",
+          "href": "https://mintlify.com/docs",
+          "icon": "book-open-cover"
+        },
+        {
+          "anchor": "Overview",
+          "href": "https://mintlify.com/community",
+          "icon": "slack"
+        }
+      ]
+    },
     "groups": [
           {
             "group": "Concepts",

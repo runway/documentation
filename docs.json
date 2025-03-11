@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "name": "Runway Docs",
-  "theme": "mint",
+  "theme": "maple",
   "colors": {
     "primary": "#F9A600",
     "light": "#FDFCFC",

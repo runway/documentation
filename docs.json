@@ -21,7 +21,7 @@
             "anchor": "Overview",
             "icon": "sqaure-terminal",
             "pages": [
-              "anchors/startguide"
+              "anchors/overview"
             ]
           }
   ],

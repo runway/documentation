@@ -14,7 +14,7 @@
         {
           "anchor": "Overview",
           "icon": "slack",
-          "href": "concepts/databases/databases-basics"   
+          "page": "concepts/databases/databases-basics"   
         }
       ]
     },

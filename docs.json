@@ -31,7 +31,7 @@
               },
               {
                 "group": "Pages",
-                "icon": "fa-file",
+                "icon": "file",
                 "pages": [
                   "concepts/pages/pages-basics",
                   "concepts/pages/charts-block"

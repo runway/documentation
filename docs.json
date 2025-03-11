@@ -9,7 +9,6 @@
   },
   "favicon": "/favicon.png",
   "navigation": {
-    "global": {
       "anchors": [
         {
           "anchor": "Overview",
@@ -17,7 +16,7 @@
           "pages": ["concepts/databases/databases-basics"]   
         }
       ]
-    },
+    ,
     "groups": [
           {
             "group": "Concepts",

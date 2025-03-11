@@ -12,10 +12,6 @@
     "global": {
       "anchors": [
         {
-          "anchor": "top-level/overview",
-          "icon": "book-open-cover"
-        },
-        {
           "anchor": "Overview",
           "href": "https://mintlify.com/community",
           "icon": "slack"

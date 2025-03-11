@@ -9,6 +9,22 @@
   },
   "favicon": "/favicon.png",
   "navigation": {
+    "anchors": [
+          {
+            "anchor": "Start guide",
+            "icon": "book-open",
+            "pages": [
+              "anchors/start-guide"
+            ]
+          },
+          {
+            "anchor": "Overview",
+            "icon": "sqaure-terminal",
+            "pages": [
+              "anchors/startguide"
+            ]
+          }
+  ],
     "groups": [
           {
             "group": "Get started",

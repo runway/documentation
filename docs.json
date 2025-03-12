@@ -66,14 +66,14 @@
               },
               {
                 "group": "Revenue",
-                "icon": "pen-paintbrush",
+                "icon": "dollar-sign",
                 "pages": [
                   "integrations/revenue/hubspot",
                   "integrations/revenue/salesforce"]
               },
               {
                 "group": "Data storage",
-                "icon": "pen-paintbrush",
+                "icon": "server",
                 "pages": [
                   "integrations/data-storage/google-sheets"]
               },

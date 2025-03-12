@@ -1,40 +1,154 @@
 ---
 title: "Charts block"
-description: "Description of your new file."
+description: "Blocks are the building blocks of pages in Runway. They allow you to bring together different parts of your model on a single page, helping you visualize data, tell a story, and collaborate more effectively. In this article, we’ll focus on one of the most commonly used block types: Driver charts."
 ---
 
-## Overview
+## **Creating a new chart block**
 
-This is a placeholder article for the help centre. While it has the structure and appearance of a real help article, this content is meant to be replaced with actual documentation.
+1. To add a new block to a page, type **/** to access block options.
 
-## Getting Started
+2. Select **Driver charts.**
 
-If you're new to our platform, you would typically find useful onboarding information in this section. This placeholder text indicates where your actual getting started content should go.
+3. Choose the **drivers** you’d like to visualize on the chart. You can **add or remove drivers** later, not just when first creating the block. More details on this in the **driver customizations** section.
 
-## Common Issues
+4. By default, each driver is displayed as a **separate line chart**. You can **change the chart type** or **combine drivers** into a single chart to better suit your needs.
 
-Here you would normally find solutions to frequently encountered problems:
+Keep reading to explore customization options and advanced chart settings.
 
-1. **\[PLACEHOLDER]** Issue description would appear here, along with troubleshooting steps.
+## General charts customizations
 
-2. **\[PLACEHOLDER]** Another common issue would be described here.
+Chart blocks give you control over how your data is visualized, so you can make it as simple or detailed as you need. Whether you’re switching chart types, adjusting size, or tweaking labels, these options help you present your data in a way that makes sense.
 
-3. **\[PLACEHOLDER]** A third issue with resolution steps would be listed here.
+### **Choose from many chart types**
 
-## Advanced Features
+Runway supports multiple chart types, including:
 
-This section would contain information about advanced functionality:
+* **Line**
 
-**\[PLACEHOLDER CONTENT]** Detailed information about advanced features would be written here, including how to access and utilize them effectively.
+* **Column**
 
-## FAQ
+* **Stacked column**
 
-**Q: \[PLACEHOLDER QUESTION]**
-A: This is where an answer to a frequently asked question would appear.
+* **100% stacked column**
 
-**Q: \[PLACEHOLDER QUESTION]**
-A: Another answer would be provided here.
+* **Value**
 
-## Contact Support
+* **Area**
 
-If you need further assistance, please contact our support team at **\[PLACEHOLDER:** [**support@example.com**](mailto:support@example.com)**]** or through the support portal at **\[PLACEHOLDER: support.example.com]**.
+* **Combo**
+
+* **Waterfall**
+
+* **Pie**
+
+* **Donut**
+
+![](/images/pages/charts/types.png)
+
+### **Combine charts**
+
+By default, each driver is displayed separately, but you can **combine multiple drivers** into a **single chart** for a more consolidated view.
+
+![](/images/pages/charts/combine-drivers.png)
+
+### **Chart size**
+
+You can choose from three chart block sizes: **small, medium, and large.**
+
+* **Small** works best for **value charts** if you want a more compact layout.
+
+* **Large** is better for more detailed charts like **combo or stacked column charts**, making them easier to read.
+
+![](/images/pages/charts/chart-size.png)
+
+### **Data labels**
+
+If you want data labels to always be visible instead of only showing on hover, turn on the **Data labels** toggle.
+
+You can also tweak font size, weight, and color under Advanced settings > Label settings.
+
+### **Legend**
+
+By default, the legend is **hidden**, but you can show it on the **right, left, top, or bottom** of the chart. The legend is **interactive**—clicking on a driver will **toggle its visibility** on the chart.
+
+### Driver-level customizations
+
+Beyond general chart settings, you can customize **each driver individually** to refine how data is displayed. To do this, click the **Customize chart** button and scroll to see the list of drivers.
+
+* **Change driver color** – Click the button next to a driver’s name to update its color. Choose from **10 default vibrant colors** or select a **custom color** by clicking the multi-color circle.
+
+* **Quick access to custom colors** – Your **10 most recent custom colors** are saved for easy reuse across charts.
+
+* **Switch the driver’s axis** – By default, drivers are mapped to the **left Y-axis**, but you can change it to the **right Y-axis** (more on this in the next section).
+
+* **Change the driver’s chart type** – Once you modify a driver’s chart type, the chart automatically **becomes a combo chart**.
+
+* **Add or remove drivers** – Use the **search bar** to add more drivers or click the **six-dot menu** next to a driver to **remove it** or **open it in the details view**.
+
+<Note>
+  If you're using **waterfall charts**, the per-driver customizations work differently to better suit this chart type. More details can be found here.
+</Note>
+
+### Axis settings
+
+In addition to changing which **Y-axis** a driver is plotted on, you can further customize the look of your axes in **Advanced settings > Axis settings.**
+
+Here, you can:
+
+* Move the **X-axis** from **bottom to top**
+
+* Show or hide a **solid line** for each axis
+
+* Show or hide **axis ticks**
+
+* Add a **title** to each axis
+
+## Waterfall charts specific customizations
+
+Waterfall charts provide a clear, intuitive way to visualize how a key metric evolves from a starting value to an ending value by breaking down the positive and negative contributions of various inputs.
+
+* By default, the waterfall chart respects the sign of the values coming from each driver. But what if you need to flip it? For example, an expense driver might be presented in Runway with a positive sign. No problem—just click the settings icon next to the driver name and enable **Lower is better**.
+
+* In most cases, you’ll want the leftmost column to pull its value from the end of the previous period. For example, if your waterfall chart visualizes how **Cash** has changed this quarter, the starting cash value should come from the ending balance of the previous quarter. No need for helper drivers—just enable **Use as beginning value** for that driver.
+
+* All floating bars in between represent how other drivers impact your starting value, summing values across the selected time range.
+
+* Waterfall charts include specific configurations like **Totals, Omit zeros, and customizable colors** for positive, negative, and totals values.
+
+![](/images/pages/charts/waterfall.png)
+
+## Date range
+
+By default, every block on a page **inherits the page-level date range**. However, you can override this by **adjusting the date range at the chart level**, allowing you to customize time frames for specific charts without affecting the rest of the page.
+
+![](/images/pages/charts/date-range.png)
+
+## Scenario comparison on charts
+
+If you're using a line or column chart, you can compare the same drivers across multiple scenarios. Simply click the **Compare** button and select the relevant scenarios.
+
+***<u>ADD GIF</u>***
+
+## Exporting charts
+
+You can download a **chart block** in two ways:
+
+1. **Export the data as a CSV** – Click the **six-dot button** on the top left of the block and select **"Export to CSV."**
+
+2. **Download the chart as a PNG** – **Right-click** on the chart and select **Download.**
+
+![](/images/pages/charts/export-chart.png)
+
+## Charts FAQs
+
+<Accordion title="Can the X-axis represent quarters or years instead of months?" defaultOpen={false}>
+  Not at the moment. However, we’ve heard this request multiple times and plan to support it soon! If this is important to you, please let us know on Slack or through your CXM to help us prioritize.
+</Accordion>
+
+<Accordion title="Waterfall charts display the entire date range as a single period. Is there a way to break it down into quarters?" defaultOpen={false}>
+  You're right—Runway’s waterfall charts currently display the time range as a single period. We’ll be adding support for breaking it down into quarters and years in the near future.
+
+
+
+  In the meantime, you can create **separate waterfall charts** for each quarter or year you're interested in. And as always, let us know if this feature is important to you!
+</Accordion>

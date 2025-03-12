@@ -56,7 +56,7 @@
               },
               {
                 "group": "HRIS",
-                "icon": "pen-paintbrush",
+                "icon": "people-group",
                 "pages": [
                   "integrations/hris/rippling",
                   "integrations/hris/deel",

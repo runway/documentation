@@ -47,9 +47,7 @@ Runway supports multiple chart types, including:
 
 ### **Combine charts**
 
-By default, each driver is displayed separately, but you can **combine multiple drivers** into a **single chart** for a more consolidated view.
-
-![](/images/pages/charts/combine-drivers.png)
+By default, each driver is displayed separately, but you can **combine multiple drivers** into a **single chart** for a more consolidated view.![](/images/pages/charts/combine-drivers.png)
 
 ### **Chart size**
 
@@ -63,13 +61,13 @@ You can choose from three chart block sizes: **small, medium, and large.**
 
 ### **Data labels**
 
-If you want data labels to always be visible instead of only showing on hover, turn on the **Data labels** toggle.
-
-You can also tweak font size, weight, and color under Advanced settings > Label settings.
+If you want data labels to always be visible instead of only showing on hover, turn on the **Data labels** toggle.![](/images/pages/charts/data-labels.png)You can also tweak font size, weight, and color under Advanced settings > Label settings.
 
 ### **Legend**
 
 By default, the legend is **hidden**, but you can show it on the **right, left, top, or bottom** of the chart. The legend is **interactive**—clicking on a driver will **toggle its visibility** on the chart.
+
+![](/images/pages/charts/legend.png)
 
 ### Driver-level customizations
 
@@ -84,6 +82,8 @@ Beyond general chart settings, you can customize **each driver individually** to
 * **Change the driver’s chart type** – Once you modify a driver’s chart type, the chart automatically **becomes a combo chart**.
 
 * **Add or remove drivers** – Use the **search bar** to add more drivers or click the **six-dot menu** next to a driver to **remove it** or **open it in the details view**.
+
+![](/images/pages/charts/driver-config.png)
 
 <Note>
   If you're using **waterfall charts**, the per-driver customizations work differently to better suit this chart type. More details can be found here.
@@ -103,6 +103,14 @@ Here, you can:
 
 * Add a **title** to each axis
 
+![](/images/pages/charts/axis-settings.png)
+
+### Date range
+
+By default, every block on a page **inherits the page-level date range**. However, you can override this by **adjusting the date range at the chart level**, allowing you to customize time frames for specific charts without affecting the rest of the page.
+
+![](/images/pages/charts/date-range.png)
+
 ## Waterfall charts specific customizations
 
 Waterfall charts provide a clear, intuitive way to visualize how a key metric evolves from a starting value to an ending value by breaking down the positive and negative contributions of various inputs.
@@ -116,12 +124,6 @@ Waterfall charts provide a clear, intuitive way to visualize how a key metric ev
 * Waterfall charts include specific configurations like **Totals, Omit zeros, and customizable colors** for positive, negative, and totals values.
 
 ![](/images/pages/charts/waterfall.png)
-
-## Date range
-
-By default, every block on a page **inherits the page-level date range**. However, you can override this by **adjusting the date range at the chart level**, allowing you to customize time frames for specific charts without affecting the rest of the page.
-
-![](/images/pages/charts/date-range.png)
 
 ## Scenario comparison on charts
 
@@ -147,8 +149,6 @@ You can download a **chart block** in two ways:
 
 <Accordion title="Waterfall charts display the entire date range as a single period. Is there a way to break it down into quarters?" defaultOpen={false}>
   You're right—Runway’s waterfall charts currently display the time range as a single period. We’ll be adding support for breaking it down into quarters and years in the near future.
-
-
 
   In the meantime, you can create **separate waterfall charts** for each quarter or year you're interested in. And as always, let us know if this feature is important to you!
 </Accordion>

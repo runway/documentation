@@ -48,7 +48,7 @@
               "integrations/integrations-directory",
               {
                 "group": "Accounting",
-                "icon": "pen-paintbrush",
+                "icon": "receipt",
                 "pages": [
                   "integrations/accounting/quickbooks-online",
                   "integrations/accounting/xero",
@@ -56,7 +56,7 @@
               },
               {
                 "group": "HRIS",
-                "icon": "pen-paintbrush",
+                "icon": "people-group",
                 "pages": [
                   "integrations/hris/rippling",
                   "integrations/hris/deel",
@@ -66,14 +66,14 @@
               },
               {
                 "group": "Revenue",
-                "icon": "pen-paintbrush",
+                "icon": "dollar-sign",
                 "pages": [
                   "integrations/revenue/hubspot",
                   "integrations/revenue/salesforce"]
               },
               {
                 "group": "Data storage",
-                "icon": "pen-paintbrush",
+                "icon": "server",
                 "pages": [
                   "integrations/data-storage/google-sheets"]
               },

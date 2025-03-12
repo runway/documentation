@@ -1,44 +1,86 @@
 ---
 title: "Pages basics"
-description: "This is a placeholder article for the help centre. While it has the structure and appearance of a real help article, this content is meant to be replaced with actual documentation."
+description: "Pages are a flexible and fully customizable canvas where you can bring different elements from across your model together in one place. Whether you're creating an investor report or collaborating with department heads, pages are the perfect tool for the job."
 ---
 
----
-title: "Charts block"
-description: "Description of your new file."
----Overview
------------
+## Creating a page
 
-This is a placeholder article for the help centre. While it has the structure and appearance of a real help article, this content is meant to be replaced with actual documentation.
+To create a new page, follow the following steps:
 
-## Getting Started
+1. Click the **+** next to any section, model, database, or another page. This would allow you to create a page nested within where you clicked on the + button.
 
-If you're new to our platform, you would typically find useful onboarding information in this section. This placeholder text indicates where your actual getting started content should go.
+2. Type a name for your page and, optionally, change the icon.
 
-## Common Issues
+![](/images/pages/basics/create-page.png)
 
-Here you would normally find solutions to frequently encountered problems:
+## Adding a block to a page
 
-1. **\[PLACEHOLDER]** Issue description would appear here, along with troubleshooting steps.
+Now that you have a blank page, you can start building content by adding **blocks**.
 
-2. **\[PLACEHOLDER]** Another common issue would be described here.
+Type **/** to access block options:
 
-3. **\[PLACEHOLDER]** A third issue with resolution steps would be listed here.
+* **Driver charts** – Visualize relevant drivers from anywhere in Runway as charts. Choose from various chart types, including **line, column, stacked, combo, waterfall, and value charts**. More on Driver chart block here.
 
-## Advanced Features
+* **Driver table** – Display a subset of drivers in a tabular format. More on Driver table block here.
 
-This section would contain information about advanced functionality:
+* **Database table** – Bring any existing database into a page. You can **apply filters** to show only the relevant data. More on Database table block here.
 
-**\[PLACEHOLDER CONTENT]** Detailed information about advanced features would be written here, including how to access and utilize them effectively.
+* **Plan timeline** – Create a timeline of your Plans and apply filters to limit which ones appear on your page. More on Plans block here.
 
-## FAQ
+* **Text** – Add **text** anywhere on the page. You can also reference driver values by typing **@**, followed by the driver name, and selecting **Value on date.** Runway keeps these values updated automatically. More on Text block here.
 
-**Q: \[PLACEHOLDER QUESTION]**
-A: This is where an answer to a frequently asked question would appear.
+* **Image** – Upload an image directly or embed one from a URL. More on Image block here.
 
-**Q: \[PLACEHOLDER QUESTION]**
-A: Another answer would be provided here.
+* **Video** – Upload a video file or embed videos from **Loom, YouTube,** or other links. More on Video block here.
 
-## Contact Support
+![](/images/pages/basics/new-block.png)
 
-If you need further assistance, please contact our support team at **\[PLACEHOLDER:** [**support@example.com**](mailto:support@example.com)**]** or through the support portal at **\[PLACEHOLDER: support.example.com]**.
+You can **switch between a Driver chart block and a Driver table block** at any time.
+
+To do this, click the **six-dot button** on the left of the block, then select **Turn into table** or **Turn into chart.**
+
+![](/images/pages/basics/turn-to-table.png)
+
+## Arranging blocks
+
+Pages are designed to be **flexible**, allowing you to structure content in a way that best tells your story and organizes information effectively.
+
+Drag a block using the **six-dot button** on the left to move it **before, after, or next to** another block.
+
+***<u>ADD GIF</u>***
+
+When placing blocks side by side, you can **resize** them by **dragging the handle** between them.
+
+***<u>ADD GIF</u>***
+
+If you need to create a new block similar to an existing one, you can duplicate it instead of starting from scratch. Click the **six-dot button** on the left of the block, then select **Duplicate block**.
+
+![](/images/pages/basics/duplicating-blocks.png)
+
+You can quickly **move a block to a different page** by dragging it and dropping it onto the target page in the sidebar.
+
+***<u>ADD GIF</u>***
+
+### Managing a page
+
+To **rename, change the icon, duplicate, or delete** a page, click the **three-dot button** next to its name in the **sidebar** and select the appropriate option.
+
+![](/images/pages/basics/manage-page.png)
+
+You can also rename or change the icon by clicking on the icon or name in the page header.
+
+![](/images/databases/3/rename-in-page.png)
+
+Additionally, you can **delete** or **rename** a page by clicking the **three-dot menu** in the top-right corner of the page.
+
+## Pages FAQ
+
+<Accordion title="Can I export a page?" defaultOpen={false}>
+  You can export specific blocks from a page:
+
+  * **Driver table, Driver chart, and Database blocks** – Click the **six-dot menu** on the left of the block and select **Export to CSV.**
+
+  * **Driver chart block** – Right-click on the chart, click **Download,** and save it as a **PNG.**
+
+  While Runway does not currently support exporting a full page as a **PDF**, some customers use **browser extensions** like [GoFullPage](https://gofullpage.com/) to capture and save entire pages.
+</Accordion>

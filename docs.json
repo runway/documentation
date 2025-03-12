@@ -29,6 +29,14 @@
                   "concepts/databases/formulas-in-databases",
                   "concepts/databases/hris-databases"]
               },
+              {
+                "group": "Pages",
+                "icon": "file",
+                "pages": [
+                  "concepts/pages/pages-basics",
+                  "concepts/pages/charts-block"
+                ]
+              },
               "concepts/scenarios",
               "concepts/sidebar"
             ]

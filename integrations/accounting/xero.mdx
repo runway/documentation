@@ -69,21 +69,31 @@ When using the **Xero Data Import** integration template, the following financia
 
 **Balance sheet data**
 
-| Data name    | Example     | Data type   | Availability                                        |
-| ------------ | ----------- | ----------- | --------------------------------------------------- |
-| Report Month | Mar 1, 2024 | Date Driver | Via Template - used to group by Month in timeseries |
-|              |             |             |                                                     |
-|              |             |             |                                                     |
-|              |             |             |                                                     |
+| Data name                        | Example               | Data type     | Availability                                        |
+| -------------------------------- | --------------------- | ------------- | --------------------------------------------------- |
+| Report Month                     | Mar 1, 2024           | Date Driver   | Via Template - used to group by Month in timeseries |
+| BS Account Name                  | 1001 - Chase Checking | Dimension     | via Template                                        |
+| BS Account Name \
+(without number) | Chase Checking        | Dimension     | Can be added                                        |
+| BS Account Number                | 1001                  | Dimension     | Can be added                                        |
+| BS Account Type                  | BANK                  | Dimension     | via Template                                        |
+| BS Account Category              | ASSET                 | Dimension     | via Template                                        |
+| Net Balance                      | 500,000               | Number Driver | via Template                                        |
 
 **Cash flow data**
 
-| Data name    | Example      | Data type   | Availability                                        |
-| ------------ | ------------ | ----------- | --------------------------------------------------- |
-| Journal Date | Mar 28, 2024 | Date Driver | Via Template - used to group by Month in timeseries |
-|              |              |             |                                                     |
-|              |              |             |                                                     |
-|              |              |             |                                                     |
+| Data name                        | Example                 | Data type     | Availability                                        |
+| -------------------------------- | ----------------------- | ------------- | --------------------------------------------------- |
+| Journal Date                     | Mar 28, 2024            | Date Driver   | Via Template - used to group by Month in timeseries |
+| CF Account Name                  | 2001 - Accounts Payable | _Dimension_   | via Template                                        |
+| CF Account Name \
+(without number) | Accounts Payable        | Dimension     | Can be added                                        |
+| CF Account Number                | 2001                    | Dimension     | Can be added                                        |
+| CF Account Type                  | CURRLIAB                | Dimension     | via Template                                        |
+| CF Account Category              | LIABILITY               | Dimension     | via Template                                        |
+| CF Activity Type                 | Operating               | Dimension     | via Template                                        |
+| Net Change                       | 10,000                  | Number Driver | via Template                                        |
+| Source Transaction Type          | MANJOURNAL              | Dimension     | Can be added                                        |
 
 <Check>
   The **Xero Data Import** integration template includes the **most commonly used financial data**, but you can add **additional supporting data** to your database configurations for more detail if needed.

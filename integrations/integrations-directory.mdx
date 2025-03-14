@@ -1,5 +1,645 @@
 ---
-title: 'Integrations directory (wip)'
-description: 'Description of your new file.'
+title: "Integrations directory"
+description: "Runway integrates with over 750 different tools, including Accounting Systems, ERPs, HRIS platforms, Data Warehouses, Google Sheets, SharePoint, Ticketing and Project Management Tools, Ecommerce platforms, and more. Our integration network is constantly evolving through a partner-based approach, ensuring we support a wide range of tools to fit your needs."
 ---
 
+Runway primarily integrates through two key partners: [Fivetran](https://www.fivetran.com/connectors), which covers a broad range of data sources, and [Merge](https://www.merge.dev/integrations?category=All+Integrations), which is limited to HRIS, QuickBooks, and Xero. In addition to these, we also offer a handful of first-party integrations.
+
+To help you navigate our integration ecosystem, we’ve categorized them into **Gold, Silver, and Bronze tiers**, based on confidence in data availability and ease of setup.
+
+## **🥇 Gold**
+
+Gold integrations are our most frequently used and well-tested connections. They are reliable, widely understood, and offer a smooth experience. These integrations typically take only a day or two to set up, either through a self-serve process or with minimal guidance from the Runway team.
+
+ 1. ADP Workforce Now
+ 2. BambooHR
+ 3. Google Big Query
+ 4. Facebook Ads
+ 5. Google Ads
+ 6. Google Sheets
+ 7. Gusto
+ 8. Hibob
+ 9. Hubspot
+10. Justworks
+11. LinkedIn Ads
+12. Netsuite (SuiteAnalytics required)
+13. Paylocity
+14. Pipedrive
+15. QuickBooks
+16. Amazon Redshift
+17. Rippling
+18. Sage Intacct
+19. Salesforce
+20. Snowflake
+21. Stripe
+22. TikTok Ads
+23. Twitter Ads
+24. Xero
+
+## **🥈 Silver**
+
+Silver integrations are less frequently used but still well-supported. They work reliably, but setting them up may require additional details about your specific data needs and use cases to ensure everything is configured correctly.
+
+ 1. Airtable
+ 2. Amazon S3
+ 3. Azure Blob Storage
+ 4. Brex
+ 5. Chargebee Product Catalog 2.0
+ 6. Databricks
+ 7. Deel
+ 8. Employment Hero
+ 9. Harvest
+10. IntelliHR
+11. Oracle
+12. Ramp
+13. TriNet
+
+## **🥉 Bronze**
+
+Bronze integrations are used less frequently and may not be as widely adopted. While they are supported, we have less direct experience with them. If you’re planning to integrate with a Bronze tier tool, we recommend reaching out to our team in advance so we can help ensure a smooth setup and provide the best possible support.
+
+  1. 15Five
+  2. 360Learning
+  3. 6sense
+  4. 7shifts
+  5. AWS CloudTrail
+  6. AWS Cost and Usage Reports
+  7. AWS Inventory
+  8. AWS Lambda
+  9. AWS MSK
+ 10. Absorb LMS
+ 11. ActiveCampaign
+ 12. Acumatica
+ 13. AdRoll
+ 14. Ada
+ 15. Adjust
+ 16. Adobe Analytics
+ 17. Adobe Analytics Data Feed
+ 18. Adobe Commerce
+ 19. Adobe Workfront
+ 20. Adyen
+ 21. Affinity
+ 22. Afterpay
+ 23. Aha\!
+ 24. Aircall
+ 25. Alchemer
+ 26. AlexisHR
+ 27. Algolia
+ 28. Altera Payroll
+ 29. Amazon Ads
+ 30. Amazon Attribution
+ 31. Amazon CloudFront
+ 32. Amazon DocumentDB
+ 33. Amazon Kinesis Firehose
+ 34. Amazon Selling Partner
+ 35. Amplitude
+ 36. Anaplan
+ 37. Apache Kafka
+ 38. Appcues
+ 39. Appfigures
+ 40. Apple App Store
+ 41. Apple Search Ads
+ 42. AppsFlyer
+ 43. Asana
+ 44. Assembled
+ 45. Attentive
+ 46. Attio
+ 47. Aumni
+ 48. Aurora MySQL
+ 49. Aurora PostgreSQL
+ 50. Auth0
+ 51. Autodesk BIM 360
+ 52. AvantLink
+ 53. Awin
+ 54. Aws Cost Explorer
+ 55. Azure Boards
+ 56. Azure Cosmos DB - NoSQL API
+ 57. Azure CosmosDB for MongoDB
+ 58. Azure DevOps
+ 59. Azure Event Hubs
+ 60. Azure Functions
+ 61. Azure MariaDB
+ 62. Azure MySQL
+ 63. Azure PostgreSQL Database
+ 64. Azure SQL Database
+ 65. Azure SQL Managed Instance
+ 66. Azure Service Bus
+ 67. BallotReady
+ 68. BigCommerce
+ 69. BillingPlatform
+ 70. Birdeye
+ 71. Bitbucket
+ 72. Bitly
+ 73. Bizzabo
+ 74. Box
+ 75. Braintree
+ 76. Braintree Sandbox
+ 77. Branch
+ 78. Braze
+ 79. Breathe
+ 80. Brevo
+ 81. Brightcove
+ 82. Buildkite
+ 83. Buzzsprout
+ 84. CJ Commission Detail
+ 85. Calabrio
+ 86. Calendly
+ 87. CallRail
+ 88. Campaign Monitor
+ 89. Canny
+ 90. Care Quality Commission
+ 91. Castor EDC
+ 92. Ceridian Dayforce
+ 93. Chameleon
+ 94. ChargeDesk
+ 95. Chargebee Admin
+ 96. Chargebee Product Catalog 1.0
+ 97. Charlie
+ 98. ChartHop
+ 99. ChartMogul
+100. [Checkout.com](http://Checkout.com)
+101. Checkr
+102. Chorus
+103. ChurnZero
+104. Churnkey
+105. Cimis
+106. Cin7
+107. CircleCI
+108. Clari
+109. ClayHR
+110. Clear Books
+111. ClickUp
+112. Close
+113. Clubspeed
+114. Coassemble
+115. Codefresh
+116. Collibra
+117. Column
+118. Concord
+119. Confluence
+120. Confluent Cloud
+121. Contrast Security
+122. Convex
+123. Copper
+124. Coupa
+125. Criteo
+126. Crossbeam
+127. Culture Amp
+128. [Customer.io](http://Customer.io)
+129. Cvent
+130. D2L Brightspace
+131. DCL Logistics
+132. DEAR
+133. DSV
+134. Data Warehouse
+135. Datadog
+136. Dayforce
+137. Db2 for LUW
+138. Delighted
+139. Deputy
+140. Destini
+141. Dixa
+142. Docebo
+143. Donus
+144. Drata
+145. Drift
+146. Drip
+147. Dropbox
+148. Dropbox Sign
+149. Duoplane
+150. DynamoDB
+151. EZOfficeInventory
+152. EasyPost
+153. Elastic Cloud
+154. Electronic Tenant Solutions
+155. Eloqua
+156. Email
+157. Employment Hero
+158. Epic Clarity
+159. Eventbrite
+160. Eventsforce
+161. Everhour
+162. Expensify
+163. FTP
+164. Facebook Lead Ads
+165. Facebook Pages
+166. Factorial
+167. File Storage
+168. FinancialForce
+169. FinancialForce sandbox
+170. FireHydrant
+171. Firebase
+172. FiveTran DataWarehouse
+173. Fivetran Platform
+174. Flexport
+175. Float
+176. Fone Dynamics
+177. Forj Community
+178. Fountain
+179. FourKites
+180. FreeAgent
+181. Freightview
+182. FreshBooks
+183. Freshchat
+184. Freshdesk
+185. Freshdesk Contact Center
+186. Freshservice
+187. Freshsuccess
+188. Freshteam
+189. Friendbuy
+190. Front
+191. FullStory
+192. G2
+193. GRIN
+194. Gainsight Customer Success
+195. Gainsight Product Experience
+196. Gem
+197. Genesys
+198. GetFeedback
+199. GitHub
+200. GitLab
+201. Gladly
+202. GlobalMeet
+203. Gmail
+204. GoCardless
+205. Gong
+206. Google Ad Manager
+207. Google Analytics
+208. Google Analytics (MCF)
+209. Google Analytics 360
+210. Google Analytics 4
+211. Google Analytics 4 Export
+212. Google Big Query
+213. Google Business Profile
+214. Google Calendar
+215. Google Campaign Manager 360
+216. Google Cloud Functions
+217. Google Cloud MySQL
+218. Google Cloud PostgreSQL
+219. Google Cloud SQL - SQL Server
+220. Google Cloud Storage
+221. Google Display & Video 360
+222. Google Drive
+223. Google Play
+224. Google Search Ads 360
+225. Google Search Console
+226. Google Tasks
+227. Google Workspace
+228. Gorgias
+229. GreenPowerMonitor
+230. Greenhouse
+231. Grepsr
+232. Guru
+233. HR Cloud
+234. HR Partner
+235. HappyFox
+236. Heap
+237. Height
+238. Help Scout
+239. Helpshift
+240. Heroku Kafka
+241. Heroku PostgreSQL
+242. HiBob
+243. High Volume Agent Db2 for i
+244. High-Volume Agent SAP ECC on SQL Server
+245. High-Volume Agent SQL Server
+246. Hopin
+247. Hub
+248. HubSpot
+249. Humaans
+250. Impact
+251. [Incident.io](http://Incident.io)
+252. Infobip
+253. Insightly
+254. Instagram Business
+255. Instructure
+256. Integral Ad Science
+257. Integrate
+258. Intercom
+259. Ironclad
+260. Iterable
+261. Ivanti
+262. Jira
+263. Jira Align
+264. Jotform
+265. JumpCloud
+266. JustCall
+267. Kallidus
+268. Kandji
+269. Katana
+270. Keka
+271. KeyPay
+272. Khoros Care
+273. Kisi
+274. Kissmetrics
+275. Klarna
+276. Klaviyo
+277. Konnect Insights
+278. Kustomer
+279. Lano
+280. Lattice
+281. LaunchDarkly
+282. Learnupon
+283. Lemlist
+284. Lessonly
+285. Lever
+286. Liftoff
+287. Lightspeed Retail
+288. Linear
+289. LinkSquares
+290. LinkedIn Ad Analytics
+291. LinkedIn Company Pages
+292. LiveChat Partner
+293. Lob
+294. Looker
+295. Loopio
+296. Lucca
+297. Luma
+298. MNTN
+299. Magento MySQL
+300. Magento MySQL RDS
+301. Mailchimp
+302. Mailgun
+303. Mambu
+304. Mandrill
+305. MariaDB
+306. MariaDB RDS
+307. Marin Software
+308. Marketo
+309. Mavenlink
+310. Maxio Chargify
+311. Maxio SaaSOptics
+312. Medallia
+313. Megaphone
+314. Mention
+315. Microsoft Advertising
+316. Microsoft Dynamics 365 Business Central
+317. Microsoft Dynamics 365 CRM
+318. Microsoft Dynamics 365 Finance and Operations
+319. Microsoft Entra ID
+320. Microsoft Lists
+321. Missive
+322. Mixmax
+323. Mixpanel
+324. Mode
+325. Moloco
+326. [Monday.com](http://Monday.com)
+327. Moneybird
+328. MongoDB
+329. MongoDB Sharded
+330. Mux
+331. MySQL
+332. MySQL RDS
+333. Namely
+334. Navan
+335. NetSuite SuiteAnalytics
+336. Nmbrs
+337. Notion
+338. Nylas
+339. ON24
+340. Officient
+341. Okta
+342. Ometria
+343. OneDrive
+344. OneLogin
+345. Open Data DC
+346. Open Distro
+347. Open Exchange Rates
+348. Opensearch
+349. Opsgenie
+350. Optimizely
+351. Oracle Business Intelligence Publisher
+352. Oracle Financials Cloud
+353. Oracle Fusion Cloud Applications - CRM
+354. Oracle Fusion Cloud Applications - FSCM(ERP & SCM)
+355. Oracle Fusion Cloud Applications - HCM
+356. Oracle Moat Analytics
+357. Orbit
+358. Ordway
+359. Ortto
+360. Other
+361. Outbrain
+362. Outreach
+363. PagerDuty
+364. Papershift
+365. Pardot
+366. PartnerStack Vendor
+367. Partnerize
+368. PayCaptain
+369. Paychex
+370. Paypal
+371. Paypal Sandbox
+372. Pendo
+373. PeopleHR
+374. Persona
+375. Personio
+376. Picqer
+377. Pingdom
+378. Pinpoint
+379. Pinterest Ads
+380. Pinterest Organic
+381. Pipe17
+382. Pivotal Tracker
+383. Piwik PRO
+384. PlanetScale
+385. Playvox
+386. PostHog
+387. PostgreSQL
+388. PostgreSQL RDS
+389. Postmark
+390. PowerReviews Enterprise
+391. Prive
+392. Productboard
+393. Proliant
+394. Proofpoint Security Awareness
+395. Puzzle
+396. Qualaroo
+397. Qualtrics
+398. Quick
+399. Quora Ads
+400. Quorum
+401. [REVIEWS.io](http://REVIEWS.io)
+402. RTB House
+403. Rakuten Advertising
+404. Rarible
+405. Re:amaze
+406. Recharge
+407. Recurly
+408. Reddit Ads
+409. ReferralHero
+410. Reltio
+411. [Reply.io](http://Reply.io)
+412. Resource Management by Smartsheet
+413. Rest
+414. RetailNext
+415. Retently
+416. RevOps
+417. RevX
+418. Revel Systems
+419. RevenueCat
+420. Ricochet360
+421. RingCentral
+422. Ringover
+423. Rithum
+424. Rocketlane
+425. Rollbar
+426. Rootly
+427. Runway API
+428. SAP Business ByDesign
+429. SAP Concur
+430. SAP HANA
+431. SAP S/4
+432. SAP SuccessFactors
+433. SCORM
+434. SFTP
+435. SISTRIX
+436. SQL Server
+437. SQL Server RDS
+438. SafetyCulture
+439. Sage Business Clou
+440. Sage HR
+441. Sailthru
+442. Salesforce Commerce Cloud
+443. Salesforce Marketing Cloud
+444. Salesloft
+445. Salsify
+446. Samsara
+447. Security Journey
+448. Segment
+449. Self Hosted Elasticsearch
+450. SendGrid
+451. Sensor Tower
+452. ServiceNow
+453. ServiceTitan
+454. Sesame
+455. SharePoint
+456. Sharetribe
+457. ShipHero
+458. ShipStation
+459. Shopify
+460. Shopware
+461. [Short.io](http://Short.io)
+462. Shortcut
+463. Simplecast
+464. Simplesat
+465. Skilljar
+466. SkuVault
+467. Slab
+468. Slack
+469. Smadex
+470. Smartwaiver
+471. Snapchat Ads
+472. Snowplow
+473. Snyk
+474. SolarWinds Service Desk
+475. SonarQube
+476. SparkPost
+477. Split
+478. Splunk
+479. SpotDraft
+480. Spotify Ads
+481. Spreadsheet
+482. Sprout Social
+483. Square
+484. Square Payroll
+485. Squarespace
+486. StackAdapt
+487. Standard Metrics
+488. StarRez
+489. Statsig
+490. Statuspage
+491. Stripe test mode
+492. Stylight
+493. Subscript
+494. SurveyMonkey
+495. Survicate
+496. Swoogo
+497. Tableau
+498. Taboola
+499. Talkdesk
+500. Talkwalker
+501. Teads
+502. Teamwork
+503. Tempo
+504. TestRail
+505. The Trade Desk
+506. Thinkific
+507. Ticketing
+508. Tiktok Ads
+509. Toast
+510. Toggl Track
+511. Totango
+512. Transcend
+513. Trelica
+514. Trello
+515. Trisolute
+516. Twilio
+517. Twitter Organic
+518. Tymeshift
+519. Typeform
+520. UKG Pro
+521. UKG Pro Workforce Management
+522. UKG Ready
+523. Udemy Business
+524. Unicommerce
+525. UpPromote
+526. Upland Software
+527. UserVoice
+528. VTS
+529. VWO
+530. Veeqo
+531. Veeva Vault
+532. Verizon Media
+533. Visit by GES
+534. Vitally
+535. Vonage
+536. Vonage Contact Center
+537. Walmart Marketplace
+538. Wasabi Cloud Storage
+539. Wave Financial
+540. Web Scraper
+541. Webconnex
+542. Webhooks
+543. When I Work
+544. Wherefour
+545. WooCommerce
+546. WordPress
+547. WorkRamp
+548. Workable
+549. Workday
+550. Workday Financial Management
+551. Workday HCM
+552. Workday RaaS
+553. Workday Strategic Sourcing
+554. Wrike
+555. Xray
+556. Xsolla
+557. Yahoo DSP
+558. Yahoo Search Ads on Yahoo Japan
+559. Yotpo
+560. YouGov Sport
+561. YouTube Analytics
+562. Younium
+563. Zendesk Chat
+564. Zendesk Sell
+565. Zendesk Sunshine
+566. Zendesk Support
+567. Zenefits
+568. Zingtree
+569. Zoho Books
+570. Zoho BugTracker
+571. Zoho CRM
+572. Zoho Campaigns
+573. Zoho Desk
+574. Zoom
+575. Zuora
+576. Zuora Sandbox
+577. commercetools
+578. [crowd.dev](http://crowd.dev)
+579. dbt Cloud
+580. e-conomic
+581. eBay
+582. iLevel
+583. ironSource
+584. loop
+585. myosh

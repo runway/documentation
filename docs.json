@@ -31,7 +31,7 @@
               },
               {
                 "group": "Models",
-                "icon": "database",
+                "icon": "function",
                 "pages": [
                   "concepts/models/models-basics"]
               },

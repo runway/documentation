@@ -48,9 +48,8 @@ When using the **QBO Data Import** integration template, the following financial
 
 | **Data name**               | **Example**                 | **Data type** | **Availability**                                   |
 | --------------------------- | --------------------------- | ------------- | -------------------------------------------------- |
-| Transaction Date            | Mar 28, 2024                | _Date Driver_ | Via Template\
-(used to group by \
-Month in Timeseries) |
+| Transaction Date            | Mar 28, 2024                | _Date Driver_ | Via Template -used to group by \
+Month in timeseries |
 | Income Statement Amount     | 15,000                      | _Number Driver_ | via Template                                       |
 | Account Subtype             | SalesOfProductIncome        | _Dimension_   | via Template                                       |
 | Account Type                | Income                      | _Dimension_   | via Template                                       |
@@ -66,3 +65,43 @@ Month in Timeseries) |
 | Parent GL Account Number    | 4000                        | _Dimension_   | Can be added                                       |
 | Parent GL Name (no number)  | Revenue                     | _Dimension_   | Can be added                                       |
 | Vendor                      | AWS                         | _Dimension_   | via Template                                       |
+
+**Combined balance sheet & cash flow data**
+
+| Data name                   | Example                  | Data type     | Availability                                       |
+| --------------------------- | ------------------------ | ------------- | -------------------------------------------------- |
+| BS Account Name             | 1001 - Chase Checking    | _Dimension_   | via Template                                       |
+| Class Name                  | SG&A                     | _Dimension_   | via Template                                       |
+| Accounting Month            | Mar 2024                 | _Date Driver_ | Via Template\
+(used to group by \
+Month in Timeseries) |
+| Beginning Balance           | 500,000                  | _Number Driver_ | via Template                                       |
+| Ending Balance              | 525,000                  | _Number Driver_ | via Template                                       |
+| Net Change                  | 25,000                   | _Number Driver_ | via Template                                       |
+| BS Account Type             | Bank                     | _Dimension_   | via Template                                       |
+| BS Account Subtype          | Checking                 | _Dimension_   | via Template                                       |
+| BS Account Number           | 1001                     | _Dimension_   | Can be added                                       |
+| BS Account Name (no number) | Chase Checking           | _Dimension_   | Can be added                                       |
+| BS Account Category         | Asset                    | _Dimension_   | via Template                                       |
+| Cash Flow Type              | Cash or Cash Equivalents | _Dimension_   | via Template                                       |
+| Parent BS Account Name      | 1000 - Cash              | _Dimension_   | Can be added                                       |
+| Parent BS Account Number    | 1000                     | _Dimension_   | Can be added                                       |
+| Is Sub-Account              | Yes                      | _Dimension_   | Can be added                                       |
+
+<Check>
+  The **QBO Data Import** integration template includes the **most commonly used financial data**, but you can add **additional supporting data** to your database configurations for more detail if needed.
+</Check>
+
+## Quickbooks Online FAQs
+
+<Accordion title="Does Runway write data back to QuickBooks?" icon="sparkles">
+  No, Runway supports **read-only** integrations. No data is written back to QuickBooks.
+</Accordion>
+
+<Accordion title="Can I connect multiple instances of QuickBooks Online?" icon="sparkles">
+  Absolutely. To add additional instances, go to the **Integrations Directory** in Runway, click **Installed**, then select **Set Up**. Follow the same setup flow as outlined above for each additional instance.
+</Accordion>
+
+<Accordion title="Can I pull other types of data from QuickBooks?" icon="sparkles">
+  Yes\! Our integration is highly customizable. While the **QBO Data Import template** includes **starter queries** that fit most use cases, you can also **write your own SQL queries** leveraging [this QuickBooks schema](https://fivetran.com/docs/applications/quickbooks#schemainformation). Not a SQL expert? No problem—our **CX team** is happy to assist\!
+</Accordion>

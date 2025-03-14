@@ -42,7 +42,10 @@
                 "icon": "file",
                 "pages": [
                   "concepts/pages/pages-basics",
-                  "concepts/pages/charts-block"
+                  "concepts/pages/charts-block",
+                  "concepts/pages/drivers-table-block",
+                  "concepts/pages/database-block",
+                  "concepts/pages/text-media-block"
                 ]
               },
               "concepts/scenarios",

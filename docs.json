@@ -52,7 +52,8 @@
                 "pages": [
                   "integrations/accounting/quickbooks-online",
                   "integrations/accounting/xero",
-                  "integrations/accounting/netsuite"]
+                  "integrations/accounting/netsuite",
+                  "integrations/multi-entity-integrations"]
               },
               {
                 "group": "HRIS",
@@ -76,8 +77,8 @@
                 "icon": "server",
                 "pages": [
                   "integrations/data-storage/google-sheets"]
-              },
-              "integrations/multi-entity-integrations"            ]
+              }
+            ]
           },
           {
             "group": "Guides",

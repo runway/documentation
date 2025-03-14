@@ -19,6 +19,8 @@
           {
             "group": "Concepts",
             "pages": [
+              "concepts/drivers",
+              "concepts/dimensions",
               {
                 "group": "Databases",
                 "icon": "database",
@@ -30,14 +32,24 @@
                   "concepts/databases/hris-databases"]
               },
               {
+                "group": "Models",
+                "icon": "function",
+                "pages": [
+                  "concepts/models/models-basics"]
+              },
+              {
                 "group": "Pages",
                 "icon": "file",
                 "pages": [
                   "concepts/pages/pages-basics",
-                  "concepts/pages/charts-block"
+                  "concepts/pages/charts-block",
+                  "concepts/pages/drivers-table-block",
+                  "concepts/pages/database-block",
+                  "concepts/pages/text-media-block"
                 ]
               },
               "concepts/scenarios",
+              "concepts/plans",
               "concepts/sidebar"
             ]
           },

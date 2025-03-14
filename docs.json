@@ -23,7 +23,8 @@
                 "group": "Drivers",
                 "icon": "chart-mixed-up-circle-dollar",
                 "pages": [
-                  "concepts/drivers/drivers-basics"]
+                  "concepts/drivers/drivers-basics",
+                  "concepts/drivers/driver-details-pane"]
               },
               {
                 "group": "Dimensions",

@@ -19,8 +19,18 @@
           {
             "group": "Concepts",
             "pages": [
-              "concepts/drivers",
-              "concepts/dimensions",
+              {
+                "group": "Drivers",
+                "icon": "chart-mixed-up-circle-dollar",
+                "pages": [
+                  "concepts/drivers"]
+              },
+              {
+                "group": "Dimensions",
+                "icon": "list",
+                "pages": [
+                  "concepts/dimensions"]
+              },
               {
                 "group": "Databases",
                 "icon": "database",

@@ -19,6 +19,8 @@
           {
             "group": "Concepts",
             "pages": [
+              "concepts/drivers",
+              "concepts/dimensions",
               {
                 "group": "Databases",
                 "icon": "database",
@@ -44,6 +46,7 @@
                 ]
               },
               "concepts/scenarios",
+              "concepts/plans",
               "concepts/sidebar"
             ]
           },

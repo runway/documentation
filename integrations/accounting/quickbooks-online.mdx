@@ -48,42 +48,42 @@ When using the **QBO Data Import** integration template, the following financial
 
 | Data name                   | Example                     | Data type     | Availability                                        |
 | --------------------------- | --------------------------- | ------------- | --------------------------------------------------- |
-| Transaction Date            | Mar 28, 2024                |               | Via Template - used to group by Month in timeseries |
-| Income Statement Amount     | 15,000                      |               | via Template                                        |
-| Account Subtype             | SalesOfProductIncome        |               | via Template                                        |
-| Account Type                | Income                      |               | via Template                                        |
-| Class                       | East                        |               | via Template                                        |
-| Customer                    | Acme Corp                   |               | Can be added                                        |
-| Department                  | Sales                       |               | Can be added                                        |
-| Financial Statement Helper  | income_statement            |               | Can be added                                        |
-| GL Account Name             | 4001 Revenue - Subscription |               | via Template                                        |
-| GL Account Name (no number) | Revenue - Subscription      |               | Can be added                                        |
-| GL Account Number           | 4001                        |               | Can be added                                        |
-| GL Category                 | Revenue                     |               | via Template                                        |
-| Parent GL Account Name      | 4000 - Revenue              |               | Can be added                                        |
-| Parent GL Account Number    | 4000                        |               | Can be added                                        |
-| Parent GL Name (no number)  | Revenue                     |               | Can be added                                        |
-| Vendor                      | AWS                         |               | via Template                                        |
+| Transaction Date            | Mar 28, 2024                | Date driver   | Via Template - used to group by Month in timeseries |
+| Income Statement Amount     | 15,000                      | Number driver | via Template                                        |
+| Account Subtype             | SalesOfProductIncome        | Dimension     | via Template                                        |
+| Account Type                | Income                      | Dimension     | via Template                                        |
+| Class                       | East                        | Dimension     | via Template                                        |
+| Customer                    | Acme Corp                   | Dimension     | Can be added                                        |
+| Department                  | Sales                       | Dimension     | Can be added                                        |
+| Financial Statement Helper  | income_statement            | Dimension     | Can be added                                        |
+| GL Account Name             | 4001 Revenue - Subscription | Dimension     | via Template                                        |
+| GL Account Name (no number) | Revenue - Subscription      | Dimension     | Can be added                                        |
+| GL Account Number           | 4001                        | Dimension     | Can be added                                        |
+| GL Category                 | Revenue                     | Dimension     | via Template                                        |
+| Parent GL Account Name      | 4000 - Revenue              | Dimension     | Can be added                                        |
+| Parent GL Account Number    | 4000                        | Dimension     | Can be added                                        |
+| Parent GL Name (no number)  | Revenue                     | Dimension     | Can be added                                        |
+| Vendor                      | AWS                         | Dimension     | via Template                                        |
 
 **Combined balance sheet & cash flow data**
 
-| Data name                   | Example                  | Data type     | Availability                                        |
-| --------------------------- | ------------------------ | ------------- | --------------------------------------------------- |
-| BS Account Name             | 1001 - Chase Checking    |               | via Template                                        |
-| Class Name                  | SG&A                     |               | via Template                                        |
-| Accounting Month            | Mar 2024                 |               | Via Template - used to group by Month in timeseries |
-| Beginning Balance           | 500,000                  |               | via Template                                        |
-| Ending Balance              | 525,000                  |               | via Template                                        |
-| Net Change                  | 25,000                   |               | via Template                                        |
-| BS Account Type             | Bank                     |               | via Template                                        |
-| BS Account Subtype          | Checking                 |               | via Template                                        |
-| BS Account Number           | 1001                     |               | Can be added                                        |
-| BS Account Name (no number) | Chase Checking           |               | Can be added                                        |
-| BS Account Category         | Asset                    |               | via Template                                        |
-| Cash Flow Type              | Cash or Cash Equivalents |               | via Template                                        |
-| Parent BS Account Name      | 1000 - Cash              |               | Can be added                                        |
-| Parent BS Account Number    | 1000                     |               | Can be added                                        |
-| Is Sub-Account              | Yes                      |               | Can be added                                        |
+| Data name                   | Example                  | Data type | Availability                                        |
+| --------------------------- | ------------------------ | --------- | --------------------------------------------------- |
+| BS Account Name             | 1001 - Chase Checking    |           | via Template                                        |
+| Class Name                  | SG&A                     |           | via Template                                        |
+| Accounting Month            | Mar 2024                 |           | Via Template - used to group by Month in timeseries |
+| Beginning Balance           | 500,000                  |           | via Template                                        |
+| Ending Balance              | 525,000                  |           | via Template                                        |
+| Net Change                  | 25,000                   |           | via Template                                        |
+| BS Account Type             | Bank                     |           | via Template                                        |
+| BS Account Subtype          | Checking                 |           | via Template                                        |
+| BS Account Number           | 1001                     |           | Can be added                                        |
+| BS Account Name (no number) | Chase Checking           |           | Can be added                                        |
+| BS Account Category         | Asset                    |           | via Template                                        |
+| Cash Flow Type              | Cash or Cash Equivalents |           | via Template                                        |
+| Parent BS Account Name      | 1000 - Cash              |           | Can be added                                        |
+| Parent BS Account Number    | 1000                     |           | Can be added                                        |
+| Is Sub-Account              | Yes                      |           | Can be added                                        |
 
 <Check>
   The **QBO Data Import** integration template includes the **most commonly used financial data**, but you can add **additional supporting data** to your database configurations for more detail if needed.

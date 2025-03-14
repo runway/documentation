@@ -1,0 +1,86 @@
+---
+title: "Drivers basics"
+description: "Drivers are the core building blocks of your model in Runway. They represent timeseries data, allowing you to define, interpret, and connect different parts of your model to track business performance over time."
+---
+
+<Info>
+  This article focuses on the behavior of drivers in driver tables. Drivers can also be used in databases, which have some additional behavior you can read about here. (LINK: coming soon)
+</Info>
+
+## What is a Driver?
+
+A **Driver** in Runway is a structured chunk of **timeseries data**. It provides clarity with a **human-readable name**, representing the values that drive your business model—key metrics that shape your bottom line.
+
+Drivers act as **the primary elements in tables and formulas**, helping you quickly identify and interpret data. Conceptually, a driver is similar to:
+
+- A **row** in an Excel model
+- A **variable** in other modeling systems
+
+## **Why use Drivers?**
+
+Drivers offer several advantages over traditional spreadsheet modeling:
+
+- **Portable** – Drivers can be referenced in formulas, added to tables, and visualized in charts without dealing with messy cell ranges. They stay synced across your model. You can add any driver to a table by clicking **"Add"** and searching for it.
+- **Time-native** – Every business assumption changes over time. Drivers make it easy to project these changes across different periods.
+- **Dimensional** – Drivers can have **dimensions** that structure your model as complexity grows. More on this in \[LINK: article on dimensions + drivers (coming soon)\].
+
+![images/drivers/basics/drivers.png](/images/drivers/basics/drivers.png)
+
+## Driver formulas
+
+Drivers contain **formulas** that define their values across different time periods.
+
+- **Forecast formula** – Calculates projected values for future periods (after the last close).
+- **Actuals formula** – Defines historical values (before the last close).
+
+![images/drivers/basics/forecast-actuals.png](/images/drivers/basics/forecast-actuals.png)
+
+### **Formula inheritance**
+
+Runway applies smart defaults to fill in missing formulas when needed. The inheritance hierarchy determines how formulas are applied:
+
+**Actuals formula** inheritance hierarchy:
+
+1. Explicitly set **actuals formula** for the driver.
+2. Default actuals formula set for the **database column** the driver belongs to.
+3. Driver's **forecast formula** (if no actuals formula is set).
+
+**Forecast formula** inheritance hierarchy:
+
+1. Explicitly set **forecast formula** for the driver.
+2. Default forecast formula set for the **database column** the driver belongs to.
+3. Global default formula: `self.last_month`.
+
+Learn more about formulas in databases
+
+![images/drivers/basics/formulas-default.png](/images/drivers/basics/formulas-default.png)
+
+### Overriding formula values
+
+Learn more about Plans and hardcoding values, for overriding the value of a driver in a specific month (Coming soon).
+
+## Driver types
+
+Drivers store **timeseries data** in one of two formats:
+
+- **Numbers** – Used for quantitative values like **revenue, expenses, or headcount**.
+- **Dates** – Used for time-based data like **project start dates or contract renewals**.
+
+<Note>
+  When entering explicit dates in formulas, use the format 'YYYY-MM-DD' (enclosed in single quotes).
+</Note>
+
+![images/drivers/basics/driver-types.png](/images/drivers/basics/driver-types.png)
+
+In **driver tables**, new drivers default to the **Number** type. You can change this by **right-clicking** the driver and selecting **Format and display.**
+
+The type can be updated later, but with some constraints:
+
+- **Driver formulas must output values matching the driver’s type** (Number or Date).
+- **Certain functions only accept specific data types**.
+
+<Warning>
+  If these constraints aren’t met, the driver’s values will display a **TYPE error**, indicating a mismatch between the formula output and driver type.
+</Warning>
+
+We tend to find that Date drivers are most useful when working with drivers in databases \[LINK: coming soon\]

@@ -30,6 +30,12 @@
                   "concepts/databases/hris-databases"]
               },
               {
+                "group": "Models",
+                "icon": "database",
+                "pages": [
+                  "concepts/models/models-basics"]
+              },
+              {
                 "group": "Pages",
                 "icon": "file",
                 "pages": [

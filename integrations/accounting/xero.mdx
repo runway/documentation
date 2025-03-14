@@ -46,15 +46,32 @@ When using the **Xero Data Import** integration template, the following financia
 
 **Income statement data**
 
-| Data name    | Example      | Data type   | Availability                                        |
-| ------------ | ------------ | ----------- | --------------------------------------------------- |
-| Journal Date | Mar 28, 2024 | _Date Driver_ | Via Template - used to group by Month in timeseries |
+| Data name                   | Example                     | Data type     | Availability                                        |
+| --------------------------- | --------------------------- | ------------- | --------------------------------------------------- |
+| Journal Date                | Mar 28, 2024                | Date Driver   | Via Template - used to group by Month in timeseries |
+| Net IS Amount               | 15,000                      | Number Driver | via Template                                        |
+| IS Account Name             | 4001 Revenue - Subscription | Dimension     | via Template                                        |
+| IS Account Name (no number) | Revenue - Subscription      | Dimension     | Can be added                                        |
+| IS Account Number           | 4001                        | Dimension     | Can be added                                        |
+| IS Account Type             | SALES                       | Dimension     | via Template                                        |
+| IS Account Category         | REVENUE                     | Dimension     | via Template                                        |
+| Tracking Category           | 4000 - Revenue              | Dimension     | Can be added                                        |
+| Tracking Category Option    | GTM                         | Dimension     | Can be added                                        |
+| Contact Name                | Acme Corp                   | Dimension     | Can be added                                        |
+| Source Transaction Type     | MANJOURNAL                  | Dimension     | Can be added                                        |
+| IS Account Number           | 4001                        | Dimension     | Can be added                                        |
+| IS Account Type             | SALES                       | Dimension     | via Template                                        |
+| IS Account Category         | REVENUE                     | Dimension     | via Template                                        |
+| Tracking Category           | 4000 - Revenue              | Dimension     | Can be added                                        |
+| Tracking Category Option    | GTM                         | Dimension     | Can be added                                        |
+| Contact Name                | Acme Corp                   | Dimension     | Can be added                                        |
+| Source Transaction Type     | MANJOURNAL                  | Dimension     | Can be added                                        |
 
 **Balance sheet data**
 
 | Data name    | Example     | Data type   | Availability                                        |
 | ------------ | ----------- | ----------- | --------------------------------------------------- |
-| Report Month | Mar 1, 2024 | _Date Driver_ | Via Template - used to group by Month in timeseries |
+| Report Month | Mar 1, 2024 | Date Driver | Via Template - used to group by Month in timeseries |
 |              |             |             |                                                     |
 |              |             |             |                                                     |
 |              |             |             |                                                     |
@@ -63,7 +80,7 @@ When using the **Xero Data Import** integration template, the following financia
 
 | Data name    | Example      | Data type   | Availability                                        |
 | ------------ | ------------ | ----------- | --------------------------------------------------- |
-| Journal Date | Mar 28, 2024 | _Date Driver_ | Via Template - used to group by Month in timeseries |
+| Journal Date | Mar 28, 2024 | Date Driver | Via Template - used to group by Month in timeseries |
 |              |              |             |                                                     |
 |              |              |             |                                                     |
 |              |              |             |                                                     |

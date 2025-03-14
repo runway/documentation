@@ -1,0 +1,47 @@
+---
+title: "Driver details pane"
+description: "The Driver details pane gives a comprehensive overview and editing options for your drivers. "
+---
+
+## **How to access the details pane**
+
+- Click the **↗️ arrow** on any driver row.
+- Use the shortcut `Cmd (Ctrl)`**+**`Shift`**+**`Enter` while a driver is selected.
+
+![images/drivers/details-pane/button.png](/images/drivers/details-pane/button.png)
+
+This pane is a really handy surface to dive deep into a driver and how it fits into your model. It is especially useful for:
+
+- Viewing and editing all driver settings in one place.
+- Exploring the inputs that contribute to a driver’s values to troubleshoot discrepancies or errors.
+
+## **What's inside the driver details pane?**
+
+![images/drivers/details-pane/details-pain-breakdown.png](/images/drivers/details-pane/details-pain-breakdown.png)
+
+**Name** – The driver’s name.
+
+ 1. **Breadcrumbs** – Shows where the driver is located in your model.
+ 2. **Description** – Context or notes about the driver.
+ 3. **Models** – Lists all pages where the driver is used.
+ 4. **Dimensions** – Explains how the driver is segmented. \[Link: Dimensions article\]
+ 5. **Format** – Adjusts display settings for numeric drivers. \[Link: Formatting article\]
+ 6. **Goal** – Assign a target value to the driver.
+    - The target appears as a \*\*goal line \*\*when plotted on a chart.
+    - Used in scenario comparisons or BvA (Budget vs. Actuals) to determine whether values are displayed as red or green.
+    - By default, higher values are considered _better_.
+ 7. **Rollup by** – Specifies how the driver's values aggregate when viewing time periods longer than one month, such as quarterly, year-to-date, or annual (e.g. sum, first, last).
+ 8. **Goal** – Defines how the driver aggregates (e.g., sum, last)over longer periods (Quarterly, Annual). For example:
+    - Revenue → Roll up by **SUM** (to see total revenue in a year).
+    - \*\*Cash balance \*\*→ Roll up by **LAST** (to see the ending balance for a year).
+ 9. **Actuals formula** – Expanded space for editing the driver’s actuals formula. \[Link: Driver Formulas\]
+10. **Forecast formula** – Expanded space for editing the driver’s forecast formula. \[Link: Driver Formulas\]
+11. **Driver type** – Clearly indicates whether the driver stores **Numbers or Dates**. \[Link: Driver Types article\]
+12. **Driver timeseries table** – A dedicated table displaying the driver’s values over time. The columns are controlled by settings under **Customize** \[19\].
+13. **Direct inputs tab** – Shows all direct inputs contributing to this driver (i.e., referenced in its formula). You can open the details pane for these inputs directly from this tab.
+14. **Indirect inputs tab** – Displays a full dependency tree, showing all direct and indirect inputs feeding into the driver. This can get long in complex models and may be truncated.
+15. **Used by** – Lists all other drivers that reference this driver in their formulas.
+16. **Plans** – Displays any Plans applied to this driver. \[Link: Plans article (coming soon)\]
+17. **Secondary / Inputs table** – Displays results from the Direct Inputs, Indirect Inputs, Used By, or Plans tabs.
+18. **Delete** – Click the **trash can** icon to delete the driver.
+19. **Customize menu** – Adjusts which columns and time ranges are displayed in the Driver timeseries table \[12\] and the Secondary/Inputs Table \[17\].

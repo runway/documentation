@@ -46,9 +46,9 @@ SHOW TABLES
 
 This command will list **all schemas and tables** available for querying. If you have **multiple** **Fivetran integrations**, you will see matching tables and schemas across different integrations, allowing you to join multiple Fivetran sources together.
 
-**![images/integrations/show-tables.png](/images/integrations/show-tables.png)
+![images/integrations/show-tables.png](/images/integrations/show-tables.png)
 
-Runway automatically syncs data daily:**
+**Runway automatically syncs data daily:**
 
 1. Data is **pulled from your source system** into Runway’s **Snowflake data warehouse** every morning (US Pacific Time).
 2. Runway then **automatically** **executes integration queries** shortly after to refresh the data in your model.
@@ -56,9 +56,9 @@ Runway automatically syncs data daily:**
 **If you need an immediate manual refresh:**
 
 1. Manually trigger a sync from your source system.
-
    ![images/integrations/resync.png](/images/integrations/resync.png)
 2. Once the source data is refreshed, **rerun your SQL queries manually** to update your model. This step ensures the newly synced data appears in your model.
+   ![images/integrations/run-query.png](/images/integrations/run-query.png)
 
 ## Best practices & tips
 
@@ -91,6 +91,6 @@ Runway automatically syncs data daily:**
     group by 1,3
     
     ```
-- **Filter out unwanted data**—some Fivetran tables contain columns like `\_fivetran_deleted`. Filtering out these records helps prevent duplicates records in your dataset.
+- **Filter out unwanted data**—some Fivetran tables contain columns like `_fivetran_deleted`. Filtering out these records helps prevent duplicates records in your dataset.
 
 Now that your queries are complete and your integration is set up, [learn how to shape a database.](https://www.notion.so/Databases-basics-1ae691424a288035817ae31f2a0729b5?pvs=21)

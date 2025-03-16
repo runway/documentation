@@ -100,7 +100,8 @@
                 "icon": "server",
                 "pages": [
                   "integrations/data-storage/google-sheets"]
-              }
+              },
+              "integrations/writing-sql"
             ]
           },
           {

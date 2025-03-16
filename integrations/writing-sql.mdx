@@ -1,0 +1,93 @@
+---
+title: "Writing SQL in Runway"
+description: "Runway allows you to write SQL directly within the app to pull, shape, and transform data based on your needs. This feature is available for integrations using one of our supported data warehouses or any of our Fivetran integrations."
+---
+
+This guide is designed for users with **SQL experience** or for **data teams** assisting business users in integrating data into Runway. If you're new to SQL, consider learning through resources like [Snowflake’s SQL introduction](https://docs.snowflake.com/en/learn-tutorials).
+
+## **Identifying a Fivetran integration**
+
+There are two ways to check if your integration is powered by Fivetran:
+
+1. **During setup** – The integration will display the **Fivetran** label when being installed.
+   ![images/integrations/fivertan-tag.png](/images/integrations/fivertan-tag.png)
+2. **After installation** – If already installed, you can check by looking at the **URL** in the query editor.
+   ![images/integrations/fievtran-url.png](/images/integrations/fievtran-url.png)
+
+## **Writing SQL for data warehouses**
+
+When querying **data warehouses** (non-Fivetran integrations), you must use the SQL syntax of the provider:
+
+- **Google BigQuery** – Uses **GoogleSQL**
+- **Snowflake** – Supports **standard SQL**
+- **Amazon Redshift** – Uses **PostgreSQL**
+
+Runway **automatically runs your queries every morning (US Pacific Time)**, updating any dependent databases, models, and pages. Queries run directly against your data warehouse, so results match what you’d get if you queried locally in that system.
+
+You can **manually refresh** data at any time by going into the query and selecting **Run query.**
+![images/integrations/run-query.png](/images/integrations/run-query.png)
+
+<Warning>
+  You **cannot** write SQL to **join data warehouse sources with Fivetran integrations** within Runway.
+</Warning>
+
+## **Writing SQL for data Fivetran integrations**
+
+All **Fivetran integrations** are stored in **Runway’s Snowflake data warehouse**, meaning all SQL queries must follow [Snowflake-supported syntax](https://docs.snowflake.com/en/guides-overview-queries).
+
+To explore available data, open the **query editor** in Runway for a Fivetran integration and run:
+
+```sql
+SHOW TABLES
+```
+
+This command will list **all schemas and tables** available for querying. If you have **multiple** **Fivetran integrations**, you will see matching tables and schemas across different integrations, allowing you to join multiple Fivetran sources together.
+
+![images/integrations/show-tables.png](/images/integrations/show-tables.png)
+
+**Runway automatically syncs data daily:**
+
+1. Data is **pulled from your source system** into Runway’s **Snowflake data warehouse** every morning (US Pacific Time).
+2. Runway then **automatically** **executes integration queries** shortly after to refresh the data in your model.
+
+**If you need an immediate manual refresh:**
+
+1. Manually trigger a sync from your source system.
+   ![images/integrations/resync.png](/images/integrations/resync.png)
+2. Once the source data is refreshed, **rerun your SQL queries manually** to update your model. This step ensures the newly synced data appears in your model.
+   ![images/integrations/run-query.png](/images/integrations/run-query.png)
+
+## Best practices & tips
+
+- **Structure your queries to return a long dataset**—a list of **transactions, accounts, or metrics** with a **daily or monthly amount**. This format ensures flexibility for modeling. Example:
+
+  | dimension_1 | dimension\_..x| date_1     | date\_..x  | value_1 | value\_..x|
+  | ----------- | ------------- | ---------- | ---------- | ------- | --------- |
+  | Account 1   | Asset         | 01/01/2025 | 03/01/2025 | 10      | 20        |
+  | Account 2   | Liability     | 01/02/2025 | 04/01/2025 | 30      | 40        |
+- **Include as all dimensions, dates, or values needed**—not all of them need to be used in the final database configuration.
+- **Aggregate/roll up data to the minimum level required** for modeling and drill-downs. For example, if pulling general ledger data, and only monthly spend per account is needed, **write your query to pre-aggregate** the data:
+  - Avoid this
+
+    ```
+    select
+    	account,
+    	transaction_amount,
+    	transaction_date
+    from general ledger
+    
+    ```
+  - Do this
+
+    ```
+    select
+    	account,
+    	sum(transaction_amount) as transaction_amount,
+    	date_trunc('month',transaction_date) transaction_month
+    from general ledger
+    group by 1,3
+    
+    ```
+- **Filter out unwanted data**—some Fivetran tables contain columns like `_fivetran_deleted`. Filtering out these records helps prevent duplicates records in your dataset.
+
+Now that your queries are complete and your integration is set up, [learn how to shape a database.](https://www.notion.so/Databases-basics-1ae691424a288035817ae31f2a0729b5?pvs=21)

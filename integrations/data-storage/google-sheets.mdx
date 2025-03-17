@@ -51,9 +51,15 @@ Before importing your Google Sheet into Runway, ensure it's clean and correctly 
 [Here’s a video walkthrough of these steps](https://www.loom.com/share/efb88c97c6154ebc92f4a7ff9cb4a1b4).
 
 1. Open Runway, navigate to **Integrations**, and install the Google Sheets integration listed under the **Spreadsheets** section.
+
+   ![images/integrations/sheets/sheets-spreadsheet.png](/images/integrations/sheets/sheets-spreadsheet.png)
 2. Click **Sign in with Google** and leave the other settings as default.
+
+   ![images/integrations/sheets/sheets-spreadsheet-setup.png](/images/integrations/sheets/sheets-spreadsheet-setup.png)
 3. Once redirected back into **Runway**, click **+** at the top to create a new query. Rename **New Query** to something descriptive.
 4. In **Google Sheets**, navigate to the tab you want to import into Runway. Add `#runway` to the tab name to ensure Runway recognizes it.
+
+   ![images/integrations/sheets/sheets-spreadsheet-tab.png](/images/integrations/sheets/sheets-spreadsheet-tab.png)
 5. Copy the **Spreadsheet ID** from the URL:
    1. Example URL:
 
@@ -68,6 +74,8 @@ Before importing your Google Sheet into Runway, ensure it's clean and correctly 
       
       ```
 6. Paste the **Spreadsheet ID** into Runway and click **Run Query**.
+
+   ![images/integrations/sheets/sheets-spreadsheet-id.png](/images/integrations/sheets/sheets-spreadsheet-id.png)
 7. Verify the data preview:
    - If you see a column named **month** and a column named **value**, Runway successfully converted your **wide data** into a **long data set**.
    - If you see separate columns for each month, there may be formatting issues in your Google Sheet. Refer to the **video walkthrough** at the top of this section for troubleshooting.
@@ -103,11 +111,11 @@ Before importing your Google Sheet into Runway, ensure it's clean and correctly 
 ## Google sheets FAQs
 
 <Accordion title="Can I integrate multiple tabs from a single Google Sheet into Runway?" icon="sparkles">
-  Yes. Follow the **Long data integration **instructions and set up multiple integrations—one for each tab you need. Each integration must be configured separately.
+  Yes. Follow the \*\*Long data integration \*\*instructions and set up multiple integrations—one for each tab you need. Each integration must be configured separately.
 </Accordion>
 
 <Accordion title="Can I integrate long data without using the Fivetran version?" icon="sparkles">
-  Yes, but the **non-Fivetran version only supports one tab at a time **per integration. If you need multiple tabs, either **create separate spreadsheets **or specify the tab Runway should pull from by adding **#runway **to the tab name.
+  Yes, but the \*\*non-Fivetran version only supports one tab at a time \*\*per integration. If you need multiple tabs, either \*\*create separate spreadsheets \*\*or specify the tab Runway should pull from by adding \*\*#runway \*\*to the tab name.
 </Accordion>
 
 <Accordion title="Why is my column not showing up in Runway?" icon="sparkles">

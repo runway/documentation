@@ -1,4 +1,36 @@
 ---
-title: "Shared directories & file storage (wip)"
-description: "Description of your new file."
+title: "Shared directories & file storage"
+description: "Runway integrates with a variety of file-sharing services, allowing you to seamlessly import data from external systems that may not have direct integrations with Runway. "
 ---
+
+These integrations let you **manually or automatically schedule exports** from other tools and have Runway **pull in the data automatically**.
+
+## **Supported file storage services**
+
+Runway supports the following file storage and shared directory providers:
+
+- **Google Drive** → [Setup guide](https://fivetran.com/docs/connectors/files/google-drive/setup-guide)
+- **Microsoft OneDrive** → [Setup guide](https://fivetran.com/docs/connectors/files/one-drive/setup-guide)
+- **Dropbox** → [Setup guide](https://fivetran.com/docs/connectors/files/dropbox/setup-guide)
+- **Box** → [Setup guide](https://fivetran.com/docs/connectors/files/box/setup-guide)
+- **Amazon S3** → [Setup guide](https://fivetran.com/docs/connectors/files/amazon-s3/setup-guide)
+- **Azure Blob Storage** → [Setup guide](https://fivetran.com/docs/connectors/files/azure-blob-storage/setup-guide)
+- **Google Cloud Storage** → [Setup guide](https://fivetran.com/docs/connectors/files/google-cloud-storage/setup-guide)
+- **FTP** → [Setup guide](https://fivetran.com/docs/connectors/files/ftp)
+- **SFTP** → [Setup guide](https://fivetran.com/docs/connectors/files/sftp)
+
+_Setup guides are linked directly in _**_Runway_**_, but they are also shared here for reference._
+
+## FAQs
+
+<Accordion title="How do I write SQL in Runway?" icon="sparkles">
+  See this [help doc](https://www.notion.so/Writing-SQL-in-Runway-1b6691424a288012b52cd77202b0bcbe?pvs=21).
+</Accordion>
+
+<Accordion title="How often do these integrations sync to Runway?" icon="sparkles">
+  By default, file storage integrations **sync daily in the morning (US Pacific Time).**
+
+  You can also **manually trigger a sync** like this:
+
+  ![/images/integrations/resync.png+\_existingInIndexedDbMintlify](/images/integrations/resync.png)
+</Accordion>

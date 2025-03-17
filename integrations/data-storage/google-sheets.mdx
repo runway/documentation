@@ -86,13 +86,18 @@ Before importing your Google Sheet into Runway, ensure it's clean and correctly 
 [Here’s a video walkthrough of these steps](https://www.loom.com/share/a6f08d1a57884baebd702697c6f9f807).
 
  1. Open **Runway**, navigate to **Integrations**, and install the **Google Sheets integration** listed under the **Fivetran** section.
+
+    ![images/integrations/sheets/sheets-fivetran.png](/images/integrations/sheets/sheets-fivetran.png)
  2. Leave the **Schema Name** as the default and enter a **Table Name** that accurately represents the data.
     - **Do not include spaces or special characters** in the table name.
     - Click **Authorize**.
+
+    ![images/integrations/sheets/sheets-fivetran-setup.png](/images/integrations/sheets/sheets-fivetran-setup.png)
  3. You’ll be redirected to **Fivetran** to complete the setup.
  4. Under **Authentication Method**, choose **Authorize Service Account**, then copy the email address provided by Fivetran.
  5. In **Google Sheets**, open your spreadsheet in a **new tab** and **share it with that email address** as a **viewer**.
  6. Select the **headers of the data you want to import** (they must be side by side—**you cannot skip columns**) and create a **named range.** Navigate to **Data > Named Range**, then give it a **unique and descriptive name**.
+    1. _<u>ADD GIF</u>_
  7. Copy the **entire URL** of your Google Sheet. For example:
 
     ```bash
@@ -106,6 +111,7 @@ Before importing your Google Sheet into Runway, ensure it's clean and correctly 
 12. Once the sync is complete, click into your **Google Sheets Integration** in Runway.
 13. Rename **New Query** to something descriptive by double-clicking its name.
 14. Copy the **suggested commented query**, paste it below in the SQL editor, and click **Run query**.
+    1. _<u>ADD GIF</u>_
 15. You’re done\! [Now configure a new database.](https://www.notion.so/Databases-basics-1ae691424a288035817ae31f2a0729b5?pvs=21)
 
 ## Google sheets FAQs

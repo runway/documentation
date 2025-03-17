@@ -24,7 +24,10 @@
                 "icon": "chart-mixed-up-circle-dollar",
                 "pages": [
                   "concepts/drivers/drivers-basics",
-                  "concepts/drivers/driver-details-pane"]
+                  "concepts/drivers/driver-details-pane",
+                  "concepts/drivers/drill-ins",
+                  "concepts/drivers/driver-formatting",
+                  "concepts/drivers/duplicate-remove-delete"]
               },
               {
                 "group": "Dimensions",

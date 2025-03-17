@@ -1,5 +1,139 @@
 ---
-title: 'Google Sheets (wip)'
-description: 'Description of your new file.'
+title: "Google Sheets"
+description: "Runway’s Google Sheets integration allows you to pull in additional data that isn’t available through direct integrations."
 ---
 
+You may choose to integrate Google Sheets if:
+
+- You need to **import historical data** that isn’t stored in any other system.
+- There’s **no direct integration available** for a specific data source, and Google Sheets acts as a bridge.
+- You have **manual inputs** that are easier to maintain in a spreadsheet before bringing them into Runway.
+
+## **Understanding Google Sheets data format**
+
+Runway supports two primary formats when importing from Google Sheets: **long data** and **wide data**. Understanding these structures will help you choose the right import method.
+
+### Long data
+
+**Long data** is structured so that each row represents a specific transaction or balance on a particular date. When preparing your Google Sheets data for Runway, ensure it follows a structure similar to the example below:
+
+![images/integrations/sheets/sheets-long-data.png](/images/integrations/sheets/sheets-long-data.png)
+
+### Wide data
+
+**Wide data** is structured in a columnar format, where the first few columns define the type of data (e.g., account, category), and the remaining columns represent month-by-month balances. This format is commonly used for Income Statement or Balance Sheet exports from accounting systems.
+
+When preparing your Google Sheets data for Runway, ensure it follows a structure similar to the example below:
+
+![images/integrations/sheets/sheets-wide-data.png](/images/integrations/sheets/sheets-wide-data.png)
+
+## Before you start
+
+Before importing your Google Sheet into Runway, ensure it's clean and correctly formatted to avoid errors. Follow these best practices:
+
+- **Remove extra blank rows and columns**
+  - No empty rows **above, in between, or below** your data table.
+  - Every column should contain **at least one data point**—empty columns will not be imported.
+- **Use clear and simple column headers**
+  - Make headers **short and readable** (e.g., use `"account_name"` instead of `"Account Name (MAPPED)"`).
+  - Use **consistent naming** for key fields (e.g., `"is_balance_sheet"` instead of `"Balance Sheet?"`).
+- **Format date columns properly**
+  - **Long data**: Use **MM/DD/YYYY** format.
+  - **Wide data**: Ensure month column headers are in one of these **supported formats**:`"Jan-2006"`, `"Jan 2006"`, `"Jan_2006"`, `"January 2006"`, `"01/2006"`, `"01/06"`, `"01_06"`, `"01_2006"`, `"01-2006"`, `"2006-01"`.
+  - [Here’s a Loom on how to format dates correctly](https://www.loom.com/share/d5cedfd346ff4bb296d36eff23fbe5ee).
+- **Ensure numerical data is in proper format**
+  - Remove **currency symbols ($, €)** and **percent signs (%)**—values should be **pure numbers**.
+  - **Wide data**: Replace blanks with `0` to maintain consistency.
+  - [Here’s a Loom on how to quickly fill blanks quickly](https://www.loom.com/share/08aeb90722de429185de299e03a10b45).
+
+## **Connecting a Google Sheet with wide data**
+
+[Here’s a video walkthrough of these steps](https://www.loom.com/share/efb88c97c6154ebc92f4a7ff9cb4a1b4).
+
+1. Open Runway, navigate to **Integrations**, and install the Google Sheets integration listed under the **Spreadsheets** section.
+
+   ![images/integrations/sheets/sheets-spreadsheet.png](/images/integrations/sheets/sheets-spreadsheet.png)
+2. Click **Sign in with Google** and leave the other settings as default.
+
+   ![images/integrations/sheets/sheets-spreadsheet-setup.png](/images/integrations/sheets/sheets-spreadsheet-setup.png)
+3. Once redirected back into **Runway**, click **+** at the top to create a new query. Rename **New Query** to something descriptive.
+4. In **Google Sheets**, navigate to the tab you want to import into Runway. Add `#runway` to the tab name to ensure Runway recognizes it.
+
+   ![images/integrations/sheets/sheets-spreadsheet-tab.png](/images/integrations/sheets/sheets-spreadsheet-tab.png)
+5. Copy the **Spreadsheet ID** from the URL:
+   1. Example URL:
+
+      ```bash
+      https://docs.google.com/spreadsheets/d/1gk-Y0tJ64TDCak_z2ELqKHmR9rmqY0f5XR27H-ksxKY/edit?gid=0#gid=0
+      
+      ```
+   2. The Spreadsheet ID is everything between `/d/` and `/edit/`:
+
+      ```bash
+      1gk-Y0tJ64TDCak_z2ELqKHmR9rmqY0f5XR27H-ksxKY
+      
+      ```
+6. Paste the **Spreadsheet ID** into Runway and click **Run Query**.
+
+   ![images/integrations/sheets/sheets-spreadsheet-id.png](/images/integrations/sheets/sheets-spreadsheet-id.png)
+7. Verify the data preview:
+   - If you see a column named **month** and a column named **value**, Runway successfully converted your **wide data** into a **long data set**.
+   - If you see separate columns for each month, there may be formatting issues in your Google Sheet. Refer to the **video walkthrough** at the top of this section for troubleshooting.
+8. You’re all set\! [Now configure a new database.](https://www.notion.so/Databases-basics-1ae691424a288035817ae31f2a0729b5?pvs=21)
+
+## **Connecting a Google Sheet with long data**
+
+[Here’s a video walkthrough of these steps](https://www.loom.com/share/a6f08d1a57884baebd702697c6f9f807).
+
+ 1. Open **Runway**, navigate to **Integrations**, and install the **Google Sheets integration** listed under the **Fivetran** section.
+
+    ![images/integrations/sheets/sheets-fivetran.png](/images/integrations/sheets/sheets-fivetran.png)
+ 2. Leave the **Schema Name** as the default and enter a **Table Name** that accurately represents the data.
+    - **Do not include spaces or special characters** in the table name.
+    - Click **Authorize**.
+
+    ![images/integrations/sheets/sheets-fivetran-setup.png](/images/integrations/sheets/sheets-fivetran-setup.png)
+ 3. You’ll be redirected to **Fivetran** to complete the setup.
+ 4. Under **Authentication Method**, choose **Authorize Service Account**, then copy the email address provided by Fivetran.
+ 5. In **Google Sheets**, open your spreadsheet in a **new tab** and **share it with that email address** as a **viewer**.
+ 6. Select the **headers of the data you want to import** (they must be side by side—**you cannot skip columns**) and create a **named range.** Navigate to **Data > Named Range**, then give it a **unique and descriptive name**.
+    1. _<u>ADD GIF</u>_
+ 7. Copy the **entire URL** of your Google Sheet. For example:
+
+    ```bash
+    https://docs.google.com/spreadsheets/d/1XVd9Qx7UdCiNaRXVPyBCJn_0eMQKF-qq193_KC4hyos/edit?gid=0#gid=0
+    
+    ```
+ 8. Go back to **Fivetran** and paste this URL into the **Sheet URL** section.
+ 9. Click **Find sheet** and select the **named range** you just created.
+10. Click **Save & Test**.
+11. You’ll be redirected back to **Runway**, where it may take a few minutes for the data sync to complete.
+12. Once the sync is complete, click into your **Google Sheets Integration** in Runway.
+13. Rename **New Query** to something descriptive by double-clicking its name.
+14. Copy the **suggested commented query**, paste it below in the SQL editor, and click **Run query**.
+    1. _<u>ADD GIF</u>_
+15. You’re done\! [Now configure a new database.](https://www.notion.so/Databases-basics-1ae691424a288035817ae31f2a0729b5?pvs=21)
+
+## Google sheets FAQs
+
+<Accordion title="Can I integrate multiple tabs from a single Google Sheet into Runway?" icon="sparkles">
+  Yes. Follow the **Long data integration** instructions and set up multiple integrations—one for each tab you need. Each integration must be configured separately.
+</Accordion>
+
+<Accordion title="Can I integrate long data without using the Fivetran version?" icon="sparkles">
+  Yes, but the **non-Fivetran version only supports one tab at a time** per integration. If you need multiple tabs, either **create separate spreadsheets **or specify the tab Runway should pull from by adding #runway to the tab name.
+</Accordion>
+
+<Accordion title="Why is my column not showing up in Runway?" icon="sparkles">
+  Runway only pulls columns that **contain data**. If a column is empty, it won’t be imported. To fix this, **add some dummy data**, run the integration, and then remove the dummy values afterward.
+</Accordion>
+
+<Accordion title="How often does this sheet sync to Runway?" icon="sparkles">
+  The sync runs **automatically every morning (US Pacific Time)**. You can also **manually trigger a sync** like this:
+
+  ![/images/integrations/resync.png+\_existingInIndexedDbMintlify](/images/integrations/resync.png)
+</Accordion>
+
+<Accordion title="Can the Fivetran version also sync wide data?" icon="sparkles">
+  Yes, but it’s a bit trickier because Fivetran **sometimes modifies column names**. To prevent issues, make sure your **date column headers use the format MON_YYYY**. [Here’s a video walkthrough](https://www.loom.com/share/e9d99cbc625f4f639acea12edced7acd).
+</Accordion>

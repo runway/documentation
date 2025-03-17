@@ -1,4 +1,78 @@
 ---
-title: "Drill-ins (beta)(wip)"
-description: "Description of your new file."
+title: "Drill-ins (beta)"
+description: "When working in a model, you might find yourself asking: What contributes to this line? Where does this number come from?
+
+Drill-ins (currently in beta) allow you to explore these relationships, showing exactly how your numbers connect throughout your model."
 ---
+
+<Info>
+  **Interested in getting access?**
+
+  Let your CXM know, or ping **@Nadine Mansour** in Slack.
+
+  Since drill-ins are in beta, we’d love your **feedback**—let us know if you have ideas or run into unexpected behavior\!
+</Info>
+
+## How to use drill-ins
+
+To drill into a driver in a **driver table**:
+
+- Press `Cmd/Ctrl + Enter` to toggle the drill-in state.
+- Or, right-click the **driver name** and select **Drill in**.
+- Or, hover over the driver name and click the **toggle caret** that appears.
+
+Once expanded, the driver’s **inputs** (based on its formulas) will be displayed **indented inline**.
+
+- A **gray keyline** indicates the input comes from **actuals formulas**.
+- A **blue keyline** indicates the input comes from **forecast formulas**.
+
+To collapse a drill-in:
+
+- Click the **toggle caret** on the expanded driver.
+- Press `Cmd/Ctrl + Enter` on the root expanded driver.
+- Press `Cmd/Ctrl + Option/Alt + Enter` on a **striped input line** to collapse its parent.
+
+<Check>
+  Drill-ins **support multiple levels** of depth—expand an input line further to see its underlying dependencies.
+</Check>
+
+**_<u>ADD GIF</u>_**
+
+## Drill-ins permissions
+
+Drill-ins **follow the same permissions** as the **driver detail pane**:
+
+- **Admins** → Can drill in freely across the entire model.
+- **Managers & Members** → Can see **direct (first-level) inputs** but cannot drill further into drivers they **don’t have access to**.
+- **Guests** → Cannot use drill-ins.
+
+For a full breakdown of roles and permissions, see this guide.
+
+## Important notes
+
+### Drill-ins are saved per user
+
+- Expanding drill-ins **only affects your own view**—others won’t see the expanded state unless they do it themselves.
+- This allows multiple users to explore without disrupting each other’s workflow.
+- We’re considering ways to **share drill-in states**, so let us know if this would be useful.
+
+### **Want others to dee a breakdown?**
+
+If you want other users to view the same expansion:
+
+1. **Guide them** to use the drill-in feature themselves
+2. **Explicitly add** selected drill-in drivers to the block:
+   - Select the expanded drill-in drivers
+   - Press `Cmd/Ctrl + Shift + B` or **right-click** → **Add to block**
+
+This will make those driver lines **visible to everyone.**
+
+### Drill-in lines have a striped background
+
+**Stripes indicate drill-in lines** are **dynamically generated** and won’t appear for other users unless expanded.
+
+<Warning>
+  **Drag-and-drop** to reorder is **not supported** for drill-in lines.
+
+  **Undo/redo** is not supported for drill-in lines.
+</Warning>

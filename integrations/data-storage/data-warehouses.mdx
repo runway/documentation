@@ -1,4 +1,51 @@
 ---
-title: "Data warehouses (wip)"
-description: "Description of your new file."
+title: "Data warehouses"
+description: "Runway integrates with a variety of data warehouse providers, allowing you to pull data that has already been processed, transformed, or sourced from systems that Runway does not integrate with directly."
 ---
+
+## **Supported data warehouses**
+
+We strongly support the following providers:
+
+- **Snowflake** → [Setup guide](https://docs.workato.com/connectors/snowflake.html#how-to-connect-to-snowflake-on-workato)
+- **Google BigQuery** → [Setup guide](https://docs.workato.com/connectors/bigquery.html#how-to-connect-to-bigquery-on-workato)
+- **Amazon Redshift** → [Setup guide](https://docs.workato.com/connectors/redshift.html#how-to-connect-to-redshift-on-workato)
+
+Setup guides are linked directly in **Runway**, but they are also available here for reference.
+
+## **How Runway connects to your data warehouse**
+
+Runway has an in-app **SQL editor** that allows us to query your data warehouse directly. To set up the connection:
+
+1. **Create a user** for Runway in your data warehouse.
+2. **Add our provider’s IP addresses** to your allowlist (found [here](https://docs.workato.com/security/ip-allowlists.html)).
+
+<Info>
+  Runway leverages the **US** data center.
+</Info>
+
+## Data warehouses FAQs
+
+<Accordion title="How do I write SQL in Runway?" icon="sparkles">
+  See our [help doc](https://www.notion.so/Writing-SQL-in-Runway-1b6691424a288012b52cd77202b0bcbe?pvs=21).
+</Accordion>
+
+<Accordion title="What other databases can Runway pull from?" icon="sparkles">
+  We also support **SQL databases** (via **Fivetran**) for:
+
+  - **PostgreSQL**
+  - **MySQL**
+  - **SQL Server** (including **Azure, Google, and AWS-hosted** instances)
+</Accordion>
+
+<Accordion title="Is there a row limit on data queries?" icon="sparkles">
+  Yes, each query must return fewer than **50,000 rows**.
+</Accordion>
+
+<Accordion title="How can I work around the row limit?" icon="sparkles">
+  If your dataset exceeds **50,000 rows**, consider the following solutions:
+
+  - **Aggregate data in SQL** → Use `SUM`, `GROUP BY`, or similar functions to reduce the row count.
+  - **Limit the data scope** → Restrict queries by **time range** or other relevant filters.
+  - **Split large datasets** → Break data into multiple **queries or databases** (e.g., by product line or geography).
+</Accordion>

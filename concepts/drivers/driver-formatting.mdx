@@ -1,4 +1,70 @@
 ---
-title: "Formatting drivers (wip)"
-description: "Description of your new file."
+title: "Formatting drivers"
+description: "Drivers in Runway can be formatted to display values exactly as you expect. This guide provides an overview of the different types of formatting and available options."
 ---
+
+There are **three types of formatting** that can be applied to drivers:
+
+1. **Global formatting** → Applies to **all drivers** across Runway.
+2. **Data formatting** → Controls how **a specific driver's values** are displayed (e.g., number format, date format, precision, currency).
+3. **Display formatting** → Controls how **a specific driver appears** in **driver table blocks** (e.g., color, text style, name format).
+
+## **Global formatting**
+
+Global formatting settings apply to **all drivers** in Runway across every \*\*\*\*page. These settings can be found in **Settings → General** and control the following defaults:
+
+- **Currency format** → Set to **USD** by default, but can be changed.
+- **Negative number display** → Defaults to using a **negative sign** (e.g., `1000`), but can be switched to **parentheses** (e.g., `(1000)`).
+- **Number precision** → Defaults to using **up to two decimal places** for values that include decimals.
+
+These settings ensure consistency across all drivers while allowing customization as needed.
+![images/drivers/formatting-general.png](/images/drivers/formatting-general.png)
+
+## **Data formatting**
+
+Data formatting determines how a **specific driver's values** (numbers or dates) appear across all tables, including both **driver tables** and **database tables**.
+
+To adjust data formatting, **right-click** on a numeric driver in a table and use the options:
+
+- **Format** — Drivers can be formatted as:
+  - **Automatic** → Attempts to infer the best display format based on the driver’s formula. (e.g., If an input is a percentage, the result will also be formatted as a percentage.)
+  - **Currency** → Displays values in the selected currency.
+  - **Number** → Shows numbers with decimal precision.
+  - **Integer** → Displays whole numbers only (no decimals).
+  - **Percentage** → Formats the value as a percentage.
+- **Currency** — Available when the **Currency** format is selected. Options include:
+  - **US Dollars (USD)**
+  - **Australian Dollars (AUD)**
+  - **Canadian Dollars (CAD)**
+  - **Euros (EUR)**
+  - **British Pounds (GBP)**
+  - **Indian Rupees (INR)**
+  - **Japanese Yen (JPY)**
+  - **New Zealand Dollars (NZD)**
+- **Precision** → can set numeric drivers to display between **0 and 5 decimal places** for better control over rounding and accuracy.
+![images/drivers/formatting-data.png](/images/drivers/formatting-data.png)
+
+## **Display formatting**
+
+The display formatting of a driver applies **globally** across all **driver table blocks**, ensuring consistency wherever the driver appears. However, these settings **do not affect databases**.
+
+The following options control how drivers are visually presented:
+
+- **Background color** — Changes the driver row’s background color. Options include:
+  - Default (white)
+  - Grey
+  - Green
+  - Yellow
+  - Red
+- **Text style** — Adjusts how the driver name and values are displayed:
+  - Bold
+  - Strikethrough
+  - Underline
+  - Multiple styles can be applied at once.
+- **Indent / Outdent** — Adjusts the indentation of the driver for better organization and readability.
+- **Hide driver name, Hide segment, and Segment style** — These options apply to **drivers with dimensions**. You can read more about dimensions **\[here\] (Coming Soon)**.
+- **Cell-specific styling** — You can also apply **background and text formatting** to **specific month values** within a table. To do this, **right-click a month’s value** and apply the desired style.
+![images/drivers/formatting-display.png](/images/drivers/formatting-display.png)
+
+Here’s an overview of the available formatting options, categorized as above, as they appear in a driver table:
+![images/drivers/all-formats.png](/images/drivers/all-formats.png)

@@ -12,3 +12,9 @@
 #navbar [alt='dark logo'] {
   height: 1.375rem;
 }
+#search-bar-entry {
+  background-color: rgb(var(--background-light));
+}
+.dark #search-bar-entry {
+  background-color: rgb(var(--background-dark));
+}

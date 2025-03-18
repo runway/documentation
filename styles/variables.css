@@ -1,28 +1,26 @@
 :root {
-  /* Search bar fill & prev-next links */
-  --gray-50: 250 247 242;
-  /* Active theme mode, code bg (opacity), line dividers */
-  --gray-100: 245 243 238;
-  /* Nav borders, Theme picker border, next link hover border, search field borders */
-  --gray-200: 230 227 222;
-  /* Next link arrows, picked theme icon,  */
-  --gray-300: 213 211 206;
-  /* Nav search text, nav arrows & icons, linkedIn icons, copy link border hover */
-  --gray-400: 166 163 158;
-  /* Nav footer arrow hover, Next link text, doc footer */
-  --gray-500: 119 117 111;
-  /* Active theme, TOC link, bullet point, next link arrow hover, nav chevron hover */
-  --gray-600: 87 85 79;
-  /* Paragraph text-color, Nav item text-color, TOC title, search-bar icon */
-  --gray-700: 70 67 62;
-  /* Next link title */
-  --gray-800: 44 42 37;
-  /* Text titles, strong, nav-section titles, nav item-hover, next-previous link hover */
-  --gray-900: 30 27 22;
-  /* dropdown left border */
-  --gray-950: 249 34 1;
+  --gray-50: 248 247 246;
+  --gray-100: 245 244 242;
+  --gray-200: 233 232 230;
+  --gray-300: 221 220 219;
+  --gray-400: 187 186 185;
+  --gray-500: 161 161 160;
+  --gray-600: 83 83 82;
+  --gray-700: 57 57 56;
+  --gray-800: 39 39 38;
+  --gray-900: 23 23 22;
+  --gray-950: 23 23 22;
 }
-
 .dark {
-  /* --gray-200: 249 39 1; */
+  --gray-50: 248 247 246;
+  --gray-100: 245 244 242;
+  --gray-200: 233 232 230;
+  --gray-300: 221 220 219;
+  --gray-400: 187 186 185;
+  --gray-500: 161 161 160;
+  --gray-600: 83 83 82;
+  --gray-700: 57 57 56;
+  --gray-800: 39 39 38;
+  --gray-900: 23 23 22;
+  --gray-950: 23 23 22;
 }

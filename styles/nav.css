@@ -1,0 +1,14 @@
+#sidebar,
+#sidebar .bg-background-light {
+  background-color: rgb(var(--gray-50));
+}
+.dark #sidebar,
+.dark #sidebar .bg-background-light {
+  background-color: rgb(var(--gray-900));
+}
+#sidebar [alt='light logo'],
+#sidebar [alt='dark logo'],
+#navbar [alt='light logo'],
+#navbar [alt='dark logo'] {
+  height: 1.375rem;
+}

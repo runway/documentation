@@ -1,6 +1,7 @@
 ---
-title: "Xero "
-description: "The Xero integration allows you to automatically sync your financial data with Runway, eliminating manual data entry and ensuring your actuals stay up to date. With this connection, your financial models will always reflect the latest numbers from Xero."
+title: 'Xero '
+description: 'The Xero integration allows you to automatically sync your financial data with Runway, eliminating manual data entry and ensuring your actuals stay up to date. With this connection, your financial models will always reflect the latest numbers from Xero.'
+icon: 'receipt'
 ---
 
 Runway offers two ways to integrate with **Xero**:
@@ -11,6 +12,7 @@ Runway offers two ways to integrate with **Xero**:
 ## Setting up Xero via Fivetran
 
 ### **Connecting the Integration**
+
 1. Open your [Runway instance](https://app.runway.com/).
 2. In the left sidebar, hover over **Integrations** and click the **+** button to open the **Integrations Directory**.
 3. Search for **Xero** and click **\+ Set up** under the **Fivetran** option.
@@ -24,6 +26,7 @@ Runway offers two ways to integrate with **Xero**:
 ![images/integrations/xero.png](/images/integrations/xero.png)
 
 ### **Syncing your data into Runway**
+
 Runway provides **Integration Templates** to help you quickly import **Income Statement, Balance Sheet, and Cash Flow data** from Xero, even with this SQL-powered integration.
 
 1. In the left sidebar, navigate to **Templates**.
@@ -67,15 +70,15 @@ When using the **Xero Data Import** integration template, the following financia
 
 **Balance sheet data**
 
-| Data name                       | Example               | Data type     | Availability                                        |
-| ------------------------------- | --------------------- | ------------- | --------------------------------------------------- |
-| Report Month                    | Mar 1, 2024           | Date Driver   | Via Template - used to group by Month in timeseries |
-| BS Account Name                 | 1001 - Chase Checking | Dimension     | via Template                                        |
-| BS Account Name  (without name) | Chase Checking        | Dimension     | Can be added                                        |
-| BS Account Number               | 1001                  | Dimension     | Can be added                                        |
-| BS Account Type                 | BANK                  | Dimension     | via Template                                        |
-| BS Account Category             | ASSET                 | Dimension     | via Template                                        |
-| Net Balance                     | 500,000               | Number Driver | via Template                                        |
+| Data name                      | Example               | Data type     | Availability                                        |
+| ------------------------------ | --------------------- | ------------- | --------------------------------------------------- |
+| Report Month                   | Mar 1, 2024           | Date Driver   | Via Template - used to group by Month in timeseries |
+| BS Account Name                | 1001 - Chase Checking | Dimension     | via Template                                        |
+| BS Account Name (without name) | Chase Checking        | Dimension     | Can be added                                        |
+| BS Account Number              | 1001                  | Dimension     | Can be added                                        |
+| BS Account Type                | BANK                  | Dimension     | via Template                                        |
+| BS Account Category            | ASSET                 | Dimension     | via Template                                        |
+| Net Balance                    | 500,000               | Number Driver | via Template                                        |
 
 **Cash flow data**
 
@@ -92,19 +95,28 @@ When using the **Xero Data Import** integration template, the following financia
 | Source Transaction Type        | MANJOURNAL              | Dimension     | Can be added                                        |
 
 <Check>
-  The **Xero Data Import** integration template includes the **most commonly used financial data**, but you can add **additional supporting data** to your database configurations for more detail if needed.
+  The **Xero Data Import** integration template includes the **most commonly
+  used financial data**, but you can add **additional supporting data** to your
+  database configurations for more detail if needed.
 </Check>
 
 ## Xero FAQs
 
 <Accordion title="Does Runway write data back to Xero?" icon="sparkles">
-  No, Runway supports **read-only** integrations. No data is written back to Xero.
+  No, Runway supports **read-only** integrations. No data is written back to
+  Xero.
 </Accordion>
 
 <Accordion title="Can I connect multiple instances of Xero?" icon="sparkles">
-  Absolutely. To add additional instances, go to the **Integrations Directory** in Runway, click **Installed**, then select **Set Up**. Follow the same setup flow as outlined above for each additional instance.
+  Absolutely. To add additional instances, go to the **Integrations Directory**
+  in Runway, click **Installed**, then select **Set Up**. Follow the same setup
+  flow as outlined above for each additional instance.
 </Accordion>
 
 <Accordion title="Can I pull other types of data from Xero?" icon="sparkles">
-  Yes\! Our integration is highly customizable. While the **Xero Data Import  template** includes **starter queries** that fit most use cases, you can also **write your own SQL queries** leveraging [this Xero schema](https://fivetran.com/docs/connectors/applications/xero#schemainformation). Not a SQL expert? No problem—our **CX team** is happy to assist\!
+  Yes\! Our integration is highly customizable. While the **Xero Data Import
+  template** includes **starter queries** that fit most use cases, you can also
+  **write your own SQL queries** leveraging [this Xero
+  schema](https://fivetran.com/docs/connectors/applications/xero#schemainformation).
+  Not a SQL expert? No problem—our **CX team** is happy to assist\!
 </Accordion>

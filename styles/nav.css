@@ -1,20 +1,11 @@
-#sidebar,
-#sidebar .bg-background-light {
-  background-color: rgb(var(--gray-50));
-}
-.dark #sidebar,
-.dark #sidebar .bg-background-light {
-  background-color: rgb(var(--gray-900));
+#sidebar-content {
+  padding-right: 1rem;
+  --rounded-xl: var(--rounded-2xl);
 }
 #sidebar [alt='light logo'],
 #sidebar [alt='dark logo'],
 #navbar [alt='light logo'],
 #navbar [alt='dark logo'] {
   height: 1.375rem;
-}
-#search-bar-entry {
-  background-color: rgb(var(--background-light));
-}
-.dark #search-bar-entry {
-  background-color: rgb(var(--background-dark));
+  padding-top: 0.025em;
 }

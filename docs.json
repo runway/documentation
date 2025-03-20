@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "maple",
+  "theme": "mint",
   "name": "Runway Docs",
   "colors": {
     "primary": "#C8A7F2",
@@ -19,7 +19,6 @@
         "pages": [
           {
             "group": "Drivers",
-            "icon": "chart-mixed-up-circle-dollar",
             "pages": [
               "concepts/drivers/drivers-basics",
               "concepts/drivers/driver-details-pane",
@@ -30,12 +29,10 @@
           },
           {
             "group": "Dimensions",
-            "icon": "list",
             "pages": ["concepts/dimensions"]
           },
           {
             "group": "Databases",
-            "icon": "database",
             "pages": [
               "concepts/databases/databases-basics",
               "concepts/databases/filtering-sorting-grouping",
@@ -46,12 +43,10 @@
           },
           {
             "group": "Models",
-            "icon": "function",
             "pages": ["concepts/models/models-basics"]
           },
           {
             "group": "Pages",
-            "icon": "file",
             "pages": [
               "concepts/pages/pages-basics",
               "concepts/pages/charts-block",
@@ -72,17 +67,15 @@
           "integrations/integrations-directory",
           {
             "group": "Accounting",
-            "icon": "receipt",
             "pages": [
               "integrations/accounting/quickbooks-online",
               "integrations/accounting/xero",
               "integrations/accounting/netsuite",
-              "integrations/multi-entity-integrations"
+              "integrations/accounting/multi-entity-integrations"
             ]
           },
           {
             "group": "HRIS",
-            "icon": "people-group",
             "pages": [
               "integrations/hris/rippling",
               "integrations/hris/deel",
@@ -93,7 +86,6 @@
           },
           {
             "group": "Revenue",
-            "icon": "dollar-sign",
             "pages": [
               "integrations/revenue/hubspot",
               "integrations/revenue/salesforce"
@@ -101,7 +93,6 @@
           },
           {
             "group": "Data storage",
-            "icon": "server",
             "pages": [
               "integrations/data-storage/google-sheets",
               "integrations/data-storage/data-warehouses",

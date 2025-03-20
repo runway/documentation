@@ -1,6 +1,7 @@
 ---
-title: "Databases basics"
-description: "Databases store your raw data and help you organize it. "
+title: 'Databases basics'
+description: 'Databases store your raw data and help you organize it. '
+icon: 'database'
 ---
 
 When you connect an integration, your data flows into a database. You can then create additional databases that pull from this original database and aggregate the data at different levels. For example, if you import GL data with vendor-level details from QuickBooks, NetSuite, or Xero into a database, you can build another database that pulls from it and aggregates the data by department or class.
@@ -11,7 +12,7 @@ The most common way to create a database is by clicking the **+** button next to
 
 Select **Database** as the type and give it a clear name, along with an icon or emoji for easy identification.
 
-*<u>ADD GIF</u>*
+_<u>ADD GIF</u>_
 
 ## Configuring a database
 
@@ -33,7 +34,7 @@ For example, if you're pulling in GL data at the most granular level, you would 
 
 To create a new column, click the **+** button at the far right of the database. You’ll then see the following options:
 
-1. **Number driver** – Use this for calculated values. Drivers store time-series data, meaning the values *can* vary from month to month, but they don’t have to. Learn more about number drivers here.
+1. **Number driver** – Use this for calculated values. Drivers store time-series data, meaning the values _can_ vary from month to month, but they don’t have to. Learn more about number drivers here.
 
 2. **Date driver** – Works like a number driver but stores date values instead. Learn more about date drivers here.
 
@@ -42,28 +43,31 @@ To create a new column, click the **+** button at the far right of the database.
 4. **Lookup** – Automatically populate a dimension based on data from another database, similar to **VLOOKUP()** in spreadsheets. Learn more about lookup here.
 
 <Note>
-  For HRIS databases, the process of adding a column is different. Please follow the steps here.
+  For HRIS databases, the process of adding a column is different. Please follow
+  the steps here.
 </Note>
 
 ![](/images/databases-new-column@2x.png)
 
 ## Show a column as timeseries
 
-As mentioned earlier, **drivers store time-series data**, meaning their values *can* vary from month to month. While we display them as a single column in the database for readability, each driver column can be expanded to access its time-series data.
+As mentioned earlier, **drivers store time-series data**, meaning their values _can_ vary from month to month. While we display them as a single column in the database for readability, each driver column can be expanded to access its time-series data.
 
 To show a driver column as a time series, click on its name in the database header and select **Show as time series.** The column will expand and appear on the far right of the database after all other columns.
 
-*<u>ADD GIF</u>*
+_<u>ADD GIF</u>_
 
 <Note>
-  If you choose to display a different driver column as a time series, it will automatically replace the current one, which will revert to being displayed as a value.
+  If you choose to display a different driver column as a time series, it will
+  automatically replace the current one, which will revert to being displayed as
+  a value.
 </Note>
 
 By default, each row will display the **forecast formula, actual formula, and time-series data** based on the selected date range. If needed, you can hide the formula columns by clicking on their headers and selecting **Hide in blocks.**![](/images/databases-hide-column.png)You can also use keyboard shortcuts:
 
-* **`Option` + `Shift` + `A`** to hide or show the **Actual Formula** column.
+- **`Option` + `Shift` + `A`** to hide or show the **Actual Formula** column.
 
-* **`Option` + `Shift` + `F`** to hide or show the **Forecast Formula** column.
+- **`Option` + `Shift` + `F`** to hide or show the **Forecast Formula** column.
 
 Alternatively, click the **Customize** button in the top-right corner of the database, go to **Properties,** and show or hide formula columns by clicking the **eye icon**.![](/images/databases-properties.png)To revert a driver column back to a single value, click on its name in the database header again and select **Show as value.**![](/images/databases-show-as-value.png)
 
@@ -71,7 +75,7 @@ Alternatively, click the **Customize** button in the top-right corner of the dat
 
 Instead of displaying only one driver column as a time series, you can choose to show **all** driver columns this way. Click **Customize** in the top-right corner, select **Display as**, and then choose **Time series.**
 
-![CleanShot 2025-03-05 at 02.12.50.gif](attachment:6458c785-c300-45a0-81fa-8dad921f7854:CleanShot_2025-03-05_at_02.12.50.gif)*<u>ADD GIF</u>*
+![CleanShot 2025-03-05 at 02.12.50.gif](attachment:6458c785-c300-45a0-81fa-8dad921f7854:CleanShot_2025-03-05_at_02.12.50.gif)_<u>ADD GIF</u>_
 
 When you switch to this view, the database orientation changes. What was previously a **row** in the database becomes a **section**, while dimensions and drivers that were displayed as columns are now shown as **rows**. This allows you to see time-series data for all drivers at once.![](/images/database-as-timeseries.png)
 
@@ -87,12 +91,13 @@ After adding the row, set values for the **dimensions** used in the **Segment by
 
 **Important:** Segmentation determines the **granularity** of your database. Each row should have a **unique combination** of dimension values.
 
-* If a row does **not** have a unique combination, you’ll see a **warning** next to it.
+- If a row does **not** have a unique combination, you’ll see a **warning** next to it.
 
-* This means the row is **linked** to other rows sharing the same segmentation. Any changes made to one of these rows will automatically update the others.
+- This means the row is **linked** to other rows sharing the same segmentation. Any changes made to one of these rows will automatically update the others.
 
 <Note>
-  For HRIS databases, the process of adding a row is different. Please follow the steps here.
+  For HRIS databases, the process of adding a row is different. Please follow
+  the steps here.
 </Note>
 
 ## Deleting a column
@@ -108,7 +113,10 @@ To delete a column from a database, the process depends on how the column was ad
 To delete a row from a database, **right-click** on the row and select **Delete row.** Alternatively, press **`Shift` + `Backspace`**.
 
 <Warning>
-  Deleting a row removes it from the database, but it **does not delete the drivers** connected to that row. Any formulas relying on those drivers will remain unchanged, and the drivers will still be accounted for. These drivers will appear in your **Unlisted drivers** page.
+  Deleting a row removes it from the database, but it **does not delete the
+  drivers** connected to that row. Any formulas relying on those drivers will
+  remain unchanged, and the drivers will still be accounted for. These drivers
+  will appear in your **Unlisted drivers** page.
 </Warning>
 
 To fully delete a driver and eliminate its impact on formulas, you need to delete it from the **Unlisted drivers** page.![](/images/unlisted.png)

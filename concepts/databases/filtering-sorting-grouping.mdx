@@ -1,6 +1,7 @@
 ---
-title: "Filtering, sorting & grouping"
+title: 'Filtering, sorting & grouping'
 description: "When working with a database in Runway, you often need to adjust how data is displayed to focus on what matters most. Whether you're filtering specific rows, sorting for better readability, grouping relevant items, or adjusting the date range, Runway provides powerful tools to help you tailor your view."
+icon: 'database'
 ---
 
 ## Filtering
@@ -9,11 +10,11 @@ Filtering is useful when modifying or debugging database data, allowing you to f
 
 To apply a filter, click on the **Add filter** pill at the top of a database, then select the **dimension** or **driver** you want to filter by.
 
-* **Filtering by a dimension** allows you to use operators like **is one of, is none of, is empty,** and **is not empty.** When using **is one of** or **is none of,** you can select one, multiple, or all dimension values.
+- **Filtering by a dimension** allows you to use operators like **is one of, is none of, is empty,** and **is not empty.** When using **is one of** or **is none of,** you can select one, multiple, or all dimension values.
 
-* **Filtering by a number driver** supports operators like **is, is not, greater than, greater or equal,** and more. After selecting an operator, you can enter the comparison value in a free-text field.
+- **Filtering by a number driver** supports operators like **is, is not, greater than, greater or equal,** and more. After selecting an operator, you can enter the comparison value in a free-text field.
 
-* **Filtering by a date driver** supports operators like **is, is not, is after, is on or after,** and more. After selecting the operator, you can choose from a wide range of date options, such as **this month, last month, custom months ago,** or even reference another driver to dynamically set the number of months.
+- **Filtering by a date driver** supports operators like **is, is not, is after, is on or after,** and more. After selecting the operator, you can choose from a wide range of date options, such as **this month, last month, custom months ago,** or even reference another driver to dynamically set the number of months.
 
 ![](/images/databases/2/filters.png)
 
@@ -26,7 +27,8 @@ To adjust this, click on the **As of** pill at the top of a database, set the **
 ![](/images/databases/2/as-of.png)
 
 <Note>
-  When you add multiple filters, they are **ANDed** together, meaning only rows that meet all conditions will be shown.
+  When you add multiple filters, they are **ANDed** together, meaning only rows
+  that meet all conditions will be shown.
 </Note>
 
 ## Sorting
@@ -37,11 +39,11 @@ You can sort your database data based on one or multiple **dimensions** or **dri
 
 When sorting by a **dimension**, you can choose:
 
-* **Alphabetically / Reverse Alphabetically**
+- **Alphabetically / Reverse Alphabetically**
 
-* **Numerically** – Useful when dimension values contain numbers. Even if a number is part of a text string, Runway isolates it and sorts accordingly.
+- **Numerically** – Useful when dimension values contain numbers. Even if a number is part of a text string, Runway isolates it and sorts accordingly.
 
-* **Manual** – Allows you to manually reorder rows.
+- **Manual** – Allows you to manually reorder rows.
 
 When sorting by a **number driver**, you can choose **ascending** or **descending** order. When sorting by a **date driver**, you can sort from **earliest to latest** or **latest to earliest**.
 

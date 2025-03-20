@@ -1,10 +1,13 @@
 ---
-title: "Drivers basics"
-description: "Drivers are the core building blocks of your model in Runway. They represent timeseries data, allowing you to define, interpret, and connect different parts of your model to track business performance over time."
+title: 'Drivers basics'
+description: 'Drivers are the core building blocks of your model in Runway. They represent timeseries data, allowing you to define, interpret, and connect different parts of your model to track business performance over time.'
+icon: 'chart-mixed-up-circle-dollar'
 ---
 
 <Info>
-  This article focuses on the behavior of drivers in driver tables. Drivers can also be used in databases, which have some additional behavior you can read about here. (LINK: coming soon)
+  This article focuses on the behavior of drivers in driver tables. Drivers can
+  also be used in databases, which have some additional behavior you can read
+  about here. (LINK: coming soon)
 </Info>
 
 ## What is a Driver?
@@ -67,7 +70,8 @@ Drivers store **timeseries data** in one of two formats:
 - **Dates** – Used for time-based data like **project start dates or contract renewals**.
 
 <Note>
-  When entering explicit dates in formulas, use the format 'YYYY-MM-DD' (enclosed in single quotes).
+  When entering explicit dates in formulas, use the format 'YYYY-MM-DD'
+  (enclosed in single quotes).
 </Note>
 
 ![images/drivers/basics/driver-types.png](/images/drivers/basics/driver-types.png)
@@ -80,7 +84,8 @@ The type can be updated later, but with some constraints:
 - **Certain functions only accept specific data types**.
 
 <Warning>
-  If these constraints aren’t met, the driver’s values will display a **TYPE error**, indicating a mismatch between the formula output and driver type.
+  If these constraints aren’t met, the driver’s values will display a **TYPE
+  error**, indicating a mismatch between the formula output and driver type.
 </Warning>
 
 We tend to find that Date drivers are most useful when working with drivers in databases \[LINK: coming soon\]

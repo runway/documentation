@@ -60,7 +60,7 @@ Before importing your Google Sheet into Runway, ensure it's clean and correctly 
 2. Click **Sign in with Google** and leave the other settings as default.
 
    ![images/integrations/sheets/sheets-spreadsheet-setup.png](/images/integrations/sheets/sheets-spreadsheet-setup.png)
-3. Once redirected back into **Runway**, click **+** at the top to create a new query. Rename **New Query** to something descriptive.
+3. Once redirected back into **Runway**, click **\+** at the top to create a new query. Rename **New Query** to something descriptive.
 4. In **Google Sheets**, navigate to the tab you want to import into Runway. Add `#runway` to the tab name to ensure Runway recognizes it.
 
    ![images/integrations/sheets/sheets-spreadsheet-tab.png](/images/integrations/sheets/sheets-spreadsheet-tab.png)
@@ -83,7 +83,7 @@ Before importing your Google Sheet into Runway, ensure it's clean and correctly 
 7. Verify the data preview:
    - If you see a column named **month** and a column named **value**, Runway successfully converted your **wide data** into a **long data set**.
    - If you see separate columns for each month, there may be formatting issues in your Google Sheet. Refer to the **video walkthrough** at the top of this section for troubleshooting.
-8. You’re all set! [Now configure a new database.](https://www.notion.so/Databases-basics-1ae691424a288035817ae31f2a0729b5?pvs=21)
+8. You’re all set\\! [Now configure a new database.](https://www.notion.so/Databases-basics-1ae691424a288035817ae31f2a0729b5?pvs=21)
 
 ## **Connecting a Google Sheet with long data**
 
@@ -100,8 +100,9 @@ Before importing your Google Sheet into Runway, ensure it's clean and correctly 
  3. You’ll be redirected to **Fivetran** to complete the setup.
  4. Under **Authentication Method**, choose **Authorize Service Account**, then copy the email address provided by Fivetran.
  5. In **Google Sheets**, open your spreadsheet in a **new tab** and **share it with that email address** as a **viewer**.
- 6. Select the **headers of the data you want to import** (they must be side by side—**you cannot skip columns**) and create a **named range.** Navigate to **Data > Named Range**, then give it a **unique and descriptive name**.
-    1. _<u>ADD GIF</u>_
+ 6. Select the **headers of the data you want to import** (they must be side by side—**you cannot skip columns**) and create a **named range.** Navigate to **Data \> Named Range**, then give it a **unique and descriptive name**.
+
+    ![images/integrations/sheets/data-range.gif](/images/integrations/sheets/data-range.gif)
  7. Copy the **entire URL** of your Google Sheet. For example:
 
     ```bash
@@ -115,8 +116,9 @@ Before importing your Google Sheet into Runway, ensure it's clean and correctly 
 12. Once the sync is complete, click into your **Google Sheets Integration** in Runway.
 13. Rename **New Query** to something descriptive by double-clicking its name.
 14. Copy the **suggested commented query**, paste it below in the SQL editor, and click **Run query**.
-    1. _<u>ADD GIF</u>_
-15. You’re done! [Now configure a new database.](https://www.notion.so/Databases-basics-1ae691424a288035817ae31f2a0729b5?pvs=21)
+
+    ![images/integrations/sheets/sheets-fivetran-commented-query.gif](/images/integrations/sheets/sheets-fivetran-commented-query.gif)
+15. You’re done\\! [Now configure a new database.](https://www.notion.so/Databases-basics-1ae691424a288035817ae31f2a0729b5?pvs=21)
 
 ## Google sheets FAQs
 
@@ -125,7 +127,7 @@ Before importing your Google Sheet into Runway, ensure it's clean and correctly 
 </Accordion>
 
 <Accordion title="Can I integrate long data without using the Fivetran version?" icon="sparkles">
-  Yes, but the **non-Fivetran version only supports one tab at a time and 10,000 rows** per integration. If you need multiple tabs, either **create separate spreadsheets **or specify the tab Runway should pull from by adding #runway to the tab name.
+  Yes, but the **non-Fivetran version only supports one tab at a time and 10,000 rows** per integration. If you need multiple tabs, either \*\*create separate spreadsheets \*\*or specify the tab Runway should pull from by adding #runway to the tab name.
 </Accordion>
 
 <Accordion title="Why is my column not showing up in Runway?" icon="sparkles">
@@ -135,7 +137,7 @@ Before importing your Google Sheet into Runway, ensure it's clean and correctly 
 <Accordion title="How often does this sheet sync to Runway?" icon="sparkles">
   The sync runs **automatically every morning (US Pacific Time)**. You can also **manually trigger a sync** like this:
 
-  ![/images/integrations/resync.png+_existingInIndexedDbMintlify](/images/integrations/resync.png)
+  ![/images/integrations/resync.png\+\_existingInIndexedDbMintlify](/images/integrations/resync.png)
 </Accordion>
 
 <Accordion title="Can the Fivetran version also sync wide data?" icon="sparkles">

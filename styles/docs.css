@@ -1,0 +1,34 @@
+.callout {
+  border-radius: var(--rounded-2xl);
+}
+[data-rmiz] img {
+  border-radius: var(--rounded-2xl);
+  border: solid 1px rgb(var(--gray-200));
+}
+.dark [data-rmiz] img {
+  border: solid 1px rgb(var(--gray-600));
+}
+.prose li::marker {
+  color: rgb(var(--gray-500));
+}
+.dark .prose li::marker {
+  color: rgb(var(--gray-600));
+}
+.prose ul > li:before {
+  background-color: rgb(var(--gray-400));
+}
+.dark .prose ul > li:before {
+  background-color: rgb(var(--gray-600));
+}
+.prose :where(code):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+  color: rgb(var(--gray-900));
+  border: 1px solid rgb(var(--gray-200));
+  padding: 0.25em 0.4em 0.25em 0.5em;
+}
+.prose th {
+  text-align: left;
+}
+.prose .rounded-t-xl {
+  /* --rounded-xl: var(--rounded-2xl); */
+  border-radius: 0;
+}

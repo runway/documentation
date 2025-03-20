@@ -3,135 +3,137 @@
   "theme": "maple",
   "name": "Runway Docs",
   "colors": {
-    "primary": "#F9A600",
-    "light": "#FDFCFC",
-    "dark": "#1D2122"
+    "primary": "#C8A7F2",
+    "light": "#FFFFFF",
+    "dark": "#171716"
   },
-  "favicon": "/favicon.png",
+  "favicon": "/runway-icon.svg",
   "navigation": {
     "groups": [
+      {
+        "group": "Get started",
+        "pages": ["get-started/start-guide", "get-started/overview"]
+      },
+      {
+        "group": "Concepts",
+        "pages": [
           {
-            "group": "Get started",
+            "group": "Drivers",
+            "icon": "chart-mixed-up-circle-dollar",
             "pages": [
-              "get-started/start-guide",
-              "get-started/overview"]
-          },
-          {
-            "group": "Concepts",
-            "pages": [
-              {
-                "group": "Drivers",
-                "icon": "chart-mixed-up-circle-dollar",
-                "pages": [
-                  "concepts/drivers/drivers-basics",
-                  "concepts/drivers/driver-details-pane",
-                  "concepts/drivers/drill-ins",
-                  "concepts/drivers/driver-formatting",
-                  "concepts/drivers/duplicate-remove-delete"]
-              },
-              {
-                "group": "Dimensions",
-                "icon": "list",
-                "pages": [
-                  "concepts/dimensions"]
-              },
-              {
-                "group": "Databases",
-                "icon": "database",
-                "pages": [
-                  "concepts/databases/databases-basics",
-                  "concepts/databases/filtering-sorting-grouping",
-                  "concepts/databases/rename-export-delete",
-                  "concepts/databases/formulas-in-databases",
-                  "concepts/databases/hris-databases"]
-              },
-              {
-                "group": "Models",
-                "icon": "function",
-                "pages": [
-                  "concepts/models/models-basics"]
-              },
-              {
-                "group": "Pages",
-                "icon": "file",
-                "pages": [
-                  "concepts/pages/pages-basics",
-                  "concepts/pages/charts-block",
-                  "concepts/pages/drivers-table-block",
-                  "concepts/pages/database-block",
-                  "concepts/pages/text-media-block"
-                ]
-              },
-              "concepts/scenarios",
-              "concepts/plans",
-              "concepts/sidebar"
+              "concepts/drivers/drivers-basics",
+              "concepts/drivers/driver-details-pane",
+              "concepts/drivers/drill-ins",
+              "concepts/drivers/driver-formatting",
+              "concepts/drivers/duplicate-remove-delete"
             ]
           },
           {
-            "group": "Data integrations",
+            "group": "Dimensions",
+            "icon": "list",
+            "pages": ["concepts/dimensions"]
+          },
+          {
+            "group": "Databases",
+            "icon": "database",
             "pages": [
-              "integrations/intro-to-integrations",
-              "integrations/integrations-directory",
-              {
-                "group": "Accounting",
-                "icon": "receipt",
-                "pages": [
-                  "integrations/accounting/quickbooks-online",
-                  "integrations/accounting/xero",
-                  "integrations/accounting/netsuite",
-                  "integrations/multi-entity-integrations"]
-              },
-              {
-                "group": "HRIS",
-                "icon": "people-group",
-                "pages": [
-                  "integrations/hris/rippling",
-                  "integrations/hris/deel",
-                  "integrations/hris/justworks",
-                  "integrations/hris/gusto",
-                  "integrations/hris/hibob"]
-              },
-              {
-                "group": "Revenue",
-                "icon": "dollar-sign",
-                "pages": [
-                  "integrations/revenue/hubspot",
-                  "integrations/revenue/salesforce"]
-              },
-              {
-                "group": "Data storage",
-                "icon": "server",
-                "pages": [
-                  "integrations/data-storage/google-sheets",
-                  "integrations/data-storage/data-warehouses",
-                  "integrations/data-storage/shared-directory"]
-              },
-              "integrations/writing-sql"
+              "concepts/databases/databases-basics",
+              "concepts/databases/filtering-sorting-grouping",
+              "concepts/databases/rename-export-delete",
+              "concepts/databases/formulas-in-databases",
+              "concepts/databases/hris-databases"
             ]
           },
           {
-            "group": "Guides",
-            "icon": "pen-paintbrush",
+            "group": "Models",
+            "icon": "function",
+            "pages": ["concepts/models/models-basics"]
+          },
+          {
+            "group": "Pages",
+            "icon": "file",
             "pages": [
-              {
-                "group": "Modeling workflows",
-                "pages": ["guides/modeling/lookups"]
-              },
-              {
-                "group": "Reporting workflows",
-                "pages": ["guides/reporting/bva"]
-              },
-              {
-                "group": "Sharing workflow",
-                "pages": ["guides/sharing/data-anonymization"]
-              }
+              "concepts/pages/pages-basics",
+              "concepts/pages/charts-block",
+              "concepts/pages/drivers-table-block",
+              "concepts/pages/database-block",
+              "concepts/pages/text-media-block"
             ]
+          },
+          "concepts/scenarios",
+          "concepts/plans",
+          "concepts/sidebar"
+        ]
+      },
+      {
+        "group": "Data integrations",
+        "pages": [
+          "integrations/intro-to-integrations",
+          "integrations/integrations-directory",
+          {
+            "group": "Accounting",
+            "icon": "receipt",
+            "pages": [
+              "integrations/accounting/quickbooks-online",
+              "integrations/accounting/xero",
+              "integrations/accounting/netsuite",
+              "integrations/multi-entity-integrations"
+            ]
+          },
+          {
+            "group": "HRIS",
+            "icon": "people-group",
+            "pages": [
+              "integrations/hris/rippling",
+              "integrations/hris/deel",
+              "integrations/hris/justworks",
+              "integrations/hris/gusto",
+              "integrations/hris/hibob"
+            ]
+          },
+          {
+            "group": "Revenue",
+            "icon": "dollar-sign",
+            "pages": [
+              "integrations/revenue/hubspot",
+              "integrations/revenue/salesforce"
+            ]
+          },
+          {
+            "group": "Data storage",
+            "icon": "server",
+            "pages": [
+              "integrations/data-storage/google-sheets",
+              "integrations/data-storage/data-warehouses",
+              "integrations/data-storage/shared-directory"
+            ]
+          },
+          "integrations/writing-sql"
+        ]
+      },
+      {
+        "group": "Guides",
+        "icon": "pen-paintbrush",
+        "pages": [
+          {
+            "group": "Modeling workflows",
+            "pages": ["guides/modeling/lookups"]
+          },
+          {
+            "group": "Reporting workflows",
+            "pages": ["guides/reporting/bva"]
+          },
+          {
+            "group": "Sharing workflow",
+            "pages": ["guides/sharing/data-anonymization"]
           }
         ]
+      }
+    ]
   },
   "logo": {
-    "light": "/logo/RunwayLogo.png",
-    "dark": "/logo/RunwayLogoWhite.png"
+    "light": "/logo/runway-logo-light.svg",
+    "dark": "/logo/runway-logo-dark.svg"
   },
   "navbar": {
     "links": [

@@ -7,38 +7,37 @@ When you connect an integration, your data flows into a database. You can then c
 
 ## Creating a database
 
-The most common way to create a database is by clicking the **+** button next to a section or page in the sidebar. The new database will appear nested under that section or page.
+The most common way to create a database is by clicking the **\+** button next to a section or page in the sidebar. The new database will appear nested under that section or page.
 
 Select **Database** as the type and give it a clear name, along with an icon or emoji for easy identification.
 
-*<u>ADD GIF</u>*
+![images/databases/1/create.gif](/images/databases/1/create.gif)
 
 ## Configuring a database
 
 **After creating a database, the next step is to configure it.**
 
 1. Click on the **configuration** header to expand it.
-
 2. Select the **data source**—this can be an existing integration query or another database you've already created.
-
 3. Choose the **drivers** you want to track. These are key metrics or dates you’d like to view as a time series.
-
 4. Select the **dimensions** to segment your data. Segmentation determines the granularity of your database.
-
 5. Add any extra dimensions from your data source that isn’t used for segmentation under **Other columns**.
 
-For example, if you're pulling in GL data at the most granular level, you would select **Amount** as the **driver**, use **Account Name, Class, and Vendor** as the dimensions to **segment** the data, and include **Account Type** under **other Columns** to surface it as additional information.![](/images/databases-config.png)The dimensions you use to segment your data appear alongside the driver name across the app, including in tables and charts. To improve readability, we recommend using only the essential dimensions needed to define your database's granularity. Any additional useful information should be added under **Other columns** instead.![](/images/dimensions-pills.png)**Tip #1** – To get a quick look at the structure of your data source, click the **table icon** to preview sample data.![](/images/databases-config-preview.png)**Tip #2** – If you want to limit the database to a specific subset of data from the source, apply a **filter** within the database configuration.![](/images/databases-config-filters.png)
+For example, if you're pulling in GL data at the most granular level, you would select **Amount** as the **driver**, use **Account Name, Class, and Vendor** as the dimensions to **segment** the data, and include **Account Type** under **other Columns** to surface it as additional information.![](/images/databases-config.png)
+
+The dimensions you use to segment your data appear alongside the driver name across the app, including in tables and charts. To improve readability, we recommend using only the essential dimensions needed to define your database's granularity. Any additional useful information should be added under **Other columns** instead.![](/images/dimensions-pills.png)
+
+**Tip #1** – To get a quick look at the structure of your data source, click the **table icon** to preview sample data.![](/images/databases-config-preview.png)
+
+**Tip #2** – If you want to limit the database to a specific subset of data from the source, apply a **filter** within the database configuration.![](/images/databases-config-filters.png)
 
 ## Adding a column
 
-To create a new column, click the **+** button at the far right of the database. You’ll then see the following options:
+To create a new column, click the **\+** button at the far right of the database. You’ll then see the following options:
 
-1. **Number driver** – Use this for calculated values. Drivers store time-series data, meaning the values *can* vary from month to month, but they don’t have to. Learn more about number drivers here.
-
+1. **Number driver** – Use this for calculated values. Drivers store time-series data, meaning the values _can_ vary from month to month, but they don’t have to. Learn more about number drivers here.
 2. **Date driver** – Works like a number driver but stores date values instead. Learn more about date drivers here.
-
 3. **Dimension** – A predefined list of values to help categorize your data. Unlike drivers, dimensions do not change over time. For example, in a GL database, dimensions could include **Vendor, Location, or Department**. Learn more about dimensions here.
-
 4. **Lookup** – Automatically populate a dimension based on data from another database, similar to **VLOOKUP()** in spreadsheets. Learn more about lookup here.
 
 <Note>
@@ -49,47 +48,51 @@ To create a new column, click the **+** button at the far right of the database.
 
 ## Show a column as timeseries
 
-As mentioned earlier, **drivers store time-series data**, meaning their values *can* vary from month to month. While we display them as a single column in the database for readability, each driver column can be expanded to access its time-series data.
+As mentioned earlier, **drivers store time-series data**, meaning their values _can_ vary from month to month. While we display them as a single column in the database for readability, each driver column can be expanded to access its time-series data.
 
 To show a driver column as a time series, click on its name in the database header and select **Show as time series.** The column will expand and appear on the far right of the database after all other columns.
 
-*<u>ADD GIF</u>*
+![images/databases/1/show-column-as-timeseries.gif](/images/databases/1/show-column-as-timeseries.gif)
 
 <Note>
   If you choose to display a different driver column as a time series, it will automatically replace the current one, which will revert to being displayed as a value.
 </Note>
 
-By default, each row will display the **forecast formula, actual formula, and time-series data** based on the selected date range. If needed, you can hide the formula columns by clicking on their headers and selecting **Hide in blocks.**![](/images/databases-hide-column.png)You can also use keyboard shortcuts:
+By default, each row will display the **forecast formula, actual formula, and time-series data** based on the selected date range. If needed, you can hide the formula columns by clicking on their headers and selecting **Hide in blocks.**![](/images/databases-hide-column.png)
 
-* **`Option` + `Shift` + `A`** to hide or show the **Actual Formula** column.
+You can also use keyboard shortcuts:
 
-* **`Option` + `Shift` + `F`** to hide or show the **Forecast Formula** column.
+- **\+  \+ **  to hide or show the **Actual Formula** column.
+- **\+  \+ **  to hide or show the **Forecast Formula** column.
 
-Alternatively, click the **Customize** button in the top-right corner of the database, go to **Properties,** and show or hide formula columns by clicking the **eye icon**.![](/images/databases-properties.png)To revert a driver column back to a single value, click on its name in the database header again and select **Show as value.**![](/images/databases-show-as-value.png)
+Alternatively, click the **Customize** button in the top-right corner of the database, go to **Properties,** and show or hide formula columns by clicking the **eye icon**.![](/images/databases-properties.png)
+
+To revert a driver column back to a single value, click on its name in the database header again and select **Show as value.**![](/images/databases-show-as-value.png)
 
 ## Show all columns as timeseries
 
 Instead of displaying only one driver column as a time series, you can choose to show **all** driver columns this way. Click **Customize** in the top-right corner, select **Display as**, and then choose **Time series.**
 
-![CleanShot 2025-03-05 at 02.12.50.gif](attachment:6458c785-c300-45a0-81fa-8dad921f7854:CleanShot_2025-03-05_at_02.12.50.gif)*<u>ADD GIF</u>*
+![images/databases/1/show-all-as-timeseries.gif](/images/databases/1/show-all-as-timeseries.gif)
 
 When you switch to this view, the database orientation changes. What was previously a **row** in the database becomes a **section**, while dimensions and drivers that were displayed as columns are now shown as **rows**. This allows you to see time-series data for all drivers at once.![](/images/database-as-timeseries.png)
 
 ## Show & hide columns
 
-For a more compact view of your data, you can hide columns that are not always relevant and show them only when needed. You can do this by clicking on the column name in the database header and selecting **Hide in block.**![](/images/database-hide-in-block.png)Another way is to click the **Customize** button in the top-right corner of the database, go to **Properties,** and toggle columns on or off by clicking the **eye icon.**
+For a more compact view of your data, you can hide columns that are not always relevant and show them only when needed. You can do this by clicking on the column name in the database header and selecting **Hide in block.**![](/images/database-hide-in-block.png)
+
+Another way is to click the **Customize** button in the top-right corner of the database, go to **Properties,** and toggle columns on or off by clicking the **eye icon.**
 
 ## Adding a row
 
-If you need to manually add a row to a database—for example, a new **vendor** in an **Income Statement by Vendor** database or a new **assumption** in an **assumptions** database—click **+ Add item.**
+If you need to manually add a row to a database—for example, a new **vendor** in an **Income Statement by Vendor** database or a new **assumption** in an **assumptions** database—click **\+ Add item.**
 
 After adding the row, set values for the **dimensions** used in the **Segment by** for this database.![](/images/database-add-row.png)
 
 **Important:** Segmentation determines the **granularity** of your database. Each row should have a **unique combination** of dimension values.
 
-* If a row does **not** have a unique combination, you’ll see a **warning** next to it.
-
-* This means the row is **linked** to other rows sharing the same segmentation. Any changes made to one of these rows will automatically update the others.
+- If a row does **not** have a unique combination, you’ll see a **warning** next to it.
+- This means the row is **linked** to other rows sharing the same segmentation. Any changes made to one of these rows will automatically update the others.
 
 <Note>
   For HRIS databases, the process of adding a row is different. Please follow the steps here.
@@ -105,7 +108,7 @@ To delete a column from a database, the process depends on how the column was ad
 
 ## Deleting a row
 
-To delete a row from a database, **right-click** on the row and select **Delete row.** Alternatively, press **`Shift` + `Backspace`**.
+To delete a row from a database, **right-click** on the row and select **Delete row.** Alternatively, press **\+ ** .
 
 <Warning>
   Deleting a row removes it from the database, but it **does not delete the drivers** connected to that row. Any formulas relying on those drivers will remain unchanged, and the drivers will still be accounted for. These drivers will appear in your **Unlisted drivers** page.

@@ -11,6 +11,8 @@
   --gray-800: 39 39 38;
   --gray-900: 23 23 22;
   --gray-950: 23 23 22;
+  --rounded-2xl: 0.5rem;
+  --rounded-xl: var(--rounded-2xl);
 }
 .dark {
   --primary: 23 23 22;

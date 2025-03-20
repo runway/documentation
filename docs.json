@@ -7,7 +7,7 @@
     "light": "#FFFFFF",
     "dark": "#171716"
   },
-  "favicon": "/runway-icon.svg",
+  "favicon": "/runway-icon.png",
   "navigation": {
     "groups": [
       {

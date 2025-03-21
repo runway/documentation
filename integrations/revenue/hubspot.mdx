@@ -1,5 +1,77 @@
 ---
-title: 'Hubspot (wip)'
-description: 'Description of your new file.'
+title: "HubSpot"
+description: "The HubSpot integration allows you to automatically sync your deals and revenue data into Runway."
 ---
 
+Runway offers two ways to integrate with **HubSpot**:
+
+- **SQL-powered integration via Fivetran (Recommended)** – Ideal if you need advanced data customization and want to pull in a wide range of HubSpot objects (like Deals, Owners, Accounts, Users, and more).
+- **Quick-start connection via Workato** – A simpler setup, but limited in scope. For example, it supports only a subset of HubSpot objects, such as Deals, and doesn't allow you to pull in related context like Owner, Account, or User data.
+
+## **SQL-powered integration via Fivetran** **(Recommended)**
+
+1. Click **Setup** on the **HubSpot (Fivetran)** integration in the Integrations directory and follow the on-screen authentication process.
+
+   ![images/integrations/hubspot/hubspot-fivetran.png](/images/integrations/hubspot/hubspot-fivetran.png)
+2. When prompted in **Fivetran**, select **Sync all historical data** for the sync time frame.
+
+   ![images/integrations/hubspot/hubspot-fivetran-scope.png](/images/integrations/hubspot/hubspot-fivetran-scope.png)
+3. After being redirected back to **Runway**, we recommend using our **HubSpot Deal Quickstart** integration template.
+   - In the left sidebar, navigate to **Templates**.
+   - Search for **HubSpot Deal Quickstart**.
+   - Click **\+ Add to Runway** to apply the template.
+
+   ![images/integrations/hubspot/hubspot-fivetran-template.png](/images/integrations/hubspot/hubspot-fivetran-template.png)
+4. This template automatically creates a database for you to begin building your model.
+5. Alternatively, you can follow our [SQL guide](https://www.notion.so/Writing-SQL-in-Runway-1b6691424a288012b52cd77202b0bcbe?pvs=21) to customize the existing quick-start template or pull additional objects and properties. Note that when referencing HubSpot properties in your query, you must use their internal names, which differ from the display names shown in the HubSpot interface.
+   - To find available properties, go to HubSpot settings (⚙️) → Data Management → Properties → Select the relevant object (e.g., deal)
+   - From this list, search for the specific property you want to add to Runway, such as deal name.
+
+     ![images/integrations/hubspot/hubspot-property.png](/images/integrations/hubspot/hubspot-property.png)
+   - Click the property to find its internal name. When writing your SQL, search for a property with a matching name.
+
+     ![images/integrations/hubspot/hubspot-property-internal-name.png](/images/integrations/hubspot/hubspot-property-internal-name.png)
+
+## **Quick-start connection via Workato**
+
+ 1. Open your [Runway instance](https://app.runway.com/).
+ 2. In the left sidebar, hover over **Integrations** and click the **\+** button to open the Integrations Directory.
+ 3. Under the **Other** section, search for **HubSpot** and click **\+ Set up** on the option listed in **Others** section.
+
+    ![images/integrations/hubspot/fivetran-workato.png](/images/integrations/hubspot/fivetran-workato.png)
+ 4. You'll be redirected to HubSpot to authorize the connection and complete authentication.
+ 5. Once authorized, you'll return to Runway. Click **\+** next to integration name in the sidebar to create a new query.
+
+    ![images/integrations/hubspot/create-query.png](/images/integrations/hubspot/create-query.png)
+ 6. You can then change the default query name, \*\*New query, \*\*to something more descriptive. To do this, click the **three-dots button** next to the query name in the sidebar and select **Rename query**.
+
+    ![images/integrations/hubspot/rename-query.png](/images/integrations/hubspot/rename-query.png)
+ 7. In the query form, you can select the **HubSpot object** you want to work with (**Deals** is the most commonly used), and in the **properties** you want to pull for that object.
+
+    ![images/integrations/hubspot/hubspot-workato-form.png](/images/integrations/hubspot/hubspot-workato-form.png)
+ 8. Note that for **properties**, you must use their internal names, which differ from the display names shown in the HubSpot interface.
+    - To find the list of available properties, in **HubSpot**, navigate to **Settings (⚙️) → Data Management → Properties** and select the matching object (e.g., Deals).
+    - In this list, search for the property you wish to add to runway, for example, deal name.
+
+      ![/images/integrations/hubspot/hubspot-property.png\+\_existingInIndexedDbMintlify](/images/integrations/hubspot/hubspot-property.png)
+    - Click into the property and find the internal name.
+
+      ![/images/integrations/hubspot/hubspot-property-internal-name.png\+\_existingInIndexedDbMintlify](/images/integrations/hubspot/hubspot-property-internal-name.png)
+ 9. Type that internal name into the Runway properties field and press Enter.
+10. Repeat for all desired fields for that object.
+11. Once completed, click Run query and validate the data looks correct.
+12. You’re done integrating\\! [Go ahead and configure a new database.](https://www.notion.so/Databases-basics-1ae691424a288035817ae31f2a0729b5?pvs=21)
+
+## HubSpot FAQs
+
+<Accordion title="How do I write SQL in Runway?">
+  See this [help doc](https://www.notion.so/SQL-in-Runway-1b6691424a288012b52cd77202b0bcbe?pvs=21).
+</Accordion>
+
+<Accordion title="What objects does Runway have access to?">
+  Our Fivetran integration has access to all standard HubSpot objects and fields. HubSpot data can be complex, and writing queries can sometimes be challenging. If you need help pulling specific data, reach out to our team—we’re happy to assist.
+</Accordion>
+
+<Accordion title="How does a deal land in a time series?">
+  It’s fully customizable—you can map each deal based on dates such as creation date, close date, or contract start date. You can also use Runway’s built-in functionality to pull values forward into future periods. This is a common use case, so feel free to contact our team for guidance.
+</Accordion>

@@ -8,45 +8,40 @@ description: "Connect Gusto to Runway to automatically sync your employee data. 
 Follow these steps to connect **Gusto** to Runway and automatically sync your employee data:![](/images/gusto.png)
 
 1. Open your [Runway instance](https://app.runway.com/).
-
-2. In the left sidebar, hover over **Integrations** and click the **+** button to open the **Integrations Directory**.
-
-3. Search for **Gusto** and click **+ Set up** under the **HRIS** option.
-
+2. In the left sidebar, hover over **Integrations** and click the **\+** button to open the **Integrations Directory**.
+3. Search for **Gusto** and click **\+ Set up** under the **HRIS** option.
 4. Follow the onscreen prompts to **sign into Gusto** and authorize the connection.
-
 5. Once authentication is complete, a confirmation message will appear, and the **initial sync will begin automatically**.
-
 6. When the sync is finished, a new **Employee database** will appear in your **Runway sidebar**, containing the imported data.
 
-## Gusto supported sata
+## Gusto supported data
 
 Runway automatically imports the following data from **Gusto**.
 
 | Data name        | Example           | Runway data type  |
 | ---------------- | ----------------- | ----------------- |
-| Name             | John Smith        | *Name*            |
-| Title            | Software Engineer | *Dimension Field* |
-| Team             | Engineering       | *Dimension Field* |
-| Pay Rate         | $100,000          | *Number Field*    |
-| Pay Period       | YEAR              | *Dimension Field* |
-| Pay Currency     | USD               | *Dimension Field* |
-| Type             | SALARIED\_FT      | *Dimension Field* |
-| Office           | Remote            | *Dimension Field* |
-| Department       | Engineering       | *Dimension Field* |
-| Start Date       | Jul 1, ‘24        | *Date Field*      |
-| Termination Date | Jan 1, ‘25        | *Date Field*      |
+| Name             | John Smith        | _Name_            |
+| Title            | Software Engineer | _Dimension Field_ |
+| Team             | Engineering       | _Dimension Field_ |
+| Pay Rate         | $100,000          | _Number Field_    |
+| Pay Period       | YEAR              | _Dimension Field_ |
+| Pay Currency     | USD               | _Dimension Field_ |
+| Type             | SALARIED_FT       | _Dimension Field_ |
+| Office           | Remote            | _Dimension Field_ |
+| Department       | Engineering       | _Dimension Field_ |
+| Start Date       | Jul 1, ‘24        | _Date Field_      |
+| Termination Date | Jan 1, ‘25        | _Date Field_      |
 
 ## Gusto FAQs
 
-<Accordion title="Does Runway write data back to Gusto?" defaultOpen={false}>
+<Accordion title="Does Runway write data back to Gusto?" defaultOpen="false">
   No, Runway supports **read-only** integrations. No data is written back to Gusto.
 </Accordion>
 
-<Accordion title="Does the Gusto integration send only base salary values or fully-loaded employee costs?" defaultOpen={false}>
+<Accordion title="Does the Gusto integration send only base salary values or fully-loaded employee costs?" defaultOpen="false">
   Runway currently only syncs **base salary** values for each employee.
 </Accordion>
 
-<Accordion title="Can I connect additional HRIS sources?" defaultOpen={false}>
-  Yes! To add more HRIS integrations, go to the **Integrations Directory** in Runway, search for the integration you need, and follow the setup flow. Check out our **Integration documentation** for guidance on our most popular integrations.
+<Accordion title="Can I connect additional HRIS sources?" defaultOpen="false">
+  Yes\\! To add more HRIS integrations, go to the **Integrations Directory** in Runway, search for the integration you need, and follow the setup flow. Check out our **Integration documentation** for guidance on our most popular integrations.
 </Accordion>

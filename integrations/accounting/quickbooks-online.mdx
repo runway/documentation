@@ -1,6 +1,6 @@
 ---
-title: "Quickbooks Online"
-description: "The QuickBooks Online integration lets you automatically sync your financial data with Runway, eliminating manual data entry and ensuring your actuals stay up to date. With this connection, your financial models always reflect the latest numbers from QuickBooks."
+title: 'Quickbooks Online'
+description: 'The QuickBooks Online integration lets you automatically sync your financial data with Runway, eliminating manual data entry and ensuring your actuals stay up to date. With this connection, your financial models always reflect the latest numbers from QuickBooks.'
 ---
 
 Runway offers two ways to integrate with **QuickBooks Online**:
@@ -13,8 +13,9 @@ Runway offers two ways to integrate with **QuickBooks Online**:
 ![images/integrations/quickbooks-fivetran.png](/images/integrations/quickbooks-fivetran.png)
 
 ### Connecting the integration
+
 1. Open your [Runway instance](https://app.runway.com/).
-2. In the left sidebar, hover over **Integrations** and click the **+** button to open the **Integrations Directory**.
+2. In the left sidebar, hover over **Integrations** and click the **\+** button to open the **Integrations Directory**.
 3. Search for **QuickBooks** and click **\+ Set up** under the **Fivetran** option.
 4. For the **Schema Name**:
    - If connecting **a single QuickBooks instance**, leave it as `quickbooks`.
@@ -24,19 +25,20 @@ Runway offers two ways to integrate with **QuickBooks Online**:
 7. Click **Save & Test** to begin syncing your data. You’ll be redirected back to Runway.
 
 ### Syncing your data into Runway
+
 Runway provides **integration templates** to help you quickly import **Income Statement, Balance Sheet, and Cash Flow data** from QuickBooks Online, even with this SQL-powered integration.
 
 1. In the sidebar, navigate to **Templates**.
 2. Search for **QBO Data Import**.
 3. Click **\+ Add to Runway** on the template card.
 4. The template will:
-   - Automatically add **Income Statement** and **Combined Balance Sheet + Cash Flow** queries to the QuickBooks integration.
+   - Automatically add **Income Statement** and **Combined Balance Sheet \+ Cash Flow** queries to the QuickBooks integration.
    - Create the following databases in Runway:
      - **IS Data** (Income Statement)
      - **BS Data** (Balance Sheet)
      - **CF Data** (Cash Flow)
 
-![/images/integrations/quickbooks-template.png+\_existingInIndexedDbMintlify](/images/integrations/quickbooks-template.png)
+![/images/integrations/quickbooks-template.png+_existingInIndexedDbMintlify](/images/integrations/quickbooks-template.png)
 
 ## Supported data from Quickbooks Online via Fivetran
 
@@ -84,19 +86,34 @@ When using the **QBO Data Import** integration template, the following financial
 | Is Sub-Account              | Yes                      | Dimension     | Can be added                                        |
 
 <Check>
-  The **QBO Data Import** integration template includes the **most commonly used financial data**, but you can add **additional supporting data** to your database configurations for more detail if needed.
+  The **QBO Data Import** integration template includes the **most commonly used
+  financial data**, but you can add **additional supporting data** to your
+  database configurations for more detail if needed.
 </Check>
 
 ## Quickbooks Online FAQs
 
 <Accordion title="Does Runway write data back to QuickBooks?" icon="sparkles">
-  No, Runway supports **read-only** integrations. No data is written back to QuickBooks.
+  No, Runway supports **read-only** integrations. No data is written back to
+  QuickBooks.
 </Accordion>
 
-<Accordion title="Can I connect multiple instances of QuickBooks Online?" icon="sparkles">
-  Absolutely. To add additional instances, go to the **Integrations Directory** in Runway, click **Installed**, then select **Set Up**. Follow the same setup flow as outlined above for each additional instance.
+<Accordion
+  title="Can I connect multiple instances of QuickBooks Online?"
+  icon="sparkles"
+>
+  Absolutely. To add additional instances, go to the **Integrations Directory**
+  in Runway, click **Installed**, then select **Set Up**. Follow the same setup
+  flow as outlined above for each additional instance.
 </Accordion>
 
-<Accordion title="Can I pull other types of data from QuickBooks?" icon="sparkles">
-  Yes\! Our integration is highly customizable. While the **QBO Data Import template** includes **starter queries** that fit most use cases, you can also **write your own SQL queries** leveraging [this QuickBooks schema](https://fivetran.com/docs/applications/quickbooks#schemainformation). Not a SQL expert? No problem—our **CX team** is happy to assist\!
+<Accordion
+  title="Can I pull other types of data from QuickBooks?"
+  icon="sparkles"
+>
+  Yes\\! Our integration is highly customizable. While the **QBO Data Import
+  template** includes **starter queries** that fit most use cases, you can also
+  **write your own SQL queries** leveraging [this QuickBooks
+  schema](https://fivetran.com/docs/applications/quickbooks#schemainformation).
+  Not a SQL expert? No problem—our **CX team** is happy to assist\\!
 </Accordion>

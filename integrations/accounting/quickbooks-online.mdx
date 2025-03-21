@@ -12,9 +12,10 @@ Runway offers two ways to integrate with **QuickBooks Online**:
 
 ![images/integrations/quickbooks-fivetran.png](/images/integrations/quickbooks-fivetran.png)
 
-### **Connecting the integration**
+### Connecting the integration
+
 1. Open your [Runway instance](https://app.runway.com/).
-2. In the left sidebar, hover over **Integrations** and click the **+** button to open the **Integrations Directory**.
+2. In the left sidebar, hover over **Integrations** and click the **\+** button to open the **Integrations Directory**.
 3. Search for **QuickBooks** and click **\+ Set up** under the **Fivetran** option.
 4. For the **Schema Name**:
    - If connecting **a single QuickBooks instance**, leave it as `quickbooks`.
@@ -23,20 +24,21 @@ Runway offers two ways to integrate with **QuickBooks Online**:
 6. Follow Fivetran’s setup guide to finish configuring the integration.
 7. Click **Save & Test** to begin syncing your data. You’ll be redirected back to Runway.
 
-### **Syncing your data into Runway**
+### Syncing your data into Runway
+
 Runway provides **integration templates** to help you quickly import **Income Statement, Balance Sheet, and Cash Flow data** from QuickBooks Online, even with this SQL-powered integration.
 
 1. In the sidebar, navigate to **Templates**.
 2. Search for **QBO Data Import**.
 3. Click **\+ Add to Runway** on the template card.
 4. The template will:
-   - Automatically add **Income Statement** and **Combined Balance Sheet + Cash Flow** queries to the QuickBooks integration.
+   - Automatically add **Income Statement** and **Combined Balance Sheet \+ Cash Flow** queries to the QuickBooks integration.
    - Create the following databases in Runway:
      - **IS Data** (Income Statement)
      - **BS Data** (Balance Sheet)
      - **CF Data** (Cash Flow)
 
-![/images/integrations/quickbooks-template.png+\_existingInIndexedDbMintlify](/images/integrations/quickbooks-template.png)
+![/images/integrations/quickbooks-template.png\+\_existingInIndexedDbMintlify](/images/integrations/quickbooks-template.png)
 
 ## Supported data from Quickbooks Online via Fivetran
 
@@ -98,5 +100,5 @@ When using the **QBO Data Import** integration template, the following financial
 </Accordion>
 
 <Accordion title="Can I pull other types of data from QuickBooks?" icon="sparkles">
-  Yes\! Our integration is highly customizable. While the **QBO Data Import template** includes **starter queries** that fit most use cases, you can also **write your own SQL queries** leveraging [this QuickBooks schema](https://fivetran.com/docs/applications/quickbooks#schemainformation). Not a SQL expert? No problem—our **CX team** is happy to assist\!
+  Yes\\! Our integration is highly customizable. While the **QBO Data Import template** includes **starter queries** that fit most use cases, you can also **write your own SQL queries** leveraging [this QuickBooks schema](https://fivetran.com/docs/applications/quickbooks#schemainformation). Not a SQL expert? No problem—our **CX team** is happy to assist\\!
 </Accordion>

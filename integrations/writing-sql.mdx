@@ -5,7 +5,7 @@ description: "Runway allows you to write SQL directly within the app to pull, sh
 
 This guide is designed for users with **SQL experience** or for **data teams** assisting business users in integrating data into Runway. If you're new to SQL, consider learning through resources like [Snowflake’s SQL introduction](https://docs.snowflake.com/en/learn-tutorials).
 
-## **Identifying a Fivetran integration**
+## Identifying a Fivetran integration
 
 There are two ways to check if your integration is powered by Fivetran:
 
@@ -14,7 +14,7 @@ There are two ways to check if your integration is powered by Fivetran:
 2. **After installation** – If already installed, you can check by looking at the **URL** in the query editor.
    ![images/integrations/fievtran-url.png](/images/integrations/fievtran-url.png)
 
-## **Adding a new query**
+## Adding a new query
 
 For integrations that support SQL queries, you can click **\+** next to integration name in the sidebar to create a new query.
 ![/images/integrations/hubspot/create-query.png\+\_existingInIndexedDbMintlify](/images/integrations/hubspot/create-query.png)
@@ -22,7 +22,7 @@ For integrations that support SQL queries, you can click **\+** next to integrat
 You can then change the default query name, **New query,** to something more descriptive. To do this, click the **three-dots button** next to the query name in the sidebar and select **Rename query**.
 ![/images/integrations/hubspot/rename-query.png\+\_existingInIndexedDbMintlify](/images/integrations/hubspot/rename-query.png)
 
-## **Writing SQL for data warehouses**
+## Writing SQL for data warehouses
 
 When querying **data warehouses** (non-Fivetran integrations), you must use the SQL syntax of the provider:
 
@@ -39,7 +39,7 @@ You can **manually refresh** data at any time by going into the query and select
   You **cannot** write SQL to **join data warehouse sources with Fivetran integrations** within Runway.
 </Warning>
 
-## **Writing SQL for data Fivetran integrations**
+## Writing SQL for data Fivetran integrations
 
 All **Fivetran integrations** are stored in **Runway’s Snowflake data warehouse**, meaning all SQL queries must follow [Snowflake-supported syntax](https://docs.snowflake.com/en/guides-overview-queries).
 

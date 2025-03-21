@@ -1,5 +1,113 @@
 ---
-title: 'Drivers table block (wip)'
-description: 'Description of your new file.'
+title: "Drivers table block"
+description: "Similar to chart blocks, driver table blocks let you bring in drivers from across Runway onto a single page—but instead of visualizing them as charts, they are displayed in a table format."
 ---
 
+## **Creating a new drivers table block**
+
+1. To add a new block to a page, type **/** to access block options.
+2. Select **Driver table.**
+3. Choose the **drivers** you’d like to visualize on the chart. You can **add or remove drivers** later, not just when first creating the block.
+
+## Customizing table columns
+
+When you first add a **driver table block** to a page, it will display the **driver name** and **data** by default. You can further customize which columns appear in the table:
+
+1. Click **Customize** in the top-right corner of the block.
+2. Select **Properties.**
+3. Choose which columns to show or hide:
+   - **Data**
+   - **Actual Formula**
+   - **Forecast Formula**
+   - **Used By**
+   - **Graph**
+   - **Rollup**
+
+![images/pages/driver-table/properties.png](/images/pages/driver-table/properties.png)
+
+## **Managing drivers in the table**
+
+Once a table is added to a page, you can adjust which **drivers** appear in it:
+
+1. Click **\+ Add driver** to include additional drivers. From this menu, you can either **select an existing driver** from your model or **create a new one** directly.
+2. **Remove a driver** from the block in two ways:
+   - **Press Backspace** while the driver is selected.
+   - **Right-click the driver name**, then select **Remove from block**.
+
+<Check>
+  Removing a driver from the block **does not delete it from Runway**—it only removes it from this specific table. See [this article](https://docs.runway.com/concepts/drivers/duplicate-remove-delete) for details on removing v.s. deleting.
+</Check>
+
+![images/pages/driver-table/remove-delete-driver.png](/images/pages/driver-table/remove-delete-driver.png)
+
+## Formatting drivers
+
+When you add drivers to a table on a page, they **retain their existing formatting**. You can adjust their formatting—such as **color, text style, indentation, or precision**—but keep in mind that any changes will **apply globally** wherever the driver appears.
+
+For more details on formatting, [see this article](https://docs.runway.com/concepts/drivers/driver-formatting).
+
+## Time period rollups (quarter, year, etc)
+
+### Selecting the time period
+
+By default, data in a driver table block is displayed monthly, with each **month as a separate column**. But what if you want to see your drivers in a different time granularity—like by quarter or year?
+
+1. Click **Customize** in the top right, then select **Rollups**.
+2. Choose a rollup option. You can pick from:
+   - **Monthly**, **Quarterly**, or **Annual**
+   - **Monthly & Quarterly**, M**onthly & Annually**, or **Monthly, Quarterly & Annually**
+   - For additional customization options, click **Custom rollup**, which provides additional options such as:
+     - **Quarter to date**, **Half-year to date**, or **Year to date** (includes the current calendar month)
+     - **Quarter to last close**, **Half-year to last close**, or **Year to last close**
+     - **Trailing 3, 6, or 12 months** (relative to the current calendar month)
+
+![images/pages/driver-table/time-period-rollup.png](/images/pages/driver-table/time-period-rollup.png)
+
+### Selecting the aggregation
+
+For each driver, you can define **how its values are aggregated** when using a coarser time period:
+
+**Right-click** the driver name → Select **Roll up by** → Choose from: **Sum** (default), **Average**, **First**, or **Last.**
+
+![images/pages/driver-table/time-period-aggregation.png](/images/pages/driver-table/time-period-aggregation.png)
+
+You can also show the **Rollup** property as a column:
+
+1. Click **Customize → Properties**, then enable **Rollup.**
+2. In the table, click the **Rollup cell** for a driver to adjust its aggregation method directly from there.
+
+![images/pages/driver-table/rollup-property.png](/images/pages/driver-table/rollup-property.png)
+
+## **Comparing drivers across scenarios**
+
+In a **driver table block**, you can compare driver values across multiple scenarios:
+
+1. Click **Customize** in the top-right corner.
+2. Select **Compare**.
+3. Choose the scenarios you want to compare.
+
+For more details, [see the scenarios article](https://docs.runway.com/concepts/scenarios#comparing-scenarios).
+
+## **Comparing drivers across time periods**
+
+In driver tables, you can compare values over time—such as **Month-over-Month (MoM)**, **Quarter-over-Quarter (QoQ)**, or **Year-over-Year (YoY)**—to spot trends or changes.
+
+1. Click **Customize** in the top right, then go to **Compare → Time period**.
+2. Choose a comparison window:
+   - **Previous period** – compares each period to the one before it.
+   - **3 months ago** – compares each period to its value 3 months prior.
+   - **6 months ago** – compares each period to 6 months prior.
+   - **12 months ago** – compares each period to the same month last year.
+3. Pick which metrics to display:
+   - **Value**
+   - **Variance**
+   - **Variance %**
+4. Each comparison will appear as a **new row** in your driver table, just below the original driver.
+
+![images/pages/driver-table/compare-time-period.png](/images/pages/driver-table/compare-time-period.png)
+
+## Drivers table FAQs
+
+<Accordion title="Can time period comparisons be displayed as columns instead of rows?" icon="sparkles">
+  Currently, comparisons can only be displayed as rows. If you'd like this feature, please let us know in Slack or contact your CXM to help us prioritize future improvements.
+</Accordion>

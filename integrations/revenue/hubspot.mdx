@@ -1,5 +1,35 @@
 ---
-title: 'Hubspot (wip)'
-description: 'Description of your new file.'
+title: "HubSpot"
+description: "The HubSpot integration allows you to automatically sync your deals and revenue data into Runway."
 ---
 
+Runway offers two ways to integrate with **HubSpot**:
+
+- **SQL-powered integration via Fivetran (Recommended)** – Ideal if you need advanced data customization and want to pull in a wide range of HubSpot objects (like Deals, Owners, Accounts, Users, and more).
+- **Quick-start connection via Workato** – A simpler setup, but limited in scope. For example, it supports only a subset of HubSpot objects, such as Deals, and doesn't allow you to pull in related context like Owner, Account, or User data.
+
+## **SQL-powered integration via Fivetran** **(Recommended)**
+
+1. Click **Setup** on the **HubSpot (Fivetran)** integration in the Integrations directory and follow the on-screen authentication process.
+
+   ![images/integrations/hubspot/hubspot-fivetran.png](/images/integrations/hubspot/hubspot-fivetran.png)
+2. When prompted in **Fivetran**, select **Sync all historical data** for the sync time frame.
+
+   ![images/integrations/hubspot/hubspot-fivetran-scope.png](/images/integrations/hubspot/hubspot-fivetran-scope.png)
+3. After being redirected back to **Runway**, we recommend using our **HubSpot Deal Quickstart** integration template.
+   - In the left sidebar, navigate to **Templates**.
+   - Search for **HubSpot Deal Quickstart**.
+   - Click **\+ Add to Runway** to apply the template.
+
+   ![images/integrations/hubspot/hubspot-fivetran-template.png](/images/integrations/hubspot/hubspot-fivetran-template.png)
+4. This template automatically creates a database for you to begin building your model.
+5. Alternatively, you can follow our [SQL guide](https://www.notion.so/Writing-SQL-in-Runway-1b6691424a288012b52cd77202b0bcbe?pvs=21) to customize the existing quick-start template or pull additional objects and properties. Note that when referencing HubSpot properties in your query, you must use their internal names, which differ from the display names shown in the HubSpot interface.
+   - To find available properties, go to HubSpot settings (⚙️) → Data Management → Properties → Select the relevant object (e.g., deal)
+   - From this list, search for the specific property you want to add to Runway, such as deal name.
+
+     ![images/integrations/hubspot/hubspot-property.png](/images/integrations/hubspot/hubspot-property.png)
+   - Click the property to find its internal name. When writing your SQL, search for a property with a matching name.
+
+     ![images/integrations/hubspot/hubspot-property-internal-name.png](/images/integrations/hubspot/hubspot-property-internal-name.png)
+
+## **Quick-start connection via Workato**

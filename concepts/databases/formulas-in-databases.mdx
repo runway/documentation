@@ -1,5 +1,93 @@
 ---
-title: 'Formulas in databases (wip)'
-description: 'Description of your new file.'
+title: "Formulas in databases (wip)"
+description: "Description of your new file."
 ---
 
+# **Default Formulas**
+
+- Setting defaults for formulas over large chunks of your model can save a lot of time — when you have several drivers you expect to model similarly, or when you want new segments added to a database to get the same formula, you can use default formulas for drivers.
+- In databases, the entire driver column can have a default formula, and any individual driver within the column can override the inherited default. To revert back to the default, just clear / backspace over the overridden formula.
+- Formulas inherited from a default are indicated with a lightened presentation.
+
+<iframe width="560" height="315" src="https://documentation.runwaydev.com/videos/Default-Formulas-Demo.mp4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+
+# Formula inheritance
+
+- In order to make modeling at scale simple, as well as easy to override when needed, Runway applies smart defaults to fill in missing formulas when needed.
+- In the formula editor, hovering will indicate where the formula is being inherited from.
+- There’s a simple set of rules that dictates how driver formula inheritance and overrides work.
+
+**Actuals formula** inheritance hierarchy:
+
+1. Explicitly set **actuals formula** for the driver
+2. Default actuals formula set for the **database column** the driver belongs to
+3. Driver's **forecast formula** (if no actuals formula is set)
+
+**Forecast formula** inheritance hierarchy:
+
+1. Explicitly set **forecast formula** for the driver
+2. Default forecast formula set for the **database column** the driver belongs to
+3. Global default formula: `self * last month`
+
+For example, if only the forecast formula on the column is set, all drivers in the column will inherit that same formula.
+
+<Tip>
+  Tip: When building chains of math / logic in databases, the timeseries view for databases is a great way to see how formulas chain together. You can see all the default formulas side-by-side, and edit them by clicking the **_ƒ_** for each driver to see how it impacts. \
+  \
+  You can find the timeseries view under **Customize \> View as \> Timeseries**\
+  \
+  ![images/databases/database-timeseries.png](/images/databases/database-timeseries.png)
+</Tip>
+
+## **Dynamic Defaults for consistent modeling logic**
+
+<iframe width="560" height="315" src="https://documentation.runwaydev.com/videos/This-Segment-Defaults-Simple.mp4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+
+In this example, we populate a default formula that uses the _This Segment_ utility in order to set similar logic for every segment in our database. Here’s also a diagram to explain how it works.
+
+![images/databases/formulas-in-databases.png](/images/databases/formulas-in-databases.png)
+
+## **Dynamic Filters using dimension values**
+
+You may want to leverage a partial match on the dimensional segment - e.g. picking off just one attribute from the row. Luckily, _This Segment_ allows for matching across just a subset of dimensions in the segment or all of them, within the filter menu.
+
+Let’s explore using an example where you want to understand the % of each product’s usage each customer consumes.
+
+<iframe width="560" height="315" src="https://documentation.runwaydev.com/videos/Dimension-Filter-Partial-Match.mp4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+
+In the filter menu:
+
+- If you want to match across **all** the dimensions in the segment (e.g. match on Customer Name \+ Product), you can use the “Segment” filter.
+- To apply the dynamic filters individually, you can select the target dimension and then use the “This \<dimension name\>” option.
+- Typically, using the formula pill that has the **database name and icon** in it will give you access to filter on all columns of the database, whereas picking the pill with only the driver name will only give you access to columns the driver is segmented-by.
+  - More on segmentation `LINK <TO ADD>.`
+
+![images/databases/partial-this-segment-filter.png](/images/databases/partial-this-segment-filter.png)
+
+## **Dynamic Filters using driver values**
+
+### Numeric Drivers
+
+The fun doesn’t end there — there’s one more capability where This Segment can let you dynamically match on driver values, allowing you to use drivers to look up values, based on values of _another_ driver — similar to a VLOOKUP(), but more reliable since it’s based on dimensions, and an errant paste won’t break your model.
+
+Let’s explore an example where you want to charge a different unit price to different customers, based on a set of usage tier thresholds.
+
+Imagine you have usage tiers that look like this, and you’re trying to figure out how much to charge each customer.
+
+![images/databases/dynamic-filters-overview.png](/images/databases/dynamic-filters-overview.png)
+
+To perform this match, we can simply apply a formula that multiplies
+
+`each customers # transactions` \* `unit price for their usage tier` .
+
+We can use our filter operators and the _This Segment_ filter for driver values to achieve this as demonstrated below:
+
+<iframe width="560" height="315" src="https://documentation.runwaydev.com/videos/Dynamic-Driver-Value-Filters.mp4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+
+### Date Drivers
+
+A similar filter option is available to do dynamic filtering based on the value of a date-typed driver: This is useful for `VLOOKUP()` type functionality on dates, which is highly leveraged in many cohort / revenue builds.
+
+When filtering down a database using a date column, you will see an option for the filter value to be defined by a `<date driver value>`. Selecting this option lets you search for date drivers defined in your model. You have the option to use a dynamic selection via _This Segment_ to ensure that each segment uses a corresponding date driver to perform the filtering against the selected column.
+
+<iframe width="560" height="315" src="https://documentation.runwaydev.com/videos/Dynamic-Date-Filters-Segment.mp4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />

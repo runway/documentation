@@ -3,7 +3,7 @@ title: "Formulas in databases"
 description: "Driver formulas can be managed in databases at scale, to make dimensional modeling more powerful."
 ---
 
-# **Default Formulas**
+## Default Formulas
 
 - Setting defaults for formulas over large chunks of your model can save a lot of time — when you have several drivers you expect to model similarly, or when you want new segments added to a database to get the same formula, you can use default formulas for drivers.
 - In databases, the entire driver column can have a default formula, and any individual driver within the column can override the inherited default. To revert back to the default, just clear / backspace over the overridden formula.
@@ -11,7 +11,7 @@ description: "Driver formulas can be managed in databases at scale, to make dime
 
 <iframe width="560" height="315" src="https://documentation.runwaydev.com/videos/Default-Formulas-Demo.mp4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
 
-# Formula inheritance
+## Formula inheritance
 
 - In order to make modeling at scale simple, as well as easy to override when needed, Runway applies smart defaults to fill in missing formulas when needed.
 - In the formula editor, hovering will indicate where the formula is being inherited from.
@@ -39,7 +39,7 @@ For example, if only the forecast formula on the column is set, all drivers in t
   ![images/databases/database-timeseries.png](/images/databases/database-timeseries.png)
 </Tip>
 
-## **Dynamic Defaults for consistent modeling logic**
+## Dynamic Defaults for consistent modeling logic
 
 <iframe width="560" height="315" src="https://documentation.runwaydev.com/videos/This-Segment-Defaults-Simple.mp4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
 
@@ -47,7 +47,7 @@ In this example, we populate a default formula that uses the _This Segment_ util
 
 ![images/databases/formulas-in-databases.png](/images/databases/formulas-in-databases.png)
 
-## **Dynamic Filters using dimension values**
+## Dynamic Filters using dimension values
 
 You may want to leverage a partial match on the dimensional segment - e.g. picking off just one attribute from the row. Luckily, _This Segment_ allows for matching across just a subset of dimensions in the segment or all of them, within the filter menu.
 
@@ -64,7 +64,7 @@ In the filter menu:
 
 ![images/databases/partial-this-segment-filter.png](/images/databases/partial-this-segment-filter.png)
 
-## **Dynamic Filters using driver values**
+## Dynamic Filters using driver values
 
 ### Numeric Drivers
 

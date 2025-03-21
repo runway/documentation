@@ -18,3 +18,9 @@
 .dark #search-bar-entry {
   background-color: rgb(var(--background-dark));
 }
+#sidebar ul li svg:not(.lucide):first-child {
+  background-color: rgba(var(--gray-500) / 0.88);
+}
+.dark #sidebar ul li svg:not(.lucide):first-child {
+  background-color: rgba(var(--gray-500) / 0.75);
+}

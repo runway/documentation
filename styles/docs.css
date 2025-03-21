@@ -29,6 +29,17 @@
   text-align: left;
 }
 .prose .rounded-t-xl {
-  /* --rounded-xl: var(--rounded-2xl); */
   border-radius: 0;
+}
+.prose :where(a):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+  --primary-light: var(--primary-dark);
+}
+#pagination {
+  background-color: rgb(var(--gray-50));
+}
+.dark #pagination {
+  background-color: rgba(var(--gray-800) / 0.5);
+}
+#footer {
+  display: none;
 }

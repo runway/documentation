@@ -33,3 +33,45 @@ Runway offers two ways to integrate with **HubSpot**:
      ![images/integrations/hubspot/hubspot-property-internal-name.png](/images/integrations/hubspot/hubspot-property-internal-name.png)
 
 ## **Quick-start connection via Workato**
+
+ 1. Open your [Runway instance](https://app.runway.com/).
+ 2. In the left sidebar, hover over **Integrations** and click the **\+** button to open the Integrations Directory.
+ 3. Under the **Other** section, search for **HubSpot** and click **\+ Set up** on the option listed in **Others** section.
+
+    ![images/integrations/hubspot/fivetran-workato.png](/images/integrations/hubspot/fivetran-workato.png)
+ 4. You'll be redirected to HubSpot to authorize the connection and complete authentication.
+ 5. Once authorized, you'll return to Runway. Click **\+** next to integration name in the sidebar to create a new query.
+
+    ![images/integrations/hubspot/create-query.png](/images/integrations/hubspot/create-query.png)
+ 6. You can then change the default query name, **New query, **to something more descriptive. To do this, click the **three-dots button** next to the query name in the sidebar and select **Rename query**.
+
+    ![images/integrations/hubspot/rename-query.png](/images/integrations/hubspot/rename-query.png)
+ 7. In the query form, you can select the **HubSpot object** you want to work with (**Deals** is the most commonly used), and in the **properties** you want to pull for that object.
+
+    ![images/integrations/hubspot/hubspot-workato-form.png](/images/integrations/hubspot/hubspot-workato-form.png)
+ 8. Note that for **properties**, you must use their internal names, which differ from the display names shown in the HubSpot interface.
+    - To find the list of available properties, in **HubSpot**, navigate to **Settings (⚙️) → Data Management → Properties** and select the matching object (e.g., Deals).
+    - In this list, search for the property you wish to add to runway, for example, deal name.
+
+      ![/images/integrations/hubspot/hubspot-property.png\+\_existingInIndexedDbMintlify](/images/integrations/hubspot/hubspot-property.png)
+    - Click into the property and find the internal name.
+
+      ![/images/integrations/hubspot/hubspot-property-internal-name.png\+\_existingInIndexedDbMintlify](/images/integrations/hubspot/hubspot-property-internal-name.png)
+ 9. Type that internal name into the Runway properties field and press Enter.
+10. Repeat for all desired fields for that object.
+11. Once completed, click Run query and validate the data looks correct.
+12. You’re done integrating\\\\! [Go ahead and configure a new database.](https://www.notion.so/Databases-basics-1ae691424a288035817ae31f2a0729b5?pvs=21)
+
+## HubSpot FAQs
+
+<Accordion title="How do I write SQL in Runway?">
+  See this [help doc](https://www.notion.so/SQL-in-Runway-1b6691424a288012b52cd77202b0bcbe?pvs=21).
+</Accordion>
+
+<Accordion title="What objects does Runway have access to?">
+  Our Fivetran integration has access to all standard HubSpot objects and fields. HubSpot data can be complex, and writing queries can sometimes be challenging. If you need help pulling specific data, reach out to our team—we’re happy to assist.
+</Accordion>
+
+<Accordion title="How does a deal land in a time series?">
+  It’s fully customizable—you can map each deal based on dates such as creation date, close date, or contract start date. You can also use Runway’s built-in functionality to pull values forward into future periods. This is a common use case, so feel free to contact our team for guidance.
+</Accordion>

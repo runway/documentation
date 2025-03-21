@@ -14,6 +14,14 @@ There are two ways to check if your integration is powered by Fivetran:
 2. **After installation** – If already installed, you can check by looking at the **URL** in the query editor.
    ![images/integrations/fievtran-url.png](/images/integrations/fievtran-url.png)
 
+## **Adding a new query**
+
+For integrations that support SQL queries, you can click **\+** next to integration name in the sidebar to create a new query.
+![/images/integrations/hubspot/create-query.png\+\_existingInIndexedDbMintlify](/images/integrations/hubspot/create-query.png)
+
+You can then change the default query name, **New query,** to something more descriptive. To do this, click the **three-dots button** next to the query name in the sidebar and select **Rename query**.
+![/images/integrations/hubspot/rename-query.png\+\_existingInIndexedDbMintlify](/images/integrations/hubspot/rename-query.png)
+
 ## **Writing SQL for data warehouses**
 
 When querying **data warehouses** (non-Fivetran integrations), you must use the SQL syntax of the provider:
@@ -61,10 +69,10 @@ This command will list **all schemas and tables** available for querying. If you
 
 - **Structure your queries to return a long dataset**—a list of **transactions, accounts, or metrics** with a **daily or monthly amount**. This format ensures flexibility for modeling. Example:
 
-  | dimension_1 | dimension\_..x| date_1     | date\_..x  | value_1 | value\_..x|
-  | ----------- | ------------- | ---------- | ---------- | ------- | --------- |
-  | Account 1   | Asset         | 01/01/2025 | 03/01/2025 | 10      | 20        |
-  | Account 2   | Liability     | 01/02/2025 | 04/01/2025 | 30      | 40        |
+  | dimension_1 | dimension\_..x | date_1     | date\_..x  | value_1 | value\_..x |
+  | ----------- | -------------- | ---------- | ---------- | ------- | ---------- |
+  | Account 1   | Asset          | 01/01/2025 | 03/01/2025 | 10      | 20         |
+  | Account 2   | Liability      | 01/02/2025 | 04/01/2025 | 30      | 40         |
 - **Include as all dimensions, dates, or values needed**—not all of them need to be used in the final database configuration.
 - **Aggregate/roll up data to the minimum level required** for modeling and drill-downs. For example, if pulling general ledger data, and only monthly spend per account is needed, **write your query to pre-aggregate** the data:
   - Avoid this

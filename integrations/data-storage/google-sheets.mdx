@@ -60,11 +60,16 @@ Before importing your Google Sheet into Runway, ensure it's clean and correctly 
 2. Click **Sign in with Google** and leave the other settings as default.
 
    ![images/integrations/sheets/sheets-spreadsheet-setup.png](/images/integrations/sheets/sheets-spreadsheet-setup.png)
-3. Once redirected back into **Runway**, click **\+** at the top to create a new query. Rename **New Query** to something descriptive.
-4. In **Google Sheets**, navigate to the tab you want to import into Runway. Add `#runway` to the tab name to ensure Runway recognizes it.
+3. Once redirected back into **Runway**, click **\+** next to integration name in the sidebar to create a new query.
+
+   ![/images/integrations/hubspot/create-query.png\+\_existingInIndexedDbMintlify](/images/integrations/hubspot/create-query.png)
+4. You can then change the default query name, **New query, **to something more descriptive. To do this, click the **three-dots button** next to the query name in the sidebar and select **Rename query**.
+
+   ![/images/integrations/hubspot/rename-query.png\+\_existingInIndexedDbMintlify](/images/integrations/hubspot/rename-query.png)
+5. In **Google Sheets**, navigate to the tab you want to import into Runway. Add `#runway` to the tab name to ensure Runway recognizes it.
 
    ![images/integrations/sheets/sheets-spreadsheet-tab.png](/images/integrations/sheets/sheets-spreadsheet-tab.png)
-5. Copy the **Spreadsheet ID** from the URL:
+6. Copy the **Spreadsheet ID** from the URL:
    1. Example URL:
 
       ```bash
@@ -77,13 +82,13 @@ Before importing your Google Sheet into Runway, ensure it's clean and correctly 
       1gk-Y0tJ64TDCak_z2ELqKHmR9rmqY0f5XR27H-ksxKY
       
       ```
-6. Paste the **Spreadsheet ID** into Runway and click **Run Query**.
+7. Paste the **Spreadsheet ID** into Runway and click **Run Query**.
 
    ![images/integrations/sheets/sheets-spreadsheet-id.png](/images/integrations/sheets/sheets-spreadsheet-id.png)
-7. Verify the data preview:
+8. Verify the data preview:
    - If you see a column named **month** and a column named **value**, Runway successfully converted your **wide data** into a **long data set**.
    - If you see separate columns for each month, there may be formatting issues in your Google Sheet. Refer to the **video walkthrough** at the top of this section for troubleshooting.
-8. You’re all set! [Now configure a new database.](https://docs.runway.com/concepts/databases/databases-basics#configuring-a-database)
+9. You’re all set\\! [Now configure a new database.](https://docs.runway.com/concepts/databases/databases-basics#configuring-a-database)
 
 ## **Connecting a Google Sheet with long data**
 
@@ -118,7 +123,7 @@ Before importing your Google Sheet into Runway, ensure it's clean and correctly 
 14. Copy the **suggested commented query**, paste it below in the SQL editor, and click **Run query**.
 
     ![images/integrations/sheets/sheets-fivetran-commented-query.gif](/images/integrations/sheets/sheets-fivetran-commented-query.gif)
-15. You’re done! [Now configure a new database.](https://docs.runway.com/concepts/databases/databases-basics#configuring-a-database)
+15. You’re done\\! [Now configure a new database.](https://docs.runway.com/concepts/databases/databases-basics#configuring-a-database)
 
 ## Google sheets FAQs
 

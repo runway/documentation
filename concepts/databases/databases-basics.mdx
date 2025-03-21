@@ -35,13 +35,13 @@ The dimensions you use to segment your data appear alongside the driver name acr
 
 To create a new column, click the **\+** button at the far right of the database. You’ll then see the following options:
 
-1. **Number driver** – Use this for calculated values. Drivers store time-series data, meaning the values _can_ vary from month to month, but they don’t have to. Learn more about number drivers here.
-2. **Date driver** – Works like a number driver but stores date values instead. Learn more about date drivers here.
+1. **Number driver** – Use this for calculated values. Drivers store time-series data, meaning the values _can_ vary from month to month, but they don’t have to. Learn more about number drivers [here](https://docs.runway.com/concepts/drivers/drivers-basics#driver-types).
+2. **Date driver** – Works like a number driver but stores date values instead. Learn more about date drivers [here](https://docs.runway.com/concepts/drivers/drivers-basics#driver-types).
 3. **Dimension** – A predefined list of values to help categorize your data. Unlike drivers, dimensions do not change over time. For example, in a GL database, dimensions could include **Vendor, Location, or Department**. Learn more about dimensions here.
 4. **Lookup** – Automatically populate a dimension based on data from another database, similar to **VLOOKUP()** in spreadsheets. Learn more about lookup here.
 
 <Note>
-  For HRIS databases, the process of adding a column is different. Please follow the steps here.
+  For HRIS databases, the process of adding a column is different. Please follow the steps [here](https://docs.runway.com/concepts/databases/hris-databases).
 </Note>
 
 ![](/images/databases-new-column@2x.png)
@@ -62,8 +62,8 @@ By default, each row will display the **forecast formula, actual formula, and ti
 
 You can also use keyboard shortcuts:
 
-- **\+  \+ **  to hide or show the **Actual Formula** column.
-- **\+  \+ **  to hide or show the **Forecast Formula** column.
+- \*\*\+  \+ \*\*  to hide or show the **Actual Formula** column.
+- \*\*\+  \+ \*\*  to hide or show the **Forecast Formula** column.
 
 Alternatively, click the **Customize** button in the top-right corner of the database, go to **Properties,** and show or hide formula columns by clicking the **eye icon**.![](/images/databases-properties.png)
 
@@ -95,7 +95,7 @@ After adding the row, set values for the **dimensions** used in the **Segment by
 - This means the row is **linked** to other rows sharing the same segmentation. Any changes made to one of these rows will automatically update the others.
 
 <Note>
-  For HRIS databases, the process of adding a row is different. Please follow the steps here.
+  For HRIS databases, the process of adding a row is different. Please follow the steps [here](https://docs.runway.com/concepts/drivers/drivers-basics#driver-types).
 </Note>
 
 ## Deleting a column
@@ -108,7 +108,7 @@ To delete a column from a database, the process depends on how the column was ad
 
 ## Deleting a row
 
-To delete a row from a database, **right-click** on the row and select **Delete row.** Alternatively, press **\+ ** .
+To delete a row from a database, **right-click** on the row and select **Delete row.** Alternatively, press \*\*\+ \*\* .
 
 <Warning>
   Deleting a row removes it from the database, but it **does not delete the drivers** connected to that row. Any formulas relying on those drivers will remain unchanged, and the drivers will still be accounted for. These drivers will appear in your **Unlisted drivers** page.

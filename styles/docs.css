@@ -31,8 +31,6 @@
 .codeblock-dark code {
   padding: 0;
   border: none;
-}
-.dark .codeblock-dark code {
   color: inherit;
 }
 .prose th {

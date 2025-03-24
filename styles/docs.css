@@ -26,14 +26,11 @@
   padding: 0.25em 0.4em 0.25em 0.5em;
 }
 .codeblock-dark {
-  background-color: rgb(var(--gray-100)) !important;
+  background-color: rgb(var(--gray-800)) !important;
 }
 .codeblock-dark code {
   padding: 0;
   border: none;
-}
-.dark .codeblock-dark {
-  background-color: rgb(var(--gray-800)) !important;
 }
 .dark .codeblock-dark code {
   color: inherit;

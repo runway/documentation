@@ -1,5 +1,145 @@
 ---
-title: 'Multi-entity integrations (wip)'
-description: 'Description of your new file.'
+title: "Multi-entity integrations"
+description: "Runway supports multi-entity integrations through our dimensional modeling approach. The most common use case is consolidating financials across entities via your General Ledger integration—for example, connecting multiple QuickBooks Online or Xero accounts."
 ---
 
+<Check>
+  NetSuite already has robust support for multi-entities, typically this works out of the box with our Income Statement & Balance Sheet templates as the Subsidiary is already included.
+</Check>
+
+## How it works in Runway
+
+Runway allows you to connect **multiple instances** of most integrations—including duplicate QuickBooks or Xero accounts. Once the connections are established, our CX team will work with you to label each entity appropriately and **combine the data into a single database** on your behalf.
+
+<Warning>
+  Runway currently supports connecting to only one HRIS account at a time. For example, if you have two Rippling accounts, we can connect to just one of them per Runway account. If this limitation affects you, please contact us directly.
+</Warning>
+
+## The SQL behind multi-entity
+
+Our team is happy to handle this setup for you—especially if you’re not comfortable with SQL. But if you’re curious how it works or want to do it yourself, read on.
+
+In this example, we’ll walk through combining multiple **QuickBooks Online** entities using SQL. The same approach applies for **Xero**.
+
+1. Follow the [Fivetran setup guide for QuickBooks](https://docs.runway.com/integrations/accounting/quickbooks-online) and install the standard **QuickBooks Template** to set up your first entity.
+2. Install the integration for each additional entity, but don't apply the template again. When prompted for a schema name, use a unique identifier for each entity (e.g., `quickbooks_us`, `quickbooks_ltd`).
+   ![Reinstall Pn](/images/integrations/multi-entity/reinstall.png)
+3. After completing the setup, locate the **Income Statement Data** query from the template installed in the first step.
+   ![Locate Query Pn](/images/integrations/multi-entity/locate-query.png)
+4. We will need to edit this query to combine each Quickbooks Online data source and insert the matching subsidiary as a new column. Here’s an example code snippet of how to accomplish this. The key pieces to note are:
+   - You're writing **one SELECT per schema**.
+   - You're tagging each row with a **subsidiary name**.
+   - You’re combining them with **UNION ALL**.
+
+   ```sql
+   WITH main_query AS (
+     SELECT
+       TRANSACTION_DATE AS "Transaction Date",
+       ADJUSTED_CONVERTED_AMOUNT AS "Income Statement Amount",
+   
+       -- Account Info
+       COALESCE(gl.account_number || ' ', '') || COALESCE(ACCOUNT_NAME, 'No Account Name') AS "GL Account Name",
+       gl.ACCOUNT_NUMBER AS "GL Account Number",
+       ACCOUNT_NAME AS "GL Account Name (no number)",
+       ACCOUNT_TYPE AS "Account Type",
+       ACCOUNT_SUB_TYPE AS "Account Subtype",
+       ACCOUNT_CLASS AS "GL Category",
+       FINANCIAL_STATEMENT_HELPER AS "Financial Statement Helper",
+   
+       -- Drill-in Detail 
+       cu.display_name AS "Customer",
+       v.display_name AS "Vendor",  
+       cl.name AS "Class",
+       d.name AS "Department",
+   
+       -- Parent Account
+       PARENT_ACCOUNT_NUMBER AS "Parent GL Account Number",
+       COALESCE(parent_account_number || ' ', '') || COALESCE(parent_ACCOUNT_NAME, 'No Account Name') AS "Parent GL Account Name",
+       PARENT_ACCOUNT_NAME AS "Parent GL Name (no number)",
+   
+       'Main' AS Subsidiary
+   
+     FROM quickbooks_quickbooks.quickbooks__general_ledger gl
+     LEFT JOIN quickbooks.customer cu ON gl.customer_id = cu.id
+     LEFT JOIN quickbooks.vendor v ON gl.vendor_id = v.id
+     LEFT JOIN quickbooks.class cl ON gl.class_id = cl.id
+     LEFT JOIN quickbooks.department d ON gl.department_id = d.id
+   
+     WHERE transaction_date > '2022-12-31'
+       AND financial_statement_helper LIKE '%income_statement%'
+   ),
+   llc_query AS (
+     SELECT
+       TRANSACTION_DATE AS "Transaction Date",
+       ADJUSTED_CONVERTED_AMOUNT AS "Income Statement Amount",
+   
+       -- Account Info
+       COALESCE(gl.account_number || ' ', '') || COALESCE(ACCOUNT_NAME, 'No Account Name') AS "GL Account Name",
+       gl.ACCOUNT_NUMBER AS "GL Account Number",
+       ACCOUNT_NAME AS "GL Account Name (no number)",
+       ACCOUNT_TYPE AS "Account Type",
+       ACCOUNT_SUB_TYPE AS "Account Subtype",
+       ACCOUNT_CLASS AS "GL Category",
+       FINANCIAL_STATEMENT_HELPER AS "Financial Statement Helper",
+   
+       -- Drill-in Detail 
+       cu.display_name AS "Customer",
+       v.display_name AS "Vendor",  
+       cl.name AS "Class",
+       d.name AS "Department",
+   
+       -- Parent Account
+       PARENT_ACCOUNT_NUMBER AS "Parent GL Account Number",
+       COALESCE(parent_account_number || ' ', '') || COALESCE(parent_ACCOUNT_NAME, 'No Account Name') AS "Parent GL Account Name",
+       PARENT_ACCOUNT_NAME AS "Parent GL Name (no number)",
+   
+       'LLC' AS Subsidiary
+   
+     FROM quickbooks_llc_quickbooks.quickbooks__general_ledger gl
+     LEFT JOIN quickbooks_llc.customer cu ON gl.customer_id = cu.id
+     LEFT JOIN quickbooks_llc.vendor v ON gl.vendor_id = v.id
+     LEFT JOIN quickbooks_llc.class cl ON gl.class_id = cl.id
+     LEFT JOIN quickbooks_llc.department d ON gl.department_id = d.id
+   
+     WHERE transaction_date > '2022-12-31'
+       AND financial_statement_helper LIKE '%income_statement%'
+   )
+   
+   SELECT * FROM main_query
+   UNION ALL
+   SELECT * FROM llc_query;
+   ```
+5. Paste your updated SQL into Runway’s SQL editor and click **Run query** to make sure everything runs as expected.
+   ![Run Query Pn](/images/integrations/run-query.png)
+6. The final step is to add the new **Subsidiary** field to the shaped database. Navigate to the database connected to your Income Statement (labeled **IS data** if you used the template), click Edit, select the dropdown next to **Segment by,** and check **Subsidiary** \> **Confirm**.
+   ![Consolidate Db Pn](/images/integrations/multi-entity/consolidate-db.png)
+7. That's it! You can apply the same process to consolidate your Balance Sheet and Cash Flow databases.
+
+## Intercompany eliminations
+
+When you combine multiple entities into a single dataset, what you’re really creating is a **combined view**—not a fully consolidated one. To build a true **consolidated P&L**, you’ll often want to **exclude intercompany eliminations** so those transactions don’t artificially inflate your totals.
+
+The simplest way to handle this in Runway is by:
+
+1. **Creating a lookup** table that maps each GL account to a new dimension—something like `Elimination Type` or `Is Intercompany`.
+2. In that dimension, flag whether each account should be treated as an intercompany elimination.
+3. When building your **consolidated P&L**, just add a filter to exclude any rows where the account is flagged as an intercompany elimination.
+4. When building **subsidiary-level P&Ls**, you can ignore that flag entirely—this gives you the flexibility to report both combined and entity-level.
+
+## Multi-entity FAQ
+
+<Accordion title="Can I consolidate entities from different accounting systems (for example, Google Sheets, QuickBooks Online, and Xero)?">
+  Yes. You can connect each system to Runway using our **Fivetran integration**, then follow the SQL pattern outlined above to consolidate the data.
+
+  Keep in mind: these systems often use **different table names, column names, and schemas**. You’ll need to carefully map the equivalent fields from each source into a common structure. This requires a bit of SQL proficiency.
+
+  **Need help?** Our CX team is happy to support you through the process.
+</Accordion>
+
+<Accordion title="I have a query with multiple entities combined. How do I configure a database to only include data from one entity?">
+  1. Open the database → click **Edit**.
+  2. Add a filter on the **entity/subsidiary** column.
+  3. To filter for a single entity, just enter its exact name.
+  4. To include **multiple entities**, use **comma-separated values without spaces**, like: `business1,business2,business3`.
+  ![Shaping Filter Pn](/images/integrations/multi-entity/shaping-filter.png)
+</Accordion>

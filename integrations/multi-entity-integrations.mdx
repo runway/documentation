@@ -23,10 +23,8 @@ In this example, we’ll walk through combining multiple **QuickBooks Online** e
 
 1. Follow the [Fivetran setup guide for QuickBooks](https://docs.runway.com/integrations/accounting/quickbooks-online) and install the standard **QuickBooks Template** to set up your first entity.
 2. Install the integration for each additional entity, but don't apply the template again. When prompted for a schema name, use a unique identifier for each entity (e.g., `quickbooks_us`, `quickbooks_ltd`).
-
    ![Reinstall Pn](/images/integrations/multi-entity/reinstall.png)
 3. After completing the setup, locate the **Income Statement Data** query from the template installed in the first step.
-
    ![Locate Query Pn](/images/integrations/multi-entity/locate-query.png)
 4. We will need to edit this query to combine each Quickbooks Online data source and insert the matching subsidiary as a new column. Here’s an example code snippet of how to accomplish this. The key pieces to note are:
    - You're writing **one SELECT per schema**.
@@ -112,12 +110,10 @@ In this example, we’ll walk through combining multiple **QuickBooks Online** e
    SELECT * FROM llc_query;
    ```
 5. Paste your updated SQL into Runway’s SQL editor and click **Run query** to make sure everything runs as expected.
-
    ![Run Query Pn](/images/integrations/run-query.png)
 6. The final step is to add the new **Subsidiary** field to the shaped database. Navigate to the database connected to your Income Statement (labeled **IS data** if you used the template), click Edit, select the dropdown next to **Segment by,** and check **Subsidiary** \> **Confirm**.
-
    ![Consolidate Db Pn](/images/integrations/multi-entity/consolidate-db.png)
-7. That's it\\! You can apply the same process to consolidate your Balance Sheet and Cash Flow databases.
+7. That's it! You can apply the same process to consolidate your Balance Sheet and Cash Flow databases.
 
 ## Intercompany eliminations
 
@@ -145,6 +141,5 @@ The simplest way to handle this in Runway is by:
   2. Add a filter on the **entity/subsidiary** column.
   3. To filter for a single entity, just enter its exact name.
   4. To include **multiple entities**, use **comma-separated values without spaces**, like: `business1,business2,business3`.
-
   ![Shaping Filter Pn](/images/integrations/multi-entity/shaping-filter.png)
 </Accordion>

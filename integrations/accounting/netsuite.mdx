@@ -49,31 +49,40 @@ When using the NetSuite **Data Import** integration template, the following fina
 
 **Income statement data**
 
-| Data name                           | Example      | Data type       | Availability                                           |
-| :---------------------------------- | :----------- | :-------------- | :----------------------------------------------------- |
-| Transaction Date                    | Mar 28, 2025 | _Date Driver_   | Via Template\ (used to group by \ Month in Timeseries) |
-| Income Statement Amount (converted) | 15,000       | _Number Driver_ | via Template                                           |
-| Account Name                        | 200 Sales    | _Dimension_     | via Template                                           |
-| Subsidiary                          | Acme         | _Dimension_     | via Template                                           |
-| Department                          | Sales        | _Dimension_     | via Template                                           |
-| Vendor Name                         | Microsoft    | _Dimension_     | via Template                                           |
-| Class Full Name                     | Revenue      | _Dimension_     | via Template                                           |
-| Account Type Name                   | Income       | _Dimension_     | via Template                                           |
-| Parent Account Name                 | Sales        | _Dimension_     | via Template                                           |
-| Account Number                      | 200          | _Dimension_     | Can be added                                           |
-| Account Name (no number)            | Sales        | _Dimension_     | Can be added                                           |
-| Vendor Category                     | Supplies     | _Dimension_     | Can be added                                           |
-| Customer                            | John Doe     | _Dimension_     | Can be added                                           |
-| Item ID                             | 123          | _Dimension_     | Can be added                                           |
-| Item Name                           | Hosting      | _Dimension_     | Can be added                                           |
-| Item Type Name                      | Service      | _Dimension_     | Can be added                                           |
-| Location Name                       | ABC          | _Dimension_     | Can be added                                           |
-| Location City                       | New York     | _Dimension_     | Can be added                                           |
-| Location Country                    | US           | _Dimension_     | Can be added                                           |
-| Currency Name                       | US Dollars   | _Dimension_     | Can be added                                           |
-| Currency Symbol                     | USD          | _Dimension_     | Can be added                                           |
+| Data name                           | Example      | Data type     | Availability                                             |
+| :---------------------------------- | :----------- | :------------ | :------------------------------------------------------- |
+| Transaction Date                    | Mar 28, 2025 | Date Driver   | Via Template (used to group by Month in Timeseries) |
+| Income Statement Amount (converted) | 15,000       | Number Driver | via Template                                             |
+| Account Name                        | 200 Sales    | Dimension     | via Template                                             |
+| Subsidiary                          | Acme         | Dimension     | via Template                                             |
+| Department                          | Sales        | Dimension     | via Template                                             |
+| Vendor Name                         | Microsoft    | Dimension     | via Template                                             |
+| Class Full Name                     | Revenue      | Dimension     | via Template                                             |
+| Account Type Name                   | Income       | Dimension     | via Template                                             |
+| Parent Account Name                 | Sales        | Dimension     | via Template                                             |
+| Account Number                      | 200          | Dimension     | Can be added                                             |
+| Account Name (no number)            | Sales        | Dimension     | Can be added                                             |
+| Vendor Category                     | Supplies     | Dimension     | Can be added                                             |
+| Customer                            | John Doe     | Dimension     | Can be added                                             |
+| Item ID                             | 123          | Dimension     | Can be added                                             |
+| Item Name                           | Hosting      | Dimension     | Can be added                                             |
+| Item Type Name                      | Service      | Dimension     | Can be added                                             |
+| Location Name                       | ABC          | Dimension     | Can be added                                             |
+| Location City                       | New York     | Dimension     | Can be added                                             |
+| Location Country                    | US           | Dimension     | Can be added                                             |
+| Currency Name                       | US Dollars   | Dimension     | Can be added                                             |
+| Currency Symbol                     | USD          | Dimension     | Can be added                                             |
 
 **Balance sheet data**
+
+| Data name        | Example               | Data type     | Availability                                           |
+| :--------------- | :-------------------- | :------------ | :----------------------------------------------------- |
+| Account Name     | 1001 - Chase Checking | Dimension     | via Template                                           |
+| Account Category | Asset                 | Dimension     | via Template                                           |
+| Account Type     | Bank                  | Dimension     | via Template                                           |
+| BS Amount        | 10,000                | Number Driver | via Template                                           |
+| Month            | Mar 28, 2025          | Date Driver   | via Template (used to group by Month in Timeseries) |
+| Subsidiary       | Acme Subsidiary       | Dimension     | Can be added                                           |
 
 <Check>
   The **NetSuite Data Import** integration template includes the **most commonly used financial data**, but you can add **additional supporting data** to your database configurations for more detail if needed.

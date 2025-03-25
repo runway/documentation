@@ -56,9 +56,4 @@
 #footer {
   display: none;
 }
-iframe {
-  width: 100%;
-  min-height: 600;
-  border: 0;
-  border-radius: var(--rounded-2xl);
-}
+

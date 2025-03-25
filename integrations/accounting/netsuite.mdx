@@ -1,5 +1,82 @@
 ---
-title: 'NetSuite (wip)'
-description: 'Description of your new file.'
+title: "NetSuite"
+description: "The NetSuite integration lets you automatically sync your financial data with Runway, eliminating manual data entry and ensuring your actuals stay up to date. With this connection, your financial models always reflect the latest numbers from NetSuite."
 ---
 
+Runway supports **three different ways** to integrate with NetSuite. This guide focuses on **Runway’s preferred and recommended method.**
+
+## Prerequisites
+
+Before getting started, make sure you have:
+
+1. A **NetSuite administrative account**
+2. The [**SuiteAnalytics Connect Service**](https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/book_N748613.html) enabled, with access to either the [**NetSuite.com**](http://NetSuite.com) or [**NetSuite2.com**](http://NetSuite2.com) data source
+
+## Setting up NetSuite via Fivetran
+
+![Netsuite Fivetran Template Pn](/images/integrations/netsuite-fivetran-template.png)
+
+### Connecting the integration
+
+1. Open your [Runway instance](https://app.runway.com/).
+2. In the left sidebar, hover over **Integrations** and click the **\+** button to open the **Integrations Directory**.
+3. Search for **NetSuite** and click **\+ Set up** under the **Fivetran** option.
+4. For the **Schema Name**, leave it as `netsuite_suiteanalytics`.
+
+   ![Netsuite Fivetran Schema Pn](/images/integrations/netsuite-fivetran-schema.png)
+5. Click **Authorize** to be redirected to Fivetran to complete the connection.
+6. Follow Fivetran’s setup instructions to finish configuring the integration.
+7. Click **Save & Test** to begin syncing your data. You’ll be redirected back to Runway.
+
+### Syncing your data into Runway
+
+Runway provides **integration templates** to make it easy to bring in **Income Statement** and **Balance Sheet** data from NetSuite.
+
+1. In the left sidebar, go to **Templates**.
+2. Search for **NetSuite Data Import**.
+3. Click **\+ Add to Runway** on the template card.
+4. This will automatically:
+   - Add prebuilt **Income Statement** and **Balance Sheet** queries to your NetSuite integration.
+   - Create the following databases in Runway:
+     - **IS Data** (Income Statement)
+     - **BS Data** (Balance Sheet)
+
+![Netsuite Fivetran Template Pn](/images/integrations/netsuite-fivetran-template.png)
+
+## Supported data from NetSuite via Fivetran
+
+When using the NetSuite **Data Import** integration template, the following financial data becomes available in Runway:
+
+**Income statement data**
+
+**Balance sheet data**
+
+<Check>
+  The **NetSuite Data Import** integration template includes the **most commonly used financial data**, but you can add **additional supporting data** to your database configurations for more detail if needed.
+</Check>
+
+## NetSuite FAQs
+
+<Accordion title="Can you bring in custom columns, fields or lists from NetSuite?">
+  Yes, absolutely. If you’re comfortable writing SQL, refer to our [SQL in Runway guide](https://docs.runway.com/integrations/writing-sql) for instructions. If you’d prefer help from our team, feel free to reach out to CX. When you do, it’s helpful to come prepared with:
+
+  - The name of the field(s) you'd like to pull.
+  - Example data values from those fields.
+  - What the field is associated with (e.g. Customer, Vendor, Transaction, or Transaction Line).
+  - Bonus: A screenshot from NetSuite’s **Record Explorer** showing how the field is defined.
+
+    ![Netsuite Record Explorer Pn](/images/integrations/netsuite-record-explorer.png)
+</Accordion>
+
+<Accordion title="Can you bring in non-finance related data from NetSuite?">
+  Yes. You’re not limited to just financial data—Runway can pull in operational, sales, or other business-critical data from NetSuite as well. To explore what’s available, check out:
+
+  - Our [SQL in Runway guide](https://docs.runway.com/integrations/writing-sql)
+  - [This ERD](https://fivetran.com/docs/connectors/applications/netsuite-suiteanalytics#schemainformation) from our integration partner, Fivetran, which outlines the full set of accessible tables and fields
+</Accordion>
+
+<Accordion title="Is SuiteAnalytics Connect required?">
+  Yes. SuiteAnalytics Connect is essential for enabling a reliable integration with NetSuite. Without it, Runway cannot access your NetSuite data.
+
+  Most customers already have this add-on enabled prior to starting with Runway. If you’re unsure whether it’s included in your plan, or need to enable it, reach out to NetSuite for details on access and pricing.
+</Accordion>

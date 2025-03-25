@@ -1,5 +1,48 @@
 ---
-title: 'Database block (wip)'
-description: 'Description of your new file.'
+title: "Databases block"
+description: "Another widely used block type in Runway is the database block. Databases are where most of your modeling and data lives in Runway. A database block lets you bring those databases—or specific filtered slices of them—into pages, so you can layer in context from across your model for clearer storytelling and easier collaboration."
 ---
 
+In this article, we’ll explore how to leverage **database blocks** in a page—so you can bring the right slice of data into view, add context, and share it clearly with your team.
+
+## Adding a database block to a page
+
+1. Type **/** to open the block menu.
+2. Select **Database table**.
+3. Search for and select the database you want to surface.
+
+This adds a view of the source database to your page. Keep reading to learn how to customize what’s shown.
+
+## Customizing the block to fit the page’s purpose
+
+In most cases, you won’t want to show the entire database on a page—just a relevant slice of it. Runway gives you several tools to tailor the view:
+
+- **Filter** to specify which rows to show — [learn more in the dedicated article](https://docs.runway.com/concepts/databases/filtering-sorting-grouping#filtering).
+- **Sort** to control the row order — [learn more in the dedicated article](https://docs.runway.com/concepts/databases/filtering-sorting-grouping#sorting).
+- **Group** rows for better readability — [learn more in the dedicated article](https://docs.runway.com/concepts/databases/filtering-sorting-grouping#group-by).
+- **Show or hide columns** to focus on what matters — [learn more in the dedicated article](https://docs.runway.com/concepts/databases/databases-basics#show-%26-hide-columns).
+
+<Warning>
+  Destructive actions—like fully deleting (not filtering or hiding) a row or column—will affect the **source database** and **every other block** where that database is surfaced within the same scenario.
+</Warning>
+
+## Manually added rows from your team to a database block
+
+When you share a page with a **database block**, you might expect teammates to manually add new rows—whether that’s planned headcount, vendors, or other entries.
+
+Just note: any rows added from the block are **not limited to that block**. They are saved to the **source database** and will show up in **any other database block** where filters match the new row.
+
+You can read more about manually adding rows [here](https://docs.runway.com/concepts/databases/databases-basics#adding-a-row).
+
+## Revealing anonymized data
+
+When sharing database blocks, one of the most important data permissions to understand is [**data anonymization**](https://docs.runway.com/guides/sharing/data-anonymization). If anonymization is enabled for a dimensional driver column, any user without an admin role will see redacted values for that driver **across all of Runway**.
+
+In some cases, though, you may want to grant access to a **subset of anonymized data**—a common example being headcount planning, where department leads should be able to see salary data for their direct reports.
+
+To support this, you can **customize a specific database block on a page** to reveal hidden data. When this option is enabled:
+
+- The anonymized values are shown in that block.
+- Filters and properties on the block are locked, preventing further changes that could unintentionally expose sensitive information.
+
+![Databases Reveal Hidden Data Pn](/images/pages/databases-reveal-hidden-data.png)

@@ -58,6 +58,7 @@
 }
 iframe {
   width: 100%;
+  min-height: 350;
   border: 0;
   border-radius: var(--rounded-2xl);
 }

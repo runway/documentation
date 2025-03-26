@@ -1,12 +1,18 @@
 .callout {
   border-radius: var(--rounded-2xl);
 }
-[data-rmiz] img {
+[data-rmiz] img,
+.doc-video {
   border-radius: var(--rounded-2xl);
   border: solid 1px rgb(var(--gray-200));
 }
-.dark [data-rmiz] img {
+.dark [data-rmiz] img,
+.dark .doc-video {
   border: solid 1px rgb(var(--gray-600));
+}
+.doc-video {
+  width: 100%;
+  height: auto;
 }
 .prose li::marker {
   color: rgb(var(--gray-500));
@@ -56,4 +62,3 @@
 #footer {
   display: none;
 }
-

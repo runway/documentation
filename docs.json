@@ -117,7 +117,11 @@
         "pages": [
           {
             "group": "Modeling workflows",
-            "pages": ["guides/modeling/lookups"]
+            "pages": [
+              "guides/modeling/lookups",
+              "guides/modeling/propagating-sparse-data",
+              "guides/modeling/cohorts"
+            ]
           },
           {
             "group": "Reporting workflows",

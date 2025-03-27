@@ -1,4 +1,56 @@
 ---
 title: "Propagating sparse data"
-description: "Description of your new file."
+description: "Not all systems store data as time series. But in Runway, your model lives over time. So when source data is sparse—reported only once or sporadically—Runway gives you a way to pull it forward."
 ---
+
+## Why would I need to pull forward sparse data?
+
+Many tools outside of finance don’t track data monthly, and often omit months where nothing changed. For example:
+
+- A CRM deal might only have a single timestamp for when it was created or closed.
+- A user might have a signup date, but no updates after that.
+- A contract might show up only in the month it was signed.
+
+But in your model, you likely care about these things **across many months**, not just the one they happened in:
+
+- Just because a deal was created in January doesn’t mean its ACV is $0 in March.
+- A user who signed up in April probably still counts as a user in June.
+- A contract with $12k ACV doesn’t just count for one month—it gets recognized over the year.
+
+This is especially important when you want to:
+
+- Spread a value over time (e.g. revenue recognition from contract value).
+- Apply **cohort logic**, growth or decay curves based on a starting point.
+
+![Explaining Sparse Pn](/images/propagating-data/explaining-sparse.png)
+
+## How does it work?
+
+### Integrations data
+
+When configuring an integration-powered database, you’ll see a button for **Most recent value** on the right-hand side. Turn this on if you want the value to **persist** across future months where the source data might be missing.
+
+- Use the **data preview** to check how your source reports values.
+- Once you enable this setting, Runway will **automatically apply the most recent value time range** to any drivers based on this data.
+- You can also manually adjust the **time range** on formula pills after your database is live.
+
+<Info>
+  This only applies when the value is coming back as null. If the value is explicitly 0, that 0 will remain.
+</Info>
+
+![Propagation In Config Pn](/images/propagating-data/propagation-in-config.png)
+
+### **General formulas**
+
+Even outside of integrations, the **Most recent value** option is also available when writing formulas.
+
+- In any driver formula, open the filter menu for the time range, and select **Most recent value**.
+- This will pull the last known **non-null** value forward into future months.
+
+![Propagation In Formulas Pn](/images/propagating-data/propagation-in-formulas.png)
+
+### Example
+
+Here are some more examples so you can see how **Most recent value** interacts with dates, zero values, and null values.
+
+![Propagation Example Pn](/images/propagating-data/propagation-example.png)

@@ -117,6 +117,7 @@
         "pages": [
           {
             "group": "Modeling workflows",
+            "icon": "calculator",
             "pages": [
               "guides/modeling/lookups",
               "guides/modeling/propagating-sparse-data",
@@ -126,10 +127,12 @@
           },
           {
             "group": "Reporting workflows",
+            "icon": "file-chart-column",
             "pages": ["guides/reporting/bva"]
           },
           {
             "group": "Sharing workflow",
+            "icon": "lock",
             "pages": ["guides/sharing/data-anonymization"]
           }
         ]

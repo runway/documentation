@@ -1,4 +1,31 @@
 ---
 title: "Duplicating, removing & deleting (wip)"
-description: "Description of your new file."
 ---
+
+## Duplicating drivers
+
+Duplicating a driver is a fast way to create a new, **independent** driver with the same formulas, segments, and values as the original.
+
+- Use the shortcut: `⌘ / Ctrl` \+ `D`
+- The new driver will have “Copy” appended to the name.
+- It’s completely separate from the original—**no link or dependency** remains.
+- Any **segments** from the original driver are also copied over to the new one.
+
+<Warning>
+  If you find yourself duplicating drivers often and swapping out logic, this might be a sign your use case is a good fit for **dimensional modeling in databases**, as this is much more scalable.
+</Warning>
+
+## Removing vs. deleting drivers
+
+You have two options when you no longer need a driver in the table you’re working in:
+
+- **Remove from block** _(shortcut: ⌫)_ — Removes the driver only from the current view. The driver will still exist in other tables where it’s used, and any formula references will remain intact. This is not a destructive action and will not impact your model.
+- **Delete** _(shortcut: ⇧_ \+ _⌫)_ — Removes the driver from the entire model and all tables it appears in. Any formulas referencing this driver will break. This is a destructive action and applies to the current scenario you’re working in.
+
+  ![Driver Delete Remove Pn](/images/drivers/driver-delete-remove.png)
+
+Pressing **Backspace** removes the driver only from the current table, preserving it in the rest of your model.
+
+Since **Remove from block** is non-destructive and the default action, it's possible to remove a driver from every table it was shown in—without actually deleting it. These drivers will appear in the **Unlisted Drivers** page.
+
+![Unlisted Pn](/images/unlisted.png)

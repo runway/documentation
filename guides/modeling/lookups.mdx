@@ -28,13 +28,10 @@ In Runway, there are two ways to build a mapping table:
 
 1. Create a new database where the lookups will be set.
 2. Click on the \+ in the database header, select Dimension, and select an existing dimension or create a new one. **This is the value that will be used to look up the additional dimensions that you set.**
-
    ![Lookup Serach Dimension Pn](/images/lookups/lookup-serach-dimension.png)
 3. Click on the \+ in the database header, select dimension again, and select an existing dimension or create another new one. **This is the lookup value that will populate in other databases** based on the dimension that you set in Step 2.
-
    ![Lookup Create Dimension Pn](/images/lookups/lookup-create-dimension.png)
 4. Click Add item in order to create a new row in the database. Because these dimensions are not driven by a data source, **all attributes will need to be manually added**, either by typing them in, copy/pasting into the database, or selecting from the options available.
-
    ![Lookup Fill Cell Pn](/images/lookups/lookup-fill-cell.png)
 5. Click Add item in order to create a new row in the database. Because these dimensions are not driven by a data source, **all attributes will need to be manually added**, either by typing them in, copy/pasting into the database, or selecting from the options available.
 
@@ -43,11 +40,9 @@ In Runway, there are two ways to build a mapping table:
 Once your lookup table is set, you can leverage it in any dimensional database in Runway. Notably, this excludes legacy databases that utilize fields (dimensions or drivers with only column-level formulas), which are exclusively scoped to [HRIS databases](https://docs.runway.com/concepts/databases/hris-databases).
 
 In order to populate a lookup, navigate to a database that includes the dimension you will be using to designate the lookup value (GL Account in the examples above). Click on the \+ in the database header in order to create a new column and select Lookup.
-
 ![Add Lookup Pn](/images/lookups/add-lookup.png)
 
 Once selected, you’ll see all possible dimensional lookup combinations (from all databases) and you’ll select the one that matches the mapping you’re expecting. The best way to read these options is to note the headers in this menu. The highlighted selection below is saying that we want to **insert the values of** the Parent Category dimension **from** the Inc Statement Mapping database **using the lookup** GL Account dimension.
-
 ![Lookup Setup Pn](/images/lookups/lookup-setup.png)
 
 Once selected, all values that have been properly mapped in the lookup table will populate. These will automatically flow through as dimensions are updated and maintained in the lookup table itself, as noted in steps 5 above.
@@ -56,7 +51,6 @@ Once selected, all values that have been properly mapped in the lookup table wil
 
 <Accordion title="How can I tell if a lookup is empty or has not been set? ">
   The easiest way to do this is to filter on the database where the lookup column has been added and filter for if that lookup value is empty. Any line items with an unpopulated cell in this lookup column is an indication that it has not been set in your lookup table.
-
   ![Empty Lookup Filter Pn](/images/lookups/empty-lookup-filter.png)
 </Accordion>
 

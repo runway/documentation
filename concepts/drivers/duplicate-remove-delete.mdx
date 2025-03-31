@@ -16,6 +16,13 @@ Duplicating a driver is a fast way to create a new, **independent** driver with 
   If you find yourself duplicating drivers often and swapping out logic, this might be a sign your use case is a good fit for **dimensional modeling in databases**, as this is much more scalable.
 </Warning>
 
+If you'd like to make a new driver, connected to an existing set of segments in your model, you can:
+
+- Make a new driver with the same name.
+- Right click the new driver, and link them under _Dimensions \> "Make Subdriver of"_, and then select the set of existing drivers
+
+  <video muted autoplay="true" loop controls playsinline="true" class="doc-video" src="https://documentation.runwaydev.com/videos/Add-Driver-Segment.mp4" />
+
 ## Removing vs. deleting drivers
 
 You have two options when you no longer need a driver in the table you’re working in:

@@ -11,7 +11,7 @@ Start by setting up a Google Sheet that will store your exchange rates.
 
 1. Open Google Sheets by typing `sheet.new` in your browser’s address bar, or go to Google Drive and click **\+ New \> Google Sheets \> Blank spreadsheet**.
 2. Rename the sheet to something recognizable (e.g., **FX for Runway**).
-3. In cell **A1**, use the `IMPORTRANGE` function to pull in exchange rates from Runway’s live FX sheet ([link](https://docs.google.com/spreadsheets/d/1gAsVhuVDFbXsztrOShUc8bNEFTEa8h7LIInYUXc1opQ/edit?usp=sharing)), powered by [XE.com](http://xe.com/)—the same rates used by QuickBooks and Xero:
+3. In cell **A1**, use the `IMPORTRANGE` function to pull in exchange rates from Runway’s [live FX sheet](https://docs.google.com/spreadsheets/d/1gAsVhuVDFbXsztrOShUc8bNEFTEa8h7LIInYUXc1opQ/edit?usp=sharing), powered by [XE.com](http://xe.com/)—the same rates used by QuickBooks and Xero:
 
    ```
    =IMPORTRANGE("your-source-sheet-link","ExchangeRates!A:AI")

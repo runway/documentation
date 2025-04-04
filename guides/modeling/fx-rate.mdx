@@ -1,0 +1,204 @@
+---
+title: "FX rate "
+description: "When working with multiple entities or subsidiaries across different regions, you often need to consolidate financial data into a single reporting currency. Runway makes this possible by allowing you to convert values denominated in different currencies into one unified currency."
+---
+
+This guide walks you through how to **import exchange rates** and **apply FX conversion** to your financial data in Runway.
+
+## Step 1: Create a Google Sheet for exchange rates
+
+Start by setting up a Google Sheet that will store your exchange rates.
+
+1. Open Google Sheets by typing `sheet.new` in your browser’s address bar, or go to Google Drive and click **\+ New \> Google Sheets \> Blank spreadsheet**.
+2. Rename the sheet to something recognizable (e.g., **FX for Runway**).
+3. In cell **A1**, use the `IMPORTRANGE` function to pull in exchange rates from Runway’s live FX sheet ([link](https://docs.google.com/spreadsheets/d/1gAsVhuVDFbXsztrOShUc8bNEFTEa8h7LIInYUXc1opQ/edit?usp=sharing)), powered by [XE.com](http://xe.com/)—the same rates used by QuickBooks and Xero:
+
+   ```
+   =IMPORTRANGE("your-source-sheet-link","ExchangeRates!A:AI")
+   ```
+
+
+1. Replace `"your-source-sheet-link"` with the actual link to the FX sheet: [Runway Exchange Rates Sheet](https://docs.google.com/spreadsheets/d/1gAsVhuVDFbXsztrOShUc8bNEFTEa8h7LIInYUXc1opQ/edit?usp=sharing)
+2. Make sure the range (`A:AI`) covers all the exchange rate columns. Periodically check the sheet for new currencies and update the range as needed (e.g., A:AI → A:AK).
+3. Once the data is imported, create a **named range**:
+   - Highlight all the columns (not just the cells with values).
+   - Go to **Data \> Named ranges**.
+   - Give it a name (e.g., `runway_xe_fx`) and click **Done**.
+
+![Step1 Sheet Pn](/images/fx/step1-sheet.png)
+
+## Step 2: Connect the FX sheet to Runway
+
+Connect the FX Sheet to Runway using the **Google Sheets long data integration**. [Follow steps 1–11 from this guide to complete the setup.](https://docs.runway.com/integrations/data-storage/google-sheets#connecting-a-google-sheet-with-long-data)
+
+## Step 3: Run an FX query in Runway
+
+1. Once your FX Google Sheet integration has finished syncing, open the query editor in Runway.
+2. Paste in the following SQL query to retrieve the exchange rate data.
+
+   ```sql
+   WITH MonthlyAverageExchangeRates AS (
+       SELECT
+           month,
+           'USD' AS From_Currency,
+           To_Currency,
+           USD * Rate AS AVG_AMOUNT
+       FROM (
+           SELECT
+               month,
+               AVG(USD) AS USD,
+               AVG(CHF) AS CHF,
+               AVG(EUR) AS EUR,
+               AVG(GBP) AS GBP,
+               AVG(AUD) AS AUD,
+               AVG(HKD) AS HKD,
+               AVG(CNY) AS CNY,
+               AVG(CAD) AS CAD,
+               AVG(INR) AS INR,
+               AVG(JPY) AS JPY,
+               AVG(NZD) AS NZD,
+               AVG(MXN) AS MXN,
+               AVG(SEK) AS SEK,
+               AVG(PLN) AS PLN,
+               AVG(NOK) AS NOK,
+               AVG(CRC) AS CRC,
+               AVG(SGD) AS SGD,
+               AVG(AED) AS AED,
+               AVG(ZAR) AS ZAR,
+               AVG(BRL) AS BRL,
+               AVG(CLP) AS CLP,
+               AVG(DKK) AS DKK,
+               AVG(KRW) AS KRW,
+               AVG(ILS) AS ILS,
+               AVG(TRY) AS TRY,
+               AVG(GTQ) AS GTQ,
+               AVG(DOP) AS DOP,
+               AVG(HNL) AS HNL,
+               AVG(PEN) AS PEN,
+               AVG(PHP) AS PHP,
+               AVG(THB) AS THB,
+               AVG(MYR) AS MYR,
+               AVG(RSD) AS RSD
+           FROM
+               google_sheets.runway_xe_fx
+           GROUP BY
+               month
+       ) UNPIVOT (
+           Rate FOR To_Currency IN (
+               CHF, EUR, GBP, AUD, HKD, CNY, CAD, INR, JPY, NZD, MXN, SEK, PLN, NOK,
+               CRC, SGD, AED, ZAR, BRL, CLP, DKK, KRW, ILS, TRY, GTQ, DOP, HNL, PEN,
+               PHP, THB, MYR, RSD
+           )
+       )
+   ),
+   EndOfMonthExchangeRates AS (
+       SELECT
+           month,
+           'USD' AS From_Currency,
+           To_Currency,
+           USD * Rate AS EOM_AMOUNT
+       FROM (
+           SELECT
+               month,
+               max_by(day, day) day,
+               max_by(USD, day) USD,
+               max_by(CHF, day) CHF,
+               max_by(EUR, day) EUR,
+               max_by(GBP, day) GBP,
+               max_by(AUD, day) AUD,
+               max_by(HKD, day) HKD,
+               max_by(CNY, day) CNY,
+               max_by(CAD, day) CAD,
+               max_by(INR, day) INR,
+               max_by(JPY, day) JPY,
+               max_by(NZD, day) NZD,
+               max_by(MXN, day) MXN,
+               max_by(SEK, day) SEK,
+               max_by(PLN, day) PLN,
+               max_by(NOK, day) NOK,
+               max_by(CRC, day) CRC,
+               max_by(SGD, day) SGD,
+               max_by(AED, day) AED,
+               max_by(ZAR, day) ZAR,
+               max_by(BRL, day) BRL,
+               max_by(CLP, day) CLP,
+               max_by(DKK, day) DKK,
+               max_by(KRW, day) KRW,
+               max_by(ILS, day) ILS,
+               max_by(TRY, day) TRY,
+               max_by(GTQ, day) GTQ,
+               max_by(DOP, day) DOP,
+               max_by(HNL, day) HNL,
+               max_by(PEN, day) PEN,
+               max_by(PHP, day) PHP,
+               max_by(THB, day) THB,
+               max_by(MYR, day) MYR,
+               max_by(RSD, day) RSD
+           FROM
+               google_sheets.runway_xe_fx
+           GROUP BY
+               month
+       ) UNPIVOT (
+           Rate FOR To_Currency IN (
+               CHF, EUR, GBP, AUD, HKD, CNY, CAD, INR, JPY, NZD, MXN, SEK, PLN, NOK,
+               CRC, SGD, AED, ZAR, BRL, CLP, DKK, KRW, ILS, TRY, GTQ, DOP, HNL, PEN,
+               PHP, THB, MYR, RSD
+           )
+       )
+   )
+   SELECT
+       avg_rates.month,
+       concat_ws(' - ', avg_rates.from_currency, avg_rates.to_currency) AS exchange,
+       avg_rates.from_currency,
+       avg_rates.to_currency,
+       avg_rates.AVG_AMOUNT,
+       eom_rates.EOM_AMOUNT
+   FROM
+       MonthlyAverageExchangeRates AS avg_rates
+   JOIN
+       EndOfMonthExchangeRates AS eom_rates
+   ON
+       avg_rates.month = eom_rates.month
+       AND avg_rates.from_currency = eom_rates.from_currency
+       AND avg_rates.to_currency = eom_rates.to_currency
+   UNION ALL
+   SELECT DISTINCT
+       avg_rates.month,
+       'USD - USD' AS exchange,
+       'USD' AS from_currency,
+       'USD' AS to_currency,
+       1.0 AS AVG_AMOUNT,
+       1.0 AS EOM_AMOUNT
+   FROM MonthlyAverageExchangeRates avg_rates;
+   ```
+3. Click **Run Query** to preview and validate the results.
+4. Once successful, click **Configure New Database** to create a database from this query.
+5. In the setup flow:
+   - Rename the database (e.g., **FX Rates**).
+   - Set the data source to the FX query you just created.
+   - Under **Drivers**, choose between:
+     - `AVG_AMOUNT` for **average monthly rates**
+     - `EOM_AMOUNT` for **end-of-month rates**
+   - Under **Segment by**, select both:
+     - `FROM_CURRENCY` — the base currency (note: this will always be **USD** from the XE feed)
+     - `TO_CURRENCY` — the currency you are converting **into**
+6. Click **Confirm** to finish setting up the database.
+
+![Step3 Query Pn](/images/fx/step3-query.png)
+
+## Step 4: Apply FX translation to your entity’s financial data
+
+Now that you’ve imported exchange rates, you can use them to convert foreign-currency financial data into a unified currency (e.g., USD).
+
+1. Navigate to the database for a subsidiary operating in a foreign currency (e.g., GBP).
+2. Click **\+ Create New Property** and select **Number Driver**.
+3. Give the new driver a clear name (e.g., **Amount in USD**) to distinguish it from the original amount driver.
+4. Click the new column’s header and select **Add default formula**.
+5. In the **Default Forecast**, enter your conversion formula:
+   - **Amount [_This Segment_]** — the original amount coming from the integration.
+   - **EOM_AMOUNT [GBP][USD]** — the end-of-month exchange rate from the FX table.
+   - **AVG_AMOUNT [GBP][USD]** — the average exchange rate for the month.
+   - Use **division** when converting from a foreign currency to USD, i.e., Amount [_This Segment_] / EOM_AMOUNT [GBP][USD]
+   - Use **multiplication** when converting from USD to another currency, i.e., Amount [_This Segment_] \* EOM_AMOUNT [GBP][USD]
+
+   ![Step4 Formula Pn](/images/fx/step4-formula.png)

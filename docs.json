@@ -121,6 +121,7 @@
             "icon": "calculator",
             "pages": [
               "guides/modeling/lookups",
+              "guides/modeling/fx-rate",
               "guides/modeling/propagating-sparse-data",
               "guides/modeling/cohorts",
               "guides/modeling/fixing-errors"

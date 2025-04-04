@@ -1,4 +1,59 @@
 ---
-title: "Salesforce (coming soon)"
-description: "Description of your new file."
+title: "Salesforce"
+description: "The Salesforce integration allows you to automatically sync your deals and revenue data into Runway."
 ---
+
+Runway offers two ways to integrate with **Salesforce**:
+
+- **Quick-start connection via Workato (Recommended)** – A simpler setup that leverages existing Salesforce reports you’ve built.
+- **SQL-powered integration via Fivetran** – Ideal if you need advanced data customization and want to pull in a wide range of Salesforce objects (like Opportunities, Accounts, Users, and more).
+
+## Quick-start connection via Workato (Recommended)
+
+<Info>
+  This integration method relies on you having existing Salesforce reports configured. Please be aware of the following:
+
+  1. Any filters applied to that report will automatically apply to the data imported into Runway.
+  2. Salesforce Reports must be configured in a simple row based format, no charts, no pivots.
+</Info>
+
+1. Open your [Runway instance](https://app.runway.com/).
+2. In the left sidebar, hover over **Integrations** and click the **\+** button to open the Integrations Directory.
+3. Search for **Salesforce** and click **\+ Set up** on the option listed in the **CRM** section.
+4. You’ll be redirected to Salesforce to authorize the connection and complete authentication.
+5. Once authorized, you’ll return to Runway. Click **\+** next to the integration name in the sidebar to create a new query.
+6. You can then change the default query name, **New query,** to something more descriptive. To do this, click the **three-dots button** next to the query name in the sidebar and select **Rename query**.
+7. Copy the **Salesforce Report ID** from your report's URL and paste it into the highlighted field below.
+8. Click Run query and validate the data looks correct.
+9. You’re done integrating\! [Go ahead and configure a new database.](https://www.notion.so/Databases-basics-1ae691424a288035817ae31f2a0729b5?pvs=21)
+
+## **SQL-powered integration via Fivetran**
+
+1. Click **Setup** on the **Salesforce (Fivetran)** integration in the Integrations directory and follow the on-screen authentication process.
+2. Keep the default settings during Fivetran setup.
+3. After being redirected back to **Runway**, we recommend using our **Salesforce Opportunities** integration template\*\*.\*\*
+   - In the left sidebar, navigate to **Templates**.
+   - Search for **Salesforce Opportunities Quickstart**.
+   - Click **\+ Add to Runway** to apply the template.
+4. This template automatically creates a database for you to begin building your model.
+5. Alternatively, you can follow our [SQL guide](https://www.notion.so/Writing-SQL-in-Runway-1b6691424a288012b52cd77202b0bcbe?pvs=21) to customize the existing template or pull additional objects and properties. Note that when referencing Salesforce properties in your query, **you must use their internal names**, which may differ from the display names shown in the Salesforce interface.
+
+## Salesforce FAQs
+
+<Accordion title="How do I write SQL in Runway?">
+  See this [help doc](https://www.notion.so/SQL-in-Runway-1b6691424a288012b52cd77202b0bcbe?pvs=21).
+</Accordion>
+
+<Accordion title="What objects does Runway have access to?" icon="sparkles">
+  Our Fivetran integration has access to all standard & custom Salesforce objects and fields. Salesforce data can be complex, and writing queries can sometimes be challenging. If you need help pulling specific data, reach out to our team—we’re happy to assist.
+</Accordion>
+
+<Accordion title="How does a deal land in a time series?" icon="sparkles">
+  It’s fully customizable—you can map each deal based on dates such as creation date, close date, or contract start date. You can also use Runway’s built-in functionality to [propagate values forward](https://docs.runway.com/guides/modeling/propagating-sparse-data) into future periods. This is a common use case, so feel free to contact our team for guidance.
+</Accordion>
+
+<Accordion title="How do I pull in a calculated/formula field?">
+  If you are using Workato, this will come in through your report automatically.
+
+  If you are using Fivetran, there is a query you can use `select * from salesforce.fivetran_formula_model` which stores the SQL to replicate your formulas. If the formula changes in Salesforce, you will need to update your query to use the correct formula in Runway too.
+</Accordion>

@@ -16,11 +16,9 @@ Start by setting up a Google Sheet that will store your exchange rates.
    ```
    =IMPORTRANGE("your-source-sheet-link","ExchangeRates!A:AI")
    ```
-
-
-1. Replace `"your-source-sheet-link"` with the actual link to the FX sheet: [Runway Exchange Rates Sheet](https://docs.google.com/spreadsheets/d/1gAsVhuVDFbXsztrOShUc8bNEFTEa8h7LIInYUXc1opQ/edit?usp=sharing)
-2. Make sure the range (`A:AI`) covers all the exchange rate columns. Periodically check the sheet for new currencies and update the range as needed (e.g., A:AI → A:AK).
-3. Once the data is imported, create a **named range**:
+4. Replace `"your-source-sheet-link"` with the actual link to the FX sheet: [Runway Exchange Rates Sheet](https://docs.google.com/spreadsheets/d/1gAsVhuVDFbXsztrOShUc8bNEFTEa8h7LIInYUXc1opQ/edit?usp=sharing)
+5. Make sure the range `A:AI` covers all the exchange rate columns. Periodically check the sheet for new currencies and update the range as needed (e.g., A:AI → A:AK).
+6. Once the data is imported, create a **named range**:
    - Highlight all the columns (not just the cells with values).
    - Go to **Data \> Named ranges**.
    - Give it a name (e.g., `runway_xe_fx`) and click **Done**.
@@ -177,11 +175,11 @@ Connect the FX Sheet to Runway using the **Google Sheets long data integration**
    - Rename the database (e.g., **FX Rates**).
    - Set the data source to the FX query you just created.
    - Under **Drivers**, choose between:
-     - `AVG_AMOUNT` for **average monthly rates**
-     - `EOM_AMOUNT` for **end-of-month rates**
+     - `AVG_AMOUNT` for average monthly rates.
+     - `EOM_AMOUNT` for end-of-month rates.
    - Under **Segment by**, select both:
-     - `FROM_CURRENCY` — the base currency (note: this will always be **USD** from the XE feed)
-     - `TO_CURRENCY` — the currency you are converting **into**
+     - `FROM_CURRENCY` — the base currency (note: this will always be **USD** from the XE feed).
+     - `TO_CURRENCY` — the currency you are converting **into.**
 6. Click **Confirm** to finish setting up the database.
 
 ![Step3 Query Pn](/images/fx/step3-query.png)
@@ -195,7 +193,7 @@ Now that you’ve imported exchange rates, you can use them to convert foreign-c
 3. Give the new driver a clear name (e.g., **Amount in USD**) to distinguish it from the original amount driver.
 4. Click the new column’s header and select **Add default formula**.
 5. In the **Default Forecast**, enter your conversion formula:
-   - **Amount [_This Segment_]** — the original amount coming from the integration.
+   - **_Amount [This Segment]_** — the original amount coming from the integration.
    - **EOM_AMOUNT [GBP][USD]** — the end-of-month exchange rate from the FX table.
    - **AVG_AMOUNT [GBP][USD]** — the average exchange rate for the month.
    - Use **division** when converting from a foreign currency to USD, i.e., Amount [_This Segment_] / EOM_AMOUNT [GBP][USD]

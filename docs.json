@@ -96,7 +96,8 @@
             "icon": "dollar-sign",
             "pages": [
               "integrations/revenue/hubspot",
-              "integrations/revenue/salesforce"
+              "integrations/revenue/salesforce",
+              "integrations/revenue/stripe"
             ]
           },
           {

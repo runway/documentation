@@ -49,6 +49,7 @@
             "icon": "function",
             "pages": [
               "concepts/models/models-basics",
+              "concepts/models/grouping-drivers",
               "concepts/models/rename-export-delete"
             ]
           },

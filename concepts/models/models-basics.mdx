@@ -1,4 +1,74 @@
 ---
-title: "Models basics (coming soon)"
-description: "Description of your new file."
+title: "Models basics"
+description: "Models in Runway are structured tables where each row represents a driver, allowing you to aggregate data, input assumptions, and build logic across drivers. While many of their capabilities overlap with driver table blocks on pages, models offer unique features like driver grouping and expanding drivers by dimension."
 ---
+
+## What is a model?
+
+Before diving into models, let’s quickly revisit what [**databases**](https://docs.runway.com/concepts/databases/databases-basics) are for. Databases are where you store your raw data in Runway at various levels of granularity. This could include:
+
+- Data pulled directly from integrations.
+- Mapping tables you configure.
+- Highly dimensional assumptions you input manually.
+
+Databases are powerful for **modeling and transforming data at scale**, but they’re not always ideal for **presenting** or **interacting** with that data in a visual or lightweight format.
+
+That’s where **models** and **pages** come in:
+
+- **Models** are structured tables where each row represents a **driver**. You can include:
+  - Drivers pulled from databases or other models.
+  - New computed drivers created directly within the model to aggregate data or layer in assumptions.
+- [**Pages**](https://docs.runway.com/concepts/pages/pages-basics) are flexible canvases where you can present your data using various block types:
+  - [Driver table blocks](https://docs.runway.com/concepts/pages/drivers-table-block) (which replicate much of a model’s functionality).
+  - [Charts](https://docs.runway.com/concepts/pages/charts-block), [database views](https://docs.runway.com/concepts/pages/database-block), [plans timeline](https://docs.runway.com/concepts/plans#surfacing-plans-in-pages), [text, images, and videos](https://docs.runway.com/concepts/pages/text-media-block).
+
+## So why use models instead of driver tables on a page?
+
+It's true: driver table blocks on pages cover most of what models can do. However, models currently support two key features that driver table blocks do not:
+
+1. **Grouping drivers** for better organization.
+2. **Expanding drivers by dimensions** [ADD LIMK WHEN DIMENSIONS ARTICLE IS ADDED].
+
+<Check>
+  We know the line between models and pages can feel blurry. We’re actively working toward merging them into a single, more unified concept in the near future.
+</Check>
+
+## Creating a model
+
+Start by clicking the **\+** button next to a section or page in the sidebar. The new model will appear nested under that section or page.
+
+Select **Model** as the type and give it a clear name, along with an icon or emoji for easy identification.
+![Model Create Gi](/images/models/model-create.gif)
+
+## Managing drivers
+
+Adding, removing, and deleting drivers in a model works exactly the same way as in a driver table block on a page. [Learn more in this guide.](https://docs.runway.com/concepts/pages/drivers-table-block#managing-drivers-in-the-table)
+
+## Grouping drivers
+
+There are a couple of ways to create groups in a model:
+
+1. **Select and group:**
+   Select the drivers you'd like to group, then right-click and choose **Group** — or press `Cmd` / `Ctrl` \+ `G`. A new group will be created with the selected drivers. Give the group a descriptive name.
+   ![Model Grouping 1 Gi](/images/models/model-grouping-1.gif)
+2. **Create group first:**
+   Scroll to the bottom of the model and click **\+ Create group**. Give the group a name, then drag the relevant drivers into the group one by one or in bulk.
+   ![Model Grouping 2 Pn](/images/models/model-grouping-2.png)
+
+Once your groups are set up, you can organize them easily:
+
+- **Drag and drop** groups to reorder.
+- Press `Shift` while clicking the caret next to a group to **collapse all** groups.
+- Press `Option` while clicking the caret to **expand all** groups.
+
+In addition to improving organization and readability, groups also make it easier to find and reuse drivers. When adding drivers to a block, you can search by group name and include all or a subset of drivers from that group.
+![Model Groups In Search Pn](/images/models/model-groups-in-search.png)
+
+## Additional customizations
+
+Just like in driver table blocks on a page, models allow you to:
+
+- [**Customize which columns to show**](https://docs.runway.com/concepts/pages/drivers-table-block#customizing-table-columns)
+- [**Change the time period rollup**](https://docs.runway.com/concepts/pages/drivers-table-block#time-period-rollups-quarter%2C-year%2C-etc) (e.g. monthly, quarterly, annual)
+- [**Compare drivers across scenarios**](https://docs.runway.com/concepts/pages/drivers-table-block#comparing-drivers-across-scenarios)
+- [**Compare drivers across time periods**](https://docs.runway.com/concepts/pages/drivers-table-block#comparing-drivers-across-time-periods) (e.g. MoM, QoQ, YoY)

@@ -47,7 +47,10 @@
           {
             "group": "Models",
             "icon": "function",
-            "pages": ["concepts/models/models-basics"]
+            "pages": [
+              "concepts/models/models-basics",
+              "concepts/models/rename-export-delete"
+            ]
           },
           {
             "group": "Pages",

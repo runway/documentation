@@ -1,0 +1,72 @@
+---
+title: "Budget vs. actuals (BvA)"
+description: "Compare your planned budget with actuals—so you can track accuracy, spot trends, and refine future forecasts."
+---
+
+In Runway, you can lock different versions of your budget as reference points, and compare them to actuals as new data comes in.
+
+This guide walks you through:
+
+- Preparing your budget (by locking [scenarios](https://docs.runway.com/concepts/scenarios)).
+- Setting up actuals using your `Last Close` date.
+- Creating a BvA comparison using tables and charts.
+
+## Step 1: Lock your budget
+
+Your budget lives in scenarios—separate versions of your model representing different forecasts (downside, base, upside).
+
+Before tracking BvA, you need to lock your budget scenarios so they don’t change. To do this:
+
+1. Disable auto-updates from main to freeze the scenario:
+   - In the scenarios list, click the Settings icon next to your scenario’s name.
+   - Disable `Pull updates from Main`.
+   - This prevents changes from main scenario and integration syncs from affecting your budget.
+2. Prevent user edits for added security (optional):
+   - Set `Editing` to `Disabled` in Scenario Settings.
+   - This blocks accidental changes from your team.
+   - If changes are needed later, you can temporarily enable `Editing`, make adjustments, then disable editing again.
+
+![Settings Pn](/images/scenarios/settings.png)
+
+## Step 2: Set up your actuals
+
+Your planned budget now lives in a locked scenario, while actuals come from live data in your main scenario.
+
+To ensure that actuals reflect finalized numbers:
+
+1. Open main scenario.
+2. Set `Last close` date to the end of the time period you’re analyzing.
+   - For example: To compare budget vs. actuals for January–March, set `Last close` to March.
+   - This tells Runway to pull actual values for closed months, while calculating future values using forecast [formulas](https://docs.runway.com/concepts/drivers/drivers-basics#driver-formulas).
+
+![Last Close Gi](/images/LastClose.gif)
+
+## Step 3: Compare Budget vs. Actuals
+
+You can analyze variances between budget and actuals using tables or charts.
+
+### Option 1: Create a BvA table
+
+1. Open a model or create a `Driver table` in any page.
+2. Add the drivers you want to include in your BvA.
+3. Click `Customize` (top right) → Select `Compare` → Choose budget scenarios.
+4. The default view shows time-series values for each scenario. You can add `Variance` and `Variance %` to track the difference between budget and actuals.
+5. You can also adjust the table layout to show scenarios as rows or columns.
+
+![Compare Tables Gi](/images/scenarios/compare-tables.gif)
+
+**Customizing variance colors**
+
+- By default, if actuals exceed budget, `Variance` and `Variance %` appear green. If actuals fall short, they’ll appear red.
+- To reverse this—like when lower numbers are preferred for cost metrics—just set a goal for the driver to be below zero.
+
+![Set Goal Gi](/images/scenarios/set-goal.gif)
+
+### Option 2: Create a BvA chart
+
+1. Create a `Driver chart` in any **page**.
+2. Add the relevant drivers.
+3. Click the `Compare` icon (top right) → Select budget scenarios to compare.
+4. Choose a line or column chart to visualize trends.
+
+![Scenarios Gi](/images/pages/charts/scenarios.gif)

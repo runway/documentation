@@ -122,6 +122,7 @@
             "pages": [
               "guides/modeling/lookups",
               "guides/modeling/fx-rate",
+              "guides/modeling/bva",
               "guides/modeling/propagating-sparse-data",
               "guides/modeling/cohorts",
               "guides/modeling/fixing-errors"

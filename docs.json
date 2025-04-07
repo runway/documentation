@@ -47,7 +47,11 @@
           {
             "group": "Models",
             "icon": "function",
-            "pages": ["concepts/models/models-basics"]
+            "pages": [
+              "concepts/models/models-basics",
+              "concepts/models/grouping-drivers",
+              "concepts/models/rename-export-delete"
+            ]
           },
           {
             "group": "Pages",

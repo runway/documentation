@@ -13,7 +13,7 @@ You can also read our step-by-step guide on headcount modeling [here](https://do
 
 ## Rows represent an employee defined by their name
 
-In typical Runway databases, [**segmentation determines the granularity of your database**](https://docs.runway.com/concepts/databases/databases-basics#adding-a-row). Each row have a **unique combination** of dimension values.
+In typical Runway databases, [**segmentation determines the granularity of your database**](https://docs.runway.com/concepts/databases/databases-basics#adding-a-row). Each row has a **unique combination** of dimension values.
 
 In HRIS databases, each row each row represents a single **employee, identified by their name.**
 
@@ -23,7 +23,7 @@ In HRIS databases, each row each row represents a single **employee, identified 
 
 Unlike standard databases in Runway, HRIS columns are **fields**, not drivers.
 
-As a result, reusing HRIS data elsewhere—whether in formulas or on pages—works a bit differently
+As a result, reusing HRIS data elsewhere—whether in formulas or on pages—works a bit differently.
 
 ### Using HRIS data in formulas
 
@@ -74,7 +74,7 @@ You can add new field columns to include additional logic or metadata (e.g. curr
 Each column in the HRIS database can include a formula that applies to all rows.
 
 - Formulas can't be overridden at the row level.
-- These formulas use the dynamic "This" reference pattern to refer to values in the same row. This enables logic like `Total Salary = Basse Salary * 1.25` to apply uniformly across employees.
+- These formulas use the dynamic "This" reference pattern to refer to values in the same row. This enables logic like `Total Salary = Base Salary * 1.25` to apply uniformly across employees.
 - References to segments in **other** databases are not currently supported. HRIS formulas can only reference columns within the same database.
 
 ![Hris Column Formulas Pn](/images/databases/hris/hris-column-formulas.png)

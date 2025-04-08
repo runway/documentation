@@ -1,5 +1,95 @@
 ---
-title: 'HRIS databases (wip)'
-description: 'Description of your new file.'
+title: "HRIS databases"
+description: "HRIS data is essential for modeling personnel-related expenses—often the largest cost for most businesses. In Runway, HRIS data behaves differently from other data sources, particularly when using the Employees database. This guide outlines key distinctions you should know. "
 ---
 
+<Info>
+  **Why are these differences present?**
+
+  These differences arise due to our long-standing integrations with HRIS data partners. Our team is actively working to harmonize HRIS modeling capabilities with how dimensional modeling functions elsewhere in Runway. If you have feedback or suggestions, please share them with your CXM.
+</Info>
+
+You can also read our step-by-step guide on headcount modeling here (link coming soon).
+
+## Rows represent an employee defined by their name
+
+In typical Runway databases, [segmentation determines the **granularity** of your database](https://docs.runway.com/concepts/databases/databases-basics#adding-a-row). Each row have a **unique combination** of dimension values.
+
+In HRIS databases, each row each row represents a single **employee, identified by their name.**
+
+![Hris Rows Pn](/images/databases/hris/hris-rows.png)
+
+## Columns are fields, not drivers
+
+Unlike standard databases in Runway, HRIS columns are **fields**, not drivers.
+
+As a result, reusing HRIS data elsewhere—whether in formulas or on pages—works a bit differently
+
+### Using HRIS data in formulas
+
+The HRIS database stores data such as salaries, bonuses, and benefits for each employee. To use this data in calculations—for example, to sum salaries across departments—you’ll typically want to aggregate field columns into a standard driver.
+
+Here’s how:
+
+1. Create a regular driver in a driver table block (on a [page](https://docs.runway.com/concepts/pages/drivers-table-block) or in a [model](https://docs.runway.com/concepts/models/models-basics)).
+2. In the formula editor, search for and reference the field column from the Employees database. You can search by the field column name, but not by the employee name or any of its attributes.
+
+   ![Search For Field In Formula Pn](/images/databases/hris/search-for-field-in-formula.png)
+3. Add an aggregator (e.g. sum) and use filters to define which employees to include.
+
+   ![Fields Filters Informula Pn](/images/databases/hris/fields-filters-informula.png)
+
+### To surface HRIS data on a page
+
+When sharing or collaborating on HRIS data, you typically don’t need to display the entire Employees database. Instead, you have a couple of focused options:
+
+1. Add the calculated drivers (as described in the previous section) to a [driver table block](https://docs.runway.com/concepts/pages/drivers-table-block) or a [chart block](https://docs.runway.com/concepts/pages/charts-block) to show totals or trends.
+2. Include a [filtered view of the Employees database](https://docs.runway.com/concepts/pages/database-block) to highlight specific roles, departments, or planned hires.
+
+## Adding rows to HRIS databases
+
+You can manually add rows to HRIS databases to model future employees or anticipated hires. Keep these important points in mind:
+
+- Each row inherits the default formula set for field columns, and **these formulas cannot be overridden for individual rows.**
+- When actual employee data is later imported from your HRIS system, **it won't automatically reconcile with manually added placeholder employees**. You'll need to manage this reconciliation.
+
+## Adding columns to HRIS databases
+
+You can add new field columns to include additional logic or metadata (e.g. currency conversions, benefits, taxes):
+
+- Click the **\+** button \> **Fields** \> choose a field type (e.g. Number Field).
+- Supported column types include:
+  - Number Fields
+  - Date Fields
+  - Text Fields
+
+<Warning>
+  Be sure to select column types nested under the **Fields** option, not the regular driver column types.
+</Warning>
+
+![Hris Columns Pn](/images/databases/hris/hris-columns.png)
+
+## Setting formulas in HRIS databases
+
+Each column in the HRIS database can include a formula that applies to all rows.
+
+- Formulas can't be overridden at the row level.
+- These formulas use the dynamic "This" reference pattern to refer to values in the same row. This enables logic like `Total Salary = Basse Salary * 1.25` to apply uniformly across employees.
+- References to segments in **other** databases are not currently supported. HRIS formulas can only reference columns within the same Employees database.
+
+![Hris Column Formulas Pn](/images/databases/hris/hris-column-formulas.png)
+
+## Start date
+
+Every employee row includes a **Start date** field that acts as a switch for time-based calculations:
+
+- Before the start date, any formulas for the row's fields evaluate to `NULL`.
+- After the start date, formulas evaluate as normal.
+
+This behavior works implicitly, similar to wrapping every field's formula in a condition like:
+
+```
+if(thisMonth() < this.Start Date, [column’s formula], NULL)
+```
+
+Start Date also defines which employees show up on your Plans timeline. [You can read more about how Plans work with employee start dates here.](https://docs.runway.com/concepts/plans#connecting-an-employee%E2%80%99s-start-date-to-a-plan)

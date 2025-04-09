@@ -1,5 +1,99 @@
 ---
-title: 'Formulas basics'
-description: 'Description of your new file.'
+title: "Formulas basics"
+description: "Description of your new file."
 ---
 
+Formulas are the backbone of your model in Runway. They define the logic behind every driver and are essential for simulating how your business will evolve over time.
+
+While Runway often generates helpful default formulas—especially when working with integrations or databases—they’re just a starting point. To truly tailor your model, you’ll need to write and refine your own formulas.
+
+## Where to write formulas in Runway
+
+There are four primary places where you’ll interact with formulas in Runway. Each has its own context depending on whether you’re working with standalone drivers, databases, or HRIS data. Let’s go through them one by one.
+
+### #1 Driver table blocks
+
+When working in a [driver table block on a page](https://docs.runway.com/concepts/pages/drivers-table-block) or in a [model](https://docs.runway.com/concepts/models/models-basics), you’ll often write or update formulas for the drivers you see there.
+
+Keep in mind that a driver table block can contain drivers created directly in the block, pulled from other driver table blocks, or drivers originating from databases. Given drivers are portable, making edits to the formula in one place will change it in all places it’s used.
+
+There are a few ways to access and edit a driver’s formulas:
+
+- **Show formulas as columns**
+
+  Use the Customize menu to show the actuals and forecast formula columns, or press:
+  - `Option` \+ `Shift` \+ `A` to toggle the **actuals formula** column
+  - `Option` \+ `Shift` \+ `F` to toggle the **forecast formula** column
+
+    [More on customizing columns →](https://docs.runway.com/concepts/pages/drivers-table-block#customizing-table-columns)
+- 
+- **Click the formula button next to the driver name**
+
+  \<IMG\>
+- 
+- **Open the driver’s details pane**
+
+  This gives you more room to work and context on the driver. [Learn more →](https://docs.runway.com/concepts/drivers/driver-details-pane)
+
+### #2 Driver default column formulas in a database
+
+Most databases in Runway—whether they pull data from an integration, reference another database, or are built manually—contain one or more **driver columns**.
+
+These columns might be:
+
+- **Auto-generated** through [database configuration](https://docs.runway.com/concepts/databases/databases-basics#configuring-a-database), or
+- **Manually added** to extend the database with additional calculated drivers. [Learn how →](https://docs.runway.com/concepts/databases/databases-basics#adding-a-column)
+
+No matter how a driver column is created, it supports [default **actuals** and **forecast** formulas](https://docs.runway.com/concepts/databases/formulas-in-databases#default-formulas). These are set at the column level and apply to all rows unless a specific row has an override.
+
+You can view or edit the default formula in several places:
+
+[**When displaying a driver column as a time series**](https://docs.runway.com/concepts/databases/databases-basics#show-a-column-as-timeseries), click the ƒ button to open the formula editor.
+
+- \<IMG\>
+
+**When displaying a column as a single value**, the same ƒ button will appear.
+
+- \<IMG\>
+
+### #3 Row-level driver formulas in a database
+
+As noted earlier, all rows in a driver column inherit the default column-level formulas by default. However, **you can override the formula for specific rows** if you need custom logic for a particular segment.
+
+You can do this in two ways:
+
+- **When viewing a driver column as a time series**, click directly into any row’s (segment) formula cell to edit it.
+- **When using the **[**full time series view of a database**](https://docs.runway.com/concepts/databases/databases-basics#show-all-columns-as-timeseries), you can override the formula for any segment inline. This is especially useful for scanning and editing multiple overrides in one place.
+  - \<IMG\>
+- Formula overrides at the row level will take precedence over the column default for that specific row only. You can always clear the override to revert to the inherited column formula.
+
+  ### #4 Field column formulas in an HRIS database
+
+  HRIS databases behave differently from standard Runway databases. One key distinction is that **you can only define formulas at the column level**—row-level formula overrides are **not currently supported**.
+
+  This means the logic you define for a field column will apply uniformly across all employees in the database.
+
+  To learn more about how HRIS databases are structured and how they differ from other databases in Runway, [read this guide](https://docs.runway.com/concepts/databases/hris-databases).
+
+  ## Forecast v.s. actuals formulas
+
+  Now that we’ve explored the different places where you can interact with formulas in Runway, let’s look at another key concept: the distinction between **forecast** and **actuals** formulas.
+
+  Every driver in Runway supports two formulas:
+  - **Actuals formula** — used for all months **up to and including** your [last close date](https://docs.runway.com/concepts/last-close).
+  - **Forecast formula** — used for all months **after** the last close.
+
+  This split allows you to clearly separate how historical values are calculated from how future assumptions are modeled.
+
+  If an **actuals formula is not explicitly set**, Runway will automatically fall back to using the **forecast formula**. This fallback behavior follows Runway’s [formula inheritance logic](https://docs.runway.com/concepts/drivers/drivers-basics#formula-inheritance).
+
+  ## More on formulas
+
+  Now that you’ve got the basics down, here are a few resources to help you take your formulas further:
+  1. Formulas syntax
+  2. [Functions & operators](https://docs.runway.com/concepts/formulas/functions-operators)
+  3. [Building lookup tables](https://docs.runway.com/guides/modeling/lookups)
+  4. [Propagating sparse data](https://docs.runway.com/guides/modeling/propagating-sparse-data)
+  5. [Cohorts](https://docs.runway.com/guides/modeling/cohorts)
+  6. [FX rate normalization](https://docs.runway.com/guides/modeling/fx-rate)
+  7. [Troubleshooting errors](https://docs.runway.com/guides/modeling/fixing-errors)

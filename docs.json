@@ -46,7 +46,7 @@
           },
           {
             "group": "Models",
-            "icon": "tablefunction",
+            "icon": "table",
             "pages": [
               "concepts/models/models-basics",
               "concepts/models/grouping-drivers",

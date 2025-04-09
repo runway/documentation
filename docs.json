@@ -68,12 +68,14 @@
             "group": "Formulas",
             "icon": "function",
             "pages": [
-              "concepts/formulas/functions-operators"
+              "concepts/formulas/formulas-basics",
+              "concepts/formulas/functions-operators",
+              "concepts/last-close",
+              
             ]
           },
           "concepts/scenarios",
           "concepts/plans",
-          "concepts/last-close",
           "concepts/sidebar"
         ]
       },

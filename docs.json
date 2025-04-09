@@ -70,8 +70,7 @@
             "pages": [
               "concepts/formulas/formulas-basics",
               "concepts/formulas/functions-operators",
-              "concepts/last-close",
-              
+              "concepts/last-close"
             ]
           },
           "concepts/scenarios",
@@ -142,11 +141,6 @@
               "guides/modeling/cohorts",
               "guides/modeling/fixing-errors"
             ]
-          },
-          {
-            "group": "Reporting workflows",
-            "icon": "file-chart-column",
-            "pages": ["guides/reporting/bva"]
           },
           {
             "group": "Sharing workflow",

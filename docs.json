@@ -46,7 +46,7 @@
           },
           {
             "group": "Models",
-            "icon": "function",
+            "icon": "table",
             "pages": [
               "concepts/models/models-basics",
               "concepts/models/grouping-drivers",
@@ -64,9 +64,17 @@
               "concepts/pages/text-media-block"
             ]
           },
+          {
+            "group": "Formulas",
+            "icon": "function",
+            "pages": [
+              "concepts/formulas/formulas-basics",
+              "concepts/formulas/functions-operators",
+              "concepts/last-close"
+            ]
+          },
           "concepts/scenarios",
           "concepts/plans",
-          "concepts/last-close",
           "concepts/sidebar"
         ]
       },
@@ -133,11 +141,6 @@
               "guides/modeling/cohorts",
               "guides/modeling/fixing-errors"
             ]
-          },
-          {
-            "group": "Reporting workflows",
-            "icon": "file-chart-column",
-            "pages": ["guides/reporting/bva"]
           },
           {
             "group": "Sharing workflow",

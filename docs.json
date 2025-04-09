@@ -46,7 +46,7 @@
           },
           {
             "group": "Models",
-            "icon": "function",
+            "icon": "tablefunction",
             "pages": [
               "concepts/models/models-basics",
               "concepts/models/grouping-drivers",
@@ -62,6 +62,13 @@
               "concepts/pages/drivers-table-block",
               "concepts/pages/database-block",
               "concepts/pages/text-media-block"
+            ]
+          },
+          {
+            "group": "Formulas",
+            "icon": "function",
+            "pages": [
+              "concepts/formulas/functions-operators"
             ]
           },
           "concepts/scenarios",

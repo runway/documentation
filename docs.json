@@ -69,6 +69,7 @@
             "icon": "function",
             "pages": [
               "concepts/formulas/formulas-basics",
+              "concepts/formulas/formulas-syntax",
               "concepts/formulas/functions-operators",
               "concepts/last-close"
             ]

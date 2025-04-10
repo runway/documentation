@@ -5,22 +5,22 @@ description: "This guide provides a comprehensive overview of all available func
 
 ### Basic operators
 
-| **Operator** | What it does             | **Usage**                 | Things to keep in mind                                          |
-| :----------- | :----------------------- | :------------------------ | :-------------------------------------------------------------- |
-| \+           | Addition                 | value1 \+ value2          |                                                                 |
-| -            | Subtraction              | value1 - value2           |                                                                 |
-| \*           | Multiplication           | value1 \* value2          |                                                                 |
-| /            | Division                 | value1 / value2           |                                                                 |
-| ^            | Exponentiation           | base ^ exponent           |                                                                 |
-| ==           | Equal to                 | value1 == value2          |                                                                 |
-| \!=          | Not equal to             | value1 \!= value2         |                                                                 |
-| \>           | Greater than             | value1 \> value2          |                                                                 |
-| \<           | Less than                | value1 \< value2          |                                                                 |
-| \>=          | Greater than or equal to | value1 \>= value2         |                                                                 |
-| \<=          | Less than or equal to    | value1 \<= value2         |                                                                 |
-| AND          | Logical AND              | condition1 AND condition2 | You can use parentheses to create nested or more complex logic. |
-| OR           | Logical OR               | condition1 OR condition2  | You can use parentheses to create nested or more complex logic. |
-| NULL         | Null value               | NULL                      |                                                                 |
+| **Operator** | What it does             | **Usage**                                                                                    |
+| :----------- | :----------------------- | :------------------------------------------------------------------------------------------- |
+| \+           | Addition                 | value1 \+ value2                                                                             |
+| -            | Subtraction              | value1 - value2                                                                              |
+| \*           | Multiplication           | value1 \* value2                                                                             |
+| /            | Division                 | value1 / value2                                                                              |
+| ^            | Exponentiation           | base ^ exponent                                                                              |
+| ==           | Equal to                 | value1 == value2                                                                             |
+| \!=          | Not equal to             | value1 \!= value2                                                                            |
+| \>           | Greater than             | value1 \> value2                                                                             |
+| \<           | Less than                | value1 \< value2                                                                             |
+| \>=          | Greater than or equal to | value1 \>= value2                                                                            |
+| \<=          | Less than or equal to    | value1 \<= value2                                                                            |
+| AND          | Logical AND              | condition1 AND condition2\ \ You can use parentheses to create nested or more complex logic. |
+| OR           | Logical OR               | condition1 OR condition2\ \ You can use parentheses to create nested or more complex logic.  |
+| NULL         | Null value               | NULL                                                                                         |
 
 ### Logical functions
 
@@ -32,10 +32,10 @@ description: "This guide provides a comprehensive overview of all available func
 
 ### Rounding functions
 
-| **Function**               | **What it does**                                                       | **How to use it**                                                                                                         | **Things to keep in mind**                                                                         |
-| :------------------------- | :--------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------- |
-| round(value, [places])     | Rounds a number to the nearest value based on standard rounding rules. | **• value** (_required_): The number to round. \ • **places** (optional): How many decimal places to keep. Defaults to 0. | Coarser rounding than to the ones place is not supported e.g. with negative values for `[places]`. |
-| roundDown(value, [places]) | Always rounds a number down.                                           | **• value** (_required_): The number to round.  **• places** (optional): How many decimal places to keep. Defaults to 0.  | roundUp is not natively supported, but you can implement it with `-roundDown(-value, places)`      |
+| **Function**               | **What it does**                                                       | **How to use it**                                                                                                          | **Things to keep in mind**                                                                         |
+| :------------------------- | :--------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------- |
+| round(value, [places])     | Rounds a number to the nearest value based on standard rounding rules. | **• value** (_required_): The number to round. \\ • **places** (optional): How many decimal places to keep. Defaults to 0. | Coarser rounding than to the ones place is not supported e.g. with negative values for `[places]`. |
+| roundDown(value, [places]) | Always rounds a number down.                                           | **• value** (_required_): The number to round.  **• places** (optional): How many decimal places to keep. Defaults to 0.   | roundUp is not natively supported, but you can implement it with `-roundDown(-value, places)`      |
 
 ### Aggregation functions
 

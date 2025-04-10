@@ -1,9 +1,7 @@
 ---
 title: "Formulas basics"
-description: "Description of your new file."
+description: "Formulas are the backbone of your model in Runway. They define the logic behind every driver and are essential for simulating how your business will evolve over time."
 ---
-
-Formulas are the backbone of your model in Runway. They define the logic behind every driver and are essential for simulating how your business will evolve over time.
 
 While Runway often generates helpful default formulas—especially when working with integrations or databases—they’re just a starting point. To truly tailor your model, you’ll need to write and refine your own formulas.
 
@@ -19,27 +17,23 @@ Keep in mind that a driver table block can contain drivers created directly in t
 
 There are a few ways to access and edit a driver’s formulas:
 
-- **Show formulas as columns**
+- **Show formulas as columns.**
 
   Use the Customize menu to show the actuals and forecast formula columns, or press:
   - `Option` \+ `Shift` \+ `A` to toggle the **actuals formula** column
   - `Option` \+ `Shift` \+ `F` to toggle the **forecast formula** column
 
     [More on customizing columns →](https://docs.runway.com/concepts/pages/drivers-table-block#customizing-table-columns)
-- 
-- **Click the formula button next to the driver name**
+- **Click the formula button next to the driver name.**
 
-  \<IMG\>
-- 
-- **Open the driver’s details pane**
+  ![Driver Table Formula Button Pn](/images/formulas/driver-table-formula-button.png)
+- **Open the driver’s details pane.**
 
   This gives you more room to work and context on the driver. [Learn more →](https://docs.runway.com/concepts/drivers/driver-details-pane)
 
 ### #2 Driver default column formulas in a database
 
-Most databases in Runway—whether they pull data from an integration, reference another database, or are built manually—contain one or more **driver columns**.
-
-These columns might be:
+Most databases in Runway—whether they pull data from an integration, reference another database, or are built manually—contain one or more **driver columns**. These columns might be:
 
 - **Auto-generated** through [database configuration](https://docs.runway.com/concepts/databases/databases-basics#configuring-a-database), or
 - **Manually added** to extend the database with additional calculated drivers. [Learn how →](https://docs.runway.com/concepts/databases/databases-basics#adding-a-column)
@@ -48,13 +42,12 @@ No matter how a driver column is created, it supports [****default actuals and f
 
 You can view or edit the default formula in several places:
 
-[**When displaying a driver column as a time series**](https://docs.runway.com/concepts/databases/databases-basics#show-a-column-as-timeseries), click the ƒ button to open the formula editor.
+- [**When displaying a driver column as a time series**](https://docs.runway.com/concepts/databases/databases-basics#show-a-column-as-timeseries), click the ƒ button to open the formula editor.
 
-- \<IMG\>
+  ![Database Default Formula 1 Pn](/images/formulas/database-default-formula-1.png)
+- **When displaying a column as a single value**, the same ƒ button will appear.
 
-**When displaying a column as a single value**, the same ƒ button will appear.
-
-- \<IMG\>
+  ![Database Default Formula 2 Pn](/images/formulas/database-default-formula-2.png)
 
 ### #3 Row-level driver formulas in a database
 
@@ -64,8 +57,10 @@ You can do this in two ways:
 
 - **When viewing a driver column as a time series**, click directly into any row’s (segment) formula cell to edit it.
 - **When using** the [**full time series view of a database**](https://docs.runway.com/concepts/databases/databases-basics#show-all-columns-as-timeseries), you can override the formula for any segment inline. This is especially useful for scanning and editing multiple overrides in one place.
-  - \<IMG\>
-- Formula overrides at the row level will take precedence over the column default for that specific row only. You can always clear the override to revert to the inherited column formula.
+
+  ![Database Row Formula 2 Pn](/images/formulas/database-row-formula-2.png)
+
+  Formula overrides at the row level will take precedence over the column default for that specific row only. You can always clear the override to revert to the inherited column formula.
 
   ### #4 Field column formulas in an HRIS database
 
@@ -90,7 +85,7 @@ You can do this in two ways:
   ## More on formulas
 
   Now that you’ve got the basics down, here are a few resources to help you take your formulas further:
-  1. Formulas syntax
+  1. [Formulas syntax](https://docs.runway.com/concepts/formulas/formulas-syntax)
   2. [Functions & operators](https://docs.runway.com/concepts/formulas/functions-operators)
   3. [Building lookup tables](https://docs.runway.com/guides/modeling/lookups)
   4. [Propagating sparse data](https://docs.runway.com/guides/modeling/propagating-sparse-data)

@@ -31,7 +31,7 @@ These specific actions—when performed in a main scenario—automatically move 
 - Pages
   - Creating, renaming, or deleting a page
   - Creating or deleting blocks (e.g. table, chart, or text blocks) on pages
-  - Editing blocks (e.g. adding drivers to a chart block, or 
+  - Editing blocks (e.g. adding drivers to a chart block, or
   - Reordering pages in the sidebar
   - Creating or updating sidebar sections
 
@@ -39,7 +39,7 @@ These specific actions—when performed in a main scenario—automatically move 
 
 The following actions are applied directly to Main, and all scenarios with auto-updates enabled.
 
-- Changes to the 'view' of tables — like updating filters, sorts, groups, and visible columns
+- Changes to the 'view' of tables — like updating filters, sorts, groups, visible columns, and column width
 - Adding, editing, or removing integration credentials
 - Adding, editing, or removing integration queries and configuration
 
@@ -147,10 +147,12 @@ You can compare values across multiple scenarios in a table format:
 1. Open a model or create a **Driver table** in any page.
 2. Add the drivers you want to compare across different scenarios.
 3. Click **Customize** (top right) → Select **Compare** → Choose the scenarios you want to compare.
+   - Note that the default selection in this menu is "Current Scenario", which will track the scenario selected in the top navbar.
+   - If you'd like to ensure a given set of scenarios is shown no matter which scenario you've selected in the navigation bar, you can deselect "Current Scenario" and define the scenarios to show explicitly.
 4. The default view shows time series values from each scenario. You can add **Variance** and **Variance %** from the same menu.
 5. Adjust table layout to show scenarios as rows or columns.
 
-![images/scenarios/compare-tables.gif](/images/scenarios/compare-tables.gif)
+![Scenario Compariso](/ScenarioComparison)
 
 By default, **Variance** and **Variance %** appear in green when the current scenario's value is higher than the comparison scenario, and in red when it's lower. To reverse these colors, set your Driver's goal to be below 0.
 

@@ -13,10 +13,10 @@ Once in draft, all your edits remain local—they won’t affect main or any oth
 
 ### What counts as a data edit?
 
-The specific actions—when performed in a main scenario—automatically move you into a draft scenario. When performed in a non-main scenario, the impact of these changes remains local until an Admin merges them into main.
+These specific actions—when performed in a main scenario—automatically move you into a draft scenario. When performed in a non-main scenario, the impact of these changes remains scoped to the scenario, until an Admin merges them into main.
 
 - Drivers:
-  - Creating or deleting drivers
+  - Creating, renaming, or deleting drivers
   - Editing forecast, actual, or rollup formulas
   - Modifying values (actual or forecast)
   - Moving drivers between models or driver groups
@@ -28,6 +28,20 @@ The specific actions—when performed in a main scenario—automatically move yo
   - Adding / removing database rows
   - Editing formulas or modifying any database cell
   - Changing database schema (data sources, dimensions, segmentation)
+- Pages
+  - Creating, renaming, or deleting a page
+  - Creating or deleting blocks (e.g. table, chart, or text blocks) on pages
+  - Editing blocks (e.g. adding drivers to a chart block, or 
+  - Reordering pages in the sidebar
+  - Creating or updating sidebar sections
+
+### What doesn't count?
+
+The following actions are applied directly to Main, and all scenarios with auto-updates enabled.
+
+- Changes to the 'view' of tables — like updating filters, sorts, groups, and visible columns
+- Adding, editing, or removing integration credentials
+- Adding, editing, or removing integration queries and configuration
 
 ### How to tell you’re in a draft scenario
 

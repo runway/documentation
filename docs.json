@@ -12,7 +12,9 @@
     "groups": [
       {
         "group": "Get started",
-        "pages": ["get-started/start-guide", "get-started/overview"]
+        "pages": [
+          "get-started/start-guide", 
+          "get-started/glossary"]
       },
       {
         "group": "Concepts",
@@ -31,7 +33,10 @@
           {
             "group": "Dimensions",
             "icon": "list",
-            "pages": ["concepts/dimensions"]
+            "pages": [
+              "concepts/dimensions/dimensions-basics",
+              "concepts/dimensions/segmenting-drivers"
+            ]
           },
           {
             "group": "Databases",

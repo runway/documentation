@@ -151,7 +151,11 @@
           {
             "group": "Sharing workflow",
             "icon": "lock",
-            "pages": ["guides/sharing/data-anonymization"]
+            "pages": [
+              "guides/sharing/user-roles",
+              "guides/sharing/access-levels".
+              "guides/sharing/data-anonymization"
+            ]
           }
         ]
       }

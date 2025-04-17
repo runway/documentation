@@ -46,12 +46,19 @@ We’ll walk through both approaches below. Runway offers flexibility, so you ca
 Let’s take it up a notch and add in date functions and drivers. For this walkthrough, we’ll be working with a sales team that closes 80% of their quota during the last month of the quarter .
 
 1. Create a **Quarter End** helper driver. Go to Format and display \> Type \> Date to change to a date driver. This will output a human-readable date, rather than a number.
+
+   ![Quarterly 1 Pn](/images/seasonal-forecasting/quarterly-1.png)
 2. Use `thisQuarter()` to return the start of each quarter, then add 2 months to return the _end_ of that quarter.
 
    <Info>
      For more details on date functions in Runway, please refer to[ this article](https://docs.runway.com/concepts/formulas/functions-operators#date-functions).
    </Info>
+   ![Quarterly 2 Pn](/images/seasonal-forecasting/quarterly-2.png)
 3. Head back to your sales roster database and calculate their monthly quota using the **Quarter End driver** you just made. Wrapping this logic in an `IF()` statement allows us to allocate 80% of a quarter’s quota in the last month and 10% in the other months.
+
+   ![Quarterly 3 Pn](/images/seasonal-forecasting/quarterly-3.png)
+
+   ![Quarterly 4 Pn](/images/seasonal-forecasting/quarterly-4.png)
 
 ### Granular seasonality
 
@@ -64,13 +71,23 @@ We’ll take all the core concepts we’ve walked through above, but apply them 
 1. Within your database, create a column for your seasonality factor.
 
    Give it a sensible default - depending on your business, this could be a general seasonality factor (like those discussed above) or just a flat forecast.
+
+   ![Granular 1 Pn](/images/seasonal-forecasting/granular-1.png)
 2. Apply the seasonality factor to the affected database columns.
 
    In this example, we are applying our seasonality factor to the Usage driver.
+
+   ![Granular 2 Pn](/images/seasonal-forecasting/granular-2.png)
 3. For relevant segments, instead of using the default column formula defined in the previous step, you can override it by changing the formula for the row.
 
-   For example, you could offset the overall seasonality factor to match a customer’s usage patterns.\
+   For example, you could offset the overall seasonality factor to match a customer’s usage patterns.
+
+   ![Granular 3 Pn](/images/seasonal-forecasting/granular-3.png)
+
+   \
    Alternatively, you could hardcode a customer’s typical year’s worth of seasonality and have that recur annually.
+
+   ![Granular 4 Pn](/images/seasonal-forecasting/granular-4.png)
 
 ## Wrap-up
 

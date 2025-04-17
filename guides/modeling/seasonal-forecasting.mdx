@@ -25,20 +25,13 @@ We’ll walk through both approaches below. Runway offers flexibility, so you ca
      ![Annual 1 Pn](/images/seasonal-forecasting/annual-1.png)
    - **Have historical data?** Calculate seasonality directly in the driver’s actuals formula.
      In this example, we’re taking 1 month’s value of ARR and dividing it by the sum of the last rolling 12 months of ARR. Doing so will give us the proportion of ARR incurred in a particular month.
-
      ![Annual 2 Pn](/images/seasonal-forecasting/annual-2.png)
 2. To keep seasonality consistent across future months, reference the same month from the previous year in your forecast formula using the **One Year Ago** date reference.
-
    ![Annual 3 Pn](/images/seasonal-forecasting/annual-3.png)
 3. Apply this seasonal adjustment to the relevant forecast drivers.
-
    In this example, we’re multiplying the Account Executive (AE) quota projection by the seasonality driver within a database. This allows you to use a shared formula while giving each AE a tailored goal.
-
    ![Annual 4 Pn](/images/seasonal-forecasting/annual-4.png)
-
-   \
    The impact will cascade into downstream metrics like ARR that aggregate the AE quota projection.
-
    ![Annual 5 Pn](/images/seasonal-forecasting/annual-5.png)
 
 ### Quarterly seasonality - Date math & date drivers
@@ -46,18 +39,14 @@ We’ll walk through both approaches below. Runway offers flexibility, so you ca
 Let’s take it up a notch and add in date functions and drivers. For this walkthrough, we’ll be working with a sales team that closes 80% of their quota during the last month of the quarter .
 
 1. Create a **Quarter End** helper driver. Go to Format and display \> Type \> Date to change to a date driver. This will output a human-readable date, rather than a number.
-
    ![Quarterly 1 Pn](/images/seasonal-forecasting/quarterly-1.png)
 2. Use `thisQuarter()` to return the start of each quarter, then add 2 months to return the _end_ of that quarter.
-
    <Info>
      For more details on date functions in Runway, please refer to[ this article](https://docs.runway.com/concepts/formulas/functions-operators#date-functions).
    </Info>
    ![Quarterly 2 Pn](/images/seasonal-forecasting/quarterly-2.png)
 3. Head back to your sales roster database and calculate their monthly quota using the **Quarter End driver** you just made. Wrapping this logic in an `IF()` statement allows us to allocate 80% of a quarter’s quota in the last month and 10% in the other months.
-
    ![Quarterly 3 Pn](/images/seasonal-forecasting/quarterly-3.png)
-
    ![Quarterly 4 Pn](/images/seasonal-forecasting/quarterly-4.png)
 
 ### Granular seasonality
@@ -69,24 +58,15 @@ In this case, because seasonality occurs at a more granular level, we'll want to
 We’ll take all the core concepts we’ve walked through above, but apply them by overriding the default formula in a database column.
 
 1. Within your database, create a column for your seasonality factor.
-
    Give it a sensible default - depending on your business, this could be a general seasonality factor (like those discussed above) or just a flat forecast.
-
    ![Granular 1 Pn](/images/seasonal-forecasting/granular-1.png)
 2. Apply the seasonality factor to the affected database columns.
-
    In this example, we are applying our seasonality factor to the Usage driver.
-
    ![Granular 2 Pn](/images/seasonal-forecasting/granular-2.png)
 3. For relevant segments, instead of using the default column formula defined in the previous step, you can override it by changing the formula for the row.
-
    For example, you could offset the overall seasonality factor to match a customer’s usage patterns.
-
    ![Granular 3 Pn](/images/seasonal-forecasting/granular-3.png)
-
-   \
    Alternatively, you could hardcode a customer’s typical year’s worth of seasonality and have that recur annually.
-
    ![Granular 4 Pn](/images/seasonal-forecasting/granular-4.png)
 
 ## Wrap-up

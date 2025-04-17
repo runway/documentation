@@ -141,6 +141,7 @@
             "pages": [
               "guides/modeling/lookups",
               "guides/modeling/fx-rate",
+              "guides/modeling/seasonal-forecasting",
               "guides/modeling/bva",
               "guides/modeling/propagating-sparse-data",
               "guides/modeling/headcount-modeling",

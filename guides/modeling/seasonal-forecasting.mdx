@@ -1,0 +1,69 @@
+---
+title: "Seasonal forecasting"
+description: "This guide walks through several ways to model seasonality in Runway, depending on where it occurs in your business."
+---
+
+Revenue and expenses often fluctuate throughout the year. Runway makes it easy to handle time-based variability, since all data is a time series.
+
+## Where should I be forecasting seasonality?
+
+Forecast seasonality at the same level where it shows up in your business.
+
+- If it’s **company-wide**, apply seasonality factors to a high-level driver in a model or directly to a default formula in a database column.
+- If seasonality varies by **customer, store, or contract**, use **formula overrides** in the relevant database.
+
+We’ll walk through both approaches below. Runway offers flexibility, so you can adapt the method to what makes the most sense for your model.
+
+<Info>
+  Need a refresher on formulas? [Start here →](https://docs.runway.com/concepts/formulas/formulas-basics)
+</Info>
+
+### Annual seasonality - Driver & default formula
+
+1. Define a new driver to capture your seasonal pattern. If this pattern is global (not tied to a particular customer), add it in a [driver table block in a page](https://docs.runway.com/concepts/pages/drivers-table-block) or a [model](https://docs.runway.com/concepts/models/models-basics).
+   - **No historical data?** Hardcode seasonality for a typical year.
+   - **Have historical data?** Calculate seasonality directly in the driver’s actuals formula.
+
+     In this example, we’re taking 1 month’s value of ARR and dividing it by the sum of the last rolling 12 months of ARR. Doing so will give us the proportion of ARR incurred in a particular month.
+2. To keep seasonality consistent across future months, reference the same month from the previous year in your forecast formula using the **One Year Ago** date reference.
+3. Apply this seasonal adjustment to the relevant forecast drivers. 
+
+   In this example, we’re multiplying the Account Executive (AE) quota projection by the seasonality driver within a database. This allows you to use a shared formula while giving each AE a tailored goal.\
+   The impact will cascade into downstream metrics like ARR that aggregate the AE quota projection.
+
+### Quarterly seasonality - Date math & date drivers
+
+Let’s take it up a notch and add in date functions and drivers. For this walkthrough, we’ll be working with a sales team that closes 80% of their quota during the last month of the quarter .
+
+1. Create a **Quarter End** helper driver. Go to Format and display \> Type \> Date to change to a date driver. This will output a human-readable date, rather than a number.
+2. Use `thisQuarter()` to return the start of each quarter, then add 2 months to return the _end_ of that quarter.
+
+   <Info>
+     For more details on date functions in Runway, please refer to[ this article](https://docs.runway.com/concepts/formulas/functions-operators#date-functions).
+   </Info>
+3. Head back to your sales roster database and calculate their monthly quota using the **Quarter End driver** you just made. Wrapping this logic in an `IF()` statement allows us to allocate 80% of a quarter’s quota in the last month and 10% in the other months.
+
+### Granular seasonality
+
+For this walkthrough, let’s think about customer usage of a SaaS business. Given each customer’s business, they might use a platform at different intensities throughout the year. A florist will not have the same usage as a ski resort, for example.
+
+In this case, because seasonality occurs at a more granular level, we'll want to forecast it at that same level—on a customer-by-customer basis.
+
+We’ll take all the core concepts we’ve walked through above, but apply them by overriding the default formula in a database column.
+
+1. Within your database, create a column for your seasonality factor.
+
+   Give it a sensible default - depending on your business, this could be a general seasonality factor (like those discussed above) or just a flat forecast.
+2. Apply the seasonality factor to the affected database columns.
+
+   In this example, we are applying our seasonality factor to the Usage driver.
+3. For relevant segments, instead of using the default column formula defined in the previous step, you can override it by changing the formula for the row.
+
+   For example, you could offset the overall seasonality factor to match a customer’s usage patterns.\
+   Alternatively, you could hardcode a customer’s typical year’s worth of seasonality and have that recur annually.
+
+## Wrap-up
+
+Seasonality doesn’t have to be hardcoded across dozens of drivers. By using Runway’s date references and formula flexibility, you can structure your model to scale seasonality cleanly—whether annually, quarterly, or by segment.
+
+If you need help deciding which method fits your use case, reach out to your CXM or drop us a line in Slack.

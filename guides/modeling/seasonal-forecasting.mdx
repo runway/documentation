@@ -22,14 +22,24 @@ We’ll walk through both approaches below. Runway offers flexibility, so you ca
 
 1. Define a new driver to capture your seasonal pattern. If this pattern is global (not tied to a particular customer), add it in a [driver table block in a page](https://docs.runway.com/concepts/pages/drivers-table-block) or a [model](https://docs.runway.com/concepts/models/models-basics).
    - **No historical data?** Hardcode seasonality for a typical year.
+     ![Annual 1 Pn](/images/seasonal-forecasting/annual-1.png)
    - **Have historical data?** Calculate seasonality directly in the driver’s actuals formula.
-
      In this example, we’re taking 1 month’s value of ARR and dividing it by the sum of the last rolling 12 months of ARR. Doing so will give us the proportion of ARR incurred in a particular month.
-2. To keep seasonality consistent across future months, reference the same month from the previous year in your forecast formula using the **One Year Ago** date reference.
-3. Apply this seasonal adjustment to the relevant forecast drivers. 
 
-   In this example, we’re multiplying the Account Executive (AE) quota projection by the seasonality driver within a database. This allows you to use a shared formula while giving each AE a tailored goal.\
+     ![Annual 2 Pn](/images/seasonal-forecasting/annual-2.png)
+2. To keep seasonality consistent across future months, reference the same month from the previous year in your forecast formula using the **One Year Ago** date reference.
+
+   ![Annual 3 Pn](/images/seasonal-forecasting/annual-3.png)
+3. Apply this seasonal adjustment to the relevant forecast drivers.
+
+   In this example, we’re multiplying the Account Executive (AE) quota projection by the seasonality driver within a database. This allows you to use a shared formula while giving each AE a tailored goal.
+
+   ![Annual 4 Pn](/images/seasonal-forecasting/annual-4.png)
+
+   \
    The impact will cascade into downstream metrics like ARR that aggregate the AE quota projection.
+
+   ![Annual 5 Pn](/images/seasonal-forecasting/annual-5.png)
 
 ### Quarterly seasonality - Date math & date drivers
 

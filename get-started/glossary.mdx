@@ -1,4 +1,81 @@
 ---
-title: "Glossary (coming soon)"
+title: "Glossary"
 description: "Before diving deeper into the documentation, it’s helpful to get familiar with key terms you'll encounter throughout the product and when working with your CXM."
 ---
+
+### **Dimension**
+
+A data type in Runway—like numbers or dates—used to categorize data. Common examples:
+
+- **GL dimensions**: `Class`, `Account`, `Account Type`, `Vendor`
+- **HRIS dimensions**: `Role`, `Department`, `Location`
+- **CRM dimensions**: `Region`, `Pipeline Stage`
+
+**Dimension values** are the options within a dimension (e.g. `Marketing`, `Engineering`, `Sales` for the `Class` dimension).
+
+[Learn more about dimensions →](https://docs.runway.com/concepts/dimensions/dimensions-basics)
+
+### Driver
+
+A time series that tracks numerical or date-based values over time. Drivers come in these types:
+
+- **Unsegmented driver** – Typically created in a [driver table on a page](https://docs.runway.com/concepts/pages/drivers-table-block) or [model](https://docs.runway.com/concepts/models/models-basics) (e.g. `Burn`, `Runway`).
+- **Segmented driver** – Broken down by one or more dimensions. Most often created in a database (e.g. `Amount [Account][Class]`).
+  - **Segment of a driver** – A single portion of a segmented driver (e.g. `Amount [2300 — Payroll Liabilities][Engineering]`).
+
+[Learn more about driver basics →](https://docs.runway.com/concepts/drivers/drivers-basics)
+
+[Learn more about driver segmentation →](https://docs.runway.com/concepts/dimensions/segmenting-drivers)
+
+### Databases
+
+Where all your structured data lives—both integration-synced and manually created.
+
+- **Integration-created** – Pulled from [systems](https://docs.runway.com/integrations/intro-to-integrations) like your GL, HRIS, or CRM.
+- **User-created** – Built from scratch for modeling assumptions, rollups, or [lookups](https://docs.runway.com/guides/modeling/lookups).
+
+[Learn more about databases →](https://docs.runway.com/concepts/databases/databases-basics)
+
+### Models
+
+Tables of related drivers for lightweight modeling and grouping.
+
+[Learn more about models →](https://docs.runway.com/concepts/models/models-basics)
+
+### Pages
+
+A flexible canvas for combining drivers, charts, and data views to tell a story, report, or collaborate.
+
+**Block** – Each content element on a page is a block (e.g. [driver table](https://docs.runway.com/concepts/pages/drivers-table-block), [chart](https://docs.runway.com/concepts/pages/charts-block), [database](https://docs.runway.com/concepts/pages/database-block), [plan timeline](https://docs.runway.com/concepts/plans#surfacing-plans-in-pages), [text, image, video](https://docs.runway.com/concepts/pages/text-media-block)).
+
+[Learn more about pages →](https://docs.runway.com/concepts/pages/pages-basics)
+
+### Section
+
+Used to organize your pages, models, and databases in the sidebar.
+
+[Learn more about sidebar sections →](https://docs.runway.com/concepts/sidebar)
+
+### Scenario
+
+A version of your model. Used for simulating various scenarios, testing new ideas, and running [BvA](https://docs.runway.com/guides/modeling/bva). Scenarios can stay in sync with your Main scenario or diverge completely.
+
+[Learn more about scenarios →](https://docs.runway.com/concepts/scenarios)
+
+### Plans
+
+Used to tag forecast overrides with real-world business context (e.g. hiring plans, initiatives, contracts). Helps bridge roadmap and financial data.
+
+[Learn more about plans →](https://docs.runway.com/concepts/plans)
+
+### Role
+
+Determines what a user can do across your Runway workspace: Admin, Manager, Member, Guest.
+
+[Learn more about roles →](https://docs.runway.com/guides/sharing/user-roles)
+
+### Access level
+
+In addition to having a role, each user can have different access levels for individual pages, models, or databases in Runway—Full access, Edit access, View access, or No access.
+
+[Learn more about access levels →](https://docs.runway.com/guides/sharing/access-levels)

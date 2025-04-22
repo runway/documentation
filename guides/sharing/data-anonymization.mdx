@@ -1,4 +1,68 @@
 ---
 title: "Data anonymization (coming soon)"
-description: "Description of your new file."
+description: "Runway is designed to foster collaboration between finance teams and the broader organization. However, collaboration doesn’t mean exposing sensitive information—like salaries—to everyone."
 ---
+
+With Runway, you can anonymize sensitive data and reveal it selectively, ensuring privacy while enabling deep collaboration.
+
+## How to anonymize data
+
+Imagine you have an employees database and want your department heads to collaborate with you on planning new hires, raises, or bonuses. You need each department head to see salary information only for their own team—not for everyone else.
+
+As an Admin, you can easily anonymize specific columns in your database to protect sensitive data:
+
+1. Open your database and click on the header of the column you want to anonymize (e.g., "Salary").
+2. In the column settings, enable **Anonymize data**.
+
+<Info>
+  Only Admin users can change this setting.
+</Info>
+
+![Enable Data Anonymization Pn](/images/data-anonymization/enable-data-anonymization.png)
+
+Once anonymized:
+
+- All non-Admin users will see the anonymized data displayed as `***`, regardless of where the data appears (e.g., database blocks or driver tables on any Runway page).
+- Admin users will continue to see the actual data values, maintaining full visibility.
+
+In the example below, notice how anonymized salary data appears to non-Admin users:
+
+![Anonymized Data On Page Pn](/images/data-anonymization/anonymized-data-on-page.png)
+
+Admins, however, will always see the original data:
+
+![Regular Data On Page Pn](/images/data-anonymization/regular-data-on-page.png)
+
+## Revealing anonymized data on a specific page
+
+After anonymizing sensitive data, you might still want certain team members to view some of this data when it’s relevant. Runway lets you selectively reveal anonymized data on specific pages, so team members see only what's necessary without compromising privacy.
+
+**Example:** Let’s say you created a dedicated page for your Head of Sales to collaborate on their team's headcount and hiring plan. You want them to see salary details, but **only** for their own team members.
+
+To selectively reveal anonymized data on a specific page:
+
+1. Add your employee database as a **database block** on the relevant page.
+2. Apply a filter to show only the employees relevant to that user (e.g., Sales department).
+3. Click **Customize** on the database block.
+4. Enable the toggle labeled **Reveal hidden data in this block**.
+
+Once enabled:
+
+- Users viewing this block will see the original, non-redacted data **only within this specific block**.
+- Filters and columns become locked for non-Admins of this page. They won’t be able to change filters or show additional columns, ensuring sensitive information remains protected.
+
+<Info>
+  Revealing anonymized data is available **only for database blocks** and **not for driver table blocks.**
+</Info>
+
+![Reveal Data Pn](/images/data-anonymization/reveal-data.png)
+
+## Data anonymization FAQ
+
+<Accordion title="Can I reveal anonymized data in a driver table block instead of a database block?">
+  Currently, revealing anonymized data is only supported for database blocks. If you’d find this capability helpful for driver table blocks, let us know in Slack or share your feedback with your CXM so we can prioritize it.
+</Accordion>
+
+<Accordion title="Can I anonymize drivers that don’t originate from a database?">
+  Not currently. Data anonymization is available only for database columns. If anonymizing other types of drivers would be valuable to you, please reach out in Slack or share your feedback with your CXM to help us prioritize future improvements.
+</Accordion>

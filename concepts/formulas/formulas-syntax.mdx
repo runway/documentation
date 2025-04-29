@@ -70,7 +70,11 @@ If you want to include more than one segment from a driver:
 As you update the filters:
 
 - If your selection **matches a single existing segment**, the formula will resolve to that **specific segment**.
+
+  ![Multi Segment 1 Pn](/images/formulas/multi-segment-1.png)
 - If your selection **spans multiple segments**, the formula will reference the **segmented driver as a whole**, with filters applied.
+
+  ![Multi Segment 2 Pn](/images/formulas/multi-segment-2.png)
 
 <Warning>
   If your formula is referencing multiple segments, be sure to wrap the reference in an aggregator like `SUM()`. Otherwise, you'll likely run into a `TYPE` error.
@@ -115,12 +119,20 @@ That’s where **This Segment** comes in. It allows you to dynamically match dat
 How it works:
 
 - You can search for **This Segment** in the formula editor.
+
+  ![This Segment 1 Pn](/images/formulas/this-segment-1.png)
 - You can apply **partial matching**—filtering just on one or more specific dimensions—or **full matching** to filter across all dimensions.
+
+  ![This Segment 2 Pn](/images/formulas/this-segment-2.png)
 
 When referencing database columns, you can use _This Segment_ in a few more ways:
 
 - **Numeric filters**: Dynamically match rows where a column (like usage tier) equals the value of a numeric driver (like transaction volume).
+
+  ![This Segment 3 Pn](/images/formulas/this-segment-3.png)
 - **Date filters**: Match rows using a date column (like contract start) against a date driver for that segment.
+
+  ![This Segment 4 Pn](/images/formulas/this-segment-4.png)
 
 <Info>
   For a deeper dive on using _This Segment_ in databases, see: [Formulas in databases → Dynamic formulas](https://docs.runway.com/concepts/databases/formulas-in-databases#dynamic-formulas-using-this-segment)

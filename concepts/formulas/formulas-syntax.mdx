@@ -1,4 +1,150 @@
 ---
 title: "Formulas syntax"
-description: "Description of your new file."
 ---
+
+Formulas in Runway are made up of three key components:
+
+1. **Operators** — symbols like `+`, `-` , `>`, and others used for basic logic or math.
+2. **Functions** — built-in helpers like `ifError`, `avg`, `count`, etc.
+3. **Data references** — the core of your model: this includes drivers created in a driver table block, segmented drivers from a database, specific segments of a driver, or entire database columns.
+
+![Formula Syntax Pn](/images/formulas/formula-syntax.png)
+
+This article will explain how to reference data within your formulas. To learn more about available operators and functions, [see this guide](https://docs.runway.com/concepts/formulas/functions-operators).
+
+## Referencing data in formulas
+
+In Runway, you can reference various types of data in formulas — from individual drivers to entire driver groups, segmented drivers, or even full databases. Here’s how to work with each type:
+
+### Driver groups (from models)
+
+[Driver groups created in models](https://docs.runway.com/concepts/models/grouping-drivers) can be referenced as a single unit.
+
+- Type the name of the group into the formula editor to reference the entire group.
+- Runway will automatically wrap the reference in a `sum()` function since groups typically contain multiple drivers.
+- You can change this aggregation to something else, like `avg()` or `max()`, depending on your use case.
+
+### Unsegmented drivers
+
+These are standard drivers created in a [model](https://docs.runway.com/concepts/models/models-basics) or on a [page](https://docs.runway.com/concepts/pages/drivers-table-block), without any associated dimensions.
+
+- You can reference them by simply typing the name of the driver into the formula editor.
+- They appear in the formula as-is, without any wrapping function.
+
+### Segmented drivers
+
+Drivers can be segmented by one or more dimensions (like product, department, or region).
+
+- You can reference them by searching for the column name alone.
+- Or together with the dimension name to narrow it down.
+- When added to a formula, these drivers are automatically wrapped in a `sum()` function, because they include many segments.
+- As with groups, you can modify the function used to match your intent — for example, switching from `sum()` to `count()` or `avg()`.
+
+### Specific segment of a driver
+
+A driver can contain many segments. If you want to reference a single segment rather than the entire segmented driver:
+
+- Use the search bar in the formula editor to search by the driver name plus the dimension attributes you’re targeting.
+- When inserted into the formula, the reference will display the driver name and attributes as-is, without any wrapping function, since it points to a single segment.
+
+### Multiple segments of driver
+
+If you want to include more than one segment from a driver:
+
+- Start by selecting a [segmented driver](https://www.notion.so/Formulas-syntax-1d0691424a2880dfacafcb12689502f6?pvs=21) or a [specific segment](https://www.notion.so/Formulas-syntax-1d0691424a2880dfacafcb12689502f6?pvs=21) in the formula editor, as described in the earlier sections.
+- Then, expand the filters to include all relevant segments you want to reference.
+
+As you update the filters:
+
+- If your selection **matches a single existing segment**, the formula will resolve to that **specific segment**.
+- If your selection **spans multiple segments**, the formula will reference the **segmented driver as a whole**, with filters applied.
+
+<Warning>
+  If your formula is referencing multiple segments, be sure to wrap the reference in an aggregator like `SUM()`. Otherwise, you'll likely run into a `TYPE` error.
+</Warning>
+
+### Database column
+
+- To reference a column from a database, start by searching for the **database name** or the **column name** in the formula editor.
+
+  <Info>
+    Note that a driver column in a database can be referenced either via **database_name.column_name** or as **segmented_driver_name** The main advantage of the former is that you can filter based on any of the columns in the database; the main advantage of the latter is a more concise pill in the formula.
+  </Info>
+- In the search results, columns will appear in the format: **database_name.column_name** so you can easily identify the correct reference.
+- When added to a formula, the reference displays:
+  - A **database icon** for easy identification,
+  - The **database name**, and
+  - The **column name**.
+- Runway automatically wraps the reference in a `sum()` function, since database columns contain many rows. You can change this to another aggregation function if needed.
+- Click the database name in the formula pill to:
+  - Switch to a different column, or
+  - Apply filters to narrow down the set of rows included in the result.
+- Filters can be applied using any column in the database—not just the one you're referencing in the formula.
+
+### _This Segment_ - dynamic matching
+
+In previous sections, we walked through how to filter a segmented driver or database reference to only include specific segments. While useful, that approach can become tedious and error-prone when modeling at scale—especially if you’re trying to apply similar logic across many segments.
+
+That’s where **This Segment** comes in. It allows you to dynamically match data based on the dimension values of the driver currently being evaluated—eliminating the need to hardcode filters for every segment. This is especially powerful when:
+
+- Setting default formulas in databases
+- Writing self-referential logic across rows
+- Referencing other drivers or columns that have segmentation overlap
+
+How it works:
+
+- You can search for **This Segment** in the formula editor.
+- You can apply **partial matching**—filtering just on one or more specific dimensions—or **full matching** to filter across all dimensions.
+
+When referencing database columns, you can use _This Segment_ in a few more ways:
+
+- **Numeric filters**: Dynamically match rows where a column (like usage tier) equals the value of a numeric driver (like transaction volume).
+- **Date filters**: Match rows using a date column (like contract start) against a date driver for that segment.
+
+<Info>
+  For a deeper dive on using _This Segment_ in databases, see: [Formulas in databases → Dynamic formulas](https://docs.runway.com/concepts/databases/formulas-in-databases#dynamic-formulas-using-this-segment)
+</Info>
+
+### Numbers and dates
+
+In addition to referencing data from across Runway, you can also enter raw values directly into formulas:
+
+- **Numbers:** Just type the number directly (e.g., `1000`).
+- **Dates:** Use the format `'YYYY-MM-DD'` — make sure to include the single quotes (e.g., `'2025-06-01'`). You can also write a date in the format `'YYYY'` and Runway will auto-populate as the first day of the month. (e.g., if you type `'2025'` Runway will populate `'01-01-2025'` .
+
+### Dimension value
+
+When setting default formulas at a column level i.e. in databases, you may want to set conditional logic based on the values of a dimension. You can set this up using if() statements and placing dimension values in your formulas.
+
+## Using date ranges in formulas
+
+Whenever you reference another value (driver, database columns, etc.) in a formula, you’ll always see this filter: `Date = <date range>`
+
+This filter controls which month’s data is pulled from that reference when the formula runs. Since Runway stores values over time and evaluates formulas month‑by‑month, you must tell it _which_ month (or months) to use when referencing other data.
+
+- **Default behavior**
+  - **This month** is applied to ordinary references.
+  - **Last month** is used when a driver’s formula references itself, to prevent circular logic.
+- **Available options** for single-month ranges:
+  - **This month** — Use the corresponding month’s value.
+  - **Last month** — Shift back by one month.
+  - **Most recent value** — Pull the latest non‑null entry. Ideal for [propagating sparse data](https://docs.runway.com/guides/modeling/propagating-sparse-data#propagating-sparse-data) over time.
+  - **One year ago —** Shortcut for “12 months ago.”
+  - **Specific date —** Fix the reference to a specific month you choose.
+  - `<Driver> months ago` — Dynamically looks back _N_ months, where _N_ is the value of another driver. Useful if the amount of time you need of time you need to ‘look back’ varies over time or is the result of some other logic.
+  - **Custom** —\*Enter any integer offset (e.g. “3 months ago,” etc.).
+
+  If you keep scrolling in this menu, you’ll also see a section for **multi-month date ranges** that reference spans of time over multiple months.
+
+
+- **How it works**
+
+  For each month’s calculation, Runway pulls the referenced value from every month in the chosen range (e.g. for “Last 3 months” in April, it fetches values from Jan, Feb, Mar).
+
+  <Info>
+    Given that multiple values are being fetched for each month, references to multi-month date ranges must be wrapped in an aggregation function like `sum()`, `avg()`, or `max()`.
+  </Info>
+- **Why it’s useful**
+  - **Rolling averages & trends** Smooth out seasonality or one‑off spikes.
+  - **Cumulative metrics** Track YTD totals, quarterly results, or any custom range.
+  - **Forecast inputs** Base projections on recent history rather than just the prior month.

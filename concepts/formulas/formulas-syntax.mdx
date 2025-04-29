@@ -84,15 +84,23 @@ As you update the filters:
     Note that a driver column in a database can be referenced either via **database_name.column_name** or as **segmented_driver_name** The main advantage of the former is that you can filter based on any of the columns in the database; the main advantage of the latter is a more concise pill in the formula.
   </Info>
 - In the search results, columns will appear in the format: **database_name.column_name** so you can easily identify the correct reference.
+
+  ![Database Column 1 Pn](/images/formulas/database-column-1.png)
 - When added to a formula, the reference displays:
   - A **database icon** for easy identification,
   - The **database name**, and
   - The **column name**.
+
+  ![Database Column 2 Pn](/images/formulas/database-column-2.png)
 - Runway automatically wraps the reference in a `sum()` function, since database columns contain many rows. You can change this to another aggregation function if needed.
 - Click the database name in the formula pill to:
   - Switch to a different column, or
   - Apply filters to narrow down the set of rows included in the result.
+
+  ![Database Column 3 Pn](/images/formulas/database-column-3.png)
 - Filters can be applied using any column in the database—not just the one you're referencing in the formula.
+
+  ![Database Column 4 Pn](/images/formulas/database-column-4.png)
 
 ### _This Segment_ - dynamic matching
 

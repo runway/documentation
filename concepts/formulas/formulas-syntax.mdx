@@ -7,8 +7,7 @@ Formulas in Runway are made up of three key components:
 1. **Operators** — symbols like `+`, `-` , `>`, and others used for basic logic or math.
 2. **Functions** — built-in helpers like `ifError`, `avg`, `count`, etc.
 3. **Data references** — the core of your model: this includes drivers created in a driver table block, segmented drivers from a database, specific segments of a driver, or entire database columns.
-
-![Formula Syntax Pn](/images/formulas/formula-syntax.png)
+   ![Formula Syntax Pn](/images/formulas/formula-syntax.png)
 
 This article will explain how to reference data within your formulas. To learn more about available operators and functions, [see this guide](https://docs.runway.com/concepts/formulas/functions-operators).
 
@@ -21,10 +20,8 @@ In Runway, you can reference various types of data in formulas — from individu
 [Driver groups created in models](https://docs.runway.com/concepts/models/grouping-drivers) can be referenced as a single unit.
 
 - Type the name of the group into the formula editor to reference the entire group.
-
   ![Driver Group 1 Pn](/images/formulas/driver-group-1.png)
 - Runway will automatically wrap the reference in a `sum()` function since groups typically contain multiple drivers.
-
   ![Driver Group 2 Pn](/images/formulas/driver-group-2.png)
 - You can change this aggregation to something else, like `avg()` or `max()`, depending on your use case.
 
@@ -33,10 +30,8 @@ In Runway, you can reference various types of data in formulas — from individu
 These are standard drivers created in a [model](https://docs.runway.com/concepts/models/models-basics) or on a [page](https://docs.runway.com/concepts/pages/drivers-table-block), without any associated dimensions.
 
 - You can reference them by simply typing the name of the driver into the formula editor.
-
   ![Unsegmented Driver 1 Pn](/images/formulas/unsegmented-driver-1.png)
 - They appear in the formula as-is, without any wrapping function.
-
   ![Unsegmented Driver 2 Pn](/images/formulas/unsegmented-driver-2.png)
 
 ### Segmented drivers
@@ -44,8 +39,14 @@ These are standard drivers created in a [model](https://docs.runway.com/concepts
 Drivers can be segmented by one or more dimensions (like product, department, or region).
 
 - You can reference them by searching for the column name alone.
+
+  ![Segmented Drivers 1 Pn](/images/formulas/segmented-drivers-1.png)
 - Or together with the dimension name to narrow it down.
+
+  ![Segmented Drivers 2 Pn](/images/formulas/segmented-drivers-2.png)
 - When added to a formula, these drivers are automatically wrapped in a `sum()` function, because they include many segments.
+
+  ![Segmented Drivers 3 Pn](/images/formulas/segmented-drivers-3.png)
 - As with groups, you can modify the function used to match your intent — for example, switching from `sum()` to `count()` or `avg()`.
 
 ### Specific segment of a driver
@@ -53,7 +54,11 @@ Drivers can be segmented by one or more dimensions (like product, department, or
 A driver can contain many segments. If you want to reference a single segment rather than the entire segmented driver:
 
 - Use the search bar in the formula editor to search by the driver name plus the dimension attributes you’re targeting.
+
+  ![Sub Driver 1 Pn](/images/formulas/sub-driver-1.png)
 - When inserted into the formula, the reference will display the driver name and attributes as-is, without any wrapping function, since it points to a single segment.
+
+  ![Sub Driver 2 Pn](/images/formulas/sub-driver-2.png)
 
 ### Multiple segments of driver
 
@@ -143,8 +148,6 @@ This filter controls which month’s data is pulled from that reference when the
   - **Custom** —\*Enter any integer offset (e.g. “3 months ago,” etc.).
 
   If you keep scrolling in this menu, you’ll also see a section for **multi-month date ranges** that reference spans of time over multiple months.
-
-
 - **How it works**
 
   For each month’s calculation, Runway pulls the referenced value from every month in the chosen range (e.g. for “Last 3 months” in April, it fetches values from Jan, Feb, Mar).

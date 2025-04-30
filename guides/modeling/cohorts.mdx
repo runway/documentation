@@ -42,6 +42,7 @@ To configure a new source data database:
    <Info>
      **We recommend enabling “Most Recent Value”** — this ensures values continue to apply in future months beyond the start month. [Read more about filling sparse data here](https://docs.runway.com/guides/modeling/propagating-sparse-data).
    </Info>
+   ![Step1 Drivers Pn](/images/cohorts/step1-drivers.png)
 
 ### Segment by and Other columns
 
@@ -56,6 +57,8 @@ To configure a new source data database:
 2. Use **Other columns** to bring in any extra metadata you want available in the model.
 3. Once your configuration looks good, press **Confirm**.
 
+![Step1 Segment By Pn](/images/cohorts/step1-segment-by.png)
+
 For more detail on database configuration [see article](https://docs.runway.com/concepts/databases/databases-basics#configuring-a-database).
 
 ## Step 2: Configuring formulas on source data
@@ -67,6 +70,8 @@ The next step is making sure your cohort data is modeled correctly across time �
    If your cohort data includes values extending into the future (e.g. pipeline data), copy the actuals formula into the forecast for your driver columns.
 
    This ensures that the **“Most Recent Value”** is carried forward even _beyond_ the Last Close.
+
+   ![Step2 Gi](/images/cohorts/step2.gif)
 2. **Use Timeseries view to manage formulas**.
 
    Switch your database view under **Customize \> View as \> Timeseries** to easily manage formulas across all drivers and trace how values flow from one driver to the next.
@@ -103,6 +108,8 @@ Now that each cohort is set up as its own segment, the next step is to add colum
 1. Add a driver for **cohort age**
 
    This driver calculates the number of months since each cohort started. It allows you to apply the right assumptions in the right month based on cohort age.
+
+   ![Step3 Pn](/images/cohorts/step3.png)
 2. Add drivers for **key cohort metrics**
 
    If there are parts of your model (like churn rate, expansion revenue, etc.) that aren’t available in the source data:
@@ -143,11 +150,15 @@ Here’s how to set it up:
 
 Each of these five steps is labeled in the annotated screenshot below:
 
+![Step4 Pn](/images/cohorts/step4.png)
+
 ## Step 5: Applying your assumptions in cohort forecasts
 
 With both your **Cohorts database** and **Assumptions database** set up, you can now connect them to forecast key metrics — like growth in Seats — based on each cohort’s **age** and **tier**.
 
 In your **Cohorts database**, use the cohort’s **age** and the dynamic filtering capability of **This Segment** to fetch and apply the right assumption values for each month.
+
+![Step5 Pn](/images/cohorts/step5.png)
 
 <Info>
   This is just one example. Your cohort model may use different logic and multiple drivers — and that’s totally supported. You can build forecasts that combine various assumptions, metrics, and time-based rules.

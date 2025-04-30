@@ -86,11 +86,9 @@ Steps:
 
    Point the cohort database to the one holding your individual customer or deal-level data.
 
-   \<aside\>
-
-   If you're importing already-cohorted data directly from a data warehouse (e.g. via Snowflake or BigQuery), select the appropriate integration query as your source instead of referencing another Runway database.
-
-   \</aside\>
+   <Info>
+     If you're importing already-cohorted data directly from a data warehouse (e.g. via Snowflake or BigQuery), select the appropriate integration query as your source instead of referencing another Runway database.
+   </Info>
 3. **Drivers**
    - Bring in the **cohort start month** as a driver — this allows for time-based modeling.
    - Include any drivers you want to aggregate and model at the cohort level, such as: `Seats`, `Contract value`, `Revenue`.

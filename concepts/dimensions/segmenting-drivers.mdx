@@ -1,5 +1,75 @@
 ---
-title: 'Segmenting drivers'
-description: 'Description of your new file.'
+title: "Segmenting drivers"
+description: "One of the most powerful uses of dimensions is segmenting your drivers. For example, you might have an Amount driver segmented by both Account and Class, and another version rolled up by just Account."
 ---
 
+## Why segment your drivers
+
+### Easier & scalable modeling
+
+Segmenting your drivers help you build scalable models that are easier to maintain and expand.
+
+Take this example: you want to model **Growth Rate by Region**. You could create separate drivers like `Growth Rate - US`, `Growth Rate - EMEA`, etc.—but that gets messy fast.
+
+Instead, by segmenting a single **Growth Rate** driver using a **Region** dimension, you unlock powerful benefits:
+
+- You can write one formula that is inherited by all regions using [**_This Segment_**](https://docs.runway.com/concepts/databases/formulas-in-databases#dynamic-formulas-using-this-segment)**_._**
+- Aggregations like `sum(Growth Rate [All Regions])` happen automatically.
+- When you add a new region to the dimension, your model updates automatically—no manual formula updates required.
+
+Without dimensions, you'd need to manually create and maintain each driver, and manually update your formulas any time your data changes. With dimensions, Runway does the heavy lifting for you.
+
+### Rollup and drill into your data
+
+Dimensions make it easy to model your data at different levels of granularity—and to roll things up and drill-in when needed.
+
+Let’s say you have a database with **Revenue** segmented by both **Region** and **City**. This means you have one driver for every segment (combinations of region and city).
+
+If you want to also view Revenue rolled up just by **Region**, you can easily do this by creating a rolled-up database:
+
+1. Open the target database where you want the rolled-up data to live or [create a new one](https://docs.runway.com/concepts/databases/databases-basics#creating-a-database).
+2. Click **Edit** to open the database [configuration menu](https://docs.runway.com/concepts/databases/databases-basics#configuring-a-database).
+3. Add the **source database** (in this case, the one segmented by Region and City).
+4. Choose the **driver(s)** you want to aggregate (e.g. Revenue).
+5. Under **Segment by**, select a dimension one level higher (e.g. just Region).
+6. Click **Confirm**.
+
+Now, when you reference this revenue driver in a [driver table block](https://docs.runway.com/concepts/pages/drivers-table-block) , [model](https://docs.runway.com/concepts/models/models-basics), or in a [formula](https://docs.runway.com/concepts/formulas/formulas-basics), you’ll see it available at both segmentation: Region x City, and just Region.
+
+This makes it easy to [**drill in**](https://docs.runway.com/concepts/drivers/drill-ins) when you want detail, and **roll up** when you want the big picture—without manually summing or duplicating logic.
+
+This allows you to group and roll up by any meaningful metadata in your database.
+
+You can also create similar hierarchies based on **other columns**, not just the ones in the segmentation of the [database configuration](https://docs.runway.com/concepts/databases/databases-basics#configuring-a-database).
+
+## How to segment drivers
+
+### Segmenting drivers in a database
+
+When [configuring a database](https://docs.runway.com/concepts/databases/databases-basics#configuring-a-database), the **Segment by** field determines how the drivers in that database are broken down.
+
+For example:
+
+- In a granular database pulling from your GL integration, you might segment by `Account Name`, `Class`, and `Vendor`.
+- Later, you may want to create a new database that pulls from this granular one—but rolled up—so it’s only segmented by `Class`.
+
+### Segmenting drivers in a model
+
+You can also segment a unsegmented driver in a [model](https://docs.runway.com/concepts/models/models-basics):
+
+1. Click the **6-dot menu** next to the driver name in your model.
+2. Hover over **Dimensions**, then select **Add dimension**.
+3. You can choose an existing dimension from the list, or type a new name and hit **Enter** to create a new one.
+4. After creating a new dimension, you’ll be prompted to define its values (e.g., “Basic,” “Premium,” etc.) directly from the submenu.
+
+### Segmenting drivers in a model using Expand by Dimension
+
+You can use Expand by Dimension to segment a driver by a Dimension from a model. This is most commonly used when modeling headcount
+
+1. When working in a model, select a driver and navigate to the 6-dot menu to the left of the driver name.
+2. Hover over **Dimensions**, then select **Expand by Dimension.**
+3. Once you click the dimension you want to use as a segment, you will create one driver segmented by each value within that dimension.
+4. Expand by dimension is more powerful if you set a formula for the driver _before_ clicking Expand by Dimension.
+   1. Choose the filter of the dimension you want to have as your segment on a data.
+   2. For example, formula below sums Salary from the Hiring Plan where Team is Customer Success.
+5. When you click Expand by Dimension for a dimension where you have used the dimension as a filter in the formula, you will see the formula smart-match to each value in the dimension.

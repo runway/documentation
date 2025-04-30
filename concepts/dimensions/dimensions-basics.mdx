@@ -1,5 +1,59 @@
 ---
-title: 'Dimensions basics'
-description: 'Description of your new file.'
+title: "Dimensions basics"
+description: "Dimensions are a data type in Runway—just like numbers or dates. You use dimensions o categorize data."
 ---
 
+A dimension consists of a set of values. For example:
+
+- A **Department** dimension might include values: Engineering, Sales, Product.
+- A **Region** dimension might include values: APAC, US, EMEA.
+
+## How to create & populate dimensions
+
+### Integration-powered dimensions
+
+When you create a database using an [integration](https://docs.runway.com/integrations/intro-to-integrations) in Runway, dimensions are automatically created based on structured data from the source system. For example:
+
+- Connecting your **General Ledger** will create a dimension like **GL Account Name**, containing all account names from your ledger. New accounts added to your GL will automatically appear as new dimension values in Runway.
+- Connecting your **HRIS** system will create dimensions like **Team**, **Department**, **Title**, **Payment Currency**, and **Office**, based on the single-select fields in your HRIS.
+- A **CRM** integration may create dimensions like **Pipeline Stage** or **Account Owner**, depending on the structure of your CRM data.
+
+These integration-created dimensions are automatically maintained and kept up to date as your source systems sync. For example, if a deal’s pipeline stage changes in your CRM, that change will automatically reflect in Runway.
+
+You can reuse integration-powered dimensions throughout your Runway model.
+
+Read more about how to [connect and use integration](https://docs.runway.com/integrations/intro-to-integrations) data in Runway.
+
+### Manually creating & populating dimensions in databases
+
+1. When working in a database, click the **\+** button at the far right to add a new column. In the menu, select **Dimension**.
+2. From there:
+   - You can **search for an existing dimension** to reuse across multiple databases. Whenever possible, reuse existing dimensions rather than creating new ones to maintain your model's interconnectedness.
+   - Or, start typing a name and hit **Enter** to create a **new dimension** from scratch.
+3. Once the dimension column is added to your database, you can begin setting the dimension values for each row.
+4. Instead of setting dimension values manually for each cell, you can quickly populate all cells at once using [lookup logic](https://docs.runway.com/guides/modeling/lookups).
+
+This is useful for enriching your data with metadata like Region, Initiative, or Product Line—**especially when those dimensions aren’t coming from a connected system.**
+
+### Manually creating & populating dimensions in a model
+
+You can also segment a unsegmented driver in a [model](https://docs.runway.com/concepts/models/models-basics).
+
+1. Click the **6-dot menu** to the left of the driver name in your model.
+2. Hover over **Dimensions**, then select **Add dimension**.
+3. You can choose an existing dimension from the list, or type a new name and hit **Enter** to create a new one.
+4. After creating a new dimension, you’ll be prompted to define its values (e.g., “Basic,” “Premium,” etc.) directly from the submenu.
+
+## Managing dimensions
+
+You can also manage dimensions globally in Runway using the **dimensions manger**. There are two ways to access it:
+
+- From any **dimension column** in a database, click the column header and select **Manage dimension**.
+- Or go to **Settings → Dimensions** from your **user menu** (top right corner of Runway).
+
+In the dimensions manager:
+
+- Click **\+ Add Dimension** to create a new global dimension.
+- Click **\+ Add [Attribute]** (e.g. _\+ Add Region_) to add a new item to an existing dimension.
+
+This is the best place to manage dimension lists that are used across multiple databases.

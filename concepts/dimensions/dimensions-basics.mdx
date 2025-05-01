@@ -27,10 +27,17 @@ Read more about how to [connect and use integration](https://docs.runway.com/int
 ### Manually creating & populating dimensions in databases
 
 1. When working in a database, click the **\+** button at the far right to add a new column. In the menu, select **Dimension**.
+
+   ![Add Dimension Column Pn](/images/dimensions/add-dimension-column.png)
 2. From there:
    - You can **search for an existing dimension** to reuse across multiple databases. Whenever possible, reuse existing dimensions rather than creating new ones to maintain your model's interconnectedness.
+
+     ![Search Dimension Column Pn](/images/dimensions/search-dimension-column.png)
    - Or, start typing a name and hit **Enter** to create a **new dimension** from scratch.
+
+     ![Create Dimension Column Pn](/images/dimensions/create-dimension-column.png)
 3. Once the dimension column is added to your database, you can begin setting the dimension values for each row.
+   <video muted autoplay="true" loop controls playsinline="true" class="doc-video" src="https://documentation.runwaydev.com/videos/fill-dimension-values-in-db.mp4" />
 4. Instead of setting dimension values manually for each cell, you can quickly populate all cells at once using [lookup logic](https://docs.runway.com/guides/modeling/lookups).
 
 This is useful for enriching your data with metadata like Region, Initiative, or Product Line—**especially when those dimensions aren’t coming from a connected system.**
@@ -41,7 +48,11 @@ You can also segment a unsegmented driver in a [model](https://docs.runway.com/c
 
 1. Click the **6-dot menu** to the left of the driver name in your model.
 2. Hover over **Dimensions**, then select **Add dimension**.
+
+   ![Add Dimension To Driver Pn](/images/dimensions/add-dimension-to-driver.png)
 3. You can choose an existing dimension from the list, or type a new name and hit **Enter** to create a new one.
+
+   ![Create Dimension Through Driver Pn](/images/dimensions/create-dimension-through-driver.png)
 4. After creating a new dimension, you’ll be prompted to define its values (e.g., “Basic,” “Premium,” etc.) directly from the submenu.
 
 ## Managing dimensions
@@ -49,11 +60,15 @@ You can also segment a unsegmented driver in a [model](https://docs.runway.com/c
 You can also manage dimensions globally in Runway using the **dimensions manger**. There are two ways to access it:
 
 - From any **dimension column** in a database, click the column header and select **Manage dimension**.
+
+  ![Go To Dimension Settings Pn](/images/dimensions/go-to-dimension-settings.png)
 - Or go to **Settings → Dimensions** from your **user menu** (top right corner of Runway).
 
 In the dimensions manager:
 
 - Click **\+ Add Dimension** to create a new global dimension.
 - Click **\+ Add [Attribute]** (e.g. _\+ Add Region_) to add a new item to an existing dimension.
+
+![Dimensions Settings Pn](/images/dimensions/dimensions-settings.png)
 
 This is the best place to manage dimension lists that are used across multiple databases.

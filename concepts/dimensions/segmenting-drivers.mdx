@@ -17,6 +17,8 @@ Instead, by segmenting a single **Growth Rate** driver using a **Region** dimens
 - Aggregations like `sum(Growth Rate [All Regions])` happen automatically.
 - When you add a new region to the dimension, your model updates automatically—no manual formula updates required.
 
+![Segment Why 1 Pn](/images/dimensions/segment-why-1.png)
+
 Without dimensions, you'd need to manually create and maintain each driver, and manually update your formulas any time your data changes. With dimensions, Runway does the heavy lifting for you.
 
 ### Rollup and drill into your data
@@ -24,6 +26,8 @@ Without dimensions, you'd need to manually create and maintain each driver, and 
 Dimensions make it easy to model your data at different levels of granularity—and to roll things up and drill-in when needed.
 
 Let’s say you have a database with **Revenue** segmented by both **Region** and **City**. This means you have one driver for every segment (combinations of region and city).
+
+![Segment Why 2 Pn](/images/dimensions/segment-why-2.png)
 
 If you want to also view Revenue rolled up just by **Region**, you can easily do this by creating a rolled-up database:
 
@@ -34,9 +38,15 @@ If you want to also view Revenue rolled up just by **Region**, you can easily do
 5. Under **Segment by**, select a dimension one level higher (e.g. just Region).
 6. Click **Confirm**.
 
+![Segment Why 3 Gi](/images/dimensions/segment-why-3.gif)
+
 Now, when you reference this revenue driver in a [driver table block](https://docs.runway.com/concepts/pages/drivers-table-block) , [model](https://docs.runway.com/concepts/models/models-basics), or in a [formula](https://docs.runway.com/concepts/formulas/formulas-basics), you’ll see it available at both segmentation: Region x City, and just Region.
 
+![Segment Why 4 Gi](/images/dimensions/segment-why-4.gif)
+
 This makes it easy to [**drill in**](https://docs.runway.com/concepts/drivers/drill-ins) when you want detail, and **roll up** when you want the big picture—without manually summing or duplicating logic.
+
+![Segment Why 5 Pn](/images/dimensions/segment-why-5.png)
 
 This allows you to group and roll up by any meaningful metadata in your database.
 
@@ -47,6 +57,8 @@ You can also create similar hierarchies based on **other columns**, not just the
 ### Segmenting drivers in a database
 
 When [configuring a database](https://docs.runway.com/concepts/databases/databases-basics#configuring-a-database), the **Segment by** field determines how the drivers in that database are broken down.
+
+![Segment How 1 Pn](/images/dimensions/segment-how-1.png)
 
 For example:
 
@@ -59,17 +71,28 @@ You can also segment a unsegmented driver in a [model](https://docs.runway.com/c
 
 1. Click the **6-dot menu** next to the driver name in your model.
 2. Hover over **Dimensions**, then select **Add dimension**.
+
+   ![Add Dimension To Driver Pn](/images/dimensions/add-dimension-to-driver.png)
 3. You can choose an existing dimension from the list, or type a new name and hit **Enter** to create a new one.
+
+   ![Create Dimension Through Driver Pn](/images/dimensions/create-dimension-through-driver.png)
 4. After creating a new dimension, you’ll be prompted to define its values (e.g., “Basic,” “Premium,” etc.) directly from the submenu.
 
-### Segmenting drivers in a model using Expand by Dimension
+   ![Segment How 2 Pn](/images/dimensions/segment-how-2.png)
 
-You can use Expand by Dimension to segment a driver by a Dimension from a model. This is most commonly used when modeling headcount
+### Segmenting drivers in a model using Expand by dimension
+
+You can use **Expand by dimension** to segment a driver by a dimension from a model. This is most commonly used when modeling headcount
 
 1. When working in a model, select a driver and navigate to the 6-dot menu to the left of the driver name.
-2. Hover over **Dimensions**, then select **Expand by Dimension.**
+2. Hover over **Dimensions**, then select **Expand by dimension.**
 3. Once you click the dimension you want to use as a segment, you will create one driver segmented by each value within that dimension.
-4. Expand by dimension is more powerful if you set a formula for the driver _before_ clicking Expand by Dimension.
+
+   ![Expand By Gi](/images/dimensions/expand-by.gif)
+4. Expand by dimension is more powerful if you set a formula for the driver _before_ clicking Expand by dimension.
    1. Choose the filter of the dimension you want to have as your segment on a data.
    2. For example, formula below sums Salary from the Hiring Plan where Team is Customer Success.
-5. When you click Expand by Dimension for a dimension where you have used the dimension as a filter in the formula, you will see the formula smart-match to each value in the dimension.
+
+   ![Expand By Formula Pn](/images/dimensions/expand-by-formula.png)
+5. When you click Expand by dimension where you have used the dimension as a filter in the formula, you will see the formula smart-match to each value in the dimension.
+   <video muted autoplay="true" loop controls playsinline="true" class="doc-video" src="https://documentation.runwaydev.com/videos/expand-by-smart-formula.mp4" />

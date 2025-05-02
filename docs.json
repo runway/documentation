@@ -144,6 +144,7 @@
               "guides/modeling/seasonal-forecasting",
               "guides/modeling/propagating-sparse-data",
               "guides/modeling/headcount-modeling",
+              "guides/modeling/quota-attainment",
               "guides/modeling/cohorts",
               "guides/modeling/bva",
               "guides/modeling/fixing-errors"

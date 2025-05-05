@@ -34,7 +34,7 @@ For example, if you want to build headcount by department, ensure the **Departme
    ![Headcount Step2 Expand Pn](/images/headcount/headcount-step2-expand.png)
 
 <Warning>
-  **Expand by Dimension** is a feature that **should only be used with Headcount planning**. 
+  **Expand by Dimension** is a feature that **should only be used with Headcount planning**.
 
   It does not automatically created as drivers in a model when new attributes are added to a dimension and, thus, is not ideal for dimensions that are more dynamic.
 </Warning>
@@ -47,7 +47,7 @@ For example, if you want to build headcount by department, ensure the **Departme
 
 1. **Build the headcount formula for one of the drivers**
 
-   Double-click into the **Forecast formula** cell of the first dimensional driver and type `count()` to leverage the built-in count function.Step 4: Add new employees.
+   Double-click into the **forecast formula** cell of the first dimensional driver and type `count()` to leverage the built-in count function.Step 4: Add new employees.
 
    ![Headcount Step3 Count Formula Pn](/images/headcount/headcount-step3-count-formula.png)
 
@@ -67,10 +67,10 @@ For example, if you want to build headcount by department, ensure the **Departme
 3. **Sum your headcount**
 
    Create a Total Headcount driver and sum your headcount in one of the following ways:
-   - **Sum new drivers** - Double-click into the Forecast Formula cell and type `sum` to leverage the sum function. Within the parentheses, type Headcount. The first option you will see is Headcount [Department], which references the collective dimensional drivers that you just created.
+   - **Sum new drivers** - Double-click into the **forecast formula** cell and type `sum` to leverage the sum function. Within the parentheses, type Headcount. The first option you will see is Headcount [Department], which references the collective dimensional drivers that you just created.
 
      ![Headcount Step3 Sum Pn](/images/headcount/headcount-step3-sum.png)
-   - **Sum driver group** - If you put your Headcount drivers into their own driver group (shift \+ select them cmd \+ G), you have the option to sum the group itself. Double-click into the forecast formula cell and type sum to leverage the sum function. Within the parentheses, search for the driver group name and scroll in the dropdown to the driver group section. This will sum every driver within this group except for the one you’re typing in.
+   - **Sum driver group** - If you put your Headcount drivers into their own driver group (shift \+ select them cmd \+ G), you have the option to sum the group itself. Double-click into the **forecast formula** cell and type sum to leverage the sum function. Within the parentheses, search for the driver group name and scroll in the dropdown to the driver group section. This will sum every driver within this group except for the one you’re typing in.
 
      ![Headcount Step3 Sum Group Pn](/images/headcount/headcount-step3-sum-group.png)
    - **Sum the database directly** - If you find that you won’t be leveraging dimensions as much for your Headcount breakdown, you can always sum the database itself for a total. Follow the instructions in Step 4 but omit the Department filter and you’ll have a full count of your active employees.

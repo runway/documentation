@@ -2,3 +2,35 @@
 title: "Prorated salaries"
 description: "Use Runway’s date math functions to model prorated salaries for employees who start or leave mid-month with precision."
 ---
+
+This guide walks through adding a prorated salary field to your HRIS-sourced Employee database.
+
+As a reminder, HRIS databases work differently than other Runway databases. For more information, please refer to our [HRIS databases article](https://docs.runway.com/concepts/databases/hris-databases#hris-databases).
+
+## Step 1: Create `Prorated Salary` field
+
+In your **Employee database**, add a **Number field**.
+
+Name the field **Prorated Salary**.
+
+## Step 2: Handle mid-month starts
+
+1. Add a formula to **Prorated Salary**. Begin with an `IF()` statement that checks if the start date falls within the current month.
+2. If true, use the `dateDiff()` function to calculate the difference in days between the start date and the end of that month.
+3. Use `daysInMonth()` to divide by the total days in the month and calculate the prorated percentage.
+4. Multiply this prorated fraction by the employee's monthly salary (annual salary divided by 12).
+
+## Step 3: Account for mid-month terminations
+
+Extend your `IF()` formula to account for employees who terminate mid-month by adding a second condition.
+
+1. Add a second `IF()` statement that checks if the employee termination date is this month. Copy the formula from Step 2 above and update to reference `This Employee.Termination Date`.
+2. Update the `dateDiff()` function to reference the start of the month, since the employee is leaving mid-month.
+
+## Step 4: Calculate full-month salaries
+
+Finally, handle the default case where the employee worked the full month. Set the final case to Annual Salary / 12 for full-month employees.
+
+Hit **Enter** to save your formula and review your data. This column formula automatically applies to all employees in your database.
+
+For additional information about headcount planning, see [this article](https://docs.runway.com/guides/modeling/headcount-planning).

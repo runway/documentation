@@ -7,47 +7,46 @@ This guide walks through adding a prorated salary field to your HRIS-sourced Emp
 
 As a reminder, HRIS databases work differently than other Runway databases. For more information, please refer to our [HRIS databases article](https://docs.runway.com/concepts/databases/hris-databases#hris-databases).
 
-## Step 1: Create `Prorated Salary` field
+## Step 1: Create `Prorated Monthly Salary` field
 
 In your **Employee database**, add a **Number field**.
 
 ![Prorated Salaries Step1 Create Field Pn](/images/prorated-salaries/prorated-salaries-step1-create-field.png)
 
-Name the field **Prorated Salary**.
+Name the field **Prorated Monthly Salary**.
 
-![Prorated Salaries Step1 Rename Field Pn](/images/prorated-salaries/prorated-salaries-step1-rename-field.png)
+![CleanShot 2025-05-08 at 17.59.38@2x.png](/images/CleanShot2025-05-08at17.59.38@2x.png)
 
 ## Step 2: Handle mid-month starts
 
-1. Add a formula to **Prorated Salary**. Begin with an `IF()` statement that checks if the start date falls within the current month.
+1. Add a formula to **Prorated Salary**. Begin with an `if()` statement that checks if the start date falls within the current month.
 
-   ![Prorated Salaries Step2 If Formula Pn](/images/prorated-salaries/prorated-salaries-step2-if-formula.png)
-2. If true, use the `dateDiff()` function to calculate the difference in days between the start date and the end of that month.
+   ![CleanShot 2025-05-08 at 18.01.13@2x.png](/images/CleanShot2025-05-08at18.01.13@2x.png)
+2. If true, use the `dateDiff()` function to calculate the difference in days between the start date and the end of that month. You'll also want to add 1 day onto this, to ensure you're including the starting day too. 
 
-   ![Prorated Salaries Step2 If Formula Date Diff Pn](/images/prorated-salaries/prorated-salaries-step2-if-formula-date-diff.png)
+   ![CleanShot 2025-05-08 at 18.00.49@2x.png](/images/CleanShot2025-05-08at18.00.49@2x.png)
 3. Use `daysInMonth()` to divide by the total days in the month and calculate the prorated percentage.
 
-   ![Prorated Salaries Step2 If Formula Days In Month Pn](/images/prorated-salaries/prorated-salaries-step2-if-formula-days-in-month.png)
+   ![CleanShot 2025-05-08 at 18.01.52@2x.png](/images/CleanShot2025-05-08at18.01.52@2x.png)
 4. Multiply this prorated fraction by the employee's monthly salary (annual salary divided by 12).
 
-   ![Prorated Salaries Step2 If Formula Multiply Pn](/images/prorated-salaries/prorated-salaries-step2-if-formula-multiply.png)
+   ![CleanShot 2025-05-08 at 18.02.14@2x.png](/images/CleanShot2025-05-08at18.02.14@2x.png)
 
 ## Step 3: Account for mid-month terminations
 
 Extend your `IF()` formula to account for employees who terminate mid-month by adding a second condition.
 
-1. Add a second `IF()` statement that checks if the employee termination date is this month. Copy the formula from Step 2 above and update to reference `This Employee.Termination Date`.
+1. Add a second `IF()` statement by copying the formula so far, and pasting it at the end. 
+2. Then, update `This Employee.Start Date` to `This Employee.Termination Date` by clicking on each reference of `This Employee.Start Date` -\> hitting _Column_ -\> and then referencing `This Employee.Termination Date` instead.
+3. Next, you'll want to update the dateDiff() function so that the first argument is the _start_ of the termination month, and the second argument is just the Termination Date itself. 
 
-   ![Prorated Salaries Step3 If Pn](/images/prorated-salaries/prorated-salaries-step3-if.png)
-2. Update the `dateDiff()` function to reference the start of the month, since the employee is leaving mid-month.
-
-   ![Prorated Salaries Step3 If Date Diff Pn](/images/prorated-salaries/prorated-salaries-step3-if-date-diff.png)
+   ![CleanShot 2025-05-08 at 18.06.04@2x.png](/images/CleanShot2025-05-08at18.06.04@2x.png)
 
 ## Step 4: Calculate full-month salaries
 
-Finally, handle the default case where the employee worked the full month. Set the final case to Annual Salary / 12 for full-month employees.
+Finally, handle the default case where the employee worked the full month. Set the final case to the (annual) pay rate / 12 for full-month employees.
 
-![Prorated Salaries Step4 Pn](/images/prorated-salaries/prorated-salaries-step4.png)
+![CleanShot 2025-05-08 at 18.07.29@2x.png](/images/CleanShot2025-05-08at18.07.29@2x.png)
 
 Hit **Enter** to save your formula and review your data. This column formula automatically applies to all employees in your database.
 

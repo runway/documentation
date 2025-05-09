@@ -15,22 +15,22 @@ In your **Employee database**, add a **Number field**.
 
 Name the field **Prorated Monthly Salary**.
 
-![CleanShot 2025-05-08 at 17.59.38@2x.png](/images/CleanShot2025-05-08at17.59.38@2x.png)
+
 
 ## Step 2: Handle mid-month starts
 
 1. Add a formula to **Prorated Salary**. Begin with an `if()` statement that checks if the start date falls within the current month.
 
-   ![CleanShot 2025-05-08 at 18.01.13@2x.png](/images/CleanShot2025-05-08at18.01.13@2x.png)
+   
 2. If true, use the `dateDiff()` function to calculate the difference in days between the start date and the end of that month. You'll also want to add 1 day onto this, to ensure you're including the starting day too. 
 
-   ![CleanShot 2025-05-08 at 18.00.49@2x.png](/images/CleanShot2025-05-08at18.00.49@2x.png)
+  
 3. Use `daysInMonth()` to divide by the total days in the month and calculate the prorated percentage.
 
-   ![CleanShot 2025-05-08 at 18.01.52@2x.png](/images/CleanShot2025-05-08at18.01.52@2x.png)
+   
 4. Multiply this prorated fraction by the employee's monthly salary (annual salary divided by 12).
 
-   ![CleanShot 2025-05-08 at 18.02.14@2x.png](/images/CleanShot2025-05-08at18.02.14@2x.png)
+  
 
 ## Step 3: Account for mid-month terminations
 
@@ -40,13 +40,13 @@ Extend your `IF()` formula to account for employees who terminate mid-month by a
 2. Then, update `This Employee.Start Date` to `This Employee.Termination Date` by clicking on each reference of `This Employee.Start Date` -\> hitting _Column_ -\> and then referencing `This Employee.Termination Date` instead.
 3. Next, you'll want to update the dateDiff() function so that the first argument is the _start_ of the termination month, and the second argument is just the Termination Date itself. 
 
-   ![CleanShot 2025-05-08 at 18.06.04@2x.png](/images/CleanShot2025-05-08at18.06.04@2x.png)
+   
 
 ## Step 4: Calculate full-month salaries
 
 Finally, handle the default case where the employee worked the full month. Set the final case to the (annual) pay rate / 12 for full-month employees.
 
-![CleanShot 2025-05-08 at 18.07.29@2x.png](/images/CleanShot2025-05-08at18.07.29@2x.png)
+
 
 Hit **Enter** to save your formula and review your data. This column formula automatically applies to all employees in your database.
 

@@ -17,30 +17,25 @@ This pane is a really handy surface to dive deep into a driver and how it fits i
 
 ## What's inside the driver details pane?
 
-![images/drivers/details-pane/details-pain-breakdown.png](/images/drivers/details-pane/details-pain-breakdown.png)
+![Details Pain Pn](/images/drivers/details-pane/details-pain.png)
 
  1. **Name** – The driver’s name.
- 2. **Breadcrumbs** – Shows where the driver is located in your model.
- 3. **Description** – Context or notes about the driver.
- 4. **Models** – Lists all pages where the driver is used.
- 5. **Dimensions** – Explains how the driver is segmented. [Link: Dimensions article]
- 6. [**Format**](https://docs.runway.com/concepts/drivers/driver-formatting) – Adjusts display settings for numeric drivers.
- 7. **Goal** – Assign a target value to the driver.
-    - The target appears as a \*\*goal line \*\*when plotted on a chart.
+ 2. **Description** – Context or notes about the driver.
+ 3. **Models** – Lists all pages where the driver is used.
+ 4. **Dimensions** – Explains how the driver is segmented. [Link: Dimensions article]
+ 5. [**Format**](https://docs.runway.com/concepts/drivers/driver-formatting) – Adjusts display settings for numeric drivers.
+ 6. **Goal** – Assign a target value to the driver.
+    - The target appears as a goal line when plotted on a chart.
     - Used in scenario comparisons or BvA (Budget vs. Actuals) to determine whether values are displayed as red or green.
     - By default, higher values are considered _better_.
- 8. **Rollup by** – Specifies how the driver's values aggregate when viewing time periods longer than one month, such as quarterly, year-to-date, or annual (e.g. sum, first, last).
- 9. **Goal** – Defines how the driver aggregates (e.g., sum, last)over longer periods (Quarterly, Annual). For example:
-    - Revenue → Roll up by **SUM** (to see total revenue in a year).
-    - \*\*Cash balance \*\*→ Roll up by **LAST** (to see the ending balance for a year).
-10. [**Actuals formula**](https://docs.runway.com/concepts/drivers/drivers-basics#driver-formulas) – Expanded space for editing the driver’s actuals formula.
-11. [**Forecast formula**](https://docs.runway.com/concepts/drivers/drivers-basics#driver-formulas) – Expanded space for editing the driver’s forecast formula.
-12. [**Driver type**](https://docs.runway.com/concepts/drivers/drivers-basics#driver-types) – Clearly indicates whether the driver stores **Numbers or Dates**.
-13. **Driver timeseries table** – A dedicated table displaying the driver’s values over time. The columns are controlled by settings under **Customize** [19].
-14. **Direct inputs tab** – Shows all direct inputs contributing to this driver (i.e., referenced in its formula). You can open the details pane for these inputs directly from this tab.
-15. **Indirect inputs tab** – Displays a full dependency tree, showing all direct and indirect inputs feeding into the driver. This can get long in complex models and may be truncated.
-16. **Used by** – Lists all other drivers that reference this driver in their formulas.
-17. [**Plans**](https://docs.runway.com/concepts/plans) – Displays any Plans applied to this driver.
-18. **Secondary / Inputs table** – Displays results from the Direct Inputs, Indirect Inputs, Used By, or Plans tabs.
-19. **Delete** – Click the **trash can** icon to delete the driver.
-20. **Customize menu** – Adjusts which columns and time ranges are displayed in the Driver timeseries table [12] and the Secondary/Inputs Table [17].
+ 7. **Rollup by** – Specifies how the driver's values aggregate when viewing time periods longer than one month, such as quarterly, year-to-date, or annual (e.g. sum, first, last).
+ 8. [**Actuals formula**](https://docs.runway.com/concepts/drivers/drivers-basics#driver-formulas) – Expanded space for editing the driver’s actuals formula.
+ 9. [**Forecast formula**](https://docs.runway.com/concepts/drivers/drivers-basics#driver-formulas) – Expanded space for editing the driver’s forecast formula.
+10. [**Driver type**](https://docs.runway.com/concepts/drivers/drivers-basics#driver-types) – Clearly indicates whether the driver stores **Numbers or Dates**.
+11. **Driver timeseries** – A dedicated table displaying the driver’s values over time. The columns are controlled by settings under **Customize** [19].
+12. [**Drill-in**](https://docs.runway.com/concepts/drivers/drill-ins) – Click on caret Shows all inputs contributing to this driver (i.e., referenced in its formula).
+13. **Used by** – Lists all other drivers that reference this driver in their formulas.
+14. [**Plans**](https://docs.runway.com/concepts/plans) – Displays any Plans applied to this driver.
+15. **Breadcrumbs** – Shows where the driver is located in your model.
+16. **Delete** – Click the **trash can** icon to delete the driver.
+17. **Customize menu** – Adjusts which columns and time ranges are displayed in the driver timeseries table.

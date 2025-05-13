@@ -155,8 +155,7 @@
             "icon": "lock",
             "pages": [
               "guides/sharing/adding-users",
-              "guides/sharing/user-roles",
-              "guides/sharing/access-levels",
+              "guides/sharing/permissions",
               "guides/sharing/data-anonymization"
             ]
           }

@@ -1,0 +1,112 @@
+---
+title: "Permissions"
+description: "Collaboration is central to how teams use Runway. Some customers give their entire company access to portions of their model, while others use Runway for external collaboration with investors and board members. To support these varied use cases, Runway offers four user roles with different levels of access."
+---
+
+## User roles
+
+Each role has specific permissions, depending on what a user needs to do:
+
+- **Admin** — Full access to all data and settings. Typically assigned to finance team members who own the model.
+- **Manager** — Can view and edit data. Default access to all data but with restrictions around anonymized information, org-level settings, and some other controls.
+- **Member** — Internal role with no access by default. Access must be granted per page.
+- **Guest** — View-only access to specific shared content. Ideal for external collaborators like board members or investors.
+
+In the sections below, we break down what each role _can_ and _cannot_ do in Runway.
+
+### Admin
+
+Recommended for: Primary model owners, typically a subset of your finance team.
+
+Admins have the highest level of access in Runway.
+
+- **Org settings** — Full access to general, user, and dimension settings.
+- [**Anonymized data**](https://docs.runway.com/guides/sharing/data-anonymization) — Can view, [toggle](https://docs.runway.com/guides/sharing/data-anonymization#how-to-anonymize-data), and [reveal](https://docs.runway.com/guides/sharing/data-anonymization#revealing-anonymized-data-on-a-specific-page) anonymized data.
+- [**Integrations**](https://docs.runway.com/integrations/intro-to-integrations) — Full access, including authentication, running queries, and viewing results.
+- [**Scenarios**](https://docs.runway.com/concepts/scenarios)
+  - Create, view, and edit any scenario (including those created by others).
+  - Modify [scenario settings](https://docs.runway.com/concepts/scenarios#scenario-settings) for any scenario.
+  - Merge any scenario into Main.
+- [**Last close date**](https://docs.runway.com/concepts/last-close#last-close) — Can update the last close date.
+- [**Details pane**](https://docs.runway.com/concepts/drivers/driver-details-pane#driver-details-pane) & [**drill-ins**](https://docs.runway.com/concepts/drivers/drill-ins#drill-ins) — Full access to open and navigate through all drivers and dependencies.
+- **Pages, models, databases**
+  - Full access to all content by default.
+  - Can create new pages, models, and databases.
+
+### Manager
+
+Recommended for: Internal users who need deep access but not full admin control.
+
+- **Org settings** — No access.
+- [**Anonymized data**](https://docs.runway.com/guides/sharing/data-anonymization) — See anonymized values as redacted unless explicitly [revealed](https://docs.runway.com/guides/sharing/data-anonymization#revealing-anonymized-data-on-a-specific-page) by an Admin. Cannot toggle or reveal data.
+- [**Integrations**](https://docs.runway.com/integrations/intro-to-integrations) — Can authenticate new integrations but cannot view query results.
+- [**Scenarios**](https://docs.runway.com/concepts/scenarios)
+  - Can create new scenarios.
+  - Can view scenarios they’ve created or any marked as can be viewed by `All users`.
+  - Can edit pages, models, or databases in scenarios they can view (_if_ granted edit access to those pages).
+  - Can modify [settings](https://docs.runway.com/concepts/scenarios#scenario-settings) for scenarios they’ve created.
+  - Cannot merge scenarios into Main.
+- [**Last close date**](https://docs.runway.com/concepts/last-close#last-close) — Can update the last close date.
+- [**Details pane**](https://docs.runway.com/concepts/drivers/driver-details-pane#driver-details-pane) & [**drill-ins**](https://docs.runway.com/concepts/drivers/drill-ins#drill-ins) — Can drill into drivers but can only traverse dependencies that are already surfaced on content they have access to.
+- **Pages, models, databases**
+  - Default access to all content.
+  - Their access can be adjusted to `Can edit`, `Can view`, or `No access`.
+  - Can create new ones.
+
+### Member
+
+Recommended for: Most internal users who should only access specific resources.
+
+- **Org settings** — No access.
+- [**Anonymized data**](https://docs.runway.com/guides/sharing/data-anonymization) — See anonymized values as redacted unless explicitly [revealed](https://docs.runway.com/guides/sharing/data-anonymization#revealing-anonymized-data-on-a-specific-page) by an Admin. Cannot toggle or reveal data.
+- [**Integrations**](https://docs.runway.com/integrations/intro-to-integrations) — Can authenticate new integrations but cannot view query results.
+- [**Scenarios**](https://docs.runway.com/concepts/scenarios)
+  - Can create new scenarios.
+  - Can view scenarios they’ve created or any marked as can be viewed by `All users`.
+  - Can edit pages, models, or databases in scenarios they can view (_if_ granted edit access to those pages).
+  - Can modify [settings](https://docs.runway.com/concepts/scenarios#scenario-settings) for scenarios they’ve created.
+  - Cannot merge scenarios into Main.
+- [**Last close date**](https://docs.runway.com/concepts/last-close#last-close) — Cannot update the last close date.
+- [**Details pane**](https://docs.runway.com/concepts/drivers/driver-details-pane#driver-details-pane) & [**drill-ins**](https://docs.runway.com/concepts/drivers/drill-ins#drill-ins) — Can drill into drivers but only traverse dependencies surfaced on pages they have access to.
+- **Pages, models, databases**
+  - No default access.
+  - Must be explicitly granted access via the [Share menu](https://docs.runway.com/guides/sharing/adding-users#adding-users-via-share-menu).
+  - Access can be adjusted to `Can edit`, `Can view`, or `No access`.
+  - Cannot create new ones.
+
+### Guest
+
+Recommended for: External collaborators with limited, view-only access.
+
+- **Org settings** — No access.
+- [**Anonymized data**](https://docs.runway.com/guides/sharing/data-anonymization) — See anonymized values as redacted unless explicitly [revealed](https://docs.runway.com/guides/sharing/data-anonymization#revealing-anonymized-data-on-a-specific-page) by an Admin. Cannot toggle or reveal data.
+- [**Integrations**](https://docs.runway.com/integrations/intro-to-integrations) — No access.
+- [**Scenarios**](https://docs.runway.com/concepts/scenarios)
+  - Cannot create scenarios.
+  - Can only view scenarios that have been shared with them via [Guest Settings](https://docs.runway.com/guides/sharing/adding-users#step-3%3A-manage-scenario-access-for-guests).
+  - Cannot edit any content; view-only access.
+  - Cannot modify scenario settings.
+  - Cannot merge scenarios into Main.
+- [**Last close date**](https://docs.runway.com/concepts/last-close#last-close) — Cannot update the last close date.
+- [**Details pane**](https://docs.runway.com/concepts/drivers/driver-details-pane#driver-details-pane) & [**drill-ins**](https://docs.runway.com/concepts/drivers/drill-ins#drill-ins) — No access.
+- **Pages, models, databases**
+  - No default access.
+  - Must be explicitly granted access via the [Share menu](https://docs.runway.com/guides/sharing/adding-users#adding-users-via-share-menu).
+  - View-only access. Cannot make changes or create new content.
+
+## Access levels
+
+For each **page**, **model**, or **database** in Runway, you can assign a specific access level to each user:
+
+- **No access** — It is hidden from the user and won’t appear in their sidebar.
+- **Can view** — The user has read-only access and cannot make changes.
+- **Can edit** — The user can modify data but cannot change who else has access.
+- **Full access** — The user can edit the content, manage access for others, and duplicate or delete the page.
+
+By default:
+
+- **Admins** have full access to all content in Runway.
+- **Managers** also get full access by default, but their access can be adjusted for individual pages, models, or databases.
+- **Members** and **Guests** don’t have access to anything when first added—you’ll need to go in and grant them access where needed.
+
+You can learn how to adjust access levels from the **Share** menu in [this article](https://docs.runway.com/guides/sharing/adding-users#adding-users-via-share-menu).

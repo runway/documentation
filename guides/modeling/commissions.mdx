@@ -8,25 +8,20 @@ description: "This doc will explain how to connect your Sales Team database to a
 To align commissions to individual AEs, you’ll need to connect CRM data to HRIS data.
 
 1. Create a new database called **Account Owner Mapping**. Select your **Sales Team** database as the source and segment by **Name**.
-
 ![Commissions Data Config Pn](/images/commissions/Commissions-data-config.png)
 
 This will create a line for each **Name** value in the **Sales Team** database.
 
 2. Add a new dimension column and search for **Deal Owner**. Naming may vary depending on your HRIS integration. You can always check your **Deals** database for the exact dimension name.
-
 ![Setdealowner Pn](/images/commissions/setdealowner.png)
 
 3. For each relevant row, select the matching **Deal Owner**. Skip rows for manually added new hires—they won’t exist in your CRM data.
-
 ![Account Owner Map Pn](/images/commissions/Account-owner-map.png)
 
 4. In your **Deals** database, add a **Lookup** for the \*\*Name \*\*column.
-
 ![Name Column Lookup Pn](/images/commissions/name-column-lookup.png)
 
 This auto-matches the records for each line. You can think about this as a human-readable VLOOKUP() from Excel. For tidiness, you can hide one of the columns by right-clicking the column header and selecting **Hide in block.**
-
 ![Commisions Lookup Pairing Pn](/images/commissions/commisions-lookup-pairing.png)
 
 <Info>
@@ -40,7 +35,6 @@ Create a new number driver column in the **Deals** database called **Commission 
 ### **Option 1: Flat Rate Commission**
 
 To set a flat commission rate %, you can select `Add default formula` from the column header sub-menu and hardcode a percentage.
-
 ![Flatcommission Pn](/images/commissions/flatcommission.png)
 
 ### **Option 2: Variable Commission Rates**
@@ -49,7 +43,6 @@ This example demonstrates how you can set assumptions based on dimension values.
 
 - The formula references the dimension column `DEAL_TYPE` which only contains the two items: `New Business` or `Existing Business` .
 - The logic of the formula reads: \_if DEAL_TYPE = New Business apply an 8% Commission Rate, otherwise apply 3% Commission Rate. \_
-
 ![Newbusinessvsrenewals Pn](/images/commissions/Newbusinessvsrenewals.png)
 
 <Tip>
@@ -61,11 +54,9 @@ This example demonstrates how you can set assumptions based on dimension values.
 In many organizations, commission payouts are deferred until a contract has been active for a set period.
 
 Create a new number driver in your **Deals** database called **Payout Date**. Use `dateAdd()` to add your delay to the deal’s close date. In this example, we assume a 90-day delay.
-
 ![Delaypayment Pn](/images/commissions/Delaypayment.png)
 
 Check the values by clicking the Commissions Paid driver column header and selecting `Show as time series`. This view allows you to check whether the amounts paid land in the correct months.
-
 ![Commisions Paid Time Series Pn](/images/commissions/commisions-paid-time-series.png)
 
 ## Step 5: Aggregate commissions by AE
@@ -73,9 +64,7 @@ Check the values by clicking the Commissions Paid driver column header and selec
 The last step is to aggregate commissions paid by AE. 
 
 In your **Sales Team** database, add a number driver for **Commissions. **Set the formula to sum the **Commissions Paid** driver in your **Deals** database where `Name` is `This Name.`
-
 ![Formulathissegmentcommissions Pn](/images/commissions/formulathissegmentcommissions.png)
 
 By showing the driver column COmmissions as a time series, we can verify the commissions roll up appropriately. 
-
 ![Commissionssalesteam Pn](/images/commissions/commissionssalesteam.png)

@@ -1,5 +1,5 @@
 ---
-title: "Revenue Recognition"
+title: "Revenue recognition"
 description: "Revenue recognition refers to the generally accepted accounting principles (GAAP) that determine when and how revenue gets recognized in financial statements.  The accounting principles require that businesses recognize revenue when it’s earned (accrual accounting) rather than when payment is received (cash accounting).  Correctly applying the rules for revenue recognition is crucial for accurately interpreting and forecasting revenue.your new file. This article explains how to build a revenue recognition model in Runway for recurring contracts. Runway is designed to support flexible, customizable modeling — if you don’t see your exact business or contract type in our docs, our team can help. "
 ---
 
@@ -28,11 +28,11 @@ Note the example of a simple contract database below:
 
 ![Contract Data Pn](/CleanShot2025-05-14at12.28.47@2x.png)
 
-## **Step 2: Set up Contract Start Date, Contract End Date and Contract Term Length**
+## Step 2: Set up contract start date,  end date and term length
 
 To recognize revenue over the length of a contract, you will need Start Date, Contract Term and Contract End Date drivers.
 
-### Calculate Contract End Date using Start Date and Contract Term (Months)
+### Calculate contract end date using start date and term (months)
 
 1. Add a date driver column by clicking the \+ at the right hand side of the database and selecting date driver
 
@@ -48,7 +48,7 @@ To recognize revenue over the length of a contract, you will need Start Date, Co
    </Note>
    <video muted autoplay="true" loop controls playsinline="true" class="doc-video" src="https://documentation.runwaydev.com/videos/Date-Add-Demo.mp4" />
 
-### Calculate Contract Term (Months) from Contract Start Date and Contract End Date
+### Calculate contract term (months) from contract start date and end date
 
 1. Add a number driver column by clicking the \+ at the right hand side of the database and selecting number driver
 
@@ -140,6 +140,6 @@ Finally, you will need to wire up the Contract database to drive Revenue forecas
 3. Click the carat to the left of the Revenue driver to drill into inputs in-line
    - This lets us quickly check that Monthly Recognized Revenue drivers for each `Customer x Contract ID `segment pull into the aggregattion as expected
    - Based on the drill-in, you will be able to see whether Monthly Recognized Revenue values begin and end on the correct dates
-   - Each Monthly Recognized Revenue driver has a Runway arrow 
+   - Each Monthly Recognized Revenue driver has a Runway arrow
 
 ![CleanShot 2025-05-15 at 03.58.13@2x.png](/images/CleanShot2025-05-15at03.58.13@2x.png)

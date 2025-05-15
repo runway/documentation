@@ -76,13 +76,59 @@ Here’s how to create a formula that will spread your revenue over the period t
 2. Name this driver Monthly Recognized Revenue
 3. Click into the driver name and select Edit default formula to open the default formula editor for the driver column
 4. Begin typing Contract Value to surface the Contract Value driver
-   - You will see two options to reference the Contract Value driver
-     - A database column reference option with the naming convention Database Name.Driver Column. This option gives you the affordance to apply date filters and filters for dimensions you have not set as database Segments. You want to choose this option since we need date filters for revenue recognition calculations
-     - Direct Driver reference option, listed as Contract Value _This Segment._ This option offers cleaner name format and the ability to filter based on database Segments
+5. You will see two options to reference the Contract Value driver
+   - A database column reference option with the naming convention Database Name.Driver Column. This option gives you the affordance to apply date filters and filters for dimensions you have not set as database Segments. You want to choose this option since we need date filters for revenue recognition calculations
+   - Direct Driver reference option, listed as Contract Value _This Segment._ This option offers cleaner name format and the ability to filter based on database Segments
 
+![CleanShot 2025-05-14 at 20.23.49@2x (1).png](/images/CleanShot2025-05-14at20.23.49@2x\(1\).png)
 
-5. Click the driver pill to open the formula editor options
-6. Click \+ Add Rule to add filters to the formula. These will time-bound how contract value hits your model.
-   1. Set Contract Start Date.Month is on or before This month
-   2. Set Contract End Date.Month is after This month
-   3. `Segment is This Segment` will ensure this logic gets applied across all segments of the driver, which in this example, means across all slices of Contract ID x Customer Name. You can review how to create dynamic formulas using _This Segment_ [here](https://docs.runway.com/concepts/databases/formulas-in-databases#example%3A-dynamic-default-formula-using-this-segment)
+6. Click the driver pill to open the formula editor options
+7. Click \+ Add Rule to add filters to the formula. These will make sure the contract value hits your model only between Contract start and End dates.
+   - Set Contract Start Date.Month is on or before This month
+   - Set Contract End Date.Month is after This month
+   - `Segment is This Segment` will ensure this logic gets applied across all segments of the driver, which in this example, means across all slices of Contract ID x Customer Name. You can review how to create dynamic formulas using _This Segment_ [here](https://docs.runway.com/concepts/databases/formulas-in-databases#example%3A-dynamic-default-formula-using-this-segment)
+
+![Clean Shot2025 05 14at21 07 41@2x Pn](/images/CleanShot2025-05-14at21.07.41@2x.png)
+
+8. Finally, divide by Contract Term Length (Months) to calculate a monthly value. Each driver will be populates from Contract Start to Contract End date
+
+![CleanShot 2025-05-14 at 21.04.19@2x (1).png](/images/CleanShot2025-05-14at21.04.19@2x\(1\).png)
+
+<Check>
+  To check if the formula is calculating correctly, select all months of values and check whether count and sum in the calculation preview match the Contract Term Length and Contract Value
+
+  ![Check-sumavg.png](/images/Check-sumavg.png)
+</Check>
+
+## Step 4: Wire Contracts database into Revenue forecast driver
+
+Finally, you will need to wire up the Contract database to drive Revenue forecasts upstream in your model.
+
+1. Either navigate to the Revenue driver if it already exists in your Runway instance or create a new driver in a Model or on a Page
+2. Click into the forecast formula and create a sum formula
+   - You can create a sum using a driver reference by directly referencing Monthly Recognized Revenue All Customer Names All Contract IDs
+
+   <img
+     src="/images/CleanShot2025-05-14at21.23.36@2x.png"
+     alt="CleanShot 2025-05-14 at 21.23.36@2x.png"
+     title="CleanShot 2025-05-14 at 21.23.36@2x.png"
+     style={{ width:"100%" }}
+   />
+
+   <img
+     src="/images/CleanShot2025-05-14at21.27.25@2x.png"
+     alt="CleanShot 2025-05-14 at 21.27.25@2x.png"
+     title="CleanShot 2025-05-14 at 21.27.25@2x.png"
+     style={{ width:"100%" }}
+   />
+
+   You may also create a sum over the database column reference which will allow you to apply filters based on non-Segment dimensions if necessary
+
+<img
+  src="/images/CleanShot2025-05-14at21.28.30@2x.png"
+  alt="CleanShot 2025-05-14 at 21.28.30@2x.png"
+  title="CleanShot 2025-05-14 at 21.28.30@2x.png"
+  style={{ width:"100%" }}
+/>
+
+![CleanShot 2025-05-14 at 21.28.36@2x.png](/images/CleanShot2025-05-14at21.28.36@2x.png)

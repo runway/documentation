@@ -20,7 +20,7 @@ The following items brought into Runway as number and date drivers are standard 
 - Contract Start Date
 - Contract End Date
 
-An example of a simple contract database looks like the following:
+Note the example of a simple contract database below:
 
 - Contract ID and Customer Name dimensions are set as Segments
 - Contract Start Date, Contract Value and Contract Term (Months) are Drivers
@@ -30,7 +30,7 @@ An example of a simple contract database looks like the following:
 
 ## **Step 2: Set up Contract Start Date, Contract End Date and Contract Term Length**
 
-To recognize revenue over the length of a contract, you will need Start Date, Contract Term and Contract End Date drivers
+To recognize revenue over the length of a contract, you will need Start Date, Contract Term and Contract End Date drivers.
 
 You can calculate Contract End Date using Start Date and Contract Term (Months):
 
@@ -55,7 +55,7 @@ Alternatively, you can calculate Contract Term (Months) from Contract Start Date
    ![Addingnumberdriver Pn](/CleanShot2025-05-14at13.41.32@2x.png)
 2. Edit the name for the number driver column
 3. Clicking on the driver column name, select Add Default Formula to set a formula for every Segment of data (in this example, a formula for Contract Term Length will be propagated to each intersection of Contract ID and Customer Name)
-4. Use DateDiff() function to calculate a Contract Term Length based on contract start date and Contract End Date. 
+4. Use DateDiff() function to calculate a Contract Term Length based on contract start date and Contract End Date.
 
    <video muted autoplay="true" loop controls playsinline="true" class="doc-video" src="https://documentation.runwaydev.com/videos/Date-diff-demo.mp4" />
 

@@ -32,13 +32,13 @@ Note the example of a simple contract database below:
 
 To recognize revenue over the length of a contract, you will need Start Date, Contract Term and Contract End Date drivers.
 
-You can calculate Contract End Date using Start Date and Contract Term (Months):
+### Calculate Contract End Date using Start Date and Contract Term (Months)
 
 1. Add a date driver column by clicking the \+ at the right hand side of the database and selecting date driver
 
    ![Addingdatedriver Pn](/CleanShot2025-05-14at12.53.55@2x.png)
-2. Name the date driver: Contract End Date
-3. Click on the driver column name and select Add Default Formula. Default formulas allow you to set a formula for every segment of the driver.
+2. Name the date driver **Contract End Date**
+3. Click on the driver column name and select `Add Default Formula`. Default formulas allow you to set a formula for every segment of the driver.
 4. Use `DateAdd()` to calculate the Contract End Date based on Contract Start Date and Contract Term Length.
 
    ![CleanShot 2025-05-14 at 13.04.10@2x (2).png](/images/CleanShot2025-05-14at13.04.10@2x\(2\).png)
@@ -48,7 +48,7 @@ You can calculate Contract End Date using Start Date and Contract Term (Months):
    </Note>
    <video muted autoplay="true" loop controls playsinline="true" class="doc-video" src="https://documentation.runwaydev.com/videos/Date-Add-Demo.mp4" />
 
-Alternatively, you can calculate Contract Term (Months) from Contract Start Date and Contract End Date
+### Calculate Contract Term (Months) from Contract Start Date and Contract End Date
 
 1. Add a number driver column by clicking the \+ at the right hand side of the database and selecting number driver
 
@@ -57,36 +57,38 @@ Alternatively, you can calculate Contract Term (Months) from Contract Start Date
 3. Clicking on the driver column name, select Add Default Formula to set a formula for every Segment of data (in this example, a formula for Contract Term Length will be propagated to each intersection of Contract ID and Customer Name)
 4. Use DateDiff() function to calculate a Contract Term Length based on contract start date and Contract End Date.
 
-   <video muted autoplay="true" loop controls playsinline="true" class="doc-video" src="https://documentation.runwaydev.com/videos/Date-diff-demo.mp4" />
+   ![Clean Shot2025 05 14at14 19 09@2x(2) Pn](/images/CleanShot2025-05-14at14.19.09@2x\(2\).png)
 
-   ![CleanShot 2025-05-14 at 14.19.09@2x (2).png](/images/CleanShot2025-05-14at14.19.09@2x\(2\).png)
+   <video muted autoplay="true" loop controls playsinline="true" class="doc-video" src="https://documentation.runwaydev.com/videos/Date-diff-demo.mp4" />
 
 ## Step 3: Build logic to recognize revenue over length of contract
 
 Here’s how to create a formula that will spread your revenue over the period that services get delivered.
 
-1. Add a number driver column to the database by clicking the \+ to the right of the last database column
+1. Add a number driver column to the database by clicking the \+ to the right of the last database column.
 
 ![Addingnumberdriver Pn](/CleanShot2025-05-14at13.41.32@2x.png)
 
-2. Name this driver Monthly Recognized Revenue
-3. Click into the driver name and select Edit default formula to open the default formula editor for the driver column
-4. Begin typing Contract Value to surface the Contract Value driver
-5. You will see two options to reference the Contract Value driver
-   - A database column reference option with the naming convention Database Name.Driver Column. This option gives you the affordance to apply date filters and filters for dimensions you have not set as database Segments. You want to choose this option since we need date filters for revenue recognition calculations
-   - Direct Driver reference option, listed as Contract Value _This Segment._ This option offers cleaner name format and the ability to filter based on database Segments
+2. Name this driver **Monthly Recognized Revenue**.
+3. Click into the driver name and select `Add default formula `to open the default formula editor for the driver column.
+4. Begin typing Contract Value to surface the Contract Value driver.
+5. You will see two options to reference the Contract Value driver.
+   - A **database column reference** with the naming convention `Database Name.Driver Column`.
+     - This option gives you the affordance to apply date filters and filters for dimensions you have not set as database Segments. For revenue recognition purposes, you will want to choose the database reference option so you have access to date filters.
+   - **Direct Driver reference** option, which appears as Contract Value _This Segment._
+     - This option offers cleaner name format and the ability to filter based on database Segments.
 
 ![CleanShot 2025-05-14 at 20.23.49@2x (1).png](/images/CleanShot2025-05-14at20.23.49@2x\(1\).png)
 
-6. Click the driver pill to open the formula editor options
+6. Click the driver pill to open the formula editor options.
 7. Click \+ Add Rule to add filters to the formula. These will make sure the contract value hits your model only between Contract start and End dates.
-   - Set Contract Start Date.Month is on or before This month
-   - Set Contract End Date.Month is after This month
-   - `Segment is This Segment` will ensure this logic gets applied across all segments of the driver, which in this example, means across all slices of Contract ID x Customer Name. You can review how to create dynamic formulas using _This Segment_ [here](https://docs.runway.com/concepts/databases/formulas-in-databases#example%3A-dynamic-default-formula-using-this-segment)
+   - Set **Contract Start Date.Month** `is on or before` **This month**
+   - Set **Contract End Date.Month** `is after` **This month**
+   - **Segment**`is`**This Segment** will ensure the rules you set get applied across all segments of the driver, which in this example, means across all slices of Contract ID x Customer Name. You can review how to create dynamic formulas using _This Segment_ [here](https://docs.runway.com/concepts/databases/formulas-in-databases#example%3A-dynamic-default-formula-using-this-segment)
 
 ![Clean Shot2025 05 14at21 07 41@2x Pn](/images/CleanShot2025-05-14at21.07.41@2x.png)
 
-8. Finally, divide by Contract Term Length (Months) to calculate a monthly value. Each driver will be populates from Contract Start to Contract End date
+8. Finally, divide by Contract Term Length (Months) to calculate a monthly value. Each driver will be populated from Contract Start to Contract End date.
 
 ![CleanShot 2025-05-14 at 21.04.19@2x (1).png](/images/CleanShot2025-05-14at21.04.19@2x\(1\).png)
 
@@ -96,13 +98,14 @@ Here’s how to create a formula that will spread your revenue over the period t
   ![Check-sumavg.png](/images/Check-sumavg.png)
 </Check>
 
-## Step 4: Wire Contracts database into Revenue forecast driver
+## Step 4: Drive revenue forecast formulas by referencing Contracts data
 
-Finally, you will need to wire up the Contract database to drive Revenue forecasts upstream in your model.
+Finally, you will need to wire up the Contract database to drive Revenue forecasts upstream in your model. This is the last step required to ensure that your topline is actively driven by the **Monthly Revenue Recognition** driver you've built.
 
-1. Either navigate to the Revenue driver if it already exists in your Runway instance or create a new driver in a Model or on a Page
-2. Click into the forecast formula and create a sum formula
-   - You can create a sum using a driver reference by directly referencing Monthly Recognized Revenue All Customer Names All Contract IDs
+1. Navigate to a Revenue driver if it already exists in your Runway instance **or** create a new driver in a [Model](https://docs.runway.com/concepts/models/models-basics) or on a [Page](https://docs.runway.com/concepts/pages/pages-basics)
+2. Click into the forecast formula of the driver and type `sum()`
+   - You can create a sum() two ways:
+     - Using a driver reference that directly references **Monthly Recognized Revenue** `All Customer Names All Contract IDs`
 
    <img
      src="/images/CleanShot2025-05-14at21.23.36@2x.png"
@@ -117,8 +120,7 @@ Finally, you will need to wire up the Contract database to drive Revenue forecas
      title="CleanShot 2025-05-14 at 21.27.25@2x.png"
      style={{ width:"100%" }}
    />
-
-   You may also create a sum over the database column reference which will allow you to apply filters based on non-Segment dimensions if necessary
+   - You may also create a sum over the database column reference which gives you the affordance to apply filters based on non-Segment dimensions 
 
 <img
   src="/images/CleanShot2025-05-14at21.28.30@2x.png"

@@ -1,0 +1,130 @@
+---
+title: "Building a P&L "
+description: "A P&L model serves as the basis for your financial reporting and forecasting needs. This guide explains how to build a customizable P&L off of your General Ledger data "
+---
+
+In Runway, the basis of your P&L will be **multi-level rollups** of your financial data—from granular entries (e.g., vendor, GL account, class) to high-level categories like **Revenue**, **COGS**, or **Operating Expenses**. This makes it easy to analyze performance by category and drill into details when needed.
+
+The following steps will explain how to use Runway **databases** to turn your General Ledger data into a hierarchy — aggregating your data from most granular level to the parent categories you need to report and letting you slice it by department, class or other dimension as needed
+
+The layers are entirely customizable, but often the hierarchy looks like the following:
+
+1. **Root:** Vendor \+ GL Account Name \+ Class
+2. **Mid-level:** GL Account Name \+ Class
+3. **GL-Level:** GL Account Name
+4. **Reporting Category:** New rollup category
+5. **Summary:** Parent Category
+
+While the example shown is for demo purposes, you can adapt the same concepts — rolling up **databases** and using **lookups** — to generate a P&L output for your business needs. You can also explore the full model within our library of example orgs.
+
+We’ll walk through how to:
+
+- Set up your root database with your most detailed GL data
+- Use a lookup to map GL Accounts to your reporting categories
+- Aggregate data in a hierarchy that suits your business
+- Create a Page you can use for reporting and sharing
+- Drill-in from the top of your hierarchy to the most detailed data feeding your model
+
+<Info>
+  Note: Runway supports many GL integrations including Quickbooks, Xero, Netsuite, Campfire, Rillet and more. If you haven’t connected your General Ledger data, follow the guides for Accounting integrations here.
+</Info>
+
+## Step 1: Bring your GL data into a source Income Statement database
+
+1. Create a new \*\*database \*\*by clicking `+` next to any item in the sidebar
+2. Name the database `Level 1: Income Statement by Vendor`
+3. Click `edit` In the **database configuration menu** and choose the following inputs:
+   - **Data Source:** Choose the integration source query `IS Data`
+   - **Driver:** Income Statement Amount
+     - Set Using `transaction date` for dates
+   - **Segments** (which will define each row of data)
+     - `Vendor`
+     - `Class`
+     - `GL Account Name`
+   - Add **Other columns** that will serve as metadata for your segments and be used to group, filter and categorize your GL data
+     - `Parent Account`
+     - `Account Type`
+
+     ![Level1config Pn](/CleanShot2025-05-16at00.42.20@2x.png)
+4. Click **Confirm** to load the database
+
+   ![Level1dboutput Pn](/images/PandL/Level1dboutput.png)
+
+## Step 2: Use a lookup table to map GL Accounts to your reporting categories
+
+If you typically recategorize your General Ledger Accounts into different reporting categories. Follow directions to create a[ Data source-powered lookup](https://docs.runway.com/guides/modeling/lookups#data-source-powered-lookup-recommended) that pairs `GL Account Names` with a `Reporting Category` dimension.
+
+**Add a lookup column** in the `Level 1: Income Statement by Vendor `database
+
+- Select **Insert Values** of `Reporting Category `from \*\*Lookup Table \*\*using `GL Account Name`
+- You will see `Reporting Category `items populate the lookup column.
+
+<Tip>
+  You can tell a column is sourced from a **lookup** if you hover on one of the tags and see a tool tip `Value is Autofilled` or if you click into the Dimension name column header and the menu says **Edit Lookup**
+</Tip>
+
+## Step 3: Configure databases to set a P&L hierarchy
+
+You now want to simplify your view from the raw data by removing Vendor as a segment — this reduces the granularity of this database
+
+1. \*\*Create a new database \*\*by clicking `+` next to any item in the sidebar
+2. **Name the database** Level 2: Income Statement by GL Account Name and Class
+
+   <Tip>
+     It's recommended that the database names you chosse help describe the segmentation —  the database name indicates the of the granularity of the data it holds, e.g., Income Statement by GL Account Name and Class
+   </Tip>
+3. **Click edit** In the database configuration menu and choose the following inputs:
+   - **Data Source:** Set the data source to your root database e.g., Level 1: Root Income Statement database
+   - **Driver:** Amount
+   - **Segments**: Select only `GL Account Name` and `Class`
+   - Add **Other columns** for `Parent Account `or `Account Type `again, as well as the `Reporting Category `lookup column
+
+You will repeat the same steps to create linked databases with sequentially less segmentation.
+
+1. **Create a new database** named Level 3: Income Statement by GL.
+2. **Click edit** in the database configuration menu and select the following:
+
+- **Data Source:** Set the data source to your Level 2: Income Statement by GL and Class database
+- \*\*Driver: \*\*Amount
+- **Segments:** Select only `GL Account Name`
+- **Add Other columns** for `Parent Account `or `Account Type` and `Reporting Category`
+
+1. Click **confirm**
+
+   <video muted autoplay="true" loop controls playsinline="true" class="doc-video" src="https://documentation.runwaydev.com/videos/CleanShot 2025-05-16 at 01.12.26-converted.mp4" />
+
+Repeat the steps to create interconnected databases segmented by `Level 4: Reporting Category` and `Level 5: Account Type`
+
+Your final database will be home to your top-level drivers by Account Type which are the aggregation of all underlying databases. Usually these are Revenue, Other Revenue, COGS, Expense and Other Expense
+
+It's helpful to organize the [sidebar](https://docs.runway.com/concepts/sidebar#sections-for-better-organization) using Sections for Income Statement Data and nest the databases to visually remind yourself of their hierarchy
+
+![Sidebarstackeddb Pn](/CleanShot2025-05-16at01.06.17@2x.png)
+
+## **Step 4: Complete your P&L report on a page**
+
+Creating the hierarchy of databases gave us the drivers you'll need to create an output on a page and start wiring up your P&L with other drivers like Gross Margin and Total Revenue
+
+1. **Create a Page** from the **sidebar**
+2. Add a [drivers table block](https://docs.runway.com/concepts/pages/drivers-table-block) by clicking the forward / for options
+3. Start typing Income Statement Amount in the serach bar to call the drivers from the Income Statement databases you've set up
+
+![Adddriverpage Pn](/CleanShot2025-05-16at01.42.51@2x.png)
+
+4. You will see Income Statement Amount at all of the segmentations of your databases. Select **Income Statement Amount Account Type** to pull in the most aggregated drivers at the top of your income statement onto the page
+
+   Now by drilling into your drivers from top-down and by adding new drivers, you will build the your P&L report output
+5. Pages have affordances to create new drivers and build formulas, like for Gross Profit
+
+   <video muted autoplay="true" loop controls playsinline="true" class="doc-video" src="https://documentation.runwaydev.com/videos/addinggrossprofit.mp4" />
+6. You can add drivers to the report via drill-in. If you click the carat to the left of any driver, you will see the sequential drill down through the database stack you constructed.
+
+   ![Drillinpandl Pn](/images/PandL/drillinpandl.png)
+7. If you select the drivers shown in the drill-in, and right-click, you will see an option to Add to Block. This will add the drivers to your page view
+   - The last step is to collapse the Amount COGS driver so only the top level driver and inputs are showing on the report that you share
+   - The drill-in view is local to your view, you have to select Add to block to expose the drill-in drivers in a report to share
+8. You can apply other formatting options like Hide Driver Name and Format as Text to craft a report that mimics the P&L you present from excel.
+
+By using **segments**, **mapping tables**, and **roll-up logic**, you can transform raw ledger data into a clean, structured, and drillable income statement.
+
+For more advanced analysis, use your income statement output to compare **budget vs. actuals**, track trends, or share summaries with stakeholders.

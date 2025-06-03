@@ -9,15 +9,19 @@ description: "One of the most powerful uses of dimensions is segmenting your dri
 
 Segmenting your drivers help you build scalable models that are easier to maintain and expand.
 
-Take this example: you want to model **Growth Rate by Region**. You could create separate drivers like `Growth Rate - US`, `Growth Rate - EMEA`, etc.—but that gets messy fast.
+Take this example: you want to model **Growth Rate by Region**. You could create separate drivers like `Growth Rate - US`, `Growth Rate - EMEA`, etc.—but that naming convention gets messy fast.
 
-Instead, by segmenting a single **Growth Rate** driver using a **Region** dimension, you unlock powerful benefits:
+When you segment drivers without using dimensions, you have to create formulas for your totals that reference each driver individually.
+
+![Nosegmentdrivers Pn](/CleanShot2025-06-02at19.42.38@2x.png)
+
+Instead, by segmenting a single **Growth Rate** driver using a **Region** dimension, you unlock powerful benefits. 
 
 - You can write one formula that is inherited by all regions using [**_This Segment_**](https://docs.runway.com/concepts/databases/formulas-in-databases#dynamic-formulas-using-this-segment)**_._**
-- Aggregations like `sum(Growth Rate [All Regions])` happen automatically.
-- When you add a new region to the dimension, your model updates automatically—no manual formula updates required.
+- When you [segment drivers in a database](https://docs.runway.com/concepts/dimensions/segmenting-drivers#segmenting-drivers-in-a-database), which is the recommended path, aggregations like `sum(Growth Rate [All Regions])` stay maintained as new items get added to a dimension.
+- Segmenting a driver by a dimension makes it easy to slice drivers further and see more detailed cuts of data - just **add another dimension as a segment**. 
 
-![Segment Why 1 Pn](/images/dimensions/segment-why-1.png)
+![Driversusingdimension Pn](/CleanShot2025-06-02at19.47.10@2x.png)
 
 Without dimensions, you'd need to manually create and maintain each driver, and manually update your formulas any time your data changes. With dimensions, Runway does the heavy lifting for you.
 
@@ -63,7 +67,7 @@ When [configuring a database](https://docs.runway.com/concepts/databases/databas
 For example:
 
 - In a granular database pulling from your GL integration, you might segment by `Account Name`, `Class`, and `Vendor`.
-- Later, you may want to create a new database that pulls from this granular one—but rolled up—so it’s only segmented by `Class`.
+- Later, you may want to create a new database that sources data from this granular one—but rolled up—so it’s only segmented by `Class`.
 
 ### Segmenting drivers in a model
 
@@ -82,7 +86,11 @@ You can also segment a unsegmented driver in a [model](https://docs.runway.com/c
 
 ### Segmenting drivers in a model using Expand by dimension
 
-You can use **Expand by dimension** to segment a driver by a dimension from a model. This is most commonly used when modeling headcount
+You can use **Expand by dimension** to segment a driver by a dimension from a model. This is most commonly used when modeling headcount. 
+
+<Warning>
+  When you use **Expand by dimension** to segment drivers directly in a Model, you will have to click the 6-dot menu on a driver and select**Expand by dimension**  when new items get added to the dimension. Your drivers will not automatically be crated in a model for new items in a dimension.
+</Warning>
 
 1. When working in a model, select a driver and navigate to the 6-dot menu to the left of the driver name.
 2. Hover over **Dimensions**, then select **Expand by dimension.**
@@ -95,4 +103,5 @@ You can use **Expand by dimension** to segment a driver by a dimension from a mo
 
    ![Expand By Formula Pn](/images/dimensions/expand-by-formula.png)
 5. When you click Expand by dimension where you have used the dimension as a filter in the formula, you will see the formula smart-match to each value in the dimension.
+
    <video muted autoplay="true" loop controls playsinline="true" class="doc-video" src="https://documentation.runwaydev.com/videos/expand-by-smart-formula.mp4" />

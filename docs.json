@@ -82,9 +82,8 @@
           },
           "concepts/scenarios",
           "concepts/plans",
-          "concepts/sidebar",
-          "concepts/keyboard-shortcuts"
-        ]
+          "concepts/sidebar"
+          ]
       },
       {
         "group": "Data integrations",

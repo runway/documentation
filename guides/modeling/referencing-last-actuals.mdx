@@ -1,0 +1,37 @@
+---
+title: "Forecasting with Only Closed Actuals"
+---
+
+When building forecasts, it's often important to rely only on the most recent month of closed actuals—without blending in partial or forecasted data.
+
+Let’s walk through how to set that up.
+
+### Step 1: Write the Conditional Forecast Formula
+
+Use `if()` logic to switch between calculating a rolling average and carrying forward the prior value:
+
+`if(lastMonth() = lastClose(), [rolling forecast], [last month's value]) `
+
+**Example:**
+
+![CleanShot 2025-06-16 at 11.51.41@2x.png](/images/CleanShot2025-06-16at11.51.41@2x.png)
+
+This sets the forecast to a 6-month average of actuals if you're in the last closed month, or carries forward the previous month’s forecast otherwise. You can change the time range you're summing over in the date selector dropdown.
+
+![CleanShot 2025-06-16 at 11.52.34@2x.png](/images/CleanShot2025-06-16at11.52.34@2x.png)
+
+---
+
+### Step 2: Apply the Formula to Forecast Rows
+
+Set this logic as the **default forecast formula** for any rows that should follow this smoothing behavior. It will apply automatically across the selected rows in your plan.
+
+## When to Use This Method
+
+This method is ideal when:
+
+- You're forecasting operational expenses that don’t vary dramatically month to month.
+- You want smoother transitions between actuals and forecasted data.
+- You're building a default forecast structure for teammates to iterate on.
+
+It balances realism with simplicity, automatically adjusting based on data availability.

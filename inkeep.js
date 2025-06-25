@@ -24,10 +24,10 @@ loadScript(
           "How do I get started with Runway?",
           "How do I use keyboard shortcuts?",
           "How do I build a page for reporting?",
-          "How do I share my model with investors?,
+          "How do I share my model with investors?",
         ],
-        / Optional: customize the placeholder text
-        chatInputPlaceholder: "Ask me anything about Runway...",
+        // Optional: customize the placeholder text
+        placeholder: "Ask me anything about Runway...",
       },
       searchSettings: {
         // Optional: customize search behavior
@@ -37,7 +37,8 @@ loadScript(
           aiChatTabLabel: "Ask AI",
           webTabLabel: "Search Docs",
       },
-    };
+    },
+  }
 
     // Initialize the UI components
     Inkeep.ModalSearchAndChat(settings); // Search Bar

@@ -190,5 +190,8 @@
       "x": "https://x.com/runwayco",
       "linkedin": "https://linkedin.com/company/runway"
     }
+  },
+  "chat":{
+    "enabled": false
   }
 }

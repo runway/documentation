@@ -129,7 +129,8 @@
               "integrations/data-storage/shared-directory"
             ]
           },
-          "integrations/writing-sql"
+          "integrations/writing-sql",
+          "integrations/export-api"
         ]
       },
       {

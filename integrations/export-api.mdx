@@ -1,0 +1,40 @@
+---
+title: "New file"
+description: "Description of your new file."
+---
+
+## Overview
+
+Runway offers a limited API to allow you to export model and database views programmatically.
+
+## Supported objects
+
+You are able to export models & databases. **Page exports are currently unavailable.**
+
+- **Main Scenario Model URL example**: https://app.runway.com/skynet/submodel/afd94c7e-1e7f-4e55-b99a-472aa5a43cd9
+- **Scenario Model URL example**: https://app.runway.com/skynet/proposal/445f8fea-df2a-49cb-9cce-f805be588137/submodel/afd94c7e-1e7f-4e55-b99a-472aa5a43cd9
+- **Main Scenario Database example: **https://app.runway.com/skynet/page/5fb5f2a6-7a13-4085-a89c-86e2da66a17c
+- **Scenario Database URL example: **https://app.runway.com/skynet/proposal/445f8fea-df2a-49cb-9cce-f805be588137/page/5fb5f2a6-7a13-4085-a89c-86e2da66a17c
+
+## Limitations
+
+- If you have a database with multiple Drivers, Runway will only show the time seriesd data that is currently expanded on that page.
+  - If you want multiple drivers from a Database, shape a new database off that existing database and pull from separate databases
+- The time period pulled is limited to the filters applied on the database & model
+- Formulas are not exported
+
+## Guide
+
+1. Log into Runway \> Settings (top right) \> API
+2. Obtain your API secret, this will be used as a **Bearer Token** in the header of your request.
+3. Format your API endpoint:
+   1. Grab the URL of the Database or Model you want to pull data from
+   2. **Replace "app.runway.com/org-url" with "api.runway.com/api"**
+      - https://app.runway.com/skynet/submodel/afd94c7e-1e7f-4e55-b99a-472aa5a43cd9
+      - becomes
+      - https://api.runway.com/api/submodel/afd94c7e-1e7f-4e55-b99a-472aa5a43cd9
+4. HTTP method set to GET
+
+## Example Runway \> Google Sheet Integration
+
+- [Video Guide](https://www.loom.com/share/3eef1625686548bb8a0359e474336427)

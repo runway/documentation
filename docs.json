@@ -130,6 +130,7 @@
             ]
           },
           "integrations/writing-sql"
+          "integrations/export-api"
         ]
       },
       {

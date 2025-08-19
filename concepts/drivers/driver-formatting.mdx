@@ -13,18 +13,19 @@ There are **three types of formatting** that can be applied to drivers:
 
 Global formatting settings apply to **all drivers** in Runway across **every page**. These settings can be found in **Settings → General** and control the following defaults:
 
-- **Currency format** → Set to **USD** by default, but can be changed.
+- **Currency format** → Set to **USD** by default, but can be changed globally if desired. 
 - **Negative number display** → Defaults to using a **negative sign** (e.g., `-1000`), but can be switched to **parentheses** (e.g., `(1000)`).
 - **Number precision** → Defaults to using **up to two decimal places** for values that include decimals.
 
 These settings ensure consistency across all drivers while allowing customization as needed.
+
 ![images/drivers/formatting-general.png](/images/drivers/formatting-general.png)
 
 ## Data formatting
 
 Data formatting determines how a **specific driver's values** (numbers or dates) appear across all tables, including both **driver tables** and **database tables**.
 
-To adjust data formatting, **right-click** on a numeric driver in a table and use the options:
+To adjust data formatting, **right-click** on a numeric driver in a table and use the options shown. Note as well that you can format in bulk too as needed:
 
 - **Format** — Drivers can be formatted as:
   - **Automatic** → Attempts to infer the best display format based on the driver’s formula. (e.g., If an input is a percentage, the result will also be formatted as a percentage.)
@@ -32,7 +33,7 @@ To adjust data formatting, **right-click** on a numeric driver in a table and us
   - **Number** → Shows numbers with decimal precision.
   - **Integer** → Displays whole numbers only (no decimals).
   - **Percentage** → Formats the value as a percentage.
-- **Currency** — Available when the **Currency** format is selected. Options include:
+- **Currency** — Currency options only appear once you first set the driver format to **Currency**. Until then, the currency dropdown will be hidden. When a driver has been set to the currency format, an additional setting will appear per the screenshot below. Options for currencies at present include:
   - **US Dollars (USD)**
   - **Australian Dollars (AUD)**
   - **Canadian Dollars (CAD)**
@@ -42,6 +43,8 @@ To adjust data formatting, **right-click** on a numeric driver in a table and us
   - **Japanese Yen (JPY)**
   - **New Zealand Dollars (NZD)**
 - **Precision** → can set numeric drivers to display between **0 and 5 decimal places** for better control over rounding and accuracy.
+  
+
   ![images/drivers/formatting-data.png](/images/drivers/formatting-data.png)
 
 ## Display formatting
@@ -62,9 +65,14 @@ The following options control how drivers are visually presented:
   - Underline
   - Multiple styles can be applied at once.
 - **Indent / Outdent** — Adjusts the indentation of the driver for better organization and readability.
-- **Hide driver name, Hide segment, and Segment style** — These options apply to **drivers with dimensions**. You can read more about dimensions here. (LINK: coming soon)
+- **Hide driver name, Hide segment, and Segment style** — These options apply to **drivers with dimensions**. You can read more [about dimensions here](https://docs.runway.com/concepts/dimensions/dimensions-basics).
 - **Cell-specific styling** — You can also apply **background and text formatting** to **specific month values** within a table. To do this, **right-click a month’s value** and apply the desired style.
+  
+
   ![images/drivers/formatting-display.png](/images/drivers/formatting-display.png)
 
 Here’s an overview of the available formatting options, categorized as above, as they appear in a driver table:
-![images/drivers/all-formats.png](/images/drivers/all-formats.png)
+
+![Clean Shot2025 08 18at07 58 30 Pn](/images/CleanShot2025-08-18at07.58.30.png)
+
+![Clean Shot2025 08 18at07 58 43 Pn](/images/CleanShot2025-08-18at07.58.43.png)

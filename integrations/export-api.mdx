@@ -5,31 +5,12 @@ description: "Runway offers a limited API to allow you to export model and datab
 
 ## Supported objects
 
-You are able to export models & databases. **Page exports are currently unavailable.**
+You are able to export models and databases. **Page exports are currently unavailable.**
 
 - **Main Scenario Model URL example**: `https://app.runway.com/skynet/submodel/afd94c7e-1e7f-4e55-b99a-472aa5a43cd9`
 - **Scenario Model URL example**: `https://app.runway.com/skynet/proposal/445f8fea-df2a-49cb-9cce-f805be588137/submodel/afd94c7e-1e7f-4e55-b99a-472aa5a43cd9`
 - **Main Scenario Database example**: `https://app.runway.com/skynet/page/5fb5f2a6-7a13-4085-a89c-86e2da66a17c`
 - **Scenario Database URL example**: `https://app.runway.com/skynet/proposal/445f8fea-df2a-49cb-9cce-f805be588137/page/5fb5f2a6-7a13-4085-a89c-86e2da66a17c`
-
-## Limitations
-
-- **This API is very limited and intended to make data available quickly.**
-- If you have a database with multiple Drivers, Runway will only show the time series data that is currently expanded on that page.
-  - If you want multiple drivers from a Database, shape a new database off that existing database and pull from separate databases
-- The time period pulled is limited to the filters applied on the database & model
-- Formulas are not exported
-- **The exported data is in csv format only**
-
-## Sample Response
-
-```json
-
-{
-    "filename": "example model - api example.csv",
-    "contents": "Group,Driver,2023-05-01,2023-06-01,2023-07-01,2023-08-01,2023-09-01,2023-10-01,2023-11-01,2023-12-01,2024-01-01,2024-02-01,2024-03-01,2024-04-01,2024-05-01,2024-06-01,2024-07-01,2024-08-01,2024-09-01,2024-10-01,2024-11-01\nDrivers,Hello world,0.00,0.00,0.00,0.00,0.00,0.00,123.00,184.50,276.75,415.13,622.69,934.03,1401.05,1401.05,1401.05,1401.05,1401.05,1401.05,1401.05\nDrivers,Goodbye world,0.00,0.00,0.00,0.00,0.00,0.00,1245.00,2365.50,4494.45,8539.46,16224.96,30827.43,58572.12,58572.12,58572.12,58572.12,58572.12,58572.12,58572.12\n"
-}
-```
 
 ## Guide
 

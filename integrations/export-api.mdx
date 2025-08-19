@@ -12,17 +12,11 @@ You are able to export models and databases. **Page exports are currently unavai
 - **Main Scenario Database example**: `https://app.runway.com/skynet/page/5fb5f2a6-7a13-4085-a89c-86e2da66a17c`
 - **Scenario Database URL example**: `https://app.runway.com/skynet/proposal/445f8fea-df2a-49cb-9cce-f805be588137/page/5fb5f2a6-7a13-4085-a89c-86e2da66a17c`
 
-## Limitations
-
-- If you have a database with multiple drivers, Runway will only show the time series data that is currently expanded on that page.
-  - If you want multiple drivers from a database, shape a new database off that existing database and pull from separate databases.
-- The time period pulled is limited to the filters applied on the database and model.
-- Formulas cannot be exported at this time.
-
 ## Guide
 
 1. Log into Runway \> Settings (top right) \> API
 2. Obtain your API secret, this will be used as a **Bearer Token** in the header of your request.
+   1. `Authorization: Bearer <your bearer token here>`
 3. Format your API endpoint:
    1. Grab the URL of the Database or Model you want to pull data from
    2. **Replace "app.runway.com/org-url" with "api.runway.com/api"**

@@ -25,6 +25,14 @@ You are able to export models and databases. **Page exports are currently unavai
       - `https://api.runway.com/api/submodel/afd94c7e-1e7f-4e55-b99a-472aa5a43cd9`
 4. HTTP method set to GET
 
+## Limitations
+
+- If you have a database with multiple drivers, Runway will only show the time series data that is currently expanded on that page.
+- If you want multiple drivers from a database, shape a new database off that existing database and pull from separate databases.
+- The time period pulled is limited to the filters applied on the database and model.
+- Formulas cannot be exported at this time.
+- The exported data is in csv format only
+
 ## Example Runway \> Google Sheet Integration
 
 - [Video Guide](https://www.loom.com/share/57c29a5412c5479da7e34242526cf548)

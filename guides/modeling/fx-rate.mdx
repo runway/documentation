@@ -14,16 +14,16 @@ Start by setting up a Google Sheet that will store your exchange rates.
 3. In cell **A1**, use the `IMPORTRANGE` function to pull in exchange rates from Runway’s [live FX sheet](https://docs.google.com/spreadsheets/d/1gAsVhuVDFbXsztrOShUc8bNEFTEa8h7LIInYUXc1opQ/edit?usp=sharing), powered by [XE.com](http://xe.com/)—the same rates used by QuickBooks and Xero:
 
    ```
-   =IMPORTRANGE("your-source-sheet-link","ExchangeRates!A:AI")
+   =IMPORTRANGE("your-source-sheet-link","ExchangeRates!A:AU")
    ```
 4. Replace `"your-source-sheet-link"` with the actual link to the FX sheet: [Runway Exchange Rates Sheet](https://docs.google.com/spreadsheets/d/1gAsVhuVDFbXsztrOShUc8bNEFTEa8h7LIInYUXc1opQ/edit?usp=sharing)
-5. Make sure the range `A:AI` covers all the exchange rate columns. Periodically check the sheet for new currencies and update the range as needed (e.g., A:AI → A:AK).
+5. Make sure the range `A:AU` covers all the exchange rate columns. Periodically check the sheet for new currencies and update the range as needed (e.g., A:AU → A:AZ).
 6. Once the data is imported, create a **named range**:
    - Highlight all the columns (not just the cells with values).
    - Go to **Data \> Named ranges**.
    - Give it a name (e.g., `runway_xe_fx`) and click **Done**.
 
-![Step1 Sheet Pn](/images/fx/step1-sheet.png)
+![Step1 Sheet Pn](/CleanShot2025-09-03at14.26.35.png)
 
 ## Step 2: Connect the FX sheet to Runway
 

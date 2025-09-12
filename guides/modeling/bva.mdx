@@ -3,7 +3,9 @@ title: "Budget vs. actuals"
 description: "Compare your planned budget with actuals—so you can track accuracy, spot trends, and refine future forecasts."
 ---
 
-In Runway, you can lock different versions of your budget as reference points, and compare them to actuals as new data comes in.
+By default, when you create a scenario in Runway, it will inherit changes from the Main scenario. For example, this means a driver created in Main will get pushed to every branch. 
+
+In Runway, you can lock different versions of your budget as reference points by disabling updates from Main, allowing you to compare them to actuals as new data comes in.
 
 This guide walks you through:
 
@@ -13,11 +15,11 @@ This guide walks you through:
 
 ## Step 1: Lock your budget
 
-Your budget lives in scenarios—separate versions of your model representing different forecasts (downside, base, upside).
+Your budget lives in scenarios—separate versions of your model representing different forecasts.
 
 Before tracking BvA, you need to lock your budget scenarios so they don’t change. To do this:
 
-1. Disable auto-updates from main to freeze the scenario:
+1. Disable auto-updates from main to unplug the scenario from the main scenario:
    - In the scenarios list, click the Settings icon next to your scenario’s name.
    - Disable `Pull updates from Main`.
    - This prevents changes from main scenario and integration syncs from affecting your budget.
@@ -58,9 +60,11 @@ You can analyze variances between budget and actuals using tables or charts.
 **Customizing variance colors**
 
 - By default, if actuals exceed budget, `Variance` and `Variance %` appear green. If actuals fall short, they’ll appear red.
-- To reverse this—like when lower numbers are preferred for cost metrics—just set a goal for the driver to be below zero.
+- To customize variance color right-click on a driver, click `Format and display` → `Comparison color `and choose Positive variance is green or Positive variance is red
+- The Comparison color menu is only available when Comparison view is on for a driver table
+- Typically for expenses, Positive variance is red (lesser values are better) and for income, Positive variance is green (greater values are better)
 
-![Set Goal Gi](/images/scenarios/set-goal.gif)
+![CleanShot 2025-09-10 at 12.43.01.gif](/images/CleanShot2025-09-10at12.43.01.gif)
 
 ### Option 2: Create a BvA chart
 

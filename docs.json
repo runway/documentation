@@ -153,7 +153,9 @@
               "guides/modeling/revenue-recognition",
               "guides/modeling/commissions",
               "guides/modeling/building-p-and-l",
-              "guides/modeling/forecasting-with-closed-actuals"
+              "guides/modeling/forecasting-with-closed-actuals",
+              "guides/modeling/ranked-lists",
+              "guides/modeling/fixing-errors"
             ]
           },
           {
@@ -162,7 +164,8 @@
             "pages": [
               "guides/sharing/adding-users",
               "guides/sharing/permissions",
-              "guides/sharing/data-anonymization"
+              "guides/sharing/data-anonymization",
+              "guides/sharing/comments"
             ]
           }
         ]

@@ -36,3 +36,47 @@ You are able to export models and databases. **Page exports are currently unavai
 ## Example Runway \> Google Sheet Integration
 
 - [Video Guide](https://www.loom.com/share/57c29a5412c5479da7e34242526cf548)
+- Here's a sample app script to export a model
+  - Be sure to replace the following:
+    - "PUT API ENDPOINT HERE" with your https://api.runway.com/api...
+    - "PUT TOKEN HERE" with your token from the Runway settings menu
+    - "PUT SHEET TAB NAME HERE" with the name of the tab you want to put the data in
+
+      ```
+      function importRunwayData() {
+        var url = "PUT API ENDPOINT HERE";
+        var token = "PUT TOKEN HERE";
+      
+        // Call the API
+        var response = UrlFetchApp.fetch(url, {
+          method: "get",
+          headers: {
+            "Authorization": "Bearer " + token,
+            "Accept": "application/json"
+          },
+          muteHttpExceptions: true
+        });
+      
+        // Parse JSON
+        var data = JSON.parse(response.getContentText());
+        var csvString = data.contents;
+      
+        // Clean BOM if present
+        csvString = csvString.replace(/^\uFEFF/, "");
+      
+        // Parse the entire CSV string at once
+        var rows = Utilities.parseCsv(csvString);
+      
+        // Get the "Runway import" tab (create if missing)
+        var ss = SpreadsheetApp.getActiveSpreadsheet();
+        var sheet = ss.getSheetByName("PUT SHEET TAB NAME HERE");
+        if (!sheet) {
+          sheet = ss.insertSheet("PUT SHEET TAB NAME HERE");
+        }
+      
+        // Clear and write values
+        sheet.clearContents();
+        sheet.getRange(1, 1, rows.length, rows[0].length).setValues(rows);
+      }
+      
+      ```

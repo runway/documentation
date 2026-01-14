@@ -1,15 +1,17 @@
 ---
 title: "HRIS databases"
-description: "HRIS data is essential for modeling personnel-related expenses—often the largest cost for most businesses. In Runway, HRIS data behaves differently from other data sources, particularly when using the Employees database. This guide outlines key distinctions you should know. "
+description: "HRIS data is essential for modeling personnel-related expenses—often the largest cost for most businesses. HRIS databases in Runway now function like regular databases, making them easier to work with in formulas and models."
 ---
 
 <Info>
-  **Why are these differences present?**
+  **Recent changes to HRIS databases**
 
-  These differences arise due to our long-standing integrations with HRIS data partners. Our team is actively working to harmonize HRIS modeling capabilities with how dimensional modeling functions elsewhere in Runway. If you have feedback or suggestions, please share them with your CXM.
+  HRIS databases now work like standard dimensional databases in Runway. This means you can reference them directly in formulas and use them with the same data shaping patterns you're familiar with from other databases.
+  
+  However, when segmenting by dimensions that change over time (like Department or Job Title), there's a specific approach you'll need to follow. See our [headcount planning guide](https://docs.runway.com/guides/modeling/headcount-planning) for details.
 </Info>
 
-You can also read our step-by-step guide on headcount modeling [here](https://docs.runway.com/guides/modeling/headcount-modeling).
+You can also read our step-by-step guide on headcount modeling [here](https://docs.runway.com/guides/modeling/headcount-planning).
 
 ## Rows represent an employee defined by their name
 

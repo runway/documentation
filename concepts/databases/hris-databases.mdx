@@ -1,14 +1,18 @@
 ---
 title: "HRIS databases"
-description: "HRIS data is essential for modeling personnel-related expenses—often the largest cost for most businesses. HRIS databases in Runway now function like regular databases, making them easier to work with in formulas and models."
+description: "HRIS data is essential for modeling personnel-related expenses—often the largest cost for most businesses. In Runway, HRIS databases come in two types: new databases that function like regular databases, and legacy databases with specialized behavior."
 ---
 
 <Info>
-  **Recent changes to HRIS databases**
+  **Two types of HRIS databases**
 
-  HRIS databases now work like standard dimensional databases in Runway. This means you can reference them directly in formulas and use them with the same data shaping patterns you're familiar with from other databases.
+  Runway supports two types of HRIS databases:
   
-  However, when segmenting by dimensions that change over time (like Department or Job Title), there's a specific approach you'll need to follow. See our [headcount planning guide](https://docs.runway.com/guides/modeling/headcount-planning) for details.
+  - **New HRIS databases** - Function like standard dimensional databases. You can reference them directly in formulas and use the same data shaping patterns you're familiar with from other databases. When segmenting by dimensions that change over time (like Department or Job Title), there's a specific approach to follow.
+  
+  - **Legacy HRIS databases** - Use specialized behavior with field columns instead of drivers, and require the "Expand by Dimension" feature for segmentation.
+  
+  The documentation below describes legacy HRIS database behavior. For guidance on both types, see our [headcount planning guide](https://docs.runway.com/guides/modeling/headcount-planning).
 </Info>
 
 You can also read our step-by-step guide on headcount modeling [here](https://docs.runway.com/guides/modeling/headcount-planning).

@@ -1,25 +1,19 @@
 ---
 title: "HRIS databases"
-description: "HRIS data is essential for modeling personnel-related expenses—often the largest cost for most businesses. In Runway, HRIS databases come in two types: new databases that function like regular databases, and legacy databases with specialized behavior."
+description: "HRIS data is essential for modeling personnel-related expenses—often the largest cost for most businesses. In Runway, HRIS data behaves differently from other data sources, particularly when using the Employees database. This guide outlines key distinctions you should know. "
 ---
 
 <Info>
-  **Two types of HRIS databases**
+  **Why are these differences present?**
 
-  Runway supports two types of HRIS databases:
-  
-  - **New HRIS databases** - Function like standard dimensional databases. You can reference them directly in formulas and use the same data shaping patterns you're familiar with from other databases. When segmenting by dimensions that change over time (like Department or Job Title), there's a specific approach to follow.
-  
-  - **Legacy HRIS databases** - Use specialized behavior with field columns instead of drivers, and require the "Expand by Dimension" feature for segmentation.
-  
-  The documentation below describes legacy HRIS database behavior. For guidance on both types, see our [headcount planning guide](https://docs.runway.com/guides/modeling/headcount-planning).
+  These differences arise due to our long-standing integrations with HRIS data partners. Our team is actively working to harmonize HRIS modeling capabilities with how dimensional modeling functions elsewhere in Runway. If you have feedback or suggestions, please share them with your CXM.
 </Info>
 
-You can also read our step-by-step guide on headcount modeling [here](https://docs.runway.com/guides/modeling/headcount-planning).
+You can also read our step-by-step guide on headcount modeling [here](https://docs.runway.com/guides/modeling/headcount-modeling).
 
 ## Rows represent an employee defined by their name
 
-In typical Runway databases, [**segmentation determines the granularity of your database**](https://docs.runway.com/concepts/databases/databases-basics#adding-a-row). Each row has a **unique combination** of dimension values.
+In typical Runway databases, [**segmentation determines the granularity of your database**](https://docs.runway.com/concepts/databases/databases-basics#adding-a-row). Each row has a **unique combination** of dimension values.
 
 In HRIS databases, each row each row represents a single **employee, identified by their name.**
 
@@ -33,9 +27,9 @@ As a result, reusing HRIS data elsewhere—whether in formulas or on pages—wor
 
 ### Using HRIS data in formulas
 
-The HRIS database stores data such as salaries, bonuses, and benefits for each employee. To use this data in calculations—for example, to sum salaries across departments—you’ll typically want to aggregate field columns into a standard driver.
+The HRIS database stores data such as salaries, bonuses, and benefits for each employee. To use this data in calculations—for example, to sum salaries across departments—you'll typically want to aggregate field columns into a standard driver.
 
-Here’s how:
+Here's how:
 
 1. Create a regular driver in a driver table block (on a [page](https://docs.runway.com/concepts/pages/drivers-table-block) or in a [model](https://docs.runway.com/concepts/models/models-basics)).
 2. In the formula editor, search for and reference the field column from the Employees database. You can search by the field column name, but not by the employee name or any of its attributes.
@@ -47,7 +41,7 @@ Here’s how:
 
 ### Surfacing HRIS data on a page
 
-When sharing or collaborating on HRIS data, you typically don’t need to display the entire Employees database. Instead, you have a couple of focused options:
+When sharing or collaborating on HRIS data, you typically don't need to display the entire Employees database. Instead, you have a couple of focused options:
 
 1. Add the calculated drivers (as described in the previous section) to a [driver table block](https://docs.runway.com/concepts/pages/drivers-table-block) or a [chart block](https://docs.runway.com/concepts/pages/charts-block) to show totals or trends.
 2. Include a [filtered view of the Employees database](https://docs.runway.com/concepts/pages/database-block) to highlight specific roles, departments, or planned hires.
@@ -95,7 +89,7 @@ Every employee row includes a **Start date** field that acts as a switch for tim
 This behavior works implicitly, similar to wrapping every field's formula in a condition like:
 
 ```
-if(thisMonth() < this.Start Date, [column’s formula], NULL)
+if(thisMonth() < this.Start Date, [column's formula], NULL)
 ```
 
 Start Date also defines which employees show up on your Plans timeline. [You can read more about how Plans work with employee start dates here.](https://docs.runway.com/concepts/plans#connecting-an-employee%E2%80%99s-start-date-to-a-plan)

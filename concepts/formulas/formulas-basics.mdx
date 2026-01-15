@@ -3,31 +3,34 @@ title: "Formulas basics"
 description: "Formulas are the backbone of your model in Runway. They define the logic behind every driver and are essential for simulating how your business will evolve over time."
 ---
 
-While Runway often generates helpful default formulas—especially when working with integrations or databases—they’re just a starting point. To truly tailor your model, you’ll need to write and refine your own formulas.
+While Runway often generates helpful default formulas—especially when working with integrations or databases—they're just a starting point. To truly tailor your model, you'll need to write and refine your own formulas.
 
 ## Where to write formulas in Runway
 
-There are four primary places where you’ll interact with formulas in Runway. Each has its own context depending on whether you’re working with standalone drivers, databases, or HRIS data. Let’s go through them one by one.
+There are four primary places where you'll interact with formulas in Runway. Each has its own context depending on whether you're working with standalone drivers, databases, or HRIS data. Let's go through them one by one.
 
 ### #1 Driver table blocks
 
-When working in a [driver table block on a page](https://docs.runway.com/concepts/pages/drivers-table-block) or in a [model](https://docs.runway.com/concepts/models/models-basics), you’ll often write or update formulas for the drivers you see there.
+When working in a [driver table block on a page](https://docs.runway.com/concepts/pages/drivers-table-block) or in a [model](https://docs.runway.com/concepts/models/models-basics), you'll often write or update formulas for the drivers you see there.
 
-Keep in mind that a driver table block can contain drivers created directly in the block, pulled from other driver table blocks, or drivers originating from databases. Given drivers are portable, making edits to the formula in one place will change it in all places it’s used.
+Keep in mind that a driver table block can contain drivers created directly in the block, pulled from other driver table blocks, or drivers originating from databases. Given drivers are portable, making edits to the formula in one place will change it in all places it's used.
 
-There are a few ways to access and edit a driver’s formulas:
+There are a few ways to access and edit a driver's formulas:
 
 - **Show formulas as columns.**
 
-  Use the Customize menu to show the actuals and forecast formula columns, or press:
-  - `Option` \+ `Shift` \+ `A` to toggle the **actuals formula** column
-  - `Option` \+ `Shift` \+ `F` to toggle the **forecast formula** column
+  Use the Customize menu to show formula columns in the table:
+  - **Formula** column — displays the row-level formula that applies to each driver row, showing how formulas vary across different dimension values
+  - **Actuals Formula** column — shows the actuals formula for each driver (toggle with `Option` \+ `Shift` \+ `A`)
+  - **Forecast Formula** column — shows the forecast formula for each driver (toggle with `Option` \+ `Shift` \+ `F`)
+
+    The Formula column is particularly useful for understanding how formulas are applied across segmented data. When a row has multiple dimension values, the Formula column displays the formula with conditions that match those specific segments. For rows representing aggregated data (like "ANY" segments), you'll see formulas with `ANY` values in italics, indicating they apply broadly across that dimension.
 
     [More on customizing columns →](https://docs.runway.com/concepts/pages/drivers-table-block#customizing-table-columns)
 - **Click the formula button next to the driver name.**
 
   ![Driver Table Formula Button Pn](/images/formulas/driver-table-formula-button.png)
-- **Open the driver’s details pane.**
+- **Open the driver's details pane.**
 
   This gives you more room to work and context on the driver. [Learn more →](https://docs.runway.com/concepts/drivers/driver-details-pane)
 
@@ -55,7 +58,7 @@ As noted earlier, all rows in a driver column inherit the default column-level f
 
 You can do this in two ways:
 
-- **When viewing a driver column as a time series**, click directly into any row’s (segment) formula cell to edit it.
+- **When viewing a driver column as a time series**, click directly into any row's (segment) formula cell to edit it.
 - **When using** the [**full time series view of a database**](https://docs.runway.com/concepts/databases/databases-basics#show-all-columns-as-timeseries), you can override the formula for any segment inline. This is especially useful for scanning and editing multiple overrides in one place.
 
   ![Database Row Formula 2 Pn](/images/formulas/database-row-formula-2.png)
@@ -72,7 +75,7 @@ You can do this in two ways:
 
 ## Forecast v.s. actuals formulas
 
-  Now that we’ve explored the different places where you can interact with formulas in Runway, let’s look at another key concept: the distinction between **forecast** and **actuals** formulas.
+  Now that we've explored the different places where you can interact with formulas in Runway, let's look at another key concept: the distinction between **forecast** and **actuals** formulas.
 
   Every driver in Runway supports two formulas:
   - **Actuals formula** — used for all months **up to and including** your [last close date](https://docs.runway.com/concepts/last-close).
@@ -80,11 +83,11 @@ You can do this in two ways:
 
   This split allows you to clearly separate how historical values are calculated from how future assumptions are modeled.
 
-  If an **actuals formula is not explicitly set**, Runway will automatically fall back to using the **forecast formula**. This fallback behavior follows Runway’s [formula inheritance logic](https://docs.runway.com/concepts/drivers/drivers-basics#formula-inheritance).
+  If an **actuals formula is not explicitly set**, Runway will automatically fall back to using the **forecast formula**. This fallback behavior follows Runway's [formula inheritance logic](https://docs.runway.com/concepts/drivers/drivers-basics#formula-inheritance).
 
 ## More on formulas
 
-  Now that you’ve got the basics down, here are a few resources to help you take your formulas further:
+  Now that you've got the basics down, here are a few resources to help you take your formulas further:
   1. [Formulas syntax](https://docs.runway.com/concepts/formulas/formulas-syntax)
   2. [Functions & operators](https://docs.runway.com/concepts/formulas/functions-operators)
   3. [Building lookup tables](https://docs.runway.com/guides/modeling/lookups)

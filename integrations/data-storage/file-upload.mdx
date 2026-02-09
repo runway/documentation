@@ -1,0 +1,112 @@
+---
+title: "File upload"
+description: "Runway's File Upload integration allows you to quickly import CSV files directly into Runway for use in modeling."
+---
+
+You may choose to use File Upload if:
+
+- You need to **import data quickly** without setting up a full integration.
+- You have **CSV files** from systems that don't have direct integrations.
+- You want to **test data** in Runway before committing to a full integration setup.
+- You have **one-time data imports** that don't require ongoing syncing.
+
+## File requirements
+
+Before uploading your CSV file, ensure it meets these requirements:
+
+- **File format**: Only `.csv` files are supported.
+- **File size**: Maximum file size is **50MB**.
+- **Data structure**: The first row should contain column headers.
+- **Data quality**: Ensure at least one data row exists below the headers.
+- **Date format**: Use **MM/DD/YYYY** format for date columns (e.g., `01/15/2024`).
+
+<Tip>
+  For best results, clean your CSV file before uploading—remove extra blank rows, ensure consistent column headers, and format dates as **MM/DD/YYYY** (e.g., `01/15/2024`).
+</Tip>
+
+## Connecting the File Upload integration
+
+1. Open Runway and navigate to **Integrations**.
+2. Find and install the **File Upload** integration listed under the **Data storage** section.
+3. A new query called **New File Upload** will be automatically created.
+4. You can rename this query by clicking the **three-dots button** next to the query name in the sidebar and selecting **Rename query**.
+
+## Uploading a CSV file
+
+Once you've connected the File Upload integration:
+
+1. Click on your File Upload query in the sidebar.
+2. In the query editor, you'll see a file upload interface.
+3. Click **Choose File** and select your CSV file (must be `.csv` format and under 50MB).
+4. The file will upload automatically. You'll see a confirmation message when the upload is complete.
+5. Click **Run query** to import the data into Runway.
+
+<Warning>
+  File uploads must be run manually. Unlike other integrations, File Upload queries cannot be scheduled to sync automatically.
+</Warning>
+
+## Refreshing data
+
+To update the data in your File Upload query:
+
+1. Upload a new CSV file using the same steps above.
+2. Click **Run query** to refresh the data.
+3. The new data will replace the previous data in your linked database.
+
+<Info>
+  Each time you upload a new file and run the query, it completely replaces the previous data. Make sure your new file contains all the data you need.
+</Info>
+
+## Using uploaded data in databases
+
+After running your File Upload query:
+
+1. [Configure a new database](https://docs.runway.com/concepts/databases/databases-basics#configuring-a-database) linked to your File Upload query.
+2. The database will display the data from your CSV file.
+3. You can now use this data in your models, pages, and formulas just like any other integration.
+
+## File upload FAQs
+
+<Accordion title="Can I schedule File Upload queries to sync automatically?" icon="sparkles">
+  No. File Upload queries must be run manually. If you need automatic syncing, consider using [Google Sheets](https://docs.runway.com/integrations/data-storage/google-sheets) or a [data warehouse](https://docs.runway.com/integrations/data-storage/data-warehouses) integration instead.
+</Accordion>
+
+<Accordion title="What happens if my CSV file is larger than 50MB?" icon="sparkles">
+  Files larger than 50MB cannot be uploaded. You'll need to either:
+  
+  - **Split your file** into smaller CSV files and create multiple File Upload queries.
+  - **Aggregate your data** before exporting to reduce the file size.
+  - Use a [data warehouse](https://docs.runway.com/integrations/data-storage/data-warehouses) integration for larger datasets.
+</Accordion>
+
+<Accordion title="Can I upload multiple CSV files to the same query?" icon="sparkles">
+  No. Each File Upload query can only contain data from one CSV file at a time. When you upload a new file and run the query, it replaces the previous data. If you need to import multiple CSV files, create separate File Upload queries for each file.
+</Accordion>
+
+<Accordion title="What CSV formats are supported?" icon="sparkles">
+  Runway supports standard CSV files with:
+  
+  - **Comma-separated values** (`,` as delimiter)
+  - **Column headers** in the first row
+  - **At least one data row** below the headers
+  - **Date columns** formatted as **MM/DD/YYYY** (e.g., `01/15/2024`)
+  
+  The CSV parser is flexible and handles quoted fields and leading/trailing spaces automatically.
+</Accordion>
+
+<Accordion title="Why isn't my uploaded file showing data?" icon="sparkles">
+  If you don't see data after uploading and running the query, check:
+  
+  - Your CSV file has **column headers** in the first row.
+  - There is **at least one data row** below the headers.
+  - The file is **properly formatted** as a CSV (not Excel or other formats).
+  - You clicked **Run query** after uploading the file.
+</Accordion>
+
+<Accordion title="Can I edit the CSV data directly in Runway?" icon="sparkles">
+  No. File Upload queries are read-only. To modify the data, you need to:
+  
+  1. Edit your CSV file outside of Runway.
+  2. Upload the updated CSV file.
+  3. Click **Run query** to refresh the data.
+</Accordion>

@@ -124,6 +124,7 @@
             "group": "Data storage",
             "icon": "server",
             "pages": [
+              "integrations/data-storage/file-upload",
               "integrations/data-storage/google-sheets",
               "integrations/data-storage/data-warehouses",
               "integrations/data-storage/shared-directory"

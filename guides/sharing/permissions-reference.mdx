@@ -1,0 +1,110 @@
+---
+title: "Permissions reference"
+description: "Detailed reference tables for every role, resource type, and capability in Runway's permissions system."
+---
+
+## Complete role capabilities matrix
+
+### Pages
+
+| Capability | Admin | Manager | Member | Guest |
+|---|---|---|---|---|
+| View all pages | Yes | Yes (default) | Only if shared | Only if shared |
+| Edit pages | Yes | Yes | If granted | No |
+| Create pages | Yes | Yes | No | No |
+| Delete pages | Yes | Yes | No | No |
+| Share pages | Yes | Yes | No | No |
+
+### Sections
+
+| Capability | Admin | Manager | Member | Guest |
+|---|---|---|---|---|
+| View all sections | Yes | Yes (default) | Only if shared | Only if shared |
+| Create sections | Yes | Yes | No | No |
+| Delete sections | Yes | No | No | No |
+
+### Scenarios
+
+| Capability | Admin | Manager | Member | Guest |
+|---|---|---|---|---|
+| View Main Scenario | Yes | Yes | Yes | Only if shared |
+| View other scenarios | Yes | Yes (if shared/created) | If shared | Only if shared |
+| Create scenarios | Yes | Yes | Yes | No |
+| Merge scenarios | Yes | No | No | No |
+
+### Databases
+
+| Capability | Admin | Manager | Member | Guest |
+|---|---|---|---|---|
+| View databases | Yes | Yes (default) | Only if shared | Only if shared |
+| Edit databases | Yes | Yes | If granted | No |
+| Create databases | Yes | Yes | No | No |
+
+### Models
+
+| Capability | Admin | Manager | Member | Guest |
+|---|---|---|---|---|
+| View models | Yes | Yes (default) | Only if shared | Only if shared |
+| Edit models | Yes | Yes | If granted | No |
+| Create models | Yes | Yes | No | No |
+
+### Integrations
+
+| Capability | Admin | Manager | Member | Guest |
+|---|---|---|---|---|
+| Create integrations | Yes | Yes | No | No |
+| View integration results | Yes | No (default) | No | No |
+
+### Workspace settings
+
+| Capability | Admin | Manager | Member | Guest |
+|---|---|---|---|---|
+| Manage workspace settings | Yes | No | No | No |
+| Manage access/permissions | Yes | No | No | No |
+| Manage data anonymization | Yes | No | No | No |
+| Update last close date | Yes | No | No | No |
+
+## Access levels by resource type
+
+| Resource Type | Available Access Levels | Notes |
+|---|---|---|
+| Page | Full access, Can edit, Can view, No access | — |
+| Section | Full access, Can view, No access | No "Can edit" level |
+| Block | Full access, Can view, Can drill in, No access | Drill-in controls whether users can see the inputs behind calculated values |
+| Scenario | Full access, Can view, Can merge, No access | Merge is a separate capability |
+| Database column | Can view, No access | Used for restricting sensitive data |
+| Integration | Full access, Can edit, Can view, No access | Managers can create but cannot view by default |
+
+## Access level definitions
+
+| Access Level | Description |
+|---|---|
+| **Full access** | Can edit, delete, and share the resource. Includes all capabilities. |
+| **Can edit** | Can modify the resource's content. Cannot share, delete, or manage access settings. |
+| **Can view** | Read-only access. Can see the resource but cannot make changes. |
+| **No access** | Resource is completely hidden. The user cannot see it in the sidebar or access it via URL. |
+
+## Special capabilities
+
+### Can merge (Scenarios only)
+
+The ability to merge a scenario back into the Main Scenario. This is a high-impact action that applies the scenario's changes to the workspace's primary data.
+
+- **Who has it by default:** Admins only.
+- **How to configure:** Open the Share menu on a scenario and toggle the "Can merge" capability for specific users, groups, or roles.
+
+### Can drill in (Blocks only)
+
+The ability to see the inputs and formula behind a calculated value in a block. When drill-in is enabled, users can click on a cell to see what drives its value.
+
+- **Who has it by default:** Admins, Managers, and Members.
+- **How to configure:** Open the Share menu on a block and toggle the "Can drill in" capability.
+- **Note:** Guests never have drill-in access.
+
+### Integration permissions
+
+Integrations have a unique permission model:
+
+- **Create:** Admins and Managers can create integrations.
+- **View results:** Only Admins can view integration results by default. Managers must be explicitly granted access.
+- This distinction exists because integration data may contain sensitive information from connected systems.

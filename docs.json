@@ -124,8 +124,14 @@
             "pages": ["guides/reporting/bva"]
           },
           {
-            "group": "Sharing workflow",
-            "pages": ["guides/sharing/data-anonymization"]
+            "group": "Sharing & permissions",
+            "pages": [
+              "guides/sharing/permissions-overview",
+              "guides/sharing/adding-and-managing-users",
+              "guides/sharing/sharing-pages",
+              "guides/sharing/workspace-access-management",
+              "guides/sharing/permissions-reference"
+            ]
           }
         ]
       }

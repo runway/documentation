@@ -1,0 +1,97 @@
+---
+title: "Workspace access management"
+description: "A full-screen interface for Admins to manage permissions across the entire workspace."
+---
+
+## Opening Workspace Access
+
+Go to **Settings > Workspace Access** to open the full-screen management view.
+
+<Note>Workspace Access is available to Admins only.</Note>
+
+## Navigating the Workspace Access view
+
+The left sidebar has tabs that give you different perspectives on your workspace's permissions:
+
+| Tab | What it shows |
+|---|---|
+| **User** | All users and their access across resources |
+| **Group** | Custom groups and their access |
+| **Role** | Access granted per system role |
+| **Scenario** | Who has access to each scenario |
+| **Section** | Who has access to each section |
+| **Page** | Who has access to each page |
+| **Other Settings** | Workspace-level permission settings |
+
+## View by User
+
+See every user in the workspace along with their role, group memberships, and per-resource access across all scenarios.
+
+From this view you can:
+
+- Change a user's role
+- Adjust their access to specific resources
+- See which groups they belong to
+- Understand their effective permissions across the workspace
+
+## View by Group
+
+See all custom groups in the workspace.
+
+From this view you can:
+
+- Create new groups
+- Add or remove group members
+- See what resources each group has access to
+- Adjust group-level access to specific resources
+
+## View by Role
+
+See what access is granted to each system role (Admin, Manager, Member, Guest) across all resources. This is useful for understanding the baseline permissions before any individual or group-level customization.
+
+## View by Scenario, Section, or Page
+
+These tabs let you start from a specific resource and see who has access to it. From any resource view you can:
+
+- See which users, groups, and roles have access
+- Adjust access levels for individual users, groups, or roles
+- Create share links for the resource
+
+## Other Settings
+
+### Sidebar permission inheritance
+
+This setting controls whether permissions flow down from parent resources to child resources.
+
+- **When enabled (default):** Permissions flow from Sections → Pages → Blocks. Sharing a Section automatically shares all of its Pages.
+- **When disabled:** Each resource must have its permissions managed independently. Sharing a Section does not affect the Pages inside it.
+
+## Restricting access to sensitive data
+
+Admins can anonymize specific database columns to hide sensitive information like salaries, personal details, or confidential metrics.
+
+### How anonymization works
+
+When a database column is anonymized, non-Admin users see `***` instead of the actual values. This applies everywhere the column appears in the workspace.
+
+### Setting up anonymization
+
+1. Go to **Workspace Access > Other Settings** (or the relevant database settings).
+2. Select the database columns you want to anonymize.
+3. Save your changes.
+
+### Selectively revealing anonymized data
+
+In some cases, you may want specific users to see anonymized data on a particular page — for example, showing a manager their direct reports' compensation. Admins can reveal anonymized data within a specific block:
+
+1. Add the database as a block on a page.
+2. Apply filters to show only the relevant rows (e.g., filter to a specific team).
+3. Enable **Reveal hidden data in this block**.
+
+When revealed:
+
+- Users see the actual values only within that specific block.
+- Filters and columns are locked so users cannot browse to other data.
+- The reveal only applies to the specific block — the data remains anonymized everywhere else.
+
+<Note>Anonymization only works with database blocks and database columns. It does not apply to data displayed in charts or other block types.</Note>

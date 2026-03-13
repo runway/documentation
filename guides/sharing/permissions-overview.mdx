@@ -1,0 +1,118 @@
+---
+title: "Permissions overview"
+description: "Runway uses a layered permissions system: workspace roles set your baseline access, and resource-level permissions let you fine-tune who can see and edit specific content."
+---
+
+## Workspace roles
+
+Every user in a workspace is assigned exactly one role. Roles determine what a user can do by default before any resource-level sharing is configured.
+
+### Admin
+
+Full access to all content and workspace settings. Admins can configure the model, integrations, and all workspace-level settings. They can also manage permissions and access for all users.
+
+### Manager
+
+Can trace and edit models, create scenarios, and access shared information. Managers have broad access to most content by default, but cannot merge scenarios, delete sections, or manage workspace settings.
+
+### Member
+
+Can trace models, create scenarios, and access content that has been explicitly shared with them. Members cannot create pages, models, or databases on their own.
+
+### Guest
+
+Can view pages and data that have been explicitly shared with them. Guests have view-only access and cannot create or edit content.
+
+## Access levels
+
+When you share a resource with someone, you choose an access level that defines what they can do with it. There are four access levels:
+
+| Access Level | What it means |
+|---|---|
+| **Full access** | Can edit, delete, and share the resource |
+| **Can edit** | Can modify content but cannot share or delete |
+| **Can view** | Read-only access |
+| **No access** | Resource is hidden from the user |
+
+<Note>Not all resource types support all access levels. For example, Sections support Full access, Can view, and No access — but not Can edit. See [Access levels by resource type](/guides/sharing/permissions-reference#access-levels-by-resource-type) for details.</Note>
+
+## Special capabilities
+
+Some actions have their own permission toggles beyond the standard access levels:
+
+- **Can merge** — Merge a scenario back into the main scenario (Scenarios only).
+- **Can drill in** — See the inputs behind a calculated value (Blocks only).
+
+These are configured separately in the Share menu. For details on who has these by default and how to configure them, see [Special capabilities](/guides/sharing/permissions-reference#special-capabilities) in the Permissions Reference.
+
+## Who you can share with
+
+You can grant access to three types of entities:
+
+- **Individual users** — Workspace members identified by email address.
+- **Roles** — System roles (Admin, Manager, Member, Guest). When you grant access to a role, all users with that role receive the specified access.
+- **Groups** — Custom collections of users that you create for bulk permission management. For example, you might create a "Finance Team" group and share all finance-related pages with that group at once.
+
+## Permission inheritance
+
+By default, permissions flow down from parent to child:
+
+```
+Workspace defaults → Sections → Pages → Blocks
+```
+
+This means when you set permissions on a Section, all Pages within that Section inherit those permissions. Similarly, all Blocks on a Page inherit the Page's permissions.
+
+### Customizing permissions on a specific resource
+
+You can override the inherited permissions for any individual resource. When you do this, the resource becomes **unlinked** from its parent's settings — it has its own independent permissions that won't change when the parent's permissions change.
+
+### Reverting to inherited permissions
+
+If you've customized a resource's permissions and want to go back to the defaults, you can **relink** it. This removes the custom settings and the resource goes back to inheriting from its parent.
+
+### Example
+
+Suppose your workspace has a Section called "Finance" with Full access for Managers. Inside it, there's a page called "Compensation Planning" that you want to restrict.
+
+1. Open the Share menu on the "Compensation Planning" page.
+2. Change the Manager role from "Full access" to "Can view".
+3. Confirm "Change and unlink".
+
+Now that page has its own permissions — Managers can view but not edit — while all other pages in the Finance section still inherit Full access for Managers.
+
+Later, if you want to revert, click the **Relink** option on the page's Share menu. The page goes back to inheriting the Section's permissions.
+
+## Per-scenario permissions
+
+Resources in Runway can have different permissions across different scenarios. For example, a user might have "Can edit" access to a page in Scenario A, but "No access" in Scenario B.
+
+This allows teams to control who can see and modify data in different planning scenarios — useful when different teams are working on separate forecasts or when you want to restrict access to sensitive what-if analyses.
+
+Most resource types — including Pages, Sections, and Blocks — support per-scenario permissions. A small number of resource types (like Scenarios themselves, integrations, and workspace-level settings) have permissions that apply globally rather than per-scenario.
+
+## Role comparison matrix
+
+This table summarizes the most important capabilities for each role:
+
+| Capability | Admin | Manager | Member | Guest |
+|---|---|---|---|---|
+| View all pages, models, databases | Yes (default) | Yes (default) | Only if shared | Only if shared |
+| Edit pages | Yes | Yes | If granted | No |
+| Create pages, models, databases | Yes | Yes | No | No |
+| Create scenarios | Yes | Yes | Yes | No |
+| Merge scenarios | Yes | No | No | No |
+| Delete sections | Yes | No | No | No |
+| Manage workspace settings | Yes | No | No | No |
+| Configure integrations | Yes | Yes (create only) | No | No |
+| Manage share/access settings | Yes | No | No | No |
+| Update last close date | Yes | No | No | No |
+| View driver drill-in details | Yes | Yes | Yes | No |
+
+For a complete breakdown, see [Permissions reference](/guides/sharing/permissions-reference).
+
+## Access rules by resource type
+
+Not all resource types support the same access levels. For example, Sections don't have a "Can edit" level, and Blocks have a "Can drill in" option that other resources don't.
+
+For the complete breakdown, see the [Access levels by resource type](/guides/sharing/permissions-reference#access-levels-by-resource-type) table in the Permissions Reference.

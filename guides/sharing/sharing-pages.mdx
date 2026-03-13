@@ -1,0 +1,88 @@
+---
+title: "Sharing pages"
+description: "How to share content with teammates and create links for external stakeholders."
+---
+
+## The Share menu
+
+Click **Share** on any page to open the Share menu. The Share menu has two tabs:
+
+- **People** — Share with workspace members, roles, or groups
+- **Links** — Create share links for external access
+
+## Sharing with workspace members
+
+Use the **People** tab to share content with people who are already in your workspace.
+
+1. Click **Share** on the page.
+2. In the search field, type a user's name, email, a role name, or a group name.
+3. Select the entity from the dropdown.
+4. Choose an access level: **Full access**, **Can edit**, **Can view**, or **No access**.
+5. If the resource supports per-scenario permissions, choose which scenarios the person gets access to.
+
+Changes take effect immediately.
+
+### What each access level means on a page
+
+| Access Level | What you can do |
+|---|---|
+| **Full access** | Edit, delete, share, and manage access on the page |
+| **Can edit** | Edit page content, but cannot share or delete the page |
+| **Can view** | View the page, but cannot make changes |
+| **No access** | Page is hidden from the sidebar and inaccessible via URL |
+
+For a full breakdown of access levels across all resource types, see [Permissions reference](/guides/sharing/permissions-reference).
+
+## Sharing with external users (share links)
+
+Share links let you give access to people outside your workspace — investors, board members, or external partners.
+
+### Creating a share link
+
+1. Click **Share** on the page and go to the **Links** tab.
+2. Click the **+** button to create a new link.
+3. Choose the access level for the link.
+4. If applicable, choose which scenarios the link grants access to.
+
+### Security options
+
+Each share link has optional security settings:
+
+- **Require password** — Recipients must enter a password before they can view the content.
+- **Require login** — Recipients must log in with a Runway account. Without this, anyone with the link can view the content anonymously.
+
+### How share links work
+
+When someone uses a share link, they join the workspace as a Guest with the access level you specified on the link.
+
+### Deleting a share link
+
+Deleting a share link immediately revokes access for anyone who joined through it. To delete a link:
+
+1. Open the Share menu and go to the **Links** tab.
+2. Click the delete button next to the link you want to remove.
+
+## Inviting new users via the Share menu
+
+If you type an email that doesn't match an existing workspace member, you can invite them directly from the Share menu:
+
+1. Type the email address in the search field.
+2. Select the option to invite them.
+3. Optionally include a message with the invitation.
+4. Choose the access level for the resource.
+
+The invitee receives an email and is assigned a role when they join (defaults to Guest if no role is specified).
+
+## Customizing inherited permissions
+
+When you share a Section, all Pages inside it inherit those permissions automatically (see [Permission inheritance](/guides/sharing/permissions-overview#permission-inheritance) for the full explanation). If you need different permissions on a specific Page:
+
+1. Open the Share menu on that Page.
+2. Change the permissions as needed.
+3. Confirm **Change and unlink**.
+
+The page now has its own independent permissions. A banner will appear:
+
+> "Share settings on this page are unlinked from the default access settings"
+
+To revert, open the Share menu and click **Relink** — the page goes back to inheriting from the Section.

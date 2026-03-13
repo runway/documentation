@@ -1,0 +1,88 @@
+---
+title: "Adding & managing users"
+description: "How to invite users to your workspace, assign and change roles, and create groups for bulk permission management."
+---
+
+## Adding users to your workspace
+
+There are two ways to add users:
+
+### From workspace settings
+
+1. Go to **Settings > Users**.
+2. Enter one or more email addresses (comma or space-separated).
+3. Assign a role (Admin, Manager, Member, or Guest).
+4. Click **Add**.
+
+### From the Share menu
+
+1. Open a page and click **Share**.
+2. Type an email address in the search field.
+3. If the email matches an existing workspace member, select them from the dropdown and assign an access level.
+4. If the email doesn't match an existing member, you can invite them directly. They'll be added to the workspace and granted access to the resource.
+
+<Note>Runway does not send email invites automatically when adding users through Settings. Share your workspace URL or specific page links with new users directly. When inviting via the Share menu, you can include an optional message with the invitation.</Note>
+
+## Changing a user's role
+
+1. Go to **Settings > Users**.
+2. Find the user in the list.
+3. Select a new role from the dropdown next to their name.
+
+Changing a user's role updates their baseline permissions across the entire workspace. For example, changing someone from Manager to Member means they'll lose default access to content that isn't explicitly shared with them.
+
+## Removing users
+
+1. Go to **Settings > Users**.
+2. Find the user you want to remove.
+3. Click the remove button next to their name.
+
+Removing a user revokes all of their access to the workspace and its content.
+
+## User groups
+
+Groups are custom collections of users that make it easy to manage permissions in bulk. Instead of sharing a page with 10 people individually, you can create a group and share with the group.
+
+<Note>Groups are different from roles. Roles (Admin, Manager, Member, Guest) are system-defined and determine baseline capabilities. Groups are custom collections you create purely for sharing convenience.</Note>
+
+### Creating a group
+
+1. Open **Workspace Access** (Settings > Workspace Access, or via the Share menu > Manage groups).
+2. Click **Create group**.
+3. Name the group (e.g., "Finance Team", "Board Members").
+4. Add members by searching for users.
+
+### Adding and removing members
+
+1. Open **Workspace Access** and navigate to the **Group** tab.
+2. Select the group you want to modify.
+3. Add new members by searching for users, or remove existing members.
+
+### Granting a group access to resources
+
+Once a group exists, you can share resources with it just like you would with an individual user:
+
+1. Open the Share menu on any page or resource.
+2. Search for the group name.
+3. Choose an access level.
+
+All members of the group receive the specified access. When you add new members to the group later, they automatically get the same access.
+
+### Deleting a group
+
+1. Open **Workspace Access** and navigate to the **Group** tab.
+2. Select the group.
+3. Click **Delete group**.
+
+Deleting a group removes all access that was granted through the group. Individual members retain any access that was granted to them directly or through other groups/roles.
+
+## Default access by role
+
+Understanding what each role gets by default — before any explicit sharing — helps you plan your workspace permissions:
+
+| Role | Default content access | Key restrictions |
+|---|---|---|
+| **Admin** | Full access to all content | None — Admins have unrestricted access |
+| **Manager** | Full access to most content | Cannot merge scenarios, delete sections, or manage workspace settings |
+| **Member** | No default content access — must be explicitly shared | Cannot create pages, models, or databases |
+| **Guest** | No default content access — must be explicitly shared | View-only access; cannot edit or create content |

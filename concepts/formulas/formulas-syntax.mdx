@@ -10,7 +10,7 @@ Formulas in Runway are made up of three key components:
 3. **Data references** — the core of your model: this includes drivers created in a driver table block, segmented drivers from a database, specific segments of a driver, or entire database columns.
    ![Formula Syntax](/images/formulas/formula-syntax.png)
 
-This article will explain how to reference data within your formulas. To learn more about available operators and functions, [see this guide](https://docs.runway.com/concepts/formulas/functions-operators).
+This article will explain how to reference data within your formulas. To learn more about available operators and functions, [see this guide](/concepts/formulas/functions-operators).
 
 ## Referencing data in formulas
 
@@ -18,7 +18,7 @@ In Runway, you can reference various types of data in formulas — from individu
 
 ### Driver groups (from models)
 
-[Driver groups created in models](https://docs.runway.com/concepts/models/grouping-drivers) can be referenced as a single unit.
+[Driver groups created in models](/concepts/models/grouping-drivers) can be referenced as a single unit.
 
 - Type the name of the group into the formula editor to reference the entire group.
   ![Driver Group 1](/images/formulas/driver-group-1.png)
@@ -28,7 +28,7 @@ In Runway, you can reference various types of data in formulas — from individu
 
 ### Unsegmented drivers
 
-These are standard drivers created in a [model](https://docs.runway.com/concepts/models/models-basics) or on a [page](https://docs.runway.com/concepts/pages/drivers-table-block), without any associated dimensions.
+These are standard drivers created in a [model](/concepts/models/models-basics) or on a [page](/concepts/pages/drivers-table-block), without any associated dimensions.
 
 - You can reference them by simply typing the name of the driver into the formula editor.
   ![Unsegmented Driver 1](/images/formulas/unsegmented-driver-1.png)
@@ -136,7 +136,7 @@ When referencing database columns, you can use _This Segment_ in a few more ways
   ![This Segment 4](/images/formulas/this-segment-4.png)
 
 <Info>
-  For a deeper dive on using _This Segment_ in databases, see: [Formulas in databases → Dynamic formulas](https://docs.runway.com/concepts/databases/formulas-in-databases#dynamic-formulas-using-this-segment)
+  For a deeper dive on using _This Segment_ in databases, see [Formulas in databases](/concepts/databases/formulas-in-databases#dynamic-formulas-using-this-segment).
 </Info>
 
 ### Numbers, strings, and dates
@@ -167,17 +167,23 @@ This filter controls which month’s data is pulled from that reference when the
 
 - **Default behavior**
   - **This month** is applied to ordinary references.
-  - **Last month** is used when a driver’s formula references itself, to prevent circular logic.
+  - **Last month** is used when a driver's formula references itself, to prevent circular logic.
 - **Available options** for single-month ranges:
-  - **This month** — Use the corresponding month’s value.
+  - **This month** — Use the corresponding month's value.
   - **Last month** — Shift back by one month.
-  - **Most recent value** — Pull the latest non‑null entry. Ideal for [propagating sparse data](https://docs.runway.com/guides/modeling/propagating-sparse-data#propagating-sparse-data) over time.
-  - **One year ago —** Shortcut for “12 months ago.”
-  - **Specific date —** Fix the reference to a specific month you choose.
-  - `<Driver> months ago` — Dynamically looks back _N_ months, where _N_ is the value of another driver. Useful if the amount of time you need to look back varies over time or is the result of some other logic.
-  - **Custom** — Enter any integer offset (e.g. “3 months ago,” etc.).
+  - **Last close** — Use the last closed month.
+  - **Most recent value** — Pull the latest non-null entry. Ideal for [propagating sparse data](/guides/modeling/propagating-sparse-data#propagating-sparse-data) over time.
+  - **Next available value**
+  - **Most recent or first value**
+  - **One year ago**
+  - **Specific date**
+  - `<Driver value> months ago` — Dynamically looks back _N_ months, where _N_ is the value of another driver.
+  - `<Date driver value>.Month` — Use the month from a Date driver.
+  - **Custom…** — Enter a custom relative offset, such as `3 months ago` or `2 months from now`.
 
-  If you keep scrolling in this menu, you’ll also see a section for **multi-month date ranges** that reference spans of time over multiple months.
+  Custom ranges can also use **Last close** as the anchor. A custom month offset renders as **Last close**, `N month(s) before Last close`, or `N month(s) after Last close` depending on the offset.
+
+  If you keep scrolling in this menu, you'll also see multi-month date ranges, including **Quarter-to-date**, **Year-to-date**, **Last 3 months of actuals**, **Last 6 months of actuals**, **Last 12 months of actuals**, **Specific date range**, and **Custom range…**.
 
   ![Date Range 2](/images/formulas/date-range-2.png)
 - **How it works**

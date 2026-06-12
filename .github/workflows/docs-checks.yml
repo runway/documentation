@@ -1,0 +1,30 @@
+name: Docs checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  docs-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check Mintlify links
+        run: npx --yes mint broken-links
+
+      - name: Sweep Markdown artifacts
+        run: node scripts/sweep-artifacts.mjs --check
+
+      - name: Check forbidden links and local asset references
+        # sweep-artifacts.mjs also fails on forbidden public-docs domains and missing /images or /videos references.
+        run: node scripts/sweep-artifacts.mjs --check

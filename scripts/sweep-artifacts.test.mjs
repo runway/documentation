@@ -131,6 +131,29 @@ test("checkRepository preserves escaped parens in local asset paths", async () =
   );
 });
 
+test("checkRepository unescapes escaped punctuation for local asset existence", async () => {
+  await withFixture(
+    {
+      "page.mdx": [
+        "---",
+        'title: "Example"',
+        'description: "Example page."',
+        "---",
+        "",
+        "![Escaped punctuation screenshot](/images/report\\#final.png)",
+      ].join("\n"),
+      "images/report#final.png": "",
+    },
+    async (root) => {
+      const result = await checkRepository(root);
+      const page = await readFile(join(root, "page.mdx"), "utf8");
+
+      assert.equal(result.ok, true);
+      assert.match(page, /report\\#final\.png/);
+    },
+  );
+});
+
 test("checkRepository reports invalid asset encoding without crashing", async () => {
   await withFixture(
     {

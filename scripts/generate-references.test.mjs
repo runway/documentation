@@ -1,8 +1,11 @@
 import assert from "node:assert/strict";
-import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { execFile } from "node:child_process";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
+import { promisify } from "node:util";
 
 import {
   applyFormulaDescriptionRenderFixes,
@@ -12,6 +15,15 @@ import {
   parseProviderHandlerIntegration,
   replaceGeneratedBlock,
 } from "./generate-references.mjs";
+
+const execFileAsync = promisify(execFile);
+const generateReferencesPath = fileURLToPath(new URL("./generate-references.mjs", import.meta.url));
+
+async function writeFixtureFile(root, relativePath, contents) {
+  const fullPath = join(root, relativePath);
+  await mkdir(dirname(fullPath), { recursive: true });
+  await writeFile(fullPath, contents);
+}
 
 test("replaceGeneratedBlock rewrites only the named marker block", () => {
   const page = [
@@ -149,4 +161,118 @@ test("parseProviderHandlerIntegration extracts offered provider-specific rows", 
     route: "native",
     sourceKey: "CUSTOM_SOURCE",
   });
+});
+
+test("integrations check rejects partial Merge generated catalog parses", async (t) => {
+  const productRoot = await mkdtemp(join(tmpdir(), "docs-generate-references-product-"));
+  t.after(() => rm(productRoot, { force: true, recursive: true }));
+
+  const workatoSources = Array.from(
+    { length: 20 },
+    (_, index) => `  [ExtStaticSource.WorkatoSource${index}]: 'workato-source-${index}',`,
+  ).join("\n");
+
+  await Promise.all([
+    writeFixtureFile(
+      productRoot,
+      "go/apisvc/integrations/providers/merge/catalog/catalog_gen.go",
+      [
+        "package catalog",
+        "",
+        "var generatedCatalog = []openapi_models.Integration{",
+        "\tfunc() openapi_models.Integration {",
+        '\t\tintegration := openapi_models.NewIntegration(openapi_models.INTEGRATIONPROVIDER_MERGE, "adp-workforce-now", openapi_models.INTEGRATIONCATEGORY_HRIS, "ADP Workforce Now")',
+        "\t\treturn *integration",
+        "\t}(),",
+        "\tfunc() openapi_models.Integration {",
+        '\t\tintegration := openapi_models.NewIntegration(openapi_models.INTEGRATIONPROVIDER_MERGE, "bamboohr", openapi_models.INTEGRATIONCATEGORY_HRIS)',
+        "\t\treturn *integration",
+        "\t}(),",
+        "}",
+      ].join("\n"),
+    ),
+    writeFixtureFile(
+      productRoot,
+      "go/apisvc/integrations/providers/fivetran/catalog/catalog_gen.go",
+      [
+        "package catalog",
+        "",
+        "var generatedCatalog = []openapi_models.Integration{",
+        "\tfunc() openapi_models.Integration {",
+        '\t\tintegration := openapi_models.NewIntegration(openapi_models.INTEGRATIONPROVIDER_FIVETRAN, "xero", openapi_models.INTEGRATIONCATEGORY_ACCOUNTING, "Xero (Fivetran)")',
+        "\t\treturn *integration",
+        "\t}(),",
+        "}",
+      ].join("\n"),
+    ),
+    writeFixtureFile(
+      productRoot,
+      "go/apisvc/integrations/providers/runway/provider.go",
+      [
+        'const fileUploadSlug = "file-upload"',
+        "",
+        "var xeroIntegration = func() openapi_models.Integration {",
+        "\treturn openapi_models.Integration{}",
+        "}",
+      ].join("\n"),
+    ),
+    writeFixtureFile(
+      productRoot,
+      "go/apisvc/integrations/providers/rippling/provider.go",
+      ['const ripplingSlug = "rippling"', 'const ripplingDisplayName = "Rippling"'].join("\n"),
+    ),
+    writeFixtureFile(
+      productRoot,
+      "go/api-server/app/handlers/integrations/internal/providers/puzzle/puzzle.go",
+      [
+        'const PuzzleIntegrationSlug = "puzzle"',
+        'const PuzzleIntegrationName = "Puzzle"',
+        "",
+        "var integration = &modelv2.Integration{",
+        "\tName: PuzzleIntegrationName,",
+        "\tSlug: PuzzleIntegrationSlug,",
+        "\tCategories: []modelv2.IntegrationCategory{",
+        "\t\tmodelv2.IntegrationCategoryAccounting,",
+        "\t},",
+        "}",
+      ].join("\n"),
+    ),
+    writeFixtureFile(
+      productRoot,
+      "go/api-server/app/handlers/integrations/internal/providers/runway_api/runway_api.go",
+      [
+        "var integration = &modelv2.Integration{",
+        '\tName: "Runway API",',
+        '\tSlug: "runway-api",',
+        "\tCategories: []modelv2.IntegrationCategory{",
+        "\t\tmodelv2.IntegrationCategoryAccounting,",
+        "\t},",
+        "}",
+      ].join("\n"),
+    ),
+    writeFixtureFile(
+      productRoot,
+      "webapp/src/helpers/integrations.ts",
+      ["export const EXT_DRIVER_SOURCE_TO_SLUG = {", workatoSources, "};"].join("\n"),
+    ),
+  ]);
+
+  let error;
+  try {
+    await execFileAsync(process.execPath, [
+      generateReferencesPath,
+      "integrations",
+      "--runway-repo",
+      productRoot,
+      "--check",
+    ]);
+  } catch (caught) {
+    error = caught;
+  }
+
+  assert.ok(error);
+  assert.match(
+    error.stderr,
+    /Parsed 1 Merge generated catalog entries but found 2 openapi_models\.NewIntegration markers/,
+  );
 });

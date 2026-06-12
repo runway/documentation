@@ -1013,10 +1013,15 @@ function renderAccessLevelTable() {
 }
 
 function parseGeneratedCatalog(source, route) {
+  const catalogSource = extractAssignedBlock(source, "generatedCatalog", "{", "}");
+  const entryMarker = "openapi_models.NewIntegration(";
+  const markerCount = [...catalogSource.matchAll(new RegExp(escapeRegExp(entryMarker), "g"))].length;
   const integrations = [];
-  const regex =
-    /NewIntegration\(\s*openapi_models\.INTEGRATIONPROVIDER_[A-Z]+,\s*"([^"]+)",\s*openapi_models\.INTEGRATIONCATEGORY_([A-Z]+),\s*"([^"]+)"/g;
-  for (const match of source.matchAll(regex)) {
+  const regex = new RegExp(
+    `${escapeRegExp(entryMarker)}\\s*openapi_models\\.INTEGRATIONPROVIDER_[A-Z]+,\\s*"([^"]+)",\\s*openapi_models\\.INTEGRATIONCATEGORY_([A-Z]+),\\s*"([^"]+)"`,
+    "g",
+  );
+  for (const match of catalogSource.matchAll(regex)) {
     integrations.push({
       slug: match[1],
       categoryKey: match[2].toLowerCase(),
@@ -1024,6 +1029,11 @@ function parseGeneratedCatalog(source, route) {
       route,
       sourceKey: `${route.toUpperCase()}_${match[1].replace(/[-]/g, "_").toUpperCase()}`,
     });
+  }
+  if (integrations.length !== markerCount) {
+    throw new Error(
+      `Parsed ${integrations.length} ${route} generated catalog entries but found ${markerCount} openapi_models.NewIntegration markers; source shape may have changed.`,
+    );
   }
   if (integrations.length === 0) {
     throw new Error(`No ${route} integrations found in generated catalog.`);

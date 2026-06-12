@@ -39,6 +39,10 @@ function normalizePath(path) {
   return path.replace(/\\([()[\]_])/g, "$1");
 }
 
+function unescapeMarkdownPunctuation(path) {
+  return path.replace(/\\([\x21-\x2f\x3a-\x40\x5b-\x60\x7b-\x7e])/g, "$1");
+}
+
 function decodeAssetPath(src) {
   const normalized = normalizePath(src);
   try {
@@ -489,8 +493,9 @@ function checkLocalAssets(root, filePath, contents, findings) {
     /(?:src=["']|]\()(?<asset>\/(?:images|videos)\/(?:\\.|[^"')\s])+)(?:["']|\))/g;
 
   for (const match of contents.matchAll(assetPattern)) {
-    const asset = normalizePath(match.groups?.asset ?? "");
-    const diskPath = join(root, asset.slice(1));
+    const asset = match.groups?.asset ?? "";
+    const diskAsset = unescapeMarkdownPunctuation(asset);
+    const diskPath = join(root, diskAsset.slice(1));
     if (!existsSync(diskPath)) {
       addFinding(
         findings,

@@ -3,4 +3,51 @@ title: "Errors & troubleshooting"
 description: "Diagnose common Runway errors and learn where to go next."
 ---
 
-{/* CONTENT PENDING: filled in phases 2–4 */}
+Use this reference when a formula cell, database refresh, or modeled value does not behave as expected. Start with the visible label or symptom, then check the likely cause and fix.
+
+## Formula errors
+
+| Error label | What it means | Example | How to fix |
+|---|---|---|---|
+| `TYPE` | The tooltip says: "This driver, or one of its formula inputs, is performing an operation across incompatible types or resolves to a non numeric value." | A Number driver uses `dateAdd()` and returns a date. | Change the driver to a Date driver, or change the formula so it returns a number. |
+| `CIRC` | The driver depends on itself in the same period, directly or through another formula. | Revenue references Total revenue, while Total revenue references Revenue. | Remove the self-referential dependency. If the logic should use a prior period, reference the prior period instead of the current one. |
+
+## Blank or unexpected values
+
+### Null vs. zero
+
+Runway treats `NULL` and `0` differently. `0` is an explicit value. `NULL` means no value was returned. Features such as **Most recent value** can pull forward the last known non-null value, but they do not replace an explicit zero.
+
+For more examples, see [Propagating sparse data](/guides/modeling/propagating-sparse-data).
+
+### Date-range misalignment
+
+If a formula returns values in some months but not others, check the time range on the referenced driver or database field. A filter can exclude the month you are evaluating, and an integration-derived value may only exist in months where the source system returned data.
+
+### Actuals vs. forecast boundary
+
+Actuals formulas apply through [last close](/concepts/last-close). Forecast formulas apply after last close. If a value changes when you move last close, check whether the actuals formula, forecast formula, or a hardcoded value is winning for that month.
+
+## Data refresh issues
+
+### Data source health
+
+Each data source's actions menu shows its refresh health. **Healthy** appears with the last-sync time. **Disconnected** or **Log in to resume updates** means Runway cannot refresh that source until the connection is restored.
+
+### Circular dependency blocks refresh
+
+Some database refreshes can be blocked by a dependency cycle between databases. The alert title is **Circular dependency blocks refresh**, with summary **These databases depend on one another, so Runway cannot refresh them automatically.**
+
+The alert can show a **LOOP** section with the cycle path joined by **→**, plus **DETAILS** such as **depends on**, **Through**, and **Fields**. Break the cycle by changing the database formulas or configuration so one database no longer depends on another database that depends back on it.
+
+Admins may see these surfaced in the sidebar Errors panel. The panel is not available to every user, so the important action is to fix the dependency cycle itself.
+
+## Getting help
+
+If you are still blocked, email [support@runway.com](mailto:support@runway.com) with the error label, the driver or database name, the scenario you are in, and the formula or data source you were editing.
+
+## What's next
+
+- [Formulas basics](/concepts/formulas/formulas-basics)
+- [Functions & operators](/concepts/formulas/functions-operators)
+- [Last close](/concepts/last-close)

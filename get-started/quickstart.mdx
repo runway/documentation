@@ -35,22 +35,24 @@ By the end, you will have a Runway page that shows monthly financial data by dep
     {/* SCREENSHOT: Query settings showing Create database directly from query and a preview of Date, Account, Department, Amount */}
   </Step>
 
-  <Step title="Make a driver and a formula">
-    Create a summary number driver called **Total expenses** in a model or driver table.
+  <Step title="Create the page and driver">
+    Create a page for the quickstart model. Click the **+** next to a section, model, database, or page, then type a page name.
 
-    Set its forecast formula to sum the `Amount` values from your database for expense accounts. Then segment the driver by `Department` so each department can inherit the same calculation while still showing its own amount.
+    On the page, type **/** and select [**Driver table**](/concepts/pages/drivers-table-block#creating-a-driver-table-block). Use **+ Add driver** to create a number driver called **Total expenses** directly in the block. If you need to insert it next to an existing row, right-click the driver name or open its left-side menu, then select **+ Insert new driver above** or **+ Insert new driver below**.
 
-    Use the resulting department segments to confirm that the total is coming from the database rather than from manually entered values.
+    Show **Forecast Formula**, open the new driver's formula, and search for the database name or the `Amount` column name. In the search results, select the database column reference in the `database_name.column_name` format. Runway wraps the reference in `sum()`. Click the database name in the formula pill and apply filters so `Account` includes Cost of Goods Sold, Payroll, Software, Travel, and Facilities.
+
+    Open the driver menu, hover over **Dimensions**, then select [**Expand by dimension**](/concepts/dimensions/segmenting-drivers#segmenting-drivers-in-a-model-using-expand-by-dimension). Select `Department` as the dimension so Runway creates one driver segmented by each department value.
 
     {/* SCREENSHOT: Total expenses driver formula referencing the quickstart database and segmented by Department */}
   </Step>
 
-  <Step title="Build a page">
-    Create a page for the quickstart model.
+  <Step title="Add a chart">
+    Above the driver table, type **/** and select [**Driver charts**](/concepts/pages/charts-block#creating-a-chart-block).
 
-    Add a chart block and choose **Driver charts**. Add your **Total expenses** driver and use a **Column** or **Line** chart to show the monthly trend.
+    Choose the existing **Total expenses** driver. New driver charts default to line charts; use **Customize chart** if you want to change the chart type to **Column** or keep **Line**.
 
-    Add a driver table block and choose **Driver table**. Add the same driver so the page shows both the visual trend and the underlying values.
+    Keep the driver table on the page so the chart shows the trend and the table shows the underlying department segments.
 
     {/* SCREENSHOT: Page with a chart block above a driver table block showing Total expenses by month */}
   </Step>

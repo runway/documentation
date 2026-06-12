@@ -215,6 +215,8 @@ test("checkRepository reports sweep-fixer markdown regressions", async () => {
         "---",
         "",
         "Open your spreadsheet in **anew tab** and create **aunique range** with **acustom color**.",
+        "Create **anexample total** and review **themodel output**.",
+        "Keep **any column** and **these formulas cannot be overridden for individual rows.** untouched.",
         "Convert wide data into **along data set**.",
         "- **Google BigQuery**– Uses **GoogleSQL**",
         "- Add a number driver - Name this driver **Rank**.",
@@ -228,6 +230,8 @@ test("checkRepository reports sweep-fixer markdown regressions", async () => {
       assert.deepEqual(
         result.findings.map((finding) => finding.code),
         [
+          "glued-article-bold",
+          "glued-article-bold",
           "glued-article-bold",
           "glued-article-bold",
           "glued-article-bold",
@@ -252,6 +256,7 @@ test("fixRepository repairs glued article bold without creating new glue", async
         "",
         "It provides clarity with a** human-readable name**.",
         "Open your spreadsheet in **anew tab** and create **aunique range**.",
+        "Create **anexample total** and review **themodel output**.",
       ].join("\n"),
     },
     async (root) => {
@@ -264,7 +269,10 @@ test("fixRepository repairs glued article bold without creating new glue", async
       assert.match(page, /a \*\*human-readable name\*\*/);
       assert.match(page, /a \*\*new tab\*\*/);
       assert.match(page, /a \*\*unique range\*\*/);
+      assert.match(page, /an \*\*example total\*\*/);
+      assert.match(page, /the \*\*model output\*\*/);
       assert.doesNotMatch(page, /\*\*a(?:new|unique|human)/);
+      assert.doesNotMatch(page, /\*\*(?:anexample|themodel)/);
     },
   );
 });

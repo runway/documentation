@@ -30,6 +30,10 @@ const GLUED_ARTICLE_BOLD_PREFIXES = [
   { prefix: "aviewer", article: "a" },
   { prefix: "awarning", article: "a" },
 ].sort((a, b) => b.prefix.length - a.prefix.length);
+const GLUED_ARTICLE_ALLOWLISTS = {
+  an: ["and", "another", "annual", "analytics", "analysis", "analyze", "anonym", "answer", "annotation", "any"],
+  the: ["theme", "then", "theor", "there", "these", "themselves"],
+};
 
 function normalizePath(path) {
   return path.replace(/\\/g, "");
@@ -96,6 +100,16 @@ function splitGluedArticleBoldText(text) {
 
     const nextChar = text[prefix.length];
     if (nextChar && !/[\s.,;:!?)\]-]/.test(nextChar)) continue;
+
+    return {
+      article,
+      boldText: text.slice(article.length),
+    };
+  }
+
+  for (const [article, allowedPrefixes] of Object.entries(GLUED_ARTICLE_ALLOWLISTS)) {
+    if (!text.startsWith(article) || !/[a-z]/.test(text[article.length] ?? "")) continue;
+    if (allowedPrefixes.some((prefix) => lowerText.startsWith(prefix))) continue;
 
     return {
       article,

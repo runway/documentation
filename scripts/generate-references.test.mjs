@@ -7,6 +7,7 @@ import test from "node:test";
 import {
   checkGeneratedBlock,
   extractShortcuts,
+  parseProviderHandlerIntegration,
   replaceGeneratedBlock,
 } from "./generate-references.mjs";
 
@@ -86,4 +87,28 @@ test("extractShortcuts preserves registry order and renders platform labels", ()
       hotkeys: "Backspace, Delete",
     },
   ]);
+});
+
+test("parseProviderHandlerIntegration extracts offered provider-specific rows", () => {
+  const source = [
+    'const CustomIntegrationSlug = "custom-source"',
+    'const CustomIntegrationName = "Custom Source"',
+    "",
+    "var integration = &modelv2.Integration{",
+    "  Name:     CustomIntegrationName,",
+    "  Slug:     CustomIntegrationSlug,",
+    "  Provider: modelv2.IntegrationProviderCustom,",
+    "  Categories: []modelv2.IntegrationCategory{",
+    "    modelv2.IntegrationCategoryAccounting,",
+    "  },",
+    "}",
+  ].join("\n");
+
+  assert.deepEqual(parseProviderHandlerIntegration(source, { sourceKey: "CUSTOM_SOURCE" }), {
+    slug: "custom-source",
+    categoryKey: "accounting",
+    name: "Custom Source",
+    route: "native",
+    sourceKey: "CUSTOM_SOURCE",
+  });
 });

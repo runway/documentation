@@ -1044,6 +1044,41 @@ function parseRipplingCatalog(source) {
   return [{ slug, categoryKey: "hris", name, route: "native", sourceKey: "RIPPLING" }];
 }
 
+function resolveGoString(source, value) {
+  if (value.startsWith('"')) {
+    return value.slice(1, -1);
+  }
+  return requireMatch(source, new RegExp(`const\\s+${escapeRegExp(value)}\\s*=\\s*"([^"]+)"`), value)[1];
+}
+
+const MODEL_V2_CATEGORY_KEYS = {
+  Accounting: "accounting",
+  HRIS: "hris",
+  FileStorage: "filestorage",
+};
+
+export function parseProviderHandlerIntegration(source, { sourceKey }) {
+  const block = extractAssignedBlock(source, "integration", "{", "}");
+  const nameValue = requireMatch(block, /Name:\s*("[^"]+"|[A-Za-z0-9_]+)/, "provider handler integration name")[1];
+  const slugValue = requireMatch(block, /Slug:\s*("[^"]+"|[A-Za-z0-9_]+)/, "provider handler integration slug")[1];
+  const categoryName = requireMatch(
+    block,
+    /modelv2\.IntegrationCategory([A-Za-z0-9]+)/,
+    "provider handler integration category",
+  )[1];
+  const categoryKey = MODEL_V2_CATEGORY_KEYS[categoryName];
+  if (!categoryKey) {
+    throw new Error(`Unsupported provider handler integration category: ${categoryName}.`);
+  }
+  return {
+    slug: resolveGoString(source, slugValue),
+    categoryKey,
+    name: resolveGoString(source, nameValue),
+    route: "native",
+    sourceKey,
+  };
+}
+
 function parseWorkatoSources(source) {
   const objectLiteral = extractAssignedBlock(source, "EXT_DRIVER_SOURCE_TO_SLUG", "{", "}");
   const integrations = [];
@@ -1114,12 +1149,16 @@ async function renderIntegrations(runwayRepo) {
     fivetranGenerated,
     runwayProvider,
     ripplingProvider,
+    puzzleHandler,
+    runwayApiHandler,
     helpersSource,
   ] = await Promise.all([
     readProductFile(runwayRepo, "go/apisvc/integrations/providers/merge/catalog/catalog_gen.go"),
     readProductFile(runwayRepo, "go/apisvc/integrations/providers/fivetran/catalog/catalog_gen.go"),
     readProductFile(runwayRepo, "go/apisvc/integrations/providers/runway/provider.go"),
     readProductFile(runwayRepo, "go/apisvc/integrations/providers/rippling/provider.go"),
+    readProductFile(runwayRepo, "go/api-server/app/handlers/integrations/internal/providers/puzzle/puzzle.go"),
+    readProductFile(runwayRepo, "go/api-server/app/handlers/integrations/internal/providers/runway_api/runway_api.go"),
     readProductFile(runwayRepo, "webapp/src/helpers/integrations.ts"),
   ]);
 
@@ -1128,28 +1167,9 @@ async function renderIntegrations(runwayRepo) {
     ...parseGeneratedCatalog(fivetranGenerated, "Fivetran"),
     ...parseRunwayNativeCatalog(runwayProvider),
     ...parseRipplingCatalog(ripplingProvider),
+    parseProviderHandlerIntegration(puzzleHandler, { sourceKey: "PUZZLE_ACCOUNTING" }),
+    parseProviderHandlerIntegration(runwayApiHandler, { sourceKey: "RUNWAY_API" }),
     ...parseWorkatoSources(helpersSource),
-    {
-      slug: "puzzle",
-      categoryKey: "accounting",
-      name: "Puzzle",
-      route: "native",
-      sourceKey: "PUZZLE_ACCOUNTING",
-    },
-    {
-      slug: "runway-api",
-      categoryKey: "uncategorized",
-      name: "Runway API",
-      route: "native",
-      sourceKey: "RUNWAY_API",
-    },
-    {
-      slug: "amplitude",
-      categoryKey: "analytics",
-      name: "Amplitude",
-      route: "native",
-      sourceKey: "AMPLITUDE",
-    },
   ];
 
   const mergeHris = integrations.filter((integration) => integration.route === "Merge" && integration.categoryKey === "hris");

@@ -1,31 +1,56 @@
 ---
 title: "Driver grouping"
-description: "Driver grouping in models allows you to organize related drivers into collapsible sections for better structure and readability. You can also reference grouped drivers elsewhere in Runway."
+description: "Group drivers in models to organize related rows into collapsible sections and reuse them in blocks or formulas."
 ---
+
+Driver groups keep models readable as they grow. Use groups when related drivers should collapse together, move together, or be referenced together.
 
 ## Why use driver groups?
 
-Grouping drivers helps you keep models organized by creating collapsible sections.
+Grouping drivers creates collapsible sections in a model.
 
-1. Press `Shift` and click a group’s caret to **collapse all** groups.
-2. Press `Option` and click a group’s caret to **expand all** groups.
+<Frame>
+  ![Model with drivers organized into collapsible groups](/images/models/model-groups.png)
+</Frame>
 
-![Model Groups](/images/models/model-groups.png)
+Groups also make drivers easier to find and reuse. When adding drivers to a block, search by group name to include all or part of a group.
 
-In addition to improving organization and readability, groups also make it easier to find and reuse drivers. When adding drivers to a block, you can **search by group name** and include all or a subset of drivers from that group. ![Model Groups In Search](/images/models/model-groups-in-search.png)
+<Frame>
+  ![Driver search showing a model group result](/images/models/model-groups-in-search.png)
+</Frame>
 
-You can also **reference an entire driver group in formulas**, instead of selecting each driver individually.
+You can also reference a whole driver group in formulas instead of selecting each driver individually.
 
-![Model Groups In Formula](/images/models/model-groups-in-formula.png)
+<Frame>
+  ![Formula editor referencing a driver group](/images/models/model-groups-in-formula.png)
+</Frame>
 
-## How to group drivers?
+## How to group drivers
 
-There are a couple of ways to create groups in a model:
+<Steps>
+  <Step title="Select and group">
+    Select the drivers you want to group, then right-click and choose **Group**. You can also use the grouping shortcut listed in [Keyboard shortcuts](/get-started/keyboard-shortcuts).
 
-1. **Select and group:** Select the drivers you'd like to group, then right-click and choose **Group** — or press `Cmd` / `Ctrl` + `G`. A new group will be created with the selected drivers. Give the group a descriptive name.
-   ![Model Grouping 1](/images/models/model-grouping-1.gif)
-2. **Create group first:**\
-   Scroll to the bottom of the model and click **+ Create group**. Give the group a name, then drag the relevant drivers into the group one by one or in bulk.\
-   ![Model Grouping 2](/images/models/model-grouping-2.png)
+    <Frame>
+      ![Selected drivers grouped from the context menu](/images/models/model-grouping-1.gif)
+    </Frame>
+  </Step>
+  <Step title="Name the group">
+    Give the new group a descriptive name.
+  </Step>
+  <Step title="Or create the group first">
+    Scroll to the bottom of the model, click **+ Create group**, name the group, then drag drivers into it.
 
-Once your groups are set up, you can **drag and drop** groups to reorder.
+    <Frame>
+      ![Empty driver group created before drivers are added](/images/models/model-grouping-2.png)
+    </Frame>
+  </Step>
+</Steps>
+
+Once your groups are set up, drag and drop groups to reorder them.
+
+## What's next
+
+- [Models basics](/concepts/models/models-basics)
+- [Drivers table block](/concepts/pages/drivers-table-block)
+- [Keyboard shortcuts](/get-started/keyboard-shortcuts)

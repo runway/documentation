@@ -3,7 +3,7 @@ title: "Formulas in databases"
 description: "This article covers how to manage driver formulas in databases to support scalable, dimensional modeling in Runway. "
 ---
 
-For guidance on mapping values using dimensions (i.e., lookups), see [this article](https://docs.runway.com/guides/modeling/lookups).
+For guidance on mapping values using dimensions, see [Lookups](/guides/modeling/lookups).
 
 ## Default formulas
 
@@ -35,7 +35,7 @@ Similarly, forecast formulas follow this order of precedence:
 
 1. An **explicitly set forecast formula** for the driver
 2. A **default forecast formula** set at the column level in the database
-3. If none is set, Runway uses the **global default formula**: `self * last month`
+3. If none is set, Runway uses the field's value last month, propagated forward. In the editor, this appears as the field's own name with the **Last month** time period.
 
 For example, if only a forecast formula is set at the column level, every driver in that column will automatically inherit that formula—unless an override is applied.
 

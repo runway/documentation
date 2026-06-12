@@ -1,130 +1,151 @@
 ---
 title: "Headcount planning"
-description: "Headcount planning is one of the most common workflows in Runway. Whether you're building simple department-level rollups or more detailed, per-employee allocations, the process can be tailored to fit your company's needs."
+description: "Build a headcount plan in Runway using HRIS data, segmented databases, and drivers for employee counts and costs."
 ---
 
-This guide walks through how to set up a basic headcount plan—starting with integrating your data, then building out department-level headcount, and planning for future hires.
+Headcount planning helps you model current employees, future hires, department-level headcount, and related payroll costs. Use the new HRIS database approach for new implementations; use the legacy expand-by-dimension approach only for older models already built that way.
 
 <Info>
   **Which approach should I use?**
 
-  Runway supports two approaches for headcount modeling:
-
-  - **HRIS databases** — Function like regular databases and use database blocks with segmentation (recommended for new implementations)
-  - **Legacy HRIS databases** — Use the "Expand by Dimension" feature (still supported for existing models built before September 2025)
-
-  If you're unsure which type of HRIS database you have, check with your Runway team or try the new approach first—it provides better flexibility and stability.
+  - **New HRIS databases:** Use regular databases with segmentation. This is recommended for new implementations.
+  - **Legacy HRIS databases:** Use **Expand by dimension** in a model. This remains supported for existing models built with the legacy pattern.
 </Info>
 
 ## Step 1: Set up your employee database
 
-The first step is getting your employee data into Runway. The recommended approach is to connect to one of our available HRIS integrations. See our guides [here](/integrations/hris/rippling) for our most common HRIS integrations.
+The first step is getting employee data into Runway. The recommended path is to connect an [HRIS integration](/integrations/hris/rippling).
 
-![Headcount Step1 Database](/images/headcount/headcount-step1-database.png)
+<Frame>
+  ![Employee database populated from an HRIS source](/images/headcount/headcount-step1-database.png)
+</Frame>
 
-If you don't have a supported integration available, there are two alternative options:
+If you do not have a supported integration available, use one of these alternatives:
 
-- **Google Sheets:** Export your employee data to a sheet and connect it to Runway. See our setup guide [here](https://docs.runway.com/integrations/data-storage/google-sheets). If you go this route, make sure the sheet is kept up to date, as Runway will reflect whatever data is in the connected Sheet.
-- **Manual setup:** You can also create a standalone database directly in Runway with no external data source.
+- **Google Sheets:** Export employee data to a sheet and connect it to Runway. Keep the sheet current because Runway reflects the connected sheet data.
+- **Manual setup:** Create a standalone database directly in Runway with no external data source.
 
-Once your database is created, make sure to populate key fields like **Start date**, **Termination date** (if applicable), and any dimensions you want to use for breakdowns—like **Department**, **Role**, or **Location**.
-
-For example, if you want to build headcount by department, ensure the **Department** dimension is included for each employee record.
+Once your database exists, populate key fields such as **Start date**, **Termination date**, and dimensions for breakdowns such as **Department**, **Role**, or **Location**.
 
 ## Step 2: Create headcount drivers
 
-Choose the approach that matches your HRIS database type:
+Choose the approach that matches your HRIS database type.
 
 <Tabs>
   <Tab title="New HRIS databases">
-    ### Database with segmentation (recommended)
+    ### Database with segmentation
 
-    New HRIS databases function like regular databases in Runway, which means you can reference them directly in formulas and stack them to create drill-ins. When segmenting by dimensions that change over time (like Department or Job Title), follow this pattern to ensure historical changes are captured correctly.
+    New HRIS databases behave like regular databases in Runway, so you can reference them in formulas and stack them to create drill-ins. When segmenting by dimensions that change over time, such as Department or Job Title, segment from the source query so historical changes are captured.
 
-    1. **Create a new database**
-
-       Add a new database and point it to your Employees query (rather than the more granular database).
-    2. **Segment by the dimension in the query**
-
-       In the database block settings, segment by the dimension you want to aggregate to (e.g., Department). This pulls the dimension values directly from the query, ensuring any new departments or changes are automatically captured.
-
-       Create column formulas directly in the database block. For example, to create a Headcount column:
-       - Add a new numeric driver called "Headcount"
-       - Set the formula to: `count(Employees)` where `Department` equals `*This* Department`
-       - Add date filters: `Start date` is on or before `This Month` and `Termination date` is on or after `This Month`
-
-       Because you're using the same dimension across two databases, Runway will properly match the time series and capture changes over time.
-    3. **Add additional metrics as needed**
-
-       You can add other columns like Monthly Salary Cost or Average Salary using the same pattern—reference the underlying Employees database and filter by `*This* Department`.
+    <Steps>
+      <Step title="Create a rollup database">
+        Add a database that points to your Employees query or employee source database.
+      </Step>
+      <Step title="Segment by the dimension">
+        In database configuration, segment by the dimension you want to aggregate to, such as Department. This pulls dimension values from the query so new departments and changes can flow in.
+      </Step>
+      <Step title="Add Headcount">
+        Add a numeric driver column called **Headcount**.
+      </Step>
+      <Step title="Write the count formula">
+        Set the formula to count employees where the employee's Department equals this database row's Department, the Start date is on or before this month, and the Termination date is on or after this month.
+      </Step>
+      <Step title="Add more metrics">
+        Add columns such as monthly salary cost or average salary using the same pattern: reference the Employees database and filter to the current row's segment.
+      </Step>
+    </Steps>
   </Tab>
+
   <Tab title="Legacy HRIS databases">
     ### Expand by dimension
 
-    If you're working with a legacy HRIS database, use the "Expand by Dimension" feature to create headcount drivers.
+    If you are working with a legacy HRIS database, use **Expand by dimension** to create one headcount driver per dimension value.
 
-    1. **Create a headcount driver in a model** Whether in a new model or existing one, select **+ Add Driver** and create one called Headcount.
+    <Steps>
+      <Step title="Create a headcount driver">
+        In a model, select **+ Add Driver** and create a driver called **Headcount**.
 
-       ![Headcount Step2 Create Driver](/images/headcount/headcount-step2-create-driver.png)
-    2. **Expand Headcount driver by the appropriate dimension**
+        <Frame>
+          ![New Headcount driver in a model](/images/headcount/headcount-step2-create-driver.png)
+        </Frame>
+      </Step>
+      <Step title="Expand by the dimension">
+        Right-click the new driver, open **Dimensions**, choose **Expand by dimension**, then select the dimension you want to segment by.
 
-       Right click on the new Headcount driver and, within the dropdown menu, navigate to Dimension → Expand by Dimension, then select the dimension you'd like to segment Headcount by; in this example, we'll use Department.
+        <Frame>
+          ![Expand Headcount by Department dimension](/images/headcount/headcount-step2-expand.png)
+        </Frame>
+      </Step>
+      <Step title="Build the formula">
+        Double-click the forecast formula cell for one dimensional driver and use `count()` to count employees.
 
-       ![Headcount Step2 Expand](/images/headcount/headcount-step2-expand.png)
+        <Frame>
+          ![Count formula for a headcount driver](/images/headcount/headcount-step3-count-formula.png)
+        </Frame>
+      </Step>
+      <Step title="Filter the employee database">
+        Filter the Employees database to the matching dimension value, then add date filters for active employment: Start date on or before this month and Termination date on or after this month.
+
+        <Frame>
+          ![Headcount formula filters for department and employment dates](/images/headcount/headcount-step3-count-formula-filters.png)
+        </Frame>
+      </Step>
+      <Step title="Copy the formula">
+        Copy the formula to the rest of the headcount drivers. Because the drivers and formulas reference the same dimension, the filters match each segment.
+      </Step>
+      <Step title="Create Total Headcount">
+        Create a **Total Headcount** driver and sum the segmented headcount drivers, the driver group, or the database directly.
+      </Step>
+    </Steps>
 
     <Info>
-      If you have multiple dimensions with the same name, be sure to select the one coming from your HRIS data source.
+      If you have multiple dimensions with the same name, select the one coming from your HRIS data source.
     </Info>
+
     <Warning>
-      **Expand by Dimension** does not automatically create drivers when new attributes are added to a dimension. If you frequently add new departments or other dimension values, you may need to manually update your model.
+      **Expand by dimension** does not automatically create drivers when new attributes are added to a dimension. If you frequently add departments or other dimension values, update the model manually.
     </Warning>
-    3. **Build the headcount formula for one of the drivers** Double-click into the **forecast formula** cell of the first dimensional driver and type `count()` to leverage the built-in count function.
 
-       ![Headcount Step3 Count Formula](/images/headcount/headcount-step3-count-formula.png)
+    <Frame>
+      ![Total headcount formula summing segmented headcount drivers](/images/headcount/headcount-step3-sum.png)
+    </Frame>
 
-       Within the parentheses, type search to find your Employee database—if derived from an HRIS integration, it will be called Employee, by default.
+    <Frame>
+      ![Total headcount formula summing a driver group](/images/headcount/headcount-step3-sum-group.png)
+    </Frame>
 
-       Now, we'll set several filters on this database pill, essentially transforming it into a countIF(). Under filters, select the following:
-       - `Department` (or your chosen dimension) _is_ `*This* Department`. This is saying that for every Headcount driver with a dimension attribute on it, Runway will filter this same attribute for the formula.
-       - `Start date` _is on or before_ `This Month`
-       - `Termination date` _is on or after_ `This Month`
-
-       ![Headcount Step3 Count Formula Filters](/images/headcount/headcount-step3-count-formula-filters.png)
-
-       The date filters will provide us with rolling count of employees who are currently employed in any given month. When all is functioning as it should, you'll be able to drill in and see each employee that's rolling into said Department and the month in which they started or were terminated.
-    4. **Copy and paste the created formula for the rest of the headcount drivers**
-
-       Because both the drivers and the formulas are referencing the same dimension (e.g. Department), the values will smart update to reflect the appropriate amounts.
-    5. **Sum your headcount**
-
-       Create a Total Headcount driver and sum your headcount in one of the following ways:
-       - **Sum new drivers** — Double-click into the **forecast formula** cell and type `sum` to leverage the sum function. Within the parentheses, type Headcount. The first option you will see is Headcount [Department], which references the collective dimensional drivers that you just created.
-
-         ![Headcount Step3 Sum](/images/headcount/headcount-step3-sum.png)
-       - **Sum driver group** — If you put your Headcount drivers into their own driver group (shift + select them cmd + G), you have the option to sum the group itself. Double-click into the **forecast formula** cell and type sum to leverage the sum function. Within the parentheses, search for the driver group name and scroll in the dropdown to the driver group section. This will sum every driver within this group except for the one you're typing in.
-
-         ![Headcount Step3 Sum Group](/images/headcount/headcount-step3-sum-group.png)
-       - **Sum the database directly** — If you find that you won't be leveraging dimensions as much for your Headcount breakdown, you can always sum the database itself for a total. Follow the instructions in Step 3 but omit the Department filter and you'll have a full count of your active employees.
-
-         ![Headcount Step3 Sum Database](/images/headcount/headcount-step3-sum-database.png)
+    <Frame>
+      ![Total headcount formula summing the employee database directly](/images/headcount/headcount-step3-sum-database.png)
+    </Frame>
   </Tab>
 </Tabs>
 
 ## Step 3: Add new employees
 
-The easiest place to add new hires is directly in the **employees database.** Click **+ Add Item**, and make sure to fill in the key dimensions used in your headcount formulas—typically **Department**, **Start date**, and (if relevant) **Termination date**. This ensures that your new employees are included in the headcount calculations.
+The easiest place to add new hires is the Employees database.
 
-![Headcount Step4 Add Employee](/images/headcount/headcount-step4-add-employee.png)
+<Steps>
+  <Step title="Add the employee row">
+    Click **+ Add Item** in the Employees database.
 
-To double-check that the new employee is flowing through correctly:
+    <Frame>
+      ![New employee row added to the Employees database](/images/headcount/headcount-step4-add-employee.png)
+    </Frame>
+  </Step>
+  <Step title="Fill required fields">
+    Fill in the dimensions and dates used in your formulas, typically Department, Start date, and Termination date if relevant.
+  </Step>
+  <Step title="Verify the rollup">
+    For new HRIS databases, check the rollup database for the correct department segment. For legacy HRIS databases, open the model, click the caret next to the headcount driver, and confirm the employee appears in the breakdown.
 
-- **For new HRIS databases**: Check your database block to confirm the new row appears with the correct department segmentation
-- **For legacy HRIS databases**: Open your model, click the caret next to the **headcount driver**, and confirm that the new row appears in the breakdown
+    <Frame>
+      ![Headcount driver drill-in showing employee inputs](/images/headcount/headcount-step4-drill-in.png)
+    </Frame>
+  </Step>
+</Steps>
 
-![Headcount Step4 Drill In](/images/headcount/headcount-step4-drill-in.png)
+## What's next
 
-For additional headcount planning use cases, check out the following articles:
-
-- [Pro-rated salaries](https://docs.runway.com/guides/modeling/prorated-salaries)
-- [Multi-currency normalization](https://docs.runway.com/guides/modeling/fx-rate)
-- [Commissions](https://docs.runway.com/guides/modeling/commissions)
+- [Prorated salaries](/guides/modeling/prorated-salaries)
+- [FX rate](/guides/modeling/fx-rate)
+- [Commissions](/guides/modeling/commissions)

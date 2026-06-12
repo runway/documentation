@@ -17,10 +17,10 @@ This adds a view of the source database to your page. Keep reading to learn how 
 
 In most cases, you won’t want to show the entire database on a page—just a relevant slice of it. Runway gives you several tools to tailor the view:
 
-- **Filter** to specify which rows to show — [learn more in the dedicated article](https://docs.runway.com/concepts/databases/filtering-sorting-grouping#filtering).
-- **Sort** to control the row order — [learn more in the dedicated article](https://docs.runway.com/concepts/databases/filtering-sorting-grouping#sorting).
-- **Group** rows for better readability — [learn more in the dedicated article](https://docs.runway.com/concepts/databases/filtering-sorting-grouping#group-by).
-- **Show or hide columns** to focus on what matters — [learn more in the dedicated article](https://docs.runway.com/concepts/databases/databases-basics#show-%26-hide-columns).
+- **Filter** to specify which rows to show. Learn more in [Filtering, sorting & grouping](/concepts/databases/filtering-sorting-grouping#filtering).
+- **Sort** to control the row order. Learn more in [Filtering, sorting & grouping](/concepts/databases/filtering-sorting-grouping#sorting).
+- **Group** rows for better readability. Learn more in [Filtering, sorting & grouping](/concepts/databases/filtering-sorting-grouping#group-by).
+- **Show or hide columns** to focus on what matters. Learn more in [Databases basics](/concepts/databases/databases-basics#show-and-hide-columns).
 
 <Warning>
   Destructive actions—like fully deleting (not filtering or hiding) a row or column—will affect the **source database** and **every other block** where that database is surfaced within the same scenario.
@@ -32,11 +32,11 @@ When you share a page with a **database block**, you might expect teammates to m
 
 Just note: any rows added from the block are **not limited to that block**. They are saved to the **source database** and will show up in **any other database block** where filters match the new row.
 
-You can read more about manually adding rows [here](https://docs.runway.com/concepts/databases/databases-basics#adding-a-row).
+You can read more in [Adding a row](/concepts/databases/databases-basics#adding-a-row).
 
 ## Revealing anonymized data
 
-When sharing database blocks, one of the most important data permissions to understand is [**data anonymization**](https://docs.runway.com/guides/sharing/data-anonymization). If anonymization is enabled for a dimensional driver column, any user without an admin role will see redacted values for that driver **across all of Runway**.
+When sharing database blocks, one of the most important data permissions to understand is [data anonymization](/guides/sharing/data-anonymization). If anonymization is enabled for a dimensional driver column, visibility follows the user's role and resource access. See [Permissions](/guides/sharing/permissions) for the current access model.
 
 In some cases, though, you may want to grant access to a **subset of anonymized data** — a common example being headcount planning, where department leads should be able to see salary data for their direct reports.
 

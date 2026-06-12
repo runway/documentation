@@ -9,37 +9,33 @@ This guide is designed for users with **SQL experience** or for **data teams** a
 
 There are two ways to check if your integration is powered by Fivetran:
 
-1. **During setup** – The integration will display the **Fivetran** label when being installed.
-   ![images/integrations/fivertan-tag.png](/images/integrations/fivertan-tag.png)
-2. **After installation** – If already installed, you can check by looking at the **URL** in the query editor.
-   ![images/integrations/fievtran-url.png](/images/integrations/fievtran-url.png)
+1. **During setup**– The integration will display the **Fivetran** label when being installed.
+   ![Fivertan Tag](/images/integrations/fivertan-tag.png)
+2. **After installation**– If already installed, you can check by looking at the **URL** in the query editor.
+   ![Fievtran Url](/images/integrations/fievtran-url.png)
 
 ## Adding a new query
 
-For integrations that support SQL queries, you can click **\+** next to integration name in the sidebar to create a new query.
-![/images/integrations/hubspot/create-query.png\+\_existingInIndexedDbMintlify](/images/integrations/hubspot/create-query.png)
+For integrations that support SQL queries, you can click **+** next to integration name in the sidebar to create a new query.
+![Create Query](/images/integrations/hubspot/create-query.png)
 
-You can then change the default query name, **New query,** to something more descriptive. To do this, click the **three-dots button** next to the query name in the sidebar and select **Rename query**.
-![/images/integrations/hubspot/rename-query.png\+\_existingInIndexedDbMintlify](/images/integrations/hubspot/rename-query.png)
+You can then change the default query name, **New query**, to something more descriptive. To do this, click the **three-dots button** next to the query name in the sidebar and select **Rename query**.
+![Rename Query](/images/integrations/hubspot/rename-query.png)
 
 ## Writing SQL for data warehouses
 
 When querying **data warehouses** (non-Fivetran integrations), you must use the SQL syntax of the provider:
 
-- **Google BigQuery** – Uses **GoogleSQL**
-- **Snowflake** – Supports **standard SQL**
-- **Amazon Redshift** – Uses **PostgreSQL**
-
-Runway **automatically runs your queries every morning (US Pacific Time)**, updating any dependent databases, models, and pages. Queries run directly against your data warehouse, so results match what you’d get if you queried locally in that system.
+- **Google BigQuery**– Uses **GoogleSQL** - **Snowflake**– Supports **standard SQL** - **Amazon Redshift**– Uses **PostgreSQL** Runway **automatically runs your queries every morning (US Pacific Time)**, updating any dependent databases, models, and pages. Queries run directly against your data warehouse, so results match what you’d get if you queried locally in that system.
 
 You can **manually refresh** data at any time by going into the query and selecting **Run query.**
-![images/integrations/run-query.png](/images/integrations/run-query.png)
+![Run Query](/images/integrations/run-query.png)
 
 <Warning>
   You **cannot** write SQL to **join data warehouse sources with Fivetran integrations** within Runway.
 </Warning>
 
-## Writing SQL for data Fivetran integrations
+## Writing SQL for Fivetran integrations
 
 All **Fivetran integrations** are stored in **Runway’s Snowflake data warehouse**, meaning all SQL queries must follow [Snowflake-supported syntax](https://docs.snowflake.com/en/guides-overview-queries).
 
@@ -51,29 +47,25 @@ SHOW TABLES
 
 This command will list **all schemas and tables** available for querying. If you have **multiple** **Fivetran integrations**, you will see matching tables and schemas across different integrations, allowing you to join multiple Fivetran sources together.
 
-![images/integrations/show-tables.png](/images/integrations/show-tables.png)
+![Show Tables](/images/integrations/show-tables.png)
 
-**Runway automatically syncs data daily:**
-
-1. Data is **pulled from your source system** into Runway’s **Snowflake data warehouse** every morning (US Pacific Time).
-2. Runway then **automatically** **executes integration queries** shortly after to refresh the data in your model.
-
-**If you need an immediate manual refresh:**
+**Runway automatically syncs data daily:** 1. Data is **pulled from your source system** into Runway’s **Snowflake data warehouse** every morning (US Pacific Time).
+2. Runway then **automatically** **executes integration queries** shortly after to refresh the data in your model. **If you need an immediate manual refresh:**
 
 1. Manually trigger a sync from your source system.
-   ![images/integrations/resync.png](/images/integrations/resync.png)
+   ![Resync](/images/integrations/resync.png)
 2. Once the source data is refreshed, **rerun your SQL queries manually** to update your model. This step ensures the newly synced data appears in your model.
-   ![images/integrations/run-query.png](/images/integrations/run-query.png)
+   ![Run Query](/images/integrations/run-query.png)
 
 ## Best practices & tips
 
-- **Structure your queries to return a long dataset**—a list of **transactions, accounts, or metrics** with a **daily or monthly amount**. This format ensures flexibility for modeling. Example:
+- **Structure your queries to return a long dataset** — a list of **transactions, accounts, or metrics** with **adaily or monthly amount**. This format ensures flexibility for modeling. Example:
 
   | dimension_1 | dimension\_..x | date_1     | date\_..x  | value_1 | value\_..x |
   | ----------- | -------------- | ---------- | ---------- | ------- | ---------- |
   | Account 1   | Asset          | 01/01/2025 | 03/01/2025 | 10      | 20         |
   | Account 2   | Liability      | 01/02/2025 | 04/01/2025 | 30      | 40         |
-- **Include as all dimensions, dates, or values needed**—not all of them need to be used in the final database configuration.
+- **Include all dimensions, dates, or values needed** — not all of them need to be used in the final database configuration.
 - **Aggregate/roll up data to the minimum level required** for modeling and drill-downs. For example, if pulling general ledger data, and only monthly spend per account is needed, **write your query to pre-aggregate** the data:
   - Avoid this
 
@@ -82,8 +74,8 @@ This command will list **all schemas and tables** available for querying. If you
     	account,
     	transaction_amount,
     	transaction_date
-    from general ledger
-    
+    from general_ledger
+
     ```
   - Do this
 
@@ -92,10 +84,10 @@ This command will list **all schemas and tables** available for querying. If you
     	account,
     	sum(transaction_amount) as transaction_amount,
     	date_trunc('month',transaction_date) transaction_month
-    from general ledger
+    from general_ledger
     group by 1,3
-    
+
     ```
-- **Filter out unwanted data**—some Fivetran tables contain columns like `_fivetran_deleted`. Filtering out these records helps prevent duplicates records in your dataset.
+- **Filter out unwanted data** — some Fivetran tables contain columns like `_fivetran_deleted`. Filtering out these records helps prevent duplicate records in your dataset.
 
 Now that your queries are complete and your integration is set up, [learn how to shape a database.](https://docs.runway.com/concepts/databases/databases-basics#configuring-a-database)

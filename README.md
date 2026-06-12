@@ -1,32 +1,36 @@
-# Mintlify Starter Kit
+# Runway Documentation
 
-Click on `Use this template` to copy the Mintlify starter kit. The starter kit contains examples including
+This repo contains the Mintlify source for the public Runway docs site at docs.runway.com.
 
-- Guide pages
-- Navigation
-- Customizations
-- API Reference pages
-- Use of popular components
+## Local Preview
 
-### Development
+Run the docs locally from the repo root:
 
-Install the [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview the documentation changes locally. To install, use the following command
-
-```
-npm i -g mintlify
+```bash
+npx mint dev
 ```
 
-Run the following command at the root of your documentation (where docs.json is)
+## Style And Content
 
+Read `STYLE.md` before editing docs. It covers page structure, voice, terminology, links, screenshots, videos, and truth checks.
+
+## Assets
+
+- Put screenshots under `images/<section>/<page>/` with stable descriptive filenames.
+- Put videos under `videos/` and reference them as `/videos/<name>.mp4`.
+- Do not use dated CleanShot filenames, employee names, or private/internal URLs in public docs.
+- Prefer descriptive alt text that explains the screenshot, not the source filename.
+
+## Artifact Sweep
+
+Before opening a PR, run:
+
+```bash
+node scripts/sweep-artifacts.mjs --check
 ```
-mintlify dev
-```
 
-### Publishing Changes
+This catches broken Markdown escapes, generated alt text, forbidden public-docs links, and missing local image/video references.
 
-Install our Github App to auto propagate changes from your repo to your deployment. Changes will be deployed to production automatically after pushing to the default branch. Find the link to install on your dashboard. 
+## Deferred
 
-#### Troubleshooting
-
-- Mintlify dev isn't running - Run `mintlify install` it'll re-install dependencies.
-- Page loads as a 404 - Make sure you are running in a folder with `docs.json`
+- Loom embeds in `integrations/data-storage/google-sheets.mdx` should eventually be re-recorded and self-hosted.

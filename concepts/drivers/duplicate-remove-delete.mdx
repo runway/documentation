@@ -7,7 +7,7 @@ description: "Whether you're experimenting with variations, cleaning up a table,
 
 Duplicating a driver is a fast way to create a new, **independent** driver with the same formulas, segments, and values as the original.
 
-- Use the shortcut: `cmd`  or `ctrl` \+ `D`
+- Use the shortcut: `cmd`  or `ctrl` + `D`
 - The new driver will have “Copy” appended to the name.
 - It’s completely separate from the original—**no link or dependency** remains.
 - Any **segments** from the original driver are also copied over to the new one.
@@ -21,19 +21,19 @@ If you'd like to make a new driver, connected to an existing set of segments in 
 - Make a new driver with the same name.
 - Right click the new driver, and link them under _Dimensions \> "Make Subdriver of"_, and then select the set of existing drivers
 
-  <video muted autoplay="true" loop controls playsinline="true" class="doc-video" src="https://documentation.runwaydev.com/videos/Add-Driver-Segment.mp4" />
+  <video muted autoplay="true" loop controls playsinline="true" class="doc-video" src="/videos/Add-Driver-Segment.mp4" />
 
 ## Removing vs. deleting drivers
 
 You have two options when you no longer need a driver in the table you’re working in:
 
 - **Remove from block** _(shortcut: ⌫)_ — Removes the driver only from the current view. The driver will still exist in other tables where it’s used, and any formula references will remain intact. This is not a destructive action and will not impact your model.
-- **Delete** _(shortcut: ⇧_ \+ _⌫)_ — Removes the driver from the entire model and all tables it appears in. Any formulas referencing this driver will break. This is a destructive action and applies to the current scenario you’re working in.
+- **Delete** _(shortcut: ⇧_ + _⌫)_ — Removes the driver from the entire model and all tables it appears in. Any formulas referencing this driver will break. This is a destructive action and applies to the current scenario you’re working in.
 
-  ![Driver Delete Remove Pn](/images/drivers/driver-delete-remove.png)
+  ![Driver Delete Remove](/images/drivers/driver-delete-remove.png)
 
 Pressing **Backspace** removes the driver only from the current table, preserving it in the rest of your model.
 
 Since **Remove from block** is non-destructive and the default action, it's possible to remove a driver from every table it was shown in—without actually deleting it. These drivers will appear in the **Unlisted Drivers** page.
 
-![Unlisted Pn](/images/unlisted.png)
+![Unlisted](/images/unlisted.png)

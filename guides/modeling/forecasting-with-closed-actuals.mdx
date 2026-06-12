@@ -1,5 +1,6 @@
 ---
 title: "Forecasting with Closed Actuals"
+description: "Use closed actuals to drive forecast formulas without blending in partial current-period data."
 ---
 
 When building forecasts, it's often important to rely only on the most recent month of closed actuals—without blending in partial or forecasted data.
@@ -10,15 +11,15 @@ Let’s walk through how to set that up.
 
 Use `if()` logic to switch between calculating a rolling average and carrying forward the prior value:
 
-`if(lastMonth() = lastClose(), [rolling forecast], [last month's value]) `
+`if(lastMonth() = lastClose(), [rolling forecast], [last month's value])`
 
 **Example:**
 
-![CleanShot 2025-06-16 at 11.51.41@2x.png](/images/CleanShot2025-06-16at11.51.41@2x.png)
+![Images](/images/CleanShot2025-06-16at11.51.41@2x.png)
 
 This sets the forecast to a 6-month average of actuals if you're in the last closed month, or carries forward the previous month’s forecast otherwise. You can change the time range you're summing over in the date selector dropdown.
 
-![CleanShot 2025-06-16 at 11.52.34@2x.png](/images/CleanShot2025-06-16at11.52.34@2x.png)
+![Images](/images/CleanShot2025-06-16at11.52.34@2x.png)
 
 ---
 

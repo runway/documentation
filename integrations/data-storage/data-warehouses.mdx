@@ -15,14 +15,14 @@ Setup guides are linked directly in **Runway**, but they are also available here
 
 ## Which integration to choose
 
-Whenever possible, install the data warehouse which does **not** have **(Fivetran)** in the name. You want to choose the one under the ****Data Warehouse section.****
+Whenever possible, install the data warehouse which does **not** have **(Fivetran)** in the name. You want to choose the one under the **Data Warehouse section**.
 
-![images/integrations/data-storage/data-warehouse-selection.png](/images/integrations/data-storage/data-warehouse-selection.png)
+![Data Warehouse Selection](/images/integrations/data-storage/data-warehouse-selection.png)
 
 The only exceptions to this rule are:
 
 1. You wish to join your data warehouse data to Fivetran data directly in SQL.
-2. You have multiple of the same data warehouses you need to connect (2\+ Snowflake or 2\+ Big Query data warehouses).
+2. You have multiple of the same data warehouses you need to connect (2+ Snowflake or 2+ Big Query data warehouses).
 
 ## How Runway connects to your data warehouse
 
@@ -44,9 +44,7 @@ Runway has an in-app **SQL editor** that allows us to query your data warehouse 
 <Accordion title="What other databases can Runway pull from?" icon="sparkles">
   We also support **SQL databases** (via **Fivetran**) for:
 
-  - **PostgreSQL**
-  - **MySQL**
-  - **SQL Server** (including **Azure, Google, and AWS-hosted** instances)
+  - **PostgreSQL** - **MySQL** - **SQL Server** (including **Azure, Google, and AWS-hosted** instances)
 </Accordion>
 
 <Accordion title="Is there a row limit on data queries?" icon="sparkles">
@@ -61,6 +59,6 @@ Runway has an in-app **SQL editor** that allows us to query your data warehouse 
   - **Split large datasets** → Break data into multiple **queries or databases** (e.g., by product line or geography).
 </Accordion>
 
-<Accordion title="Is there any IP addresses I need to add to an allowlist?" icon="sparkles">
+<Accordion title="Are there any IP addresses I need to add to an allowlist?" icon="sparkles">
   Yes, please see [here](https://docs.workato.com/security/ip-allowlists.html). We are currently only leveraging US data centers.
 </Accordion>

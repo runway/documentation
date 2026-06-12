@@ -1,5 +1,5 @@
 ---
-title: "Databases block"
+title: "Database block"
 description: "Another widely used block type in Runway is the database block. Databases are where most of your modeling and data lives in Runway. A database block lets you bring those databases—or specific filtered slices of them—into pages, so you can layer in context from across your model for clearer storytelling and easier collaboration."
 ---
 
@@ -26,7 +26,7 @@ In most cases, you won’t want to show the entire database on a page—just a r
   Destructive actions—like fully deleting (not filtering or hiding) a row or column—will affect the **source database** and **every other block** where that database is surfaced within the same scenario.
 </Warning>
 
-## Manually added rows from your team to a database block
+## Manually adding rows to a database block
 
 When you share a page with a **database block**, you might expect teammates to manually add new rows—whether that’s planned headcount, vendors, or other entries.
 
@@ -38,11 +38,11 @@ You can read more about manually adding rows [here](https://docs.runway.com/conc
 
 When sharing database blocks, one of the most important data permissions to understand is [**data anonymization**](https://docs.runway.com/guides/sharing/data-anonymization). If anonymization is enabled for a dimensional driver column, any user without an admin role will see redacted values for that driver **across all of Runway**.
 
-In some cases, though, you may want to grant access to a **subset of anonymized data**—a common example being headcount planning, where department leads should be able to see salary data for their direct reports.
+In some cases, though, you may want to grant access to a **subset of anonymized data** — a common example being headcount planning, where department leads should be able to see salary data for their direct reports.
 
 To support this, you can **customize a specific database block on a page** to reveal hidden data. When this option is enabled:
 
 - The anonymized values are shown in that block.
 - Filters and properties on the block are locked, preventing further changes that could unintentionally expose sensitive information.
 
-![Databases Reveal Hidden Data Pn](/images/pages/databases-reveal-hidden-data.png)
+![Databases Reveal Hidden Data](/images/pages/databases-reveal-hidden-data.png)

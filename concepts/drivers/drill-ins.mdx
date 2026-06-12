@@ -1,6 +1,6 @@
 ---
 title: "Drill-ins"
-description: "When working in a model, you might find yourself asking: What contributes to this line? Where does this number come from? Drill-ins (currently in beta) allow you to explore these relationships, showing exactly how your numbers connect throughout your model."
+description: "When working in a model, drill-ins let you explore what contributes to a line and how your numbers connect throughout your model."
 ---
 
 ## How to use drill-ins
@@ -26,7 +26,7 @@ To collapse a drill-in:
   Drill-ins **support multiple levels** of depth—expand an input line further to see its underlying dependencies.
 </Check>
 
-![images/drivers/drill-ins.gif](/images/drivers/drill-ins.gif)
+![Drill Ins](/images/drivers/drill-ins.gif)
 
 ## Drill-ins permissions
 
@@ -36,13 +36,13 @@ Drill-ins **follow the same permissions** as the **driver detail pane**:
 - **Managers & Members** → Can see **direct (first-level) inputs** but cannot drill further into drivers they **don’t have access to**.
 - **Guests** → Cannot use drill-ins.
 
-For a full breakdown of roles and permissions, see this guide.
+For a full breakdown of roles and permissions, see [this guide](/guides/sharing/permissions).
 
 ## Important notes
 
 ### Drill-ins are saved per user
 
-- Expanding drill-ins **only affects your own view**—others won’t see the expanded state unless they do it themselves.
+- Expanding drill-ins **only affects your own view** — others won’t see the expanded state unless they do it themselves.
 - This allows multiple users to explore without disrupting each other’s workflow.
 - We’re considering ways to **share drill-in states**, so let us know if this would be useful.
 
@@ -53,16 +53,12 @@ If you want other users to view the same expansion:
 1. **Guide them** to use the drill-in feature themselves
 2. **Explicitly add** selected drill-in drivers to the block:
    - Select the expanded drill-in drivers
-   - Press `Cmd/Ctrl + Shift + B` or **right-click** → **Add to block**
-
-This will make those driver lines **visible to everyone.**
+   - Press `Cmd/Ctrl + Shift + B` or **right-click** → **Add to block** This will make those driver lines **visible to everyone.**
 
 ### Drill-in lines have a striped background
 
 **Stripes indicate drill-in lines** are **dynamically generated** and won’t appear for other users unless expanded.
 
 <Warning>
-  **Drag-and-drop** to reorder is **not supported** for drill-in lines.
-
-  **Undo/redo** is not supported for drill-in lines.
+  **Drag-and-drop** to reorder is **not supported** for drill-in lines. **Undo/redo** is not supported for drill-in lines.
 </Warning>

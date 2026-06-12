@@ -15,15 +15,13 @@ To apply a filter, click on the **Add filter** pill at the top of a database, th
 
 * **Filtering by a date driver** supports operators like **is, is not, is after, is on or after,** and more. After selecting the operator, you can choose from a wide range of date options, such as **this month, last month, custom months ago,** or even reference another driver to dynamically set the number of months.
 
-![](/images/databases/2/filters.png)
+![Filters](/images/databases/2/filters.png)
 
-Since drivers store time-series data that can change from month to month, you might wonder—**which month's data does Runway use when applying a filter?**
-
-By default, driver filters evaluate data based on **this month’s** values. You can change this to filter based on **last close month** or a specific custom month.
+Since drivers store time-series data that can change from month to month, you might wonder—**which month's data does Runway use when applying a filter?** By default, driver filters evaluate data based on **this month’** svalues. You can change this to filter based on **last close month** or a specific custom month.
 
 To adjust this, click on the **As of** pill at the top of a database, set the **Time period** to **As of,** and modify the date.
 
-![](/images/databases/2/as-of.png)
+![As Of](/images/databases/2/as-of.png)
 
 <Note>
   When you add multiple filters, they are **ANDed** together, meaning only rows that meet all conditions will be shown.
@@ -33,7 +31,7 @@ To adjust this, click on the **As of** pill at the top of a database, set the **
 
 You can sort your database data based on one or multiple **dimensions** or **drivers**.
 
-![](/images/databases/2/sorting.png)
+![Sorting](/images/databases/2/sorting.png)
 
 When sorting by a **dimension**, you can choose:
 
@@ -43,17 +41,17 @@ When sorting by a **dimension**, you can choose:
 
 * **Manual** – Allows you to manually reorder rows.
 
-When sorting by a **number driver**, you can choose **ascending** or **descending** order. When sorting by a **date driver**, you can sort from **earliest to latest** or **latest to earliest**.
+When sorting by a **number driver**, you can choose **ascending** or **descending** order. When sorting by **adate driver**, you can sort from **earliest to latest** or **latest to earliest**.
 
-Similar to filtering, sorting by a driver evaluates data based on **this month’s** values. You can change this to sort based on **last close month** or a specific custom month by adjusting the **As of** pill.
+Similar to filtering, sorting by a driver evaluates data based on **this month’** svalues. You can change this to sort based on **last close month** or a specific custom month by adjusting the **As of** pill.
 
 ## Group by
 
 For better readability, you can **group** your database rows by any of your dimensions. Click the **Group by** pill at the top of the database (next to filter and sort), then select the dimension you want to group by.
 
-Similar to filtering and sorting, grouping by a driver evaluates data based on **this month's** values. You can change this to group based on **last close month** or a specific custom month by selecting the date option in the group by menu.
+Similar to filtering and sorting, grouping by a driver evaluates data based on **this month'** svalues. You can change this to group based on **last close month** or a specific custom month by selecting the date option in the group by menu.
 
-![](/images/databases/2/group-by.png)
+![Group By](/images/databases/2/group-by.png)
 
 ## Date range
 
@@ -63,8 +61,8 @@ When displaying **one or all drivers as a time series**, each **month** within t
 
 To change the date range, click on the “**Date range”** pill at the top of the database and select the **start** and **end** months.
 
-![](/images/databases/2/date-range.png)
+![Date Range](/images/databases/2/date-range.png)
 
 When displaying a driver column as a value, the values shown in that column are also defined by the date range. You will see Value of first month in the date range → Value of last month in the date range. If the first and last values are the same, only that single value is displayed without the → annotation.
 
-![](/images/databases/2/rollup.png)
+![Rollup](/images/databases/2/rollup.png)

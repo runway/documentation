@@ -9,7 +9,7 @@ Changes made in a scenario stay local until merged, so your team can safely prop
 
 Your _main scenario_ is your live, official model. To protect it from accidental changes, Runway automatically creates a _draft scenario_ anytime you make _data edits_.
 
-Once in draft, all your edits remain local—they won’t affect main or any other scenario unless you merge them.![](/images/scenarios/draft-flow-charts.png)
+Once in draft, all your edits remain local—they won’t affect main or any other scenario unless you merge them.![Draft Flow Charts](/images/scenarios/draft-flow-charts.png)
 
 ### What counts as a data edit?
 
@@ -31,7 +31,7 @@ These specific actions—when performed in a main scenario—automatically move 
 - Pages
   - Creating, renaming, or deleting a page
   - Creating or deleting blocks (e.g. table, chart, or text blocks) on pages
-  - Editing blocks (e.g. adding drivers to a chart block, or
+  - Editing blocks (e.g. adding drivers to a chart block, or changing a block's configuration)
   - Reordering pages in the sidebar
   - Creating or updating sidebar sections
 
@@ -45,23 +45,23 @@ The following actions are applied directly to Main, and all scenarios with auto-
 
 ### How to tell you’re in a draft scenario
 
-Look for the `DRAFT` label in the scenario name.![](/images/scenarios/draft-label.png)
+Look for the `DRAFT` label in the scenario name.![Draft Label](/images/scenarios/draft-label.png)
 
 ### Managing a draft scenario
 
-When working in a draft scenario, you’ll see these options (depending on your [permission](https://help.runway.com/planning--collaborating/uSijm9sGNmbhAY2BeSCfmf/roles-and-permissions/kPq48efbqLRPkY4qSepkAW) level):
+When working in a draft scenario, you’ll see these options (depending on your [permission](/guides/sharing/permissions) level):
 
 - **Save draft as** — creates a new standalone scenario for your edits.
 - **Compare & merge** — merges your edits into the main scenario. (Admins only.)
 - **Discard draft** — Removes all changes made in the drafts, and returns to main.
 
-![](/images/scenarios/draft-settings.png)
+![Draft Settings](/images/scenarios/draft-settings.png)
 
 ## Creating a new scenario
 
 To create a fresh scenario:
 
-1. Click **\+ New scenario** in the scenarios list (top left).
+1. Click **+ New scenario** in the scenarios list (top left).
 2. Give it a name, and choose an icon/emoji.
 3. The new scenario will be an exact copy of your main scenario. From there, you can start making edits that will only affect this scenario.
 
@@ -69,7 +69,7 @@ To create a fresh scenario:
   Alternatively, you can save a draft scenario as a new scenario using the `Save draft as` option.
 </Note>
 
-![images/scenarios/create.gif](/images/scenarios/create.gif)
+![Create](/images/scenarios/create.gif)
 
 ## Merging scenarios
 
@@ -82,17 +82,17 @@ Only Admins can merge scenarios. To do so:
 3. Review the changes, and confirm the merge.
 
 <Note>
-  Use `Cmd` / `Ctrl` \+ `Shift` \+ `M` to open the `Compare and merge` modal instantly.
+  Use `Cmd` / `Ctrl` + `Shift` + `M` to open the `Compare and merge` modal instantly.
 </Note>
 
-![](/images/scenarios/merge-button.png)
+![Merge Button](/images/scenarios/merge-button.png)
 
 If you don’t have Admin access, you can:
 
 - Ask an Admin to merge your scenario for you.
 - Share the scenario link by navigating to it from the scenarios list, and clicking **Copy link**.
 
-![](/images/scenarios/copy-link.png)
+![Copy Link](/images/scenarios/copy-link.png)
 
 ### How merging affects other scenarios
 
@@ -120,7 +120,7 @@ Let’s look at another example:
 
 By default, all scenarios inherit updates from main unless they conflict with existing edits in that scenario.
 
-To prevent this, click the **Settings** icon next to a scenario name, then set **Pull updates from Main** to **Disabled**. After this, changes merged into main—including integration syncs—won't affect this scenario.![](/images/scenarios/disable-updates.png)
+To prevent this, click the **Settings** icon next to a scenario name, then set **Pull updates from Main** to **Disabled**. After this, changes merged into main—including integration syncs—won't affect this scenario.![Disable Updates](/images/scenarios/disable-updates.png)
 
 If you decide to re-enable this setting for the scenario, you can switch it back to **Automatic**. Keep in mind that doing so will instantly pull in any non-conflicting changes from Main—both **existing** and **future** changes. Depending on how different your scenario is from Main, it may look different after switching back to Automatic.
 
@@ -136,7 +136,7 @@ In the scenarios list, click the **Settings** icon next to a scenario name to ad
 - **Copy link** – Share any scenario with your team by sharing its link.
 - **Delete** – Remove any scenario you no longer need.
 
-![](/images/scenarios/settings.png)
+![Settings](/images/scenarios/settings.png)
 
 ## Comparing scenarios
 
@@ -152,11 +152,11 @@ You can compare values across multiple scenarios in a table format:
 4. The default view shows time series values from each scenario. You can add **Variance** and **Variance %** from the same menu.
 5. Adjust table layout to show scenarios as rows or columns.
 
-![images/scenarios/scenario-comparison.gif](/images/scenarios/scenario-comparison.gif)
+![Scenario Comparison](/images/scenarios/scenario-comparison.gif)
 
-By default, **Variance** and **Variance %** appear in green when the current scenario's value is higher than the comparison scenario, and in red when it's lower. To reverse these colors, set your Driver's goal to be below 0.
+By default, **Variance** and **Variance %** appear in green when the current scenario's value is higher than the comparison scenario, and in red when it's lower. To reverse these colors, set the goal direction for the driver (e.g. lower is better).
 
-![images/scenarios/set-goal.gif](/images/scenarios/set-goal.gif)
+![Set Goal](/images/scenarios/set-goal.gif)
 
 ### Graphical comparison in pages
 
@@ -166,12 +166,12 @@ You can also compare drivers across scenarios using line or column charts:
 2. Add the drivers you want to compare across different scenarios.
 3. Click the **Compare** icon (top right) → Choose the scenarios you want to compare.
 
-![/images/pages/charts/scenarios.gif\+\_existingInIndexedDbMintlify](/images/pages/charts/scenarios.gif)
+![Scenarios](/images/pages/charts/scenarios.gif)
 
 ## FAQ
 
 <Accordion title="Can I re-enable Pull updates from Main after disabling it?" defaultOpen="false">
-  Yes\! However, when you switch back to `Automatic`, it will immediately pull in both **existing** and **upcoming** changes from Main that don't conflict with your scenario. Your scenario may look quite different after switching back to `Automatic`, depending on how much it differs from Main.
+  Yes! However, when you switch back to `Automatic`, it will immediately pull in both **existing** and **upcoming** changes from Main that don't conflict with your scenario. Your scenario may look quite different after switching back to `Automatic`, depending on how much it differs from Main.
 </Accordion>
 
 <Accordion title="How do I duplicate a scenario?" defaultOpen="false">

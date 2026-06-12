@@ -4,12 +4,12 @@ description: "Drivers are the core building blocks of your model in Runway. They
 ---
 
 <Info>
-  This article focuses on the behavior of drivers in driver tables. Drivers can also be used in databases, which have some additional behavior you can read about [here](https://docs.runway.com/concepts/formulas/formulas-basics#%232-driver-default-column-formulas-in-a-database). 
+  This article focuses on the behavior of drivers in driver tables. Drivers can also be used in databases, which have some additional behavior you can read about [here](/concepts/formulas/formulas-basics).
 </Info>
 
 ## What is a Driver?
 
-A **Driver** in Runway is a structured chunk of **timeseries data**. It provides clarity with a **human-readable name**, representing the values that drive your business model—key metrics that shape your bottom line.
+A **Driver** in Runway is a structured chunk of **timeseries data**. It provides clarity with **ahuman-readable name**, representing the values that drive your business model—key metrics that shape your bottom line.
 
 Drivers act as **the primary elements in tables and formulas**, helping you quickly identify and interpret data. Conceptually, a driver is similar to:
 
@@ -20,11 +20,11 @@ Drivers act as **the primary elements in tables and formulas**, helping you quic
 
 Drivers offer several advantages over traditional spreadsheet modeling:
 
-- **Portable** – Drivers can be referenced in formulas, added to tables, and visualized in charts without dealing with messy cell ranges. They stay synced across your model. You can add any driver to a table by clicking **"Add"** and searching for it.
+- **Portable**– Drivers can be referenced in formulas, added to tables, and visualized in charts without dealing with messy cell ranges. They stay synced across your model. You can add any driver to a table by clicking **"Add"** and searching for it.
 - **Time-native** – Every business assumption changes over time. Drivers make it easy to project these changes across different periods.
-- **Dimensional** – Drivers can have **dimensions** that structure your model as complexity grows. More on this in article (LINK: coming soon).
+- **Dimensional**– Drivers can have **dimensions** that structure your model as complexity grows. Learn more in [Dimensions basics](/concepts/dimensions/dimensions-basics).
 
-![images/drivers/basics/drivers.png](/images/drivers/basics/drivers.png)
+![Drivers](/images/drivers/basics/drivers.png)
 
 ## Driver formulas
 
@@ -33,7 +33,7 @@ Drivers contain **formulas** that define their values across different time peri
 - **Forecast formula** – Calculates projected values for future periods (after the last close).
 - **Actuals formula** – Defines historical values (before the last close).
 
-![images/drivers/basics/forecast-actuals.png](/images/drivers/basics/forecast-actuals.png)
+![Forecast Actuals](/images/drivers/basics/forecast-actuals.png)
 
 ### Formula inheritance
 
@@ -51,27 +51,27 @@ Runway applies smart defaults to fill in missing formulas when needed. The inher
 2. Default forecast formula set for the **database column** the driver belongs to.
 3. Global default formula: `self.last_month`.
 
-Learn more about formulas in databases
+Learn more about [formulas in databases](/concepts/databases/formulas-in-databases).
 
-![images/drivers/basics/formulas-default.png](/images/drivers/basics/formulas-default.png)
+![Formulas Default](/images/drivers/basics/formulas-default.png)
 
 ### Overriding formula values
 
-Learn more about Plans and hardcoding values, for overriding the value of a driver in a specific month (Coming soon).
+Hardcoding a cell value overrides the formula for that period. Overridden cells are visually marked so you can distinguish them from formula-driven values. You can also tag overrides to a Plan to keep the business context attached to the change. Learn more in [Plans](/concepts/plans).
 
 ## Driver types
 
 Drivers store **timeseries data** in one of three formats:
 
-- **Numbers** – Used for quantitative values like **revenue, expenses, or headcount**.
-- **Dates** – Used for time-based data like **project start dates or contract renewals**.
+- **Numbers**– Used for quantitative values like **revenue, expenses, or headcount**.
+- **Dates**– Used for time-based data like **project start dates or contract renewals**.
 - **Attributes** – Used for dimension values, enabling drivers to store categorical data from dimensions. This is particularly useful when working with HRIS data or other sources where you need to track dimension-based attributes over time.
 
 <Note>
   When entering explicit dates in formulas, use the format 'YYYY-MM-DD' (enclosed in single quotes).
 </Note>
 
-![images/drivers/basics/driver-types.png](/images/drivers/basics/driver-types.png)
+![Driver Types](/images/drivers/basics/driver-types.png)
 
 In **driver tables**, new drivers default to the **Number** type. You can change this by **right-clicking** the driver and selecting **Format and display.**
 
@@ -84,4 +84,4 @@ The type can be updated later, but with some constraints:
   If these constraints aren’t met, the driver’s values will display a **TYPE error**, indicating a mismatch between the formula output and driver type.
 </Warning>
 
-We tend to find that Date drivers are most useful when working with drivers in databases (LINK: coming soon).
+We tend to find that Date drivers are most useful when working with [drivers in databases](/concepts/databases/formulas-in-databases).

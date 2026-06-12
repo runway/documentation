@@ -3,4 +3,66 @@ title: "Command Mode"
 description: "Use Command Mode to build and update Runway work by describing what you want."
 ---
 
-{/* CONTENT PENDING: filled in phases 2–4 */}
+Ari, Runway's AI assistant, can answer questions, inspect your model, and make changes when you describe what you want. Use Ari when you want to build pages, formulas, SQL, charts, scenarios, or multi-step modeling changes with natural language.
+
+## The Ari chat
+
+Open Ari from the bottom-right button labeled **Open ARI chat**. The panel is titled **Ari**, and the input placeholder is **Ask anything**.
+
+<Steps>
+  <Step title="Open Ari">
+    Click the Ari button in the bottom-right corner of Runway.
+  </Step>
+  <Step title="Ask a question or request a change">
+    Type in **Ask anything**. Ari supports multiturn conversations, so you can refine the request after the first response.
+  </Step>
+  <Step title="Control the response">
+    While Ari streams a response, the send button becomes **Stop generation**. Press **Esc** to close the panel, or press **Shift+Enter** to add a new line in your prompt.
+  </Step>
+</Steps>
+
+The chat header includes **New conversation** and **Move to floating chat panel** or **Move to sidebar**.
+
+## Command Mode
+
+Command Mode is the Option-click surface for write actions. Use it when you want Ari to change the object you are pointing at instead of chatting first.
+
+| Where you Option-click | Prompt placeholder | Accept action | Discard action |
+|---|---|---|---|
+| Formula cell | **Describe the formula...** | **Save Changes** | **Discard Changes** |
+| SQL editor | **Describe the SQL query...** | **Accept** | **Reject** |
+| Chart block | **Describe chart configuration...** | Use the generated chart change | Discard the generated chart change |
+
+## What Ari can build
+
+Ari can create and update databases, drivers, submodels, pages, scenarios, text blocks, driver grid blocks, chart blocks, SQL, and multi-step plans. When Ari works through a plan, Runway shows a **My plan** progress panel with an n/m progress counter, todo status icons, and expandable subtasks.
+
+## Good prompts
+
+- "Create a chart of revenue by region for this year."
+- "Write a forecast formula for net new ARR based on new customers and average contract value."
+- "Create a scenario for the downside hiring plan and add a page that compares it to Main."
+
+<Note>
+  Ari and Command Mode are currently available to org Admins and Owners.
+</Note>
+
+## FAQ
+
+<Accordion title="Is Ari the same thing as Command Mode?" defaultOpen="false">
+  Ari is the assistant. Command Mode is the Option-click write surface that lets Ari change a specific formula, SQL editor, or chart.
+</Accordion>
+
+<Accordion title="Can I stop Ari while it is writing?" defaultOpen="false">
+  Yes. While a response is streaming, click **Stop generation**.
+</Accordion>
+
+<Accordion title="Can Ari work through multiple steps?" defaultOpen="false">
+  Yes. Ari can create a multi-step plan and show progress in the **My plan** panel while it works.
+</Accordion>
+
+## What's next
+
+- [Explain Mode](/ai/explain-mode)
+- [Connecting AI tools](/ai/connecting-ai-tools)
+- [Formulas syntax](/concepts/formulas/formulas-syntax)

@@ -9,16 +9,16 @@ Drill-ins let you inspect what contributes to a driver without leaving the table
 
 <Steps>
   <Step title="Choose a driver">
-    In a driver table, hover over a driver row that can be expanded.
+    In a driver table, hover over a driver row that can be expanded. A caret appears next to eligible rows.
   </Step>
   <Step title="Open inputs">
-    Click the caret next to the driver name, or right-click the driver and select **Show inputs**. You can also use `Cmd/Ctrl + Enter` on the selected row.
+    Click the caret next to the driver name, or right-click the driver and select **Show inputs**. You can also press `⌘⏎` on the selected row.
   </Step>
   <Step title="Review the inputs">
-    The driver's inputs appear as nested child rows. Drill-ins can traverse drivers, database objects, and object collections.
+    The driver's inputs appear as nested child rows. Drilling into dimensional or database-backed drivers expands segment and object sub-rows, and you can keep drilling into eligible child rows.
   </Step>
   <Step title="Close inputs">
-    Click the caret again or select **Hide inputs** from the row context menu. See [Keyboard shortcuts](/get-started/keyboard-shortcuts) for the full drill-in shortcut list.
+    Click the caret again, right-click the driver and select **Hide inputs**, or press `⌘⏎` again.
   </Step>
 </Steps>
 
@@ -32,7 +32,11 @@ Drill-ins let you inspect what contributes to a driver without leaving the table
 
 ## Drill-in access
 
-Drill-ins respect the same resource access model as the surrounding page, block, scenario, and related driver details. For the current role and access rules, see [Permissions](/guides/sharing/permissions) and [Roles and access](/reference/roles-and-access).
+Drill-ins respect the block-level **Can drill in** access rule. For current access rules, see [Permissions](/guides/sharing/permissions) and [Roles and access](/reference/roles-and-access).
+
+## Open detail view
+
+Use **Open detail view** or press `⌘⇧⏎` to open the details pane for the selected row. The details pane shows **Overview**, **Used By**, and **Plans** tabs when available. See [Driver details pane](/concepts/drivers/driver-details-pane) for more detail.
 
 ## Important notes
 

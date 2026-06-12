@@ -1,95 +1,66 @@
 ---
 title: "Adding users"
-description: "You can add users to your Runway organization from Settings or from the Share menu on a specific page, model, or database."
+description: "Invite people to Runway from the Share sheet and choose the access they should receive."
 ---
 
-You can add people from workspace settings or from the **Share** sheet on a resource. Use [Permissions](/guides/sharing/permissions) as the canonical guide for which roles and access levels to choose.
+Use the **Share** sheet when you want to invite people to Runway and give them access to a page, model, database, section, block, or scenario. Invited users default to the Member role; use [Roles and access](/reference/roles-and-access) and [Permissions](/guides/sharing/permissions) to choose the right resource access.
+
+## Invite people from the Share sheet
+
+<Steps>
+  <Step title="Open the Share sheet">
+    Open the resource you want to share, then click **Share**.
+  </Step>
+  <Step title="Open People">
+    Select the **People** tab.
+  </Step>
+  <Step title="Enter people or groups">
+    Use the field labeled **Email, name or group, separated by commas**. You can enter one person, multiple people, or an existing group.
+  </Step>
+  <Step title="Choose access">
+    Pick the access level for each invitee, then click **Add**.
+  </Step>
+  <Step title="Choose whether to notify them">
+    Leave **Notify via email** on to send an invitation. Add an **Optional message** when the invite needs context.
+  </Step>
+</Steps>
+
+<Frame>
+  ![Share sheet People tab for inviting users](/images/adding-users/page-share.png)
+</Frame>
+
+## Pending invites
+
+People who have been invited but have not joined yet show a **Pending** badge. After they join, they appear as workspace users and can be managed through sharing settings.
+
+## Org-wide access
+
+The **Everyone at {org}** row controls default access for everyone in your workspace. Use it when a resource should be broadly visible or editable inside your org, and use individual rows or groups for narrower exceptions.
 
 <Warning>
-  Runway does **not** send email invites when you add users. After adding someone, share your org’s URL—or a direct link to a specific page—to help them get started. When they visit the link, they’ll be prompted to log in and then routed to the content they’ve been granted access to.
+  Role and resource access are separate. Inviting someone makes them a Member by default, but the resource access you choose still controls what they can do on the shared item.
 </Warning>
 
-## Adding users via settings
+## When to use links or groups instead
 
-Use this method when adding workspace users:
+Use [share links](/guides/sharing/share-links) when you want a page-level link for people outside your org. Use [groups](/guides/sharing/groups) when the same set of people should receive access to multiple resources.
 
-1. Click your avatar in the top-right corner and select **Settings.**
+## FAQ
 
-   ![Settings](/images/adding-users/settings.png)
-2. Go to the **Users** tab.
+<Accordion title="What role do invited users get?" defaultOpen="false">
+  Invited users default to the Member role. See [Roles and access](/reference/roles-and-access) for what that role means.
+</Accordion>
 
-   ![Settings Users](/images/adding-users/settings-users.png)
-3. Enter one or more email addresses (comma- or space-separated).
-4. Assign a role: Admin, Manager, Member, or Guest.
+<Accordion title="Can I invite several people at once?" defaultOpen="false">
+  Yes. Enter multiple emails, names, or groups in **Email, name or group, separated by commas**.
+</Accordion>
 
-   ![Settings Users Emails](/images/adding-users/settings-users-emails.png)
-5. Click **Add.**
+<Accordion title="Can I share with everyone in my org?" defaultOpen="false">
+  Yes. Use the **Everyone at {org}** row to set org-wide access for the resource.
+</Accordion>
 
-<Warning>
-  Role and resource access are separate. Before assigning a role, review [Permissions](/guides/sharing/permissions) and [Roles and access](/reference/roles-and-access).
-</Warning>
+## What's next
 
-## Adding users via share menu
-
-This method is best when you want to grant access to a specific resource while adding the user.
-
-Users added for the first time through the Share menu can be managed later from **Settings**.
-
-### Step 1: Add user emails
-
-1. Open the page, model, or database you want to share.
-2. Click **Share** in the top-right corner.
-3. Enter one or more email addresses.
-   - If the user is already in your organization, their name will appear in the dropdown.
-   - If not, you’ll be prompted to add them.
-   - You can also paste multiple emails, separated by commas or spaces.
-
-![Page Share](/images/adding-users/page-share.png)
-
-### Step 2: Set the appropriate access level
-
-Once added, choose the user's [access level](/guides/sharing/permissions#access-levels) for the shared page, model, or database. The available levels depend on the resource type and the user's role.
-
-![Page Share Access Level](/images/adding-users/page-share-access-level.png)
-
-### Step 3: Manage scenario access
-
-Scenario access can be managed from the shared resource when you need to control which scenarios are visible there.
-
-To manage this:
-
-1. Navigate to the scenario access tab on the shared page, model, or database.
-2. Select which scenarios should be visible from that resource.
-
-<Info>
-  Scenario access follows the sharing settings for that resource. See [Permissions](/guides/sharing/permissions) for the current access model.
-</Info>
-
-![Page Share Guests Scenarios](/images/adding-users/page-share-guests-scenarios.png)
-
-## Using a Guest invite link
-
-For easier bulk access, you can enable a **Guest invite link**. Anyone with this link can access the shared resource according to the link settings.
-
-If someone uses the link and has not been added to Runway before, they appear in your user list.
-
-The link grants access to the specific page, model, or database it was generated from. You can disable it at any time from the Share menu.
-
-![Page Share Guest Link](/images/adding-users/page-share-guest-link.png)
-
-## Managing users
-
-Users with user-management access can manage users and review roles and access levels from **Settings** > **Users**.
-
-For each user, you’ll see:
-
-- Their **current role** — click to update it.
-- The number of pages, models, and databases they have access to — click to view the full list and update access levels as needed.
-
-![Modify Users](/images/adding-users/modify-users.png)
-
-You can tell whether someone has accessed Runway by checking their avatar. Users who haven’t logged in yet won’t have a profile photo.
-
-![Settings Users No Avatar](/images/adding-users/settings-users-no-avatar.png)
-
-Learn more about the different [roles](/guides/sharing/permissions#user-roles) and [access levels](/guides/sharing/permissions#access-levels) in their respective articles.
+- [Share links & guest access](/guides/sharing/share-links)
+- [Groups](/guides/sharing/groups)
+- [Permissions](/guides/sharing/permissions)

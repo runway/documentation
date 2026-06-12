@@ -3,4 +3,40 @@ title: "Puzzle"
 description: "Connect Puzzle accounting data to Runway for modeling and reporting."
 ---
 
-{/* CONTENT PENDING: filled in phases 2–4 */}
+Puzzle connects accounting data from Puzzle to Runway so you can use Puzzle actuals in financial models.
+
+## Connecting Puzzle
+
+Runway exposes Puzzle as an accounting integration named **Puzzle**.
+
+<Steps>
+  <Step title="Open Integrations">
+    In Runway, open **Integrations** and choose **Browse all integrations**.
+  </Step>
+  <Step title="Choose Puzzle">
+    Select **Puzzle** from the accounting integrations.
+  </Step>
+  <Step title="Authorize in Puzzle">
+    Runway redirects you to Puzzle to approve the connection. After approval, Puzzle redirects back to Runway.
+  </Step>
+</Steps>
+
+## Synced data
+
+Runway imports Puzzle accounting snapshots for:
+
+- Income Statement
+- Balance Sheet
+- Cash Flow Statement
+
+The synced accounts appear as external accounting drivers in Runway and can be used like other integration-backed actuals.
+
+## Puzzle FAQs
+
+<Accordion title="Does Runway write data back to Puzzle?" icon="sparkles">
+  No. Runway uses Puzzle as a source of accounting data for modeling and reporting.
+</Accordion>
+
+<Accordion title="Can I write SQL against Puzzle data in Runway?" icon="sparkles">
+  Puzzle is a native accounting connection, not a SQL-powered Fivetran connection. Use the synced accounting drivers in Runway after the connection finishes syncing.
+</Accordion>

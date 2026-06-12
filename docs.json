@@ -114,9 +114,7 @@
               "integrations/accounting/quickbooks-online",
               "integrations/accounting/xero",
               "integrations/accounting/netsuite",
-              "integrations/accounting/puzzle",
-              "integrations/accounting/campfire",
-              "integrations/accounting/odoo"
+              "integrations/accounting/puzzle"
             ]
           },
           {

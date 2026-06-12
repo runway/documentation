@@ -5,8 +5,10 @@ import { join } from "node:path";
 import test from "node:test";
 
 import {
+  applyFormulaDescriptionRenderFixes,
   checkGeneratedBlock,
   extractShortcuts,
+  parseRunwayNativeCatalog,
   parseProviderHandlerIntegration,
   replaceGeneratedBlock,
 } from "./generate-references.mjs";
@@ -85,6 +87,42 @@ test("extractShortcuts preserves registry order and renders platform labels", ()
       mac: "⌫",
       windows: "⌫",
       hotkeys: "Backspace, Delete",
+    },
+  ]);
+});
+
+test("applyFormulaDescriptionRenderFixes corrects product-source typos", () => {
+  const source =
+    "Returns net work days exclusing holidays and weekends. The first character represents Monday (default is '0000077').";
+
+  assert.equal(
+    applyFormulaDescriptionRenderFixes(source),
+    "Returns net work days excluding holidays and weekends. The first character represents Monday (default is '0000011').",
+  );
+});
+
+test("parseRunwayNativeCatalog tolerates whitespace around catalog anchors", () => {
+  const source = [
+    'const fileUploadSlug = "file-upload"',
+    "xeroIntegration     = func() openapi_models.Integration {",
+    "  return openapi_models.Integration{}",
+    "}",
+  ].join("\n");
+
+  assert.deepEqual(parseRunwayNativeCatalog(source), [
+    {
+      slug: "file-upload",
+      categoryKey: "filestorage",
+      name: "CSV / Raw File Upload",
+      route: "native",
+      sourceKey: "FILE_UPLOAD",
+    },
+    {
+      slug: "xero",
+      categoryKey: "accounting",
+      name: "Xero",
+      route: "native",
+      sourceKey: "RUNWAY_XERO",
     },
   ]);
 });

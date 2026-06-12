@@ -36,7 +36,16 @@ const GLUED_ARTICLE_ALLOWLISTS = {
 };
 
 function normalizePath(path) {
-  return path.replace(/\\/g, "");
+  return path.replace(/\\([()[\]_])/g, "$1");
+}
+
+function decodeAssetPath(src) {
+  const normalized = normalizePath(src);
+  try {
+    return { value: decodeURIComponent(normalized), failed: false };
+  } catch {
+    return { value: normalized, failed: true };
+  }
 }
 
 function displayPath(root, filePath) {
@@ -44,7 +53,7 @@ function displayPath(root, filePath) {
 }
 
 function humanizeAssetPath(src) {
-  const cleanSrc = decodeURIComponent(normalizePath(src));
+  const cleanSrc = decodeAssetPath(src).value;
   const extension = extname(cleanSrc);
   const stem = basename(cleanSrc, extension)
     .replace(/@2x/gi, "")
@@ -128,6 +137,46 @@ function isInsideCodeFence(lines, lineIndex) {
     }
   }
   return fenceCount % 2 === 1;
+}
+
+function maskInlineCodeAndJsx(line) {
+  const chars = line.split("");
+  let index = 0;
+  while (index < chars.length) {
+    if (chars[index] === "`") {
+      const start = index;
+      while (index < chars.length && chars[index] === "`") {
+        index += 1;
+      }
+      const delimiter = "`".repeat(index - start);
+      const close = line.indexOf(delimiter, index);
+      if (close === -1) {
+        index += 1;
+        continue;
+      }
+      for (let maskIndex = start; maskIndex < close + delimiter.length; maskIndex += 1) {
+        chars[maskIndex] = " ";
+      }
+      index = close + delimiter.length;
+      continue;
+    }
+
+    if (chars[index] === "<") {
+      const close = line.indexOf(">", index + 1);
+      if (close === -1) {
+        index += 1;
+        continue;
+      }
+      for (let maskIndex = index; maskIndex <= close; maskIndex += 1) {
+        chars[maskIndex] = " ";
+      }
+      index = close + 1;
+      continue;
+    }
+
+    index += 1;
+  }
+  return chars.join("");
 }
 
 function hasFlattenedList(line) {
@@ -268,16 +317,31 @@ function checkMarkdownArtifacts(root, filePath, contents, findings) {
   const lines = contents.split("\n");
   let offset = 0;
   for (const [lineIndex, line] of lines.entries()) {
-    if (!isInsideCodeFence(lines, lineIndex) && hasFlattenedList(line)) {
-      addFinding(
-        findings,
-        root,
-        filePath,
-        contents,
-        offset,
-        "flattened-list",
-        "Multiple markdown list items appear collapsed onto one line.",
-      );
+    if (!isInsideCodeFence(lines, lineIndex)) {
+      if (hasFlattenedList(line)) {
+        addFinding(
+          findings,
+          root,
+          filePath,
+          contents,
+          offset,
+          "flattened-list",
+          "Multiple markdown list items appear collapsed onto one line.",
+        );
+      }
+      const searchableLine = maskInlineCodeAndJsx(line);
+      const bracePattern = /(^|[^\\])(\{[A-Za-z]+\})/g;
+      for (const match of searchableLine.matchAll(bracePattern)) {
+        addFinding(
+          findings,
+          root,
+          filePath,
+          contents,
+          offset + (match.index ?? 0) + match[1].length,
+          "unescaped-literal-brace",
+          "Literal single-brace token in prose must be escaped.",
+        );
+      }
     }
     offset += line.length + 1;
   }
@@ -365,10 +429,22 @@ function checkMarkdownArtifacts(root, filePath, contents, findings) {
     }
   }
 
-  const imagePattern = /!\[([^\]]*)\]\(([^)]+)\)/g;
+  const imagePattern = /!\[([^\]]*)\]\(((?:\\.|[^)])+)\)/g;
   for (const match of contents.matchAll(imagePattern)) {
     const alt = match[1];
+    const src = match[2];
     const index = match.index ?? 0;
+    if (decodeAssetPath(src).failed) {
+      addFinding(
+        findings,
+        root,
+        filePath,
+        contents,
+        index,
+        "invalid-asset-encoding",
+        "Asset path has invalid percent-encoding.",
+      );
+    }
     if (alt.includes("existingInIndexedDbMintlify")) {
       addFinding(
         findings,
@@ -410,7 +486,7 @@ function checkForbiddenDomains(root, filePath, contents, findings) {
 
 function checkLocalAssets(root, filePath, contents, findings) {
   const assetPattern =
-    /(?:src=["']|]\()(?<asset>\/(?:images|videos)\/[^"')\s]+)(?:["']|\))/g;
+    /(?:src=["']|]\()(?<asset>\/(?:images|videos)\/(?:\\.|[^"')\s])+)(?:["']|\))/g;
 
   for (const match of contents.matchAll(assetPattern)) {
     const asset = normalizePath(match.groups?.asset ?? "");
@@ -557,7 +633,7 @@ function fixMarkdown(contents) {
     return `---\n${normalizedFrontmatter}\n---`;
   });
 
-  fixed = fixed.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, src) => {
+  fixed = fixed.replace(/!\[([^\]]*)\]\(((?:\\.|[^)])+)\)/g, (match, alt, src) => {
     if (!isGeneratedAltText(alt)) return match;
     return `![${humanizeAssetPath(src)}](${src})`;
   });

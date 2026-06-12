@@ -37,14 +37,14 @@ To set a flat commission rate %, you can select `Add default formula` from the c
 
 ### **Option 2: Variable commission rates**
 
-This example demonstrates how you can set assumptions based on dimension values. In this example, `New Business` deals earn an 8% commission, whereas `Renewals` earn a 3% commission.
+This example demonstrates how you can set assumptions based on dimension values. In this example, `New Business` deals earn an 8% commission, whereas `Existing Business` deals earn a 3% commission.
 
 - The formula references the dimension column `DEAL_TYPE` which only contains the two items: `New Business` or `Existing Business`.
 - The logic of the formula reads: _if DEAL_TYPE = New Business apply an 8% Commission Rate, otherwise apply 3% Commission Rate._
-  ![Newbusinessvsrenewals](/images/commissions/Newbusinessvsrenewals.png)
+  ![New business vs. existing business](/images/commissions/new-business-vs-existing-business.png)
 
 <Tip>
-  Since commissions data is part of compensation, many model owners choose to anonymize commission rates and payouts. To do so, right-click the driver column header and toggle **Anonymize data**. You can read more about anonymizing data [here](/guides/sharing/data-anonymization#data-anonymization).
+  Since commissions data is part of compensation, many model owners choose to anonymize commission rates and payouts. To do so, right-click the driver column header and toggle **Anonymize data**. You can read more about anonymizing data [here](/guides/sharing/data-anonymization).
 </Tip>
 
 ## Step 3: Add payout timing logic

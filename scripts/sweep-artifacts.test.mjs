@@ -110,6 +110,83 @@ test("checkRepository rejects forbidden domains and missing local assets", async
   );
 });
 
+test("checkRepository preserves escaped parens in local asset paths", async () => {
+  await withFixture(
+    {
+      "page.mdx": [
+        "---",
+        'title: "Example"',
+        'description: "Example page."',
+        "---",
+        "",
+        "![Revenue recognition contract screenshot](/images/CleanShot2025-08-18\\(2\\).png)",
+      ].join("\n"),
+      "images/CleanShot2025-08-18(2).png": "",
+    },
+    async (root) => {
+      const result = await checkRepository(root);
+
+      assert.equal(result.ok, true);
+    },
+  );
+});
+
+test("checkRepository reports invalid asset encoding without crashing", async () => {
+  await withFixture(
+    {
+      "page.mdx": [
+        "---",
+        'title: "Example"',
+        'description: "Example page."',
+        "---",
+        "",
+        "![Broken encoded path](/images/bad%ZZ.png)",
+      ].join("\n"),
+      "images/bad%ZZ.png": "",
+    },
+    async (root) => {
+      const result = await checkRepository(root);
+
+      assert.equal(result.ok, false);
+      assert.deepEqual(
+        result.findings.map((finding) => finding.code),
+        ["invalid-asset-encoding"],
+      );
+    },
+  );
+});
+
+test("checkRepository reports unescaped literal braces only in prose", async () => {
+  await withFixture(
+    {
+      "page.mdx": [
+        "---",
+        'title: "Example"',
+        'description: "Example page."',
+        "---",
+        "",
+        "The row says **Everyone at {orgName}**.",
+        "The escaped row says **Everyone at \\{orgName\\}**.",
+        "Inline code `{Name}` is fine.",
+        "<CardGroup cols={3}>",
+        "```mermaid",
+        "flowchart LR",
+        "  A{Decision}",
+        "```",
+      ].join("\n"),
+    },
+    async (root) => {
+      const result = await checkRepository(root);
+
+      assert.equal(result.ok, false);
+      assert.deepEqual(
+        result.findings.map((finding) => finding.code),
+        ["unescaped-literal-brace"],
+      );
+    },
+  );
+});
+
 test("checkRepository does not flag separate valid bold spans", async () => {
   await withFixture(
     {

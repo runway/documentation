@@ -9,6 +9,8 @@ on:
 jobs:
   docs-checks:
     runs-on: ubuntu-latest
+    env:
+      RUNWAY_REPO: ${{ vars.RUNWAY_REPO }}
 
     steps:
       - name: Check out repository
@@ -26,13 +28,10 @@ jobs:
         run: node scripts/sweep-artifacts.mjs --check
 
       - name: Check generated reference pages
-        # This check needs a local runway/runway checkout. Set RUNWAY_REPO to enable it.
+        # Skip generated drift checks unless CI has a local runway/runway checkout path.
         if: ${{ env.RUNWAY_REPO != '' }}
-        continue-on-error: true
         run: |
           node scripts/generate-references.mjs functions --runway-repo "$RUNWAY_REPO" --check
           node scripts/generate-references.mjs shortcuts --runway-repo "$RUNWAY_REPO" --check
-
-      - name: Check forbidden links and local asset references
-        # sweep-artifacts.mjs also fails on forbidden public-docs domains and missing /images or /videos references.
-        run: node scripts/sweep-artifacts.mjs --check
+          node scripts/generate-references.mjs integrations --runway-repo "$RUNWAY_REPO" --check
+          node scripts/generate-references.mjs roles --runway-repo "$RUNWAY_REPO" --check

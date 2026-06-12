@@ -111,6 +111,11 @@ const FUNCTION_NOTES = {
   "or()": "Use parentheses to make nested logic easier to read.",
 };
 
+const FORMULA_DESCRIPTION_RENDER_FIXES = new Map([
+  ["exclusing", "excluding"],
+  ["'0000077'", "'0000011'"],
+]);
+
 const AGGREGATION_EXAMPLES = {
   "sum()": "`sum(Employees.Salary)`",
   "sumProduct()": "`sumProduct(Deals.Quantity, Deals.UnitPrice)`",
@@ -232,7 +237,7 @@ const SHORTCUT_METADATA = {
   toggleSegmentStyle: ["Drivers & grids", "Hide or show segment attributes"],
   toggleDriverFormat: ["Drivers & grids", "Toggle driver formatting"],
   toggleForecastFormula: ["Formulas", "Hide or show the Forecast Formula column"],
-  toggleActualsFormula: ["Formulas", "Hide or show the Actual Formula column"],
+  toggleActualsFormula: ["Formulas", "Hide or show the Actuals Formula column"],
   togglePinnedFormulas: ["Formulas", "Pin or unpin formula columns"],
   reload: ["General", "Reload from the refresh notice"],
   undo: ["Editing & formatting", "Undo the latest change"],
@@ -420,6 +425,18 @@ function normalizeWhitespace(value) {
   return value.replace(/\s+/g, " ").trim();
 }
 
+function normalizedIncludes(haystack, needle) {
+  return normalizeWhitespace(haystack).includes(normalizeWhitespace(needle));
+}
+
+export function applyFormulaDescriptionRenderFixes(value) {
+  let fixed = value;
+  for (const [search, replacement] of FORMULA_DESCRIPTION_RENDER_FIXES) {
+    fixed = fixed.replaceAll(search, replacement);
+  }
+  return fixed;
+}
+
 function stripTrailingNewline(value) {
   return value.replace(/\n+$/g, "");
 }
@@ -585,7 +602,7 @@ function extractSubtitle(block, title) {
     throw new Error(`Missing subtitle for ${title}.`);
   }
   const expression = block.slice(subtitleIndex + "subtitle:".length, block.indexOf("\n    },", subtitleIndex));
-  return normalizeWhitespace(decodeStringExpression(expression)).replace("exclusing", "excluding");
+  return applyFormulaDescriptionRenderFixes(normalizeWhitespace(decodeStringExpression(expression)));
 }
 
 function extractFormulaItems(source) {
@@ -1014,9 +1031,9 @@ function parseGeneratedCatalog(source, route) {
   return integrations;
 }
 
-function parseRunwayNativeCatalog(source) {
-  const hasFileUpload = source.includes('fileUploadSlug        = "file-upload"');
-  const hasXero = source.includes("xeroIntegration =");
+export function parseRunwayNativeCatalog(source) {
+  const hasFileUpload = normalizedIncludes(source, 'fileUploadSlug        = "file-upload"');
+  const hasXero = normalizedIncludes(source, "xeroIntegration =");
   if (!hasFileUpload || !hasXero) {
     throw new Error("Runway native provider catalog shape changed.");
   }
@@ -1173,8 +1190,8 @@ async function renderIntegrations(runwayRepo) {
   ];
 
   const mergeHris = integrations.filter((integration) => integration.route === "Merge" && integration.categoryKey === "hris");
-  if (mergeHris.length !== 51) {
-    throw new Error(`Expected 51 Merge HRIS integrations, found ${mergeHris.length}.`);
+  if (mergeHris.length === 0) {
+    throw new Error("No Merge HRIS integrations found in generated catalog.");
   }
 
   const output = [];

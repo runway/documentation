@@ -42,7 +42,7 @@ Let’s take it up a notch and add in date functions and drivers. For this walkt
    ![Quarterly 1](/images/seasonal-forecasting/quarterly-1.png)
 2. Use `thisQuarter()` to return the start of each quarter, then add 2 months to return the _end_ of that quarter.
    <Info>
-     For more details on date functions in Runway, please refer to [this article](/concepts/formulas/functions-operators#date-calculation-functions).
+     For more details on date functions in Runway, see [Functions and operators](/concepts/formulas/functions-operators#date-calculation).
    </Info>
    ![Quarterly 2](/images/seasonal-forecasting/quarterly-2.png)
 3. Head back to your sales roster database and calculate their monthly quota using the **Quarter End driver** you just made. Wrapping this logic in an `IF()` statement allows us to allocate 80% of a quarter’s quota in the last month and 10% in the other months.

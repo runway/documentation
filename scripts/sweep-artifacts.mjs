@@ -9,6 +9,27 @@ const SKIP_DIRS = new Set([".git", "node_modules", ".next", ".mintlify"]);
 const EXTRA_REFERENCE_FILES = new Set(["docs.json", "inkeep.js"]);
 const FORBIDDEN_DOMAIN_PATTERN =
   /documentation\.runwaydev\.com|notion\.so|help\.runway\.com/g;
+const GLUED_ARTICLE_BOLD_PREFIXES = [
+  { prefix: "anunsegmented", article: "an" },
+  { prefix: "adaily", article: "a" },
+  { prefix: "adate", article: "a" },
+  { prefix: "adriver", article: "a" },
+  { prefix: "afilter", article: "a" },
+  { prefix: "ahuman", article: "a" },
+  { prefix: "along", article: "a" },
+  { prefix: "anamed", article: "a" },
+  { prefix: "anegative", article: "a" },
+  { prefix: "anew", article: "a" },
+  { prefix: "acustom", article: "a" },
+  { prefix: "asection", article: "a" },
+  { prefix: "asingle", article: "a" },
+  { prefix: "asolid", article: "a" },
+  { prefix: "asubset", article: "a" },
+  { prefix: "atitle", article: "a" },
+  { prefix: "aunique", article: "a" },
+  { prefix: "aviewer", article: "a" },
+  { prefix: "awarning", article: "a" },
+].sort((a, b) => b.prefix.length - a.prefix.length);
 
 function normalizePath(path) {
   return path.replace(/\\/g, "");
@@ -67,6 +88,54 @@ function addFinding(findings, root, filePath, contents, index, code, message) {
   });
 }
 
+function splitGluedArticleBoldText(text) {
+  const lowerText = text.toLowerCase();
+
+  for (const { prefix, article } of GLUED_ARTICLE_BOLD_PREFIXES) {
+    if (!lowerText.startsWith(prefix)) continue;
+
+    const nextChar = text[prefix.length];
+    if (nextChar && !/[\s.,;:!?)\]-]/.test(nextChar)) continue;
+
+    return {
+      article,
+      boldText: text.slice(article.length),
+    };
+  }
+
+  return null;
+}
+
+function isInsideCodeFence(lines, lineIndex) {
+  let fenceCount = 0;
+  for (let index = 0; index < lineIndex; index += 1) {
+    if (/^\s*```/.test(lines[index])) {
+      fenceCount += 1;
+    }
+  }
+  return fenceCount % 2 === 1;
+}
+
+function hasFlattenedList(line) {
+  const trimmed = line.trim();
+  if (!trimmed) return false;
+  const textOnly = trimmed
+    .replace(/\*\*[^*\n]+\*\*/g, "MARKUP")
+    .replace(/`[^`\n]+`/g, "CODE");
+
+  return (
+    /^\d+\.\s+.+\s+\d+\.\s+/.test(trimmed) ||
+    /^\d+\.\s+.+\s+[-*]\s+\*\*/.test(trimmed) ||
+    /^[-*]\s+.+\s+\d+\.\s+/.test(trimmed) ||
+    /^[-*]\s+.+\s+[-*]\s+\*\*/.test(trimmed) ||
+    /^[-*]\s+.+\s+-\s+(?:[A-Z0-9`*])/.test(textOnly) ||
+    /^#{2,6}\s+.+\s+\d+\.\s+/.test(trimmed) ||
+    /^#{2,6}\s+.*\*\* [A-Z]/.test(trimmed) ||
+    /^\*\*[^*\n]+\*\*\s+\d+\.\s+/.test(trimmed) ||
+    /^\*\*[^*\n]+:\*\*\s+[-*]\s+/.test(trimmed)
+  );
+}
+
 async function walkFiles(root) {
   const files = [];
 
@@ -123,6 +192,28 @@ function checkMarkdownArtifacts(root, filePath, contents, findings) {
         "Bold marker has a space inside the boundary.",
       );
     }
+    if (splitGluedArticleBoldText(text)) {
+      addFinding(
+        findings,
+        root,
+        filePath,
+        contents,
+        index,
+        "glued-article-bold",
+        "Article is glued into the bold text.",
+      );
+    }
+    if (/[’']$/.test(text) && /^\s+s[A-Za-z]/.test(contents.slice(end))) {
+      addFinding(
+        findings,
+        root,
+        filePath,
+        contents,
+        index,
+        "bold-possessive-boundary",
+        "Possessive marker is split across the bold boundary.",
+      );
+    }
     if (/[A-Za-z0-9)\].,;:!?-]$/.test(contents.slice(0, index))) {
       addFinding(
         findings,
@@ -145,6 +236,36 @@ function checkMarkdownArtifacts(root, filePath, contents, findings) {
         "Bold marker is adjacent to following text or punctuation.",
       );
     }
+  }
+
+  const gluedDashPattern = /\*\*[^*\n]+\*\*[–—-]/g;
+  for (const match of contents.matchAll(gluedDashPattern)) {
+    addFinding(
+      findings,
+      root,
+      filePath,
+      contents,
+      match.index ?? 0,
+      "glued-dash",
+      "Dash separator is glued to inline markup.",
+    );
+  }
+
+  const lines = contents.split("\n");
+  let offset = 0;
+  for (const [lineIndex, line] of lines.entries()) {
+    if (!isInsideCodeFence(lines, lineIndex) && hasFlattenedList(line)) {
+      addFinding(
+        findings,
+        root,
+        filePath,
+        contents,
+        offset,
+        "flattened-list",
+        "Multiple markdown list items appear collapsed onto one line.",
+      );
+    }
+    offset += line.length + 1;
   }
 
   const inlineCodePattern = /`([^`\n]+)`/g;
@@ -302,21 +423,30 @@ function shouldSpaceAfterMarkup(char) {
   return /[A-Za-z0-9(`]/.test(char ?? "");
 }
 
+function expandGluedArticleBoldSpans(contents) {
+  return contents.replace(/\*\*([^*\n]+)\*\*/g, (match, text) => {
+    const split = splitGluedArticleBoldText(text);
+    if (!split) return match;
+
+    return `${split.article} **${split.boldText}**`;
+  });
+}
+
 function normalizeInlineMarkup(contents) {
   let fixed = "";
   let index = 0;
 
   while (index < contents.length) {
-    if (contents.startsWith("```", index)) {
-      fixed += "```";
-      index += 3;
-      continue;
-    }
-
     if (contents[index] === "`") {
-      const close = contents.indexOf("`", index + 1);
+      const delimiter = contents.slice(index).match(/^`+/)?.[0] ?? "`";
+      const close = contents.indexOf(delimiter, index + delimiter.length);
       if (close !== -1) {
-        const text = contents.slice(index + 1, close);
+        const text = contents.slice(index + delimiter.length, close);
+        if (delimiter.length > 1) {
+          fixed += contents.slice(index, close + delimiter.length);
+          index = close + delimiter.length;
+          continue;
+        }
         if (!text.includes("\n")) {
           fixed += `\`${text.trim()}\``;
           index = close + 1;
@@ -335,7 +465,8 @@ function normalizeInlineMarkup(contents) {
         if (!rawText.includes("\n")) {
           let text = rawText.trim();
           const previousWord = fixed.match(/[A-Za-z]+$/)?.[0] ?? "";
-          if (previousWord.length === 1 && /^[a-z]/.test(text)) {
+          const hasBoundaryWhitespace = rawText !== rawText.trim();
+          if (previousWord.length === 1 && !hasBoundaryWhitespace && /^[a-z]/.test(text)) {
             const previousChar = previousWord;
             fixed = fixed.slice(0, -1);
             text = `${previousChar}${text}`;
@@ -400,6 +531,9 @@ function fixMarkdown(contents) {
     .replace(/\\_([^_\n]+?)\\_/g, "_$1_");
 
   fixed = normalizeInlineMarkup(fixed);
+  fixed = fixed.replace(/\*\*([^*\n]+?)([’'])\*\*\s+s([A-Za-z]+)/g, "**$1$2s** $3");
+  fixed = expandGluedArticleBoldSpans(fixed);
+  fixed = fixed.replace(/(\*\*[^*\n]+\*\*)([–—-])\s*/g, "$1 $2 ");
 
   fixed = fixed.replace(/^---\n([\s\S]*?)\n---/, (match, frontmatter) => {
     const normalizedFrontmatter = frontmatter.replace(

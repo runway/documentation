@@ -9,9 +9,9 @@ This guide is designed for users with **SQL experience** or for **data teams** a
 
 There are two ways to check if your integration is powered by Fivetran:
 
-1. **During setup**– The integration will display the **Fivetran** label when being installed.
+1. **During setup** – The integration will display the **Fivetran** label when being installed.
    ![Fivertan Tag](/images/integrations/fivertan-tag.png)
-2. **After installation**– If already installed, you can check by looking at the **URL** in the query editor.
+2. **After installation** – If already installed, you can check by looking at the **URL** in the query editor.
    ![Fievtran Url](/images/integrations/fievtran-url.png)
 
 ## Adding a new query
@@ -26,7 +26,11 @@ You can then change the default query name, **New query**, to something more des
 
 When querying **data warehouses** (non-Fivetran integrations), you must use the SQL syntax of the provider:
 
-- **Google BigQuery**– Uses **GoogleSQL** - **Snowflake**– Supports **standard SQL** - **Amazon Redshift**– Uses **PostgreSQL** Runway **automatically runs your queries every morning (US Pacific Time)**, updating any dependent databases, models, and pages. Queries run directly against your data warehouse, so results match what you’d get if you queried locally in that system.
+- **Google BigQuery** – Uses **GoogleSQL**
+- **Snowflake** – Supports **standard SQL**
+- **Amazon Redshift** – Uses **PostgreSQL**
+
+Runway **automatically runs your queries every morning (US Pacific Time)**, updating any dependent databases, models, and pages. Queries run directly against your data warehouse, so results match what you’d get if you queried locally in that system.
 
 You can **manually refresh** data at any time by going into the query and selecting **Run query.**
 ![Run Query](/images/integrations/run-query.png)
@@ -49,7 +53,9 @@ This command will list **all schemas and tables** available for querying. If you
 
 ![Show Tables](/images/integrations/show-tables.png)
 
-**Runway automatically syncs data daily:** 1. Data is **pulled from your source system** into Runway’s **Snowflake data warehouse** every morning (US Pacific Time).
+**Runway automatically syncs data daily:**
+
+1. Data is **pulled from your source system** into Runway’s **Snowflake data warehouse** every morning (US Pacific Time).
 2. Runway then **automatically** **executes integration queries** shortly after to refresh the data in your model. **If you need an immediate manual refresh:**
 
 1. Manually trigger a sync from your source system.
@@ -59,7 +65,7 @@ This command will list **all schemas and tables** available for querying. If you
 
 ## Best practices & tips
 
-- **Structure your queries to return a long dataset** — a list of **transactions, accounts, or metrics** with **adaily or monthly amount**. This format ensures flexibility for modeling. Example:
+- **Structure your queries to return a long dataset** — a list of **transactions, accounts, or metrics** with a **daily or monthly amount**. This format ensures flexibility for modeling. Example:
 
   | dimension_1 | dimension\_..x | date_1     | date\_..x  | value_1 | value\_..x |
   | ----------- | -------------- | ---------- | ---------- | ------- | ---------- |

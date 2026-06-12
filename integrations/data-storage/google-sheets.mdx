@@ -31,14 +31,15 @@ When preparing your Google Sheets data for Runway, ensure it follows a structure
 
 Before importing your Google Sheet into Runway, ensure it's clean and correctly formatted to avoid errors. Follow these best practices:
 
-- **Remove extra blank rows and columns** - No empty rows **above, in between, or below** your data table.
+- **Remove extra blank rows and columns** — No empty rows **above, in between, or below** your data table.
   - Every column should contain **at least one data point** — empty columns will not be imported.
-- **Use clear and simple column headers** - Make headers **short and readable** (e.g., use `"account_name"` instead of `"Account Name (MAPPED)"`).
+- **Use clear and simple column headers** — Make headers **short and readable** (e.g., use `"account_name"` instead of `"Account Name (MAPPED)"`).
   - Use **consistent naming** for key fields (e.g., `"is_balance_sheet"` instead of `"Balance Sheet?"`).
-- **Format date columns properly** - **Long data**: Use **MM/DD/YYYY** format.
+- **Format date columns properly**
+  - **Long data**: Use **MM/DD/YYYY** format.
   - **Wide data**: Ensure month column headers are in one of these **supported formats**:`"Jan-2006"`, `"Jan 2006"`, `"Jan_2006"`, `"January 2006"`, `"01/2006"`, `"01/06"`, `"01_06"`, `"01_2006"`, `"01-2006"`, `"2006-01"`.
   - [Here’s a Loom on how to format dates correctly](https://www.loom.com/share/d5cedfd346ff4bb296d36eff23fbe5ee).
-- **Ensure numerical data is in proper format** - Remove **currency symbols (\$, €)** and **percent signs (%)** — values should be **pure numbers**.
+- **Ensure numerical data is in proper format** — Remove **currency symbols (\$, €)** and **percent signs (%)** — values should be **pure numbers**.
   - **Wide data**: Replace blanks with `0` to maintain consistency.
   - [Here’s a Loom on how to quickly fill blanks](https://www.loom.com/share/08aeb90722de429185de299e03a10b45).
 
@@ -82,7 +83,7 @@ Before importing your Google Sheet into Runway, ensure it's clean and correctly 
 
    ![Sheets Spreadsheet Id](/images/integrations/sheets/sheets-spreadsheet-id.png)
 8. Verify the data preview:
-   - If you see a column named **month** and a column named **value**, Runway successfully converted your **wide data** into **along data set**.
+   - If you see a column named **month** and a column named **value**, Runway successfully converted your **wide data** into a **long data set**.
    - If you see separate columns for each month, there may be formatting issues in your Google Sheet. Refer to the **video walkthrough** at the top of this section for troubleshooting.
 9. You’re all set! [Now configure a new database.](https://docs.runway.com/concepts/databases/databases-basics#configuring-a-database)
 
@@ -100,8 +101,8 @@ Before importing your Google Sheet into Runway, ensure it's clean and correctly 
     ![Sheets Fivetran Setup](/images/integrations/sheets/sheets-fivetran-setup.png)
  3. You’ll be redirected to **Fivetran** to complete the setup.
  4. Under **Authentication Method**, choose **Authorize Service Account**, then copy the email address provided by Fivetran.
- 5. In **Google Sheets**, open your spreadsheet in **anew tab** and **share it with that email address** as **aviewer**.
- 6. Select the **headers of the data you want to import** (they must be side by side—**you cannot skip columns**) and create **anamed range.** Navigate to **Data \> Named Range**, then give it **aunique and descriptive name**.
+ 5. In **Google Sheets**, open your spreadsheet in a **new tab** and **share it with that email address** as a **viewer**.
+ 6. Select the **headers of the data you want to import** (they must be side by side—**you cannot skip columns**) and create a **named range.** Navigate to **Data \> Named Range**, then give it a **unique and descriptive name**.
 
     ![Data Range](/images/integrations/sheets/data-range.gif)
  7. Copy the **entire URL** of your Google Sheet. For example:

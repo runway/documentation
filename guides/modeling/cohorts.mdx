@@ -121,7 +121,8 @@ In this example, we’ll create a database to hold the assumptions that drive yo
 
 Here’s how to set it up:
 
-1. **Create a new database and segment it by:** - **Cohort Age** (as a dimension)
+1. **Create a new database and segment it by:**
+   - **Cohort Age** (as a dimension)
    - **Tier** (e.g. contract tier, customer segment)
 2. **Add rows for each combination**
 
@@ -166,7 +167,8 @@ The final step is to create a **consolidated overview** — a high-level rollup 
 
 Example: Summarizing by tier
 
-1. **Create a new database** 2. Set its **source** to your **Cohort Model** database
+1. **Create a new database**
+2. Set its **source** to your **Cohort Model** database
 3. **Segment by**: `Tier` (or another dimension you care about)
 4. Pull in the **drivers** you want to aggregate (e.g. `Seats`)
 5. Press **Confirm**

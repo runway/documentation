@@ -5,7 +5,7 @@ description: "Learn how to reference drivers, dimensions, database columns, and 
 
 Formulas in Runway are made up of three key components:
 
-1. **Operators** — symbols like `+`, `-` , `>`, and others used for basic logic or math.
+1. **Operators** — symbols like `+`, `-`, `>`, and others used for basic logic or math.
 2. **Functions** — built-in helpers like `ifError`, `avg`, `count`, etc.
 3. **Data references** — the core of your model: this includes drivers created in a driver table block, segmented drivers from a database, specific segments of a driver, or entire database columns.
    ![Formula Syntax](/images/formulas/formula-syntax.png)
@@ -165,7 +165,8 @@ Whenever you reference another value (driver, database columns, etc.) in a formu
 
 This filter controls which month’s data is pulled from that reference when the formula runs. Since Runway stores values over time and evaluates formulas month‑by‑month, you must tell it _which_ month (or months) to use when referencing other data.
 
-- **Default behavior** - **This month** is applied to ordinary references.
+- **Default behavior**
+  - **This month** is applied to ordinary references.
   - **Last month** is used when a driver’s formula references itself, to prevent circular logic.
 - **Available options** for single-month ranges:
   - **This month** — Use the corresponding month’s value.
@@ -186,6 +187,7 @@ This filter controls which month’s data is pulled from that reference when the
   <Info>
     Given that multiple values are being fetched for each month, references to multi-month date ranges must be wrapped in an aggregation function like `sum()`, `avg()`, or `max()`.
   </Info>
-- **Why it’s useful** - **Rolling averages & trends** Smooth out seasonality or one‑off spikes.
+- **Why it’s useful**
+  - **Rolling averages & trends** Smooth out seasonality or one‑off spikes.
   - **Cumulative metrics** Track YTD totals, quarterly results, or any custom range.
   - **Forecast inputs** Base projections on recent history rather than just the prior month.

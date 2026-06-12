@@ -204,3 +204,194 @@ test("checkRepository reports missing icon labels and frontmatter descriptions",
     },
   );
 });
+
+test("checkRepository reports sweep-fixer markdown regressions", async () => {
+  await withFixture(
+    {
+      "page.mdx": [
+        "---",
+        'title: "Example"',
+        'description: "Example page."',
+        "---",
+        "",
+        "Open your spreadsheet in **anew tab** and create **aunique range** with **acustom color**.",
+        "Convert wide data into **along data set**.",
+        "- **Google BigQuery**– Uses **GoogleSQL**",
+        "- Add a number driver - Name this driver **Rank**.",
+        "1. **Create a new database** 2. Set its **source**.",
+      ].join("\n"),
+    },
+    async (root) => {
+      const result = await checkRepository(root);
+
+      assert.equal(result.ok, false);
+      assert.deepEqual(
+        result.findings.map((finding) => finding.code),
+        [
+          "glued-article-bold",
+          "glued-article-bold",
+          "glued-article-bold",
+          "glued-article-bold",
+          "glued-dash",
+          "flattened-list",
+          "flattened-list",
+        ],
+      );
+    },
+  );
+});
+
+test("fixRepository repairs glued article bold without creating new glue", async () => {
+  await withFixture(
+    {
+      "page.mdx": [
+        "---",
+        'title: "Example"',
+        'description: "Example page."',
+        "---",
+        "",
+        "It provides clarity with a** human-readable name**.",
+        "Open your spreadsheet in **anew tab** and create **aunique range**.",
+      ].join("\n"),
+    },
+    async (root) => {
+      const fixResult = await fixRepository(root);
+      const checkResult = await checkRepository(root);
+      const page = await readFile(join(root, "page.mdx"), "utf8");
+
+      assert.equal(fixResult.changedFiles, 1);
+      assert.equal(checkResult.ok, true);
+      assert.match(page, /a \*\*human-readable name\*\*/);
+      assert.match(page, /a \*\*new tab\*\*/);
+      assert.match(page, /a \*\*unique range\*\*/);
+      assert.doesNotMatch(page, /\*\*a(?:new|unique|human)/);
+    },
+  );
+});
+
+test("fixRepository preserves inline code operator tokens", async () => {
+  await withFixture(
+    {
+      "page.mdx": [
+        "---",
+        'title: "Example"',
+        'description: "Example page."',
+        "---",
+        "",
+        "Symbols like `+`, `-`, and `>` are operators.",
+      ].join("\n"),
+    },
+    async (root) => {
+      const fixResult = await fixRepository(root);
+      const checkResult = await checkRepository(root);
+      const page = await readFile(join(root, "page.mdx"), "utf8");
+
+      assert.equal(fixResult.changedFiles, 0);
+      assert.equal(checkResult.ok, true);
+      assert.match(page, /`-`/);
+      assert.doesNotMatch(page, /` - `/);
+    },
+  );
+});
+
+test("fixRepository preserves multi-backtick inline code spans", async () => {
+  await withFixture(
+    {
+      "page.mdx": [
+        "---",
+        'title: "Example"',
+        'description: "Example page."',
+        "---",
+        "",
+        "- **Code blocks** -> Type triple backticks (```` ``` ````) or triple tildes (`~~~`).",
+      ].join("\n"),
+    },
+    async (root) => {
+      const fixResult = await fixRepository(root);
+      const checkResult = await checkRepository(root);
+      const page = await readFile(join(root, "page.mdx"), "utf8");
+
+      assert.equal(fixResult.changedFiles, 0);
+      assert.equal(checkResult.ok, true);
+      assert.match(page, /\(```` ``` ````\)/);
+      assert.doesNotMatch(page, /````` `` ````/);
+    },
+  );
+});
+
+test("checkRepository ignores hyphens inside inline markup", async () => {
+  await withFixture(
+    {
+      "page.mdx": [
+        "---",
+        'title: "Example"',
+        'description: "Example page."',
+        "---",
+        "",
+        "- Name it **Cohort Age - Number** to distinguish it from the dimension.",
+      ].join("\n"),
+    },
+    async (root) => {
+      const result = await checkRepository(root);
+
+      assert.equal(result.ok, true);
+    },
+  );
+});
+
+test("checkRepository reports collapsed block starters", async () => {
+  await withFixture(
+    {
+      "page.mdx": [
+        "---",
+        'title: "Example"',
+        'description: "Example page."',
+        "---",
+        "",
+        "**After creating a database, configure it.** 1. Click the header.",
+        "## **SQL-powered integration** 1. Click **Setup**.",
+        "### **General formulas** Even outside integrations, this applies.",
+        "**Check the results:** - Rank 1 should be first - Rank 2 should be second",
+      ].join("\n"),
+    },
+    async (root) => {
+      const result = await checkRepository(root);
+
+      assert.equal(result.ok, false);
+      assert.deepEqual(
+        result.findings.map((finding) => finding.code),
+        ["flattened-list", "flattened-list", "flattened-list", "flattened-list"],
+      );
+    },
+  );
+});
+
+test("fixRepository repairs possessive bold splits", async () => {
+  await withFixture(
+    {
+      "page.mdx": [
+        "---",
+        'title: "Example"',
+        'description: "Example page."',
+        "---",
+        "",
+        "Filters evaluate based on **this month’** svalues.",
+      ].join("\n"),
+    },
+    async (root) => {
+      const redResult = await checkRepository(root);
+      const fixResult = await fixRepository(root);
+      const checkResult = await checkRepository(root);
+      const page = await readFile(join(root, "page.mdx"), "utf8");
+
+      assert.equal(redResult.ok, false);
+      assert.deepEqual(
+        redResult.findings.map((finding) => finding.code),
+        ["bold-possessive-boundary"],
+      );
+      assert.equal(fixResult.changedFiles, 1);
+      assert.equal(checkResult.ok, true);
+      assert.match(page, /\*\*this month’s\*\* values/);
+    },
+  );
+});

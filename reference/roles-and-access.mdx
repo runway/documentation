@@ -1,6 +1,83 @@
 ---
-title: "Roles & access matrix"
-description: "Compare Runway roles and access levels across organization and page permissions."
+title: "Roles and access"
+description: "Compare Runway organization roles, default capabilities, and resource access levels."
 ---
 
-{/* CONTENT PENDING: filled in phases 2–4 */}
+Use roles and access levels together when you need to decide what someone can do in a workspace and on a specific shared resource.
+
+{/* GENERATED:roles START */}
+## Organization roles
+
+Runway roles are strictly hierarchical: Owner > Admin > Manager > Member > Guest > Anonymous user. A user's role caps what per-resource access can grant.
+
+| Role | Product description |
+| --- | --- |
+| Owner | No product description encoded. |
+| Admin | Can configure the model, workspace settings, and all workspace info. |
+| Manager | Can trace and edit models, create scenarios, and access shared information in the workspace. |
+| Member | Can trace models, create scenarios, and access shared information in the workspace. |
+| Guest | Can view pages and data that have been shared with them. |
+| Anonymous user | No product description encoded. |
+
+## Default capability matrix
+
+This matrix shows the default system ACLs seeded for each role. A check means the default ACL grants that capability; a dash means it is not granted by the default ACL or is explicitly denied.
+
+| Capability | Owner | Admin | Manager | Member | Guest | Anonymous user |
+| --- | --- | --- | --- | --- | --- | --- |
+| All resources - Full access | ✓ | ✓ | ✓ | — | — | — |
+| Scenario resources - Can merge | — | — | — | — | — | — |
+| Integration - Full access | — | — | — | — | — | — |
+| Integration query - Full access | — | — | — | — | — | — |
+| Integration schema - Full access | — | — | — | — | — | — |
+| Integration table - Full access | — | — | — | — | — | — |
+| Integration table column - Full access | — | — | — | — | — | — |
+| Dimension - Can view | — | — | ✓ | — | — | — |
+| Dimension - Can create | — | — | — | — | — | — |
+| Dimension - Can edit | — | — | — | — | — | — |
+| Section - Can delete | — | — | — | — | — | — |
+| Unlisted drivers - Full access | — | — | — | — | — | — |
+| Access control - Full access | — | — | — | — | — | — |
+| Entity anonymization - Full access | — | — | — | — | — | — |
+| Scenario - Full access | — | — | — | — | — | — |
+| Scenario (default layer) - Can view | — | — | ✓ | ✓ | — | — |
+| Scenario - Can create | — | — | ✓ | ✓ | — | — |
+| Integration - Can create | — | — | ✓ | — | — | — |
+| Database column - Full access | — | — | — | — | — | — |
+| External driver - Full access | — | — | — | — | — | — |
+| Database lookups - Full access | — | — | — | — | — | — |
+| All resources - Can create | — | — | — | — | — | — |
+| Search - Full access | — | — | — | ✓ | — | — |
+
+Guest and Anonymous user have no default ACLs; they only receive access that is explicitly shared.
+
+## Resource access levels
+
+| Resource type | Access level | Description |
+| --- | --- | --- |
+| Pages | Full access | Can edit, delete, and share the page. |
+| Pages | Can edit | Can edit page content, but not share or delete the page. |
+| Pages | Can view | Can view the page but can not edit or add other users. |
+| Pages | No access | Cannot view or access the page. |
+| Sections | Full access | Can edit, delete, and share this section. |
+| Sections | Can view | Can view this section and its contents. |
+| Sections | No access | Cannot view this section. |
+| Blocks | Full access | Can edit, delete, and share this block. |
+| Blocks | Can view | Can view this block and its contents. |
+| Blocks | Can drill in | Allow people to drill in to see the inputs for a given row. |
+| Blocks | No access | Cannot view this block. |
+| Scenarios | Full access | Can edit, delete, merge, and share this scenario. |
+| Scenarios | Can view | Can view this scenario. |
+| Scenarios | Can merge | Allow people to merge this scenario. |
+| Scenarios | No access | Cannot view this scenario. |
+| Database columns | Can view | Can view this column's data. |
+| Database columns | No access | Cannot view this column's data. |
+
+Role and resource access combine by taking the narrower result: the role sets the user's maximum workspace capability, and the resource access level controls what they can do on a specific page, section, block, scenario, or database column.
+
+## What's next
+
+- [Manage permissions](/guides/sharing/permissions)
+- [Create share links](/guides/sharing/share-links)
+- [Manage groups](/guides/sharing/groups)
+{/* GENERATED:roles END */}

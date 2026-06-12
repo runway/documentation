@@ -25,6 +25,14 @@ jobs:
       - name: Sweep Markdown artifacts
         run: node scripts/sweep-artifacts.mjs --check
 
+      - name: Check generated reference pages
+        # This check needs a local runway/runway checkout. Set RUNWAY_REPO to enable it.
+        if: ${{ env.RUNWAY_REPO != '' }}
+        continue-on-error: true
+        run: |
+          node scripts/generate-references.mjs functions --runway-repo "$RUNWAY_REPO" --check
+          node scripts/generate-references.mjs shortcuts --runway-repo "$RUNWAY_REPO" --check
+
       - name: Check forbidden links and local asset references
         # sweep-artifacts.mjs also fails on forbidden public-docs domains and missing /images or /videos references.
         run: node scripts/sweep-artifacts.mjs --check

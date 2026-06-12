@@ -1,43 +1,193 @@
 ---
-title: "Keyboard Shortcuts"
-description: "Reference common keyboard shortcuts for editing, navigation, driver management, search, and context menus in Runway."
+title: "Keyboard shortcuts"
+description: "Reference keyboard shortcuts for navigation, editing, formulas, driver grids, and page actions in Runway."
 ---
 
-Use `Cmd` on Mac or `Ctrl` on Windows.
+Use keyboard shortcuts to move through Runway faster when you are editing formulas, driver grids, pages, and scenarios.
 
-### **Editing and navigation**
+{/* GENERATED:shortcuts START */}
+The tables below use the shortcut registry from the Runway webapp. `Cmd+Shift+S` has two contexts: it strikes selected text in text editing surfaces and reveals the current page in the sidebar in grid and page contexts.
 
-- `Enter`: Edit cell or save (if already editing)
-- `Shift` + `Enter`: Open plan picker
-- `Cmd` + `Enter`: Toggle drill-in in driver tables
-- `Cmd` + `Option` + `Enter`: Collapse this level of drill-in in driver tables
-- `Shift` + `Select` or `Arrow`: Select drivers or data cells
-- `Option` + `Shift` + `A`: Hide or show the **Actual Formula** column
-- `Option` + `Shift` + `F`: Hide or show the **Forecast Formula** column
+<Tabs>
+  <Tab title="Mac">
+    ### Navigation
 
-### **Copy, paste, and undo/redo**
+    | Action | Shortcut | Registered hotkeys |
+    | --- | --- | --- |
+    | Open search | `⌘ K` | `Cmd+K, Ctrl+K` |
+    | Open the selected item's detail view | `⌘ ⇧ ⏎` | `Cmd+Shift+Enter, Ctrl+Shift+Enter` |
+    | Move to the previous item in the detail pane | `⌃ ⇧ K` | `Ctrl+Shift+K` |
+    | Move to the next item in the detail pane | `⌃ ⇧ J` | `Ctrl+Shift+J` |
+    | Move to the next cell | `Tab` | `Tab` |
+    | Move to the previous cell | `⇧ Tab` | `Shift+Tab` |
+    | Reveal the current page in the sidebar (in grids and pages) | `⌘ ⇧ S` | `Cmd+Shift+S, Ctrl+Shift+S` |
+    | Move up | `↑` | `Up` |
+    | Move down | `↓` | `Down` |
+    | Move to the top edge of the current region | `⌘ ↑` | `Cmd+Up, Ctrl+Up` |
+    | Move to the bottom edge of the current region | `⌘ ↓` | `Cmd+Down, Ctrl+Down` |
+    | Extend selection up | `⇧ ↑` | `Shift+Up` |
+    | Extend selection down | `⇧ ↓` | `Shift+Down` |
+    | Extend selection to the top edge of the current region | `⌘ ⇧ ↑` | `Cmd+Shift+Up, Ctrl+Shift+Up` |
+    | Extend selection to the bottom edge of the current region | `⌘ ⇧ ↓` | `Cmd+Shift+Down, Ctrl+Shift+Down` |
+    | Move left | `←` | `Left` |
+    | Move right | `→` | `Right` |
+    | Move to the left edge of the current region | `⌘ ←` | `Cmd+Left, Ctrl+Left` |
+    | Move to the right edge of the current region | `⌘ →` | `Cmd+Right, Ctrl+Right` |
+    | Extend selection left | `⇧ ←` | `Shift+Left` |
+    | Extend selection right | `⇧ →` | `Shift+Right` |
+    | Extend selection to the left edge of the current region | `⌘ ⇧ ←` | `Cmd+Shift+Left, Ctrl+Shift+Left` |
+    | Extend selection to the right edge of the current region | `⌘ ⇧ →` | `Cmd+Shift+Right, Ctrl+Shift+Right` |
+    | Collapse or expand the sidebar | `⌘ /` | `Cmd+/, Ctrl+/` |
 
-- `Cmd` + `C`: Copy
-- `Cmd` + `V`: Paste
-  - Drivers and data values can both be pasted, but must be done separately.
-  - To paste into an empty group, select an existing driver first, then use `Cmd` + `V` to paste below.
-- `Cmd` + `Z`: Undo
-- `Cmd` + `Shift` + `Z`: Redo
+    ### Editing & formatting
 
-### **Driver management**
+    | Action | Shortcut | Registered hotkeys |
+    | --- | --- | --- |
+    | Delete selected content or remove the selected driver from a block | `⌫` | `Backspace, Delete` |
+    | Delete the selected driver or item | `⇧ ⌫` | `Shift+Backspace, Shift+Delete` |
+    | Bold selected text | `⌘ B` | `Cmd+B, Ctrl+B` |
+    | Underline selected text | `⌘ U` | `Cmd+U, Ctrl+U` |
+    | Italicize selected text | `⌘ I` | `Cmd+I, Ctrl+I` |
+    | Strike selected text (in text) | `⌘ ⇧ S` | `Cmd+Shift+S, Ctrl+Shift+S` |
+    | Undo the latest change | `⌘ Z` | `Cmd+Z, Ctrl+Z` |
+    | Redo the latest change | `⌘ ⇧ Z` | `Cmd+Shift+Z, Ctrl+Shift+Z` |
+    | Redo the latest change on Windows | `⌃ Y` | `Ctrl+Y` |
+    | Increase decimal precision | `⌘ .` | `Cmd+., Ctrl+.` |
+    | Decrease decimal precision | `⌘ ⇧ .` | `Cmd+Shift+., Ctrl+Shift+.` |
+    | Select all | `⌘ A` | `Cmd+A, Ctrl+A` |
 
-- `Backspace`: Remove driver from block (non-destructive)
-- `Shift` + `Backspace`: Delete driver entirely (destructive)
-- `Cmd` + `G`: Group selected drivers
-- `Cmd` + `D`: Duplicate a driver
-- `Cmd` + `Shift` + `Enter`: Open selected driver’s detail view
-- `Cmd` + `Option` + `=`: Add a driver above the current selection
-- `Cmd` + `Option` + `-`: Add a driver below the current selection
-- `Cmd` + `Shift` + `B`: Add selected drill-in drivers to block
-- `Cmd` + `Option` + `Enter`: Collapse parent drill-in from a striped input line
+    ### Drivers & grids
 
-### **Search, context menu, and add**
+    | Action | Shortcut | Registered hotkeys |
+    | --- | --- | --- |
+    | Indent the selected driver | `⌘ ⌥ ]` | `Cmd+Option+], Ctrl+Option+], Cmd+Alt+], Ctrl+Alt+]` |
+    | Outdent the selected driver | `⌘ ⌥ [` | `Cmd+Option+[, Ctrl+Option+[, Cmd+Alt+[, Ctrl+Alt+[` |
+    | Edit the selected cell, or save the active cell edit | `⏎` | `Enter` |
+    | Open the plan picker in grids | `⇧ ⏎` | `Shift+Enter` |
+    | Toggle drill-in in driver grids | `⌘ ⏎` | `Cmd+Enter, Ctrl+Enter` |
+    | Collapse the parent drill-in in driver grids | `⌘ ⌥ ⏎` | `Cmd+Option+Enter, Ctrl+Option+Enter, Cmd+Alt+Enter, Ctrl+Alt+Enter` |
+    | Duplicate the selected driver | `⌘ D` | `Cmd+D, Ctrl+D` |
+    | Hide the selected drivers or rows | `⌘ ⇧ H` | `Cmd+Shift+H, Ctrl+Shift+H` |
+    | Group selected drivers | `⌘ G` | `Cmd+G, Ctrl+G` |
+    | Hide or show driver names | `⌥ N` | `Option+N, Alt+N` |
+    | Hide or show segment attributes | `⌥ S` | `Option+S, Alt+S` |
+    | Toggle driver formatting | `⌥ F` | `Option+F, Alt+F` |
+    | Add selected drill-in drivers to the block | `⌘ ⇧ B` | `Cmd+Shift+B, Ctrl+Shift+B` |
+    | Insert a driver above the current selection | `⌘ ⌥ =` | `Cmd+Option+=, Ctrl+Option+=, Cmd+Alt+=, Ctrl+Alt+=` |
+    | Insert a driver below the current selection | `⌘ ⌥ -` | `Cmd+Option+-, Ctrl+Option+-, Cmd+Alt+-, Ctrl+Alt+-` |
 
-- `Cmd` + `K`: Search
-- `Cmd` + `/`: Open the context menu directly in a driver grid
-- `/`: Add a block on a page
+    ### Formulas
+
+    | Action | Shortcut | Registered hotkeys |
+    | --- | --- | --- |
+    | Hide or show the Forecast Formula column | `⌥ ⇧ F` | `Option+Shift+F, Alt+Shift+F` |
+    | Hide or show the Actual Formula column | `⌥ ⇧ A` | `Option+Shift+A, Alt+Shift+A` |
+    | Pin or unpin formula columns | `⌘ ⌥ P` | `Cmd+Option+P, Ctrl+Option+P, Cmd+Alt+P, Ctrl+Alt+P` |
+
+    ### Blocks & pages
+
+    | Action | Shortcut | Registered hotkeys |
+    | --- | --- | --- |
+    | Merge the selected scenario | `⌘ ⇧ M` | `Cmd+Shift+M, Ctrl+Shift+M` |
+
+    ### General
+
+    | Action | Shortcut | Registered hotkeys |
+    | --- | --- | --- |
+    | Close the active overlay or clear the current keyboard state | `Esc` | `Esc` |
+    | Open Object Inspector | `⌘ ⇧ T` | `Cmd+Shift+T, Ctrl+Shift+T` |
+    | Reload from the refresh notice | `⌘ R` | `Cmd+R, Ctrl+R` |
+    | Open the developer menu for Runway employees | `⌘ ⇧ 0` | `Cmd+Shift+0, Ctrl+Shift+0` |
+  </Tab>
+  <Tab title="Windows">
+    ### Navigation
+
+    | Action | Shortcut | Registered hotkeys |
+    | --- | --- | --- |
+    | Open search | `Ctrl+K` | `Cmd+K, Ctrl+K` |
+    | Open the selected item's detail view | `Ctrl+⇧+⏎` | `Cmd+Shift+Enter, Ctrl+Shift+Enter` |
+    | Move to the previous item in the detail pane | `Ctrl+⇧+K` | `Ctrl+Shift+K` |
+    | Move to the next item in the detail pane | `Ctrl+⇧+J` | `Ctrl+Shift+J` |
+    | Move to the next cell | `Tab` | `Tab` |
+    | Move to the previous cell | `⇧+Tab` | `Shift+Tab` |
+    | Reveal the current page in the sidebar (in grids and pages) | `Ctrl+⇧+S` | `Cmd+Shift+S, Ctrl+Shift+S` |
+    | Move up | `↑` | `Up` |
+    | Move down | `↓` | `Down` |
+    | Move to the top edge of the current region | `Ctrl+↑` | `Cmd+Up, Ctrl+Up` |
+    | Move to the bottom edge of the current region | `Ctrl+↓` | `Cmd+Down, Ctrl+Down` |
+    | Extend selection up | `⇧+↑` | `Shift+Up` |
+    | Extend selection down | `⇧+↓` | `Shift+Down` |
+    | Extend selection to the top edge of the current region | `Ctrl+⇧+↑` | `Cmd+Shift+Up, Ctrl+Shift+Up` |
+    | Extend selection to the bottom edge of the current region | `Ctrl+⇧+↓` | `Cmd+Shift+Down, Ctrl+Shift+Down` |
+    | Move left | `←` | `Left` |
+    | Move right | `→` | `Right` |
+    | Move to the left edge of the current region | `Ctrl+←` | `Cmd+Left, Ctrl+Left` |
+    | Move to the right edge of the current region | `Ctrl+→` | `Cmd+Right, Ctrl+Right` |
+    | Extend selection left | `⇧+←` | `Shift+Left` |
+    | Extend selection right | `⇧+→` | `Shift+Right` |
+    | Extend selection to the left edge of the current region | `Ctrl+⇧+←` | `Cmd+Shift+Left, Ctrl+Shift+Left` |
+    | Extend selection to the right edge of the current region | `Ctrl+⇧+→` | `Cmd+Shift+Right, Ctrl+Shift+Right` |
+    | Collapse or expand the sidebar | `Ctrl+/` | `Cmd+/, Ctrl+/` |
+
+    ### Editing & formatting
+
+    | Action | Shortcut | Registered hotkeys |
+    | --- | --- | --- |
+    | Delete selected content or remove the selected driver from a block | `⌫` | `Backspace, Delete` |
+    | Delete the selected driver or item | `⇧+⌫` | `Shift+Backspace, Shift+Delete` |
+    | Bold selected text | `Ctrl+B` | `Cmd+B, Ctrl+B` |
+    | Underline selected text | `Ctrl+U` | `Cmd+U, Ctrl+U` |
+    | Italicize selected text | `Ctrl+I` | `Cmd+I, Ctrl+I` |
+    | Strike selected text (in text) | `Ctrl+⇧+S` | `Cmd+Shift+S, Ctrl+Shift+S` |
+    | Undo the latest change | `Ctrl+Z` | `Cmd+Z, Ctrl+Z` |
+    | Redo the latest change | `Ctrl+⇧+Z` | `Cmd+Shift+Z, Ctrl+Shift+Z` |
+    | Redo the latest change on Windows | `Ctrl+Y` | `Ctrl+Y` |
+    | Increase decimal precision | `Ctrl+.` | `Cmd+., Ctrl+.` |
+    | Decrease decimal precision | `Ctrl+⇧+.` | `Cmd+Shift+., Ctrl+Shift+.` |
+    | Select all | `Ctrl+A` | `Cmd+A, Ctrl+A` |
+
+    ### Drivers & grids
+
+    | Action | Shortcut | Registered hotkeys |
+    | --- | --- | --- |
+    | Indent the selected driver | `Ctrl+Alt+]` | `Cmd+Option+], Ctrl+Option+], Cmd+Alt+], Ctrl+Alt+]` |
+    | Outdent the selected driver | `Ctrl+Alt+[` | `Cmd+Option+[, Ctrl+Option+[, Cmd+Alt+[, Ctrl+Alt+[` |
+    | Edit the selected cell, or save the active cell edit | `⏎` | `Enter` |
+    | Open the plan picker in grids | `⇧+⏎` | `Shift+Enter` |
+    | Toggle drill-in in driver grids | `Ctrl+⏎` | `Cmd+Enter, Ctrl+Enter` |
+    | Collapse the parent drill-in in driver grids | `Ctrl+Alt+⏎` | `Cmd+Option+Enter, Ctrl+Option+Enter, Cmd+Alt+Enter, Ctrl+Alt+Enter` |
+    | Duplicate the selected driver | `Ctrl+D` | `Cmd+D, Ctrl+D` |
+    | Hide the selected drivers or rows | `Ctrl+⇧+H` | `Cmd+Shift+H, Ctrl+Shift+H` |
+    | Group selected drivers | `Ctrl+G` | `Cmd+G, Ctrl+G` |
+    | Hide or show driver names | `Alt+N` | `Option+N, Alt+N` |
+    | Hide or show segment attributes | `Alt+S` | `Option+S, Alt+S` |
+    | Toggle driver formatting | `Alt+F` | `Option+F, Alt+F` |
+    | Add selected drill-in drivers to the block | `Ctrl+⇧+B` | `Cmd+Shift+B, Ctrl+Shift+B` |
+    | Insert a driver above the current selection | `Ctrl+Alt+=` | `Cmd+Option+=, Ctrl+Option+=, Cmd+Alt+=, Ctrl+Alt+=` |
+    | Insert a driver below the current selection | `Ctrl+Alt+-` | `Cmd+Option+-, Ctrl+Option+-, Cmd+Alt+-, Ctrl+Alt+-` |
+
+    ### Formulas
+
+    | Action | Shortcut | Registered hotkeys |
+    | --- | --- | --- |
+    | Hide or show the Forecast Formula column | `Alt+⇧+F` | `Option+Shift+F, Alt+Shift+F` |
+    | Hide or show the Actual Formula column | `Alt+⇧+A` | `Option+Shift+A, Alt+Shift+A` |
+    | Pin or unpin formula columns | `Ctrl+Alt+P` | `Cmd+Option+P, Ctrl+Option+P, Cmd+Alt+P, Ctrl+Alt+P` |
+
+    ### Blocks & pages
+
+    | Action | Shortcut | Registered hotkeys |
+    | --- | --- | --- |
+    | Merge the selected scenario | `Ctrl+⇧+M` | `Cmd+Shift+M, Ctrl+Shift+M` |
+
+    ### General
+
+    | Action | Shortcut | Registered hotkeys |
+    | --- | --- | --- |
+    | Close the active overlay or clear the current keyboard state | `Esc` | `Esc` |
+    | Open Object Inspector | `Ctrl+⇧+T` | `Cmd+Shift+T, Ctrl+Shift+T` |
+    | Reload from the refresh notice | `Ctrl+R` | `Cmd+R, Ctrl+R` |
+    | Open the developer menu for Runway employees | `Ctrl+⇧+0` | `Cmd+Shift+0, Ctrl+Shift+0` |
+  </Tab>
+</Tabs>
+{/* GENERATED:shortcuts END */}

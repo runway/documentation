@@ -14,6 +14,19 @@ npx mint dev
 
 Read `STYLE.md` before editing docs. It covers page structure, voice, terminology, links, screenshots, videos, and truth checks.
 
+## Reference Generation
+
+Reference pages for formula functions, keyboard shortcuts, roles, and integrations contain generated blocks. Regenerate a block from a local `runway/runway` checkout with:
+
+```bash
+node scripts/generate-references.mjs functions --runway-repo /path/to/runway
+node scripts/generate-references.mjs shortcuts --runway-repo /path/to/runway
+node scripts/generate-references.mjs roles --runway-repo /path/to/runway
+node scripts/generate-references.mjs integrations --runway-repo /path/to/runway
+```
+
+To check for drift without writing files, add `--check`.
+
 ## Assets
 
 - Put screenshots under `images/<section>/<page>/` with stable descriptive filenames.

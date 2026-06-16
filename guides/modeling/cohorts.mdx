@@ -9,13 +9,13 @@ Unlike standard time-series forecasting, cohort models let you isolate trends ac
 - What’s the cumulative revenue impact of our March enterprise cohort?
 - Where is growth accelerating or tapering across segments?
 
-here are a few characteristics that make cohort modeling a bit more specialized:
+Here are a few characteristics that make cohort modeling a bit more specialized:
 
 - **Data source configuration:** Cohorts are typically made up of many individual entities—like deals from a CRM or users from a database. To fully leverage this data in Runway, some setup is required.
 - **Granularity:** Instead of tracking individual rows or events, cohort models group data into time-based cohorts and analyze patterns across those cohorts.
 - **Relative timing:** Most modeling in Runway is calendar-based (month-by-month). With cohort modeling, assumptions are often made on a _relative_ timeline—for example, 3 months after a cohort’s start.
 
-This guide walks through how to build a flexible, forward-looking cohort model using age-based assumptions. While the example shown is for demo purposes, you can adapt the same concepts to fit your own forecasting needs. You can also explore the full model [in this Runway example](https://app.runway.com/model-beta/page/568976e8-9bf1-464c-8e33-d42076114470).
+This guide walks through how to build a flexible, forward-looking cohort model using age-based assumptions. While the example shown is for demo purposes, you can adapt the same concepts to fit your own forecasting needs.
 
 We’ll walk through how to:
 
@@ -42,7 +42,7 @@ To configure a new source data database:
    <Info>
      **We recommend enabling “Most Recent Value”** — this ensures values continue to apply in future months beyond the start month. [Read more about filling sparse data here](https://docs.runway.com/guides/modeling/propagating-sparse-data).
    </Info>
-   ![Step1 Drivers Pn](/images/cohorts/step1-drivers.png)
+   ![Step1 Drivers](/images/cohorts/step1-drivers.png)
 
 ### Segment by and Other columns
 
@@ -57,7 +57,7 @@ To configure a new source data database:
 2. Use **Other columns** to bring in any extra metadata you want available in the model.
 3. Once your configuration looks good, press **Confirm**.
 
-![Step1 Segment By Pn](/images/cohorts/step1-segment-by.png)
+![Step1 Segment By](/images/cohorts/step1-segment-by.png)
 
 For more detail on database configuration [see article](https://docs.runway.com/concepts/databases/databases-basics#configuring-a-database).
 
@@ -71,7 +71,7 @@ The next step is making sure your cohort data is modeled correctly across time �
 
    This ensures that the **“Most Recent Value”** is carried forward even _beyond_ the Last Close.
 
-   ![Step2 Gi](/images/cohorts/step2.gif)
+   ![Step2](/images/cohorts/step2.gif)
 2. **Use Timeseries view to manage formulas**.
 
    Switch your database view under **Customize \> View as \> Timeseries** to easily manage formulas across all drivers and trace how values flow from one driver to the next.
@@ -84,9 +84,7 @@ In this step, you'll group your source data by cohort so you can model at the co
 
 Steps:
 
-1. **Create a new database**
-
-   This will show one segment per cohort. A name like **Cohort Model** works well.
+1. **Create a new database** This will show one segment per cohort. A name like **Cohort Model** works well.
 2. **Configure the source**
 
    Point the cohort database to the one holding your individual customer or deal-level data.
@@ -94,8 +92,7 @@ Steps:
    <Info>
      If you're importing already-cohorted data directly from a data warehouse (e.g. via Snowflake or BigQuery), select the appropriate integration query as your source instead of referencing another Runway database.
    </Info>
-3. **Drivers**
-   - Bring in the **cohort start month** as a driver — this allows for time-based modeling.
+3. **Drivers** - Bring in the **cohort start month** as a driver — this allows for time-based modeling.
    - Include any drivers you want to aggregate and model at the cohort level, such as: `Seats`, `Contract value`, `Revenue`.
 4. **Segment by**
    - Select the dimension that defines cohort start (e.g. `Contract Start`).
@@ -109,7 +106,7 @@ Now that each cohort is set up as its own segment, the next step is to add colum
 
    This driver calculates the number of months since each cohort started. It allows you to apply the right assumptions in the right month based on cohort age.
 
-   ![Step3 Pn](/images/cohorts/step3.png)
+   ![Step3](/images/cohorts/step3.png)
 2. Add drivers for **key cohort metrics**
 
    If there are parts of your model (like churn rate, expansion revenue, etc.) that aren’t available in the source data:
@@ -150,7 +147,7 @@ Here’s how to set it up:
 
 Each of these five steps is labeled in the annotated screenshot below:
 
-![Step4 Pn](/images/cohorts/step4.png)
+![Step4](/images/cohorts/step4.png)
 
 ## Step 5: Applying your assumptions in cohort forecasts
 
@@ -158,7 +155,7 @@ With both your **Cohorts database** and **Assumptions database** set up, you can
 
 In your **Cohorts database**, use the cohort’s **age** and the dynamic filtering capability of **This Segment** to fetch and apply the right assumption values for each month.
 
-![Step5 Pn](/images/cohorts/step5.png)
+![Step5](/images/cohorts/step5.png)
 
 <Info>
   This is just one example. Your cohort model may use different logic and multiple drivers — and that’s totally supported. You can build forecasts that combine various assumptions, metrics, and time-based rules.
@@ -166,7 +163,7 @@ In your **Cohorts database**, use the cohort’s **age** and the dynamic filteri
 
 ## Step 6: Aggregating your cohorts into a consolidated overview
 
-The final step is to create a c**onsolidated overview** — a high-level rollup of all cohorts into the segments that matter most for your business. This view makes it easy to analyze trends at a glance while preserving the ability to drill into specific cohorts and underlying customer data.
+The final step is to create a **consolidated overview** — a high-level rollup of all cohorts into the segments that matter most for your business. This view makes it easy to analyze trends at a glance while preserving the ability to drill into specific cohorts and underlying customer data.
 
 Example: Summarizing by tier
 
@@ -183,8 +180,8 @@ You’ll now see one row per tier — a clear overview of performance by segment
 
 The video below shows how to configure the Consolidated Overview and how to drill in from the top-level view down to specific assumptions, cohorts, and customers.
 
-<video muted autoplay="true" loop controls playsinline="true" class="doc-video" src="https://documentation.runwaydev.com/videos/cohorts-step6.mp4" />
+<video muted autoplay="true" loop controls playsinline="true" class="doc-video" src="/videos/cohorts-step6.mp4" />
 
 Cohort modeling is famously nuanced. If you’d like help applying these ideas to your own setup, don’t hesitate to reach out to your CXM — they’re here to help.
 
-Happy modeling\!
+Happy modeling!

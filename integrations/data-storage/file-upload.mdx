@@ -73,7 +73,7 @@ After running your File Upload query:
 
 <Accordion title="What happens if my CSV file is larger than 50MB?" icon="sparkles">
   Files larger than 50MB cannot be uploaded. You'll need to either:
-  
+
   - **Split your file** into smaller CSV files and create multiple File Upload queries.
   - **Aggregate your data** before exporting to reduce the file size.
   - Use a [data warehouse](https://docs.runway.com/integrations/data-storage/data-warehouses) integration for larger datasets.
@@ -85,18 +85,18 @@ After running your File Upload query:
 
 <Accordion title="What CSV formats are supported?" icon="sparkles">
   Runway supports standard CSV files with:
-  
+
   - **Comma-separated values** (`,` as delimiter)
   - **Column headers** in the first row
   - **At least one data row** below the headers
   - **Date columns** formatted as **MM/DD/YYYY** (e.g., `01/15/2024`)
-  
+
   The CSV parser is flexible and handles quoted fields and leading/trailing spaces automatically.
 </Accordion>
 
 <Accordion title="Why isn't my uploaded file showing data?" icon="sparkles">
   If you don't see data after uploading and running the query, check:
-  
+
   - Your CSV file has **column headers** in the first row.
   - There is **at least one data row** below the headers.
   - The file is **properly formatted** as a CSV (not Excel or other formats).
@@ -105,7 +105,7 @@ After running your File Upload query:
 
 <Accordion title="Can I edit the CSV data directly in Runway?" icon="sparkles">
   No. File Upload queries are read-only. To modify the data, you need to:
-  
+
   1. Edit your CSV file outside of Runway.
   2. Upload the updated CSV file.
   3. Click **Run query** to refresh the data.

@@ -1,0 +1,126 @@
+---
+title: "Integration catalog"
+description: "Review the integrations Runway offers and the route each connection uses."
+---
+
+Use the integration catalog to confirm which sources Runway offers directly and which route each connection uses before planning an import.
+
+{/* GENERATED:integrations START */}
+## Accounting
+
+| Integration | Connection route | Notes |
+| --- | --- | --- |
+| NetSuite | Workato | SQL-queryable |
+| NetSuite SuiteAnalytics (Fivetran) | Fivetran | SQL-queryable |
+| Puzzle | native |  |
+| QuickBooks Online | Merge | Multi-account support; Merge passthrough SQL when enabled |
+| Xero | Merge | Multi-account support; Merge passthrough SQL when enabled |
+| Xero | native | Multi-account support; Unified Xero connection route |
+| Xero (Fivetran) | Fivetran | Multi-account support; SQL-queryable |
+
+## HRIS
+
+| Integration | Connection route | Notes |
+| --- | --- | --- |
+| ADP Workforce Now | Merge |  |
+| Altera Payroll | Merge |  |
+| BambooHR | Merge |  |
+| Breathe | Merge |  |
+| Charlie | Merge |  |
+| ChartHop | Merge |  |
+| ClayHR | Merge |  |
+| Dayforce | Merge |  |
+| Deel | Merge |  |
+| Factorial | Merge |  |
+| Freshteam | Merge |  |
+| Google Workspace | Merge |  |
+| Gusto | Merge |  |
+| Hibob | Merge |  |
+| HR Cloud | Merge |  |
+| HR Partner | Merge |  |
+| Humaans | Merge |  |
+| Insperity Premier | Merge |  |
+| IntelliHR | Merge |  |
+| JumpCloud | Merge |  |
+| Justworks | Merge |  |
+| Kallidus | Merge |  |
+| Keka | Merge |  |
+| Lano | Merge |  |
+| Lucca | Merge |  |
+| Microsoft Entra ID | Merge |  |
+| Namely | Merge |  |
+| Nmbrs | Merge |  |
+| Officient | Merge |  |
+| Okta | Merge |  |
+| OneLogin | Merge |  |
+| PayCaptain | Merge |  |
+| Paychex | Merge |  |
+| Paycom | Merge |  |
+| Paycor | Merge | Multi-account support |
+| Paylocity | Merge |  |
+| PeopleHR | Merge |  |
+| Personio | Merge |  |
+| Proliant | Merge |  |
+| Rippling | native |  |
+| Sage HR | Merge |  |
+| SAP SuccessFactors | Merge |  |
+| Sesame | Merge |  |
+| Simployer | Merge |  |
+| Square Payroll | Merge |  |
+| TriNet | Merge |  |
+| TriNet HR Platform | Merge |  |
+| UKG Pro | Merge |  |
+| UKG Pro Workforce Management | Merge |  |
+| UKG Ready | Merge |  |
+| Workday | Merge |  |
+| Zoho People | Merge |  |
+
+## Revenue & CRM
+
+| Integration | Connection route | Notes |
+| --- | --- | --- |
+| HubSpot | Workato |  |
+| HubSpot (Fivetran) | Fivetran | SQL-queryable |
+| HubSpot default | Workato |  |
+| Pipedrive | Workato |  |
+| Salesforce | Workato |  |
+| Salesforce (Fivetran) | Fivetran | SQL-queryable |
+
+## Data storage & warehouses
+
+| Integration | Connection route | Notes |
+| --- | --- | --- |
+| Airtable | Workato |  |
+| Amazon S3 | Workato |  |
+| Azure Blob Storage | Workato |  |
+| CSV / Raw File Upload | native | Bring CSV or raw files into Runway |
+| Google BigQuery | Workato | SQL-queryable |
+| Google Sheets | Workato |  |
+| Google Sheets (Fivetran) | Fivetran | SQL-queryable |
+| Redshift | Workato | SQL-queryable |
+| REST | Workato |  |
+| Runway API | native |  |
+| Snowflake | Workato | SQL-queryable |
+
+## Other
+
+| Integration | Connection route | Notes |
+| --- | --- | --- |
+| AWS Cost Explorer | Workato |  |
+| Chargebee | Workato |  |
+| Coupa | Workato |  |
+| Facebook Lead Ads | Workato |  |
+| Google Ads | Workato |  |
+| Google Analytics | Workato |  |
+| Looker | Workato |  |
+| Oracle | Workato |  |
+| Oracle Financials Cloud | Workato |  |
+| Ramp | Workato |  |
+| Stripe | Workato |  |
+| Tableau | Workato |  |
+| Zuora | Workato |  |
+
+If your source is not listed here, bring the data into Runway through your warehouse, Google Sheets, CSV or raw file upload, or your own Fivetran account. Runway does not expose the full Fivetran connector universe as a supported catalog.
+
+Catalog note: the webapp multi-account configuration still includes Zenefits, but Zenefits is not in the current Merge offered catalog.
+{/* GENERATED:integrations END */}

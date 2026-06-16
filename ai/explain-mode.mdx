@@ -1,0 +1,78 @@
+---
+title: "Explain Mode"
+description: "Use Explain Mode to understand why a number appears in your Runway model."
+---
+
+Explain Mode lets you ask Runway why a value, formula, chart, query, or page looks the way it does. Use it when you want to understand the model behind a number without tracing every dependency by hand.
+
+## How to use Explain Mode
+
+<Steps>
+  <Step title="Hold Option">
+    Hold **Option** on Mac or **Alt** on Windows while you are anywhere in Runway.
+  </Step>
+  <Step title="Point at something explainable">
+    Hover over or click a highlighted value, row, chart, formula, database cell, SQL editor, or page item.
+  </Step>
+  <Step title="Read the explanation">
+    Runway opens an anchored AI explanation dialog and streams the answer as it works.
+  </Step>
+</Steps>
+
+## What you can explain
+
+### Driver values
+
+Explain a driver row or value cell to see the inputs, formula logic, and period context behind the number. Explain Mode also handles rollup periods such as YTD and QTD, including month-by-month trend context.
+
+### Charts
+
+Explain a driver chart to understand what the chart is showing and how the underlying driver values contribute to the view.
+
+### Formulas
+
+Explain a formula cell to understand how its references, date ranges, actuals logic, and forecast logic work together.
+
+### Variance in BvA comparisons
+
+Explain Mode can analyze variance in BvA comparisons, including contribution percentages from the dependency tree.
+
+### Database cells and columns
+
+Use Explain Mode on database table cells and column headers to understand the source data, formulas, and column meaning.
+
+### SQL queries
+
+Use Explain Mode in a SQL query editor to open an explanation titled **Explain SQL Query**.
+
+### Whole pages
+
+Use Explain Mode on page titles and navigation items to summarize what a page contains and how it is structured.
+
+## The dialog
+
+The explanation streams into a dialog with collapsible thinking steps. From the header, you can start **New conversation**, move the dialog to **Move to floating chat panel** or **Move to sidebar**, or use **Minimize** and **Close**.
+
+<Note>
+  Explain Mode is currently available to org Admins and Owners.
+</Note>
+
+## FAQ
+
+<Accordion title="Why doesn't anything highlight when I hold Option?" defaultOpen="false">
+  Explain Mode only responds on explainable product surfaces. In grids, real data rows respond, while headers and summary rows may not.
+</Accordion>
+
+<Accordion title="Can Explain Mode explain rolled-up periods?" defaultOpen="false">
+  Yes. It can explain rollups such as YTD, QTD, quarter-to-last-close, half-year-to-last-close, and year-to-last-close.
+</Accordion>
+
+<Accordion title="Can every user in my workspace use Explain Mode?" defaultOpen="false">
+  Explain Mode is currently available to org Admins and Owners.
+</Accordion>
+
+## What's next
+
+- [Command Mode](/ai/command-mode)
+- [Driver details pane](/concepts/drivers/driver-details-pane)
+- [Budget vs. actuals](/guides/modeling/bva)

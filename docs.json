@@ -13,9 +13,11 @@
       {
         "group": "Get started",
         "pages": [
-          "get-started/introduction", 
-          "get-started/glossary",
-          "get-started/keyboard-shortcuts"]
+          "get-started/introduction",
+          "get-started/quickstart",
+          "get-started/how-runway-fits-together",
+          "get-started/glossary"
+        ]
       },
       {
         "group": "Concepts",
@@ -36,7 +38,8 @@
             "icon": "list",
             "pages": [
               "concepts/dimensions/dimensions-basics",
-              "concepts/dimensions/segmenting-drivers"
+              "concepts/dimensions/segmenting-drivers",
+              "concepts/dimensions/manual-segments"
             ]
           },
           {
@@ -75,18 +78,32 @@
             "icon": "function",
             "pages": [
               "concepts/formulas/formulas-basics",
-              "concepts/formulas/formulas-syntax",
-              "concepts/formulas/functions-operators",
-              "concepts/last-close"
+              "concepts/formulas/formulas-syntax"
+            ]
+          },
+          {
+            "group": "Actuals & time",
+            "icon": "calendar-check",
+            "pages": [
+              "concepts/last-close",
+              "guides/modeling/forecasting-with-closed-actuals"
             ]
           },
           "concepts/scenarios",
           "concepts/plans",
           "concepts/sidebar"
-          ]
+        ]
       },
       {
-        "group": "Data integrations",
+        "group": "AI in Runway",
+        "pages": [
+          "ai/explain-mode",
+          "ai/command-mode",
+          "ai/connecting-ai-tools"
+        ]
+      },
+      {
+        "group": "Data in",
         "pages": [
           "integrations/intro-to-integrations",
           "integrations/integrations-directory",
@@ -97,7 +114,7 @@
               "integrations/accounting/quickbooks-online",
               "integrations/accounting/xero",
               "integrations/accounting/netsuite",
-              "integrations/multi-entity-integrations"
+              "integrations/accounting/puzzle"
             ]
           },
           {
@@ -130,13 +147,19 @@
               "integrations/data-storage/shared-directory"
             ]
           },
-          "integrations/writing-sql",
+          "integrations/multi-entity-integrations",
+          "integrations/writing-sql"
+        ]
+      },
+      {
+        "group": "Data out",
+        "pages": [
+          "integrations/exporting-csv",
           "integrations/export-api"
         ]
       },
       {
         "group": "Guides",
-        "icon": "pen-paintbrush",
         "pages": [
           {
             "group": "Modeling workflows",
@@ -154,24 +177,89 @@
               "guides/modeling/revenue-recognition",
               "guides/modeling/commissions",
               "guides/modeling/building-p-and-l",
-              "guides/modeling/forecasting-with-closed-actuals",
               "guides/modeling/ranked-lists"
             ]
-          },
-          {
-            "group": "Sharing workflow",
-            "icon": "lock",
-            "pages": [
-              "guides/sharing/adding-users",
-              "guides/sharing/permissions",
-              "guides/sharing/data-anonymization",
-              "guides/sharing/comments"
-            ]
           }
+        ]
+      },
+      {
+        "group": "Sharing & collaboration",
+        "pages": [
+          "guides/sharing/adding-users",
+          "guides/sharing/permissions",
+          "guides/sharing/share-links",
+          "guides/sharing/groups",
+          "guides/sharing/sso",
+          "guides/sharing/data-anonymization",
+          "guides/sharing/comments"
+        ]
+      },
+      {
+        "group": "Reference",
+        "pages": [
+          "concepts/formulas/functions-operators",
+          "get-started/keyboard-shortcuts",
+          "reference/roles-and-access",
+          "reference/integration-catalog",
+          "reference/errors-troubleshooting"
         ]
       }
     ]
   },
+  "redirects": [
+    {
+      "source": "/concepts/drivers",
+      "destination": "/concepts/drivers/drivers-basics"
+    },
+    {
+      "source": "/concepts/dimensions",
+      "destination": "/concepts/dimensions/dimensions-basics"
+    },
+    {
+      "source": "/concepts/databases",
+      "destination": "/concepts/databases/databases-basics"
+    },
+    {
+      "source": "/concepts/models",
+      "destination": "/concepts/models/models-basics"
+    },
+    {
+      "source": "/concepts/pages",
+      "destination": "/concepts/pages/pages-basics"
+    },
+    {
+      "source": "/concepts/formulas",
+      "destination": "/concepts/formulas/formulas-basics"
+    },
+    {
+      "source": "/integrations/accounting",
+      "destination": "/integrations/accounting/quickbooks-online"
+    },
+    {
+      "source": "/integrations/hris",
+      "destination": "/integrations/hris/rippling"
+    },
+    {
+      "source": "/integrations/revenue",
+      "destination": "/integrations/revenue/hubspot"
+    },
+    {
+      "source": "/integrations/data-storage",
+      "destination": "/integrations/data-storage/file-upload"
+    },
+    {
+      "source": "/guides/modeling/fixing-errors",
+      "destination": "/reference/errors-troubleshooting"
+    },
+    {
+      "source": "/guides/sharing/user-roles",
+      "destination": "/guides/sharing/permissions"
+    },
+    {
+      "source": "/guides/sharing/access-levels",
+      "destination": "/guides/sharing/permissions"
+    }
+  ],
   "logo": {
     "light": "/logo/runway-logo-light.svg",
     "dark": "/logo/runway-logo-dark.svg"
@@ -194,8 +282,5 @@
       "x": "https://x.com/runwayco",
       "linkedin": "https://linkedin.com/company/runway"
     }
-  },
-  "chat":{
-    "enabled": false
   }
 }

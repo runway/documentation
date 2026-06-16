@@ -7,7 +7,7 @@ description: "The Stripe integration allows you to automatically sync your balan
 
 1. Click **Setup** on the **Stripe (Fivetran)** integration in the Integrations directory and follow the on-screen authentication process.
 
-   ![Stripe Fivetran Pn](/images/integrations/stripe-fivetran.png)
+   ![Stripe Fivetran](/images/integrations/stripe-fivetran.png)
 2. When prompted to specify the **Historical sync time frame** in Fivetran, select **Sync all historical data**.
    - You’ll need to log into Stripe as an admin to create an API key.
    - Be sure to create a **Restricted Key**.
@@ -22,9 +22,9 @@ description: "The Stripe integration allows you to automatically sync your balan
 4. Once the sync is complete, use our pre-built Stripe templates:
    - In the left sidebar, navigate to **Templates**.
    - Search for **Stripe Balance Transactions**.
-   - Click **\+ Add to Runway** to apply the template and get started quickly.
+   - Click **+ Add to Runway** to apply the template and get started quickly.
 
-   ![Stripe Templates Pn](/images/integrations/stripe-templates.png)
+   ![Stripe Templates](/images/integrations/stripe-templates.png)
 5. Alternatively, you can follow our [SQL guide](https://docs.runway.com/integrations/writing-sql) to customize the existing template or pull additional objects and properties.
 
 ## Stripe FAQs
@@ -34,7 +34,7 @@ description: "The Stripe integration allows you to automatically sync your balan
 </Accordion>
 
 <Accordion title="How do I calculate my New/Upgrade/Downgrade/Churn each month?">
-  1. Start with the Stripe MRR quickstart.
+  1. Start with the Stripe MRR quickstart. It’s available from the in-app template picker during Stripe setup.
   2. In the database, create a new column for New, Upgrade, Downgrade and Churn.
   3. Use Runway formulas to calculate this value based on the MRR amount for each line each month. Our CX team can offer guidance here if you get stuck.
      1. New MRR is: If MRR last month = 0 and MRR this month \> 0, New MRR = MRR this month
@@ -44,9 +44,9 @@ description: "The Stripe integration allows you to automatically sync your balan
 </Accordion>
 
 <Accordion title="How do I pull my revenue recognition schedule from Stripe?">
-  We cannot pull this from stripe at this time. You may be able to calculate it using CRM data or SQL.
+  We cannot pull this from Stripe at this time. You may be able to calculate it using CRM data or SQL.
 </Accordion>
 
-<Accordion title="Why doesn’t my data match the stripe dashboard?">
+<Accordion title="Why doesn’t my data match the Stripe dashboard?">
   Review the SQL and make any adjustments needed. Unfortunately, Stripe does not provide a way to exactly replicate the metrics from their dashboard, and our templates represent our best effort to match them. Please let our team know of any discrepancies—we're happy to check the data.
 </Accordion>

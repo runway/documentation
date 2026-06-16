@@ -3,7 +3,11 @@ title: "NetSuite"
 description: "The NetSuite integration lets you automatically sync your financial data with Runway, eliminating manual data entry and ensuring your actuals stay up to date. With this connection, your financial models always reflect the latest numbers from NetSuite."
 ---
 
-Runway supports **three different ways** to integrate with NetSuite. This guide focuses on **Runway’s preferred and recommended method.**
+Runway supports an in-app quick-start connection and a SQL-powered Fivetran path for NetSuite. This page documents the Fivetran SuiteAnalytics path.
+
+<Note>
+  The quick-start connection starts from the in-app integration directory: go to **Settings → Integrations**, choose NetSuite, and follow the prompts. It syncs a standard set of tables; the rest of this page covers the SQL-powered Fivetran path.
+</Note>
 
 ## Prerequisites
 
@@ -14,16 +18,16 @@ Before getting started, make sure you have:
 
 ## Setting up NetSuite via Fivetran
 
-![Netsuite Fivetran Template Pn](/images/integrations/netsuite-fivetran-template.png)
+![Netsuite Fivetran Template](/images/integrations/netsuite-fivetran-template.png)
 
 ### Connecting the integration
 
 1. Open your [Runway instance](https://app.runway.com/).
-2. In the left sidebar, hover over **Integrations** and click the **\+** button to open the **Integrations Directory**.
-3. Search for **NetSuite** and click **\+ Set up** under the **Fivetran** option.
+2. In the left sidebar, hover over **Integrations** and click the **+** button to open the **Integrations Directory**.
+3. Search for **NetSuite** and click **+ Set up** under the **Fivetran** option.
 4. For the **Schema Name**, leave it as `netsuite_suiteanalytics`.
 
-   ![Netsuite Fivetran Schema Pn](/images/integrations/netsuite-fivetran-schema.png)
+   ![Netsuite Fivetran Schema](/images/integrations/netsuite-fivetran-schema.png)
 5. Click **Authorize** to be redirected to Fivetran to complete the connection.
 6. Follow Fivetran’s setup instructions to finish configuring the integration.
 7. Click **Save & Test** to begin syncing your data. You’ll be redirected back to Runway.
@@ -34,20 +38,18 @@ Runway provides **integration templates** to make it easy to bring in **Income S
 
 1. In the left sidebar, go to **Templates**.
 2. Search for **NetSuite Data Import**.
-3. Click **\+ Add to Runway** on the template card.
+3. Click **+ Add to Runway** on the template card.
 4. This will automatically:
    - Add prebuilt **Income Statement** and **Balance Sheet** queries to your NetSuite integration.
    - Create the following databases in Runway:
      - **IS Data** (Income Statement)
      - **BS Data** (Balance Sheet)
 
-![Netsuite Fivetran Template Pn](/images/integrations/netsuite-fivetran-template.png)
+![Netsuite Fivetran Template](/images/integrations/netsuite-fivetran-template.png)
 
 ## Supported data from NetSuite via Fivetran
 
-When using the NetSuite **Data Import** integration template, the following financial data becomes available in Runway:
-
-**Income statement data**
+When using the NetSuite **Data Import** integration template, the following financial data becomes available in Runway: **Income statement data**
 
 | Data name                           | Example      | Data type     | Availability                                        |
 | :---------------------------------- | :----------- | :------------ | :-------------------------------------------------- |
@@ -98,7 +100,7 @@ When using the NetSuite **Data Import** integration template, the following fina
   - What the field is associated with (e.g. Customer, Vendor, Transaction, or Transaction Line).
   - Bonus: A screenshot from NetSuite’s **Record Explorer** showing how the field is defined.
 
-    ![Netsuite Record Explorer Pn](/images/integrations/netsuite-record-explorer.png)
+    ![Netsuite Record Explorer](/images/integrations/netsuite-record-explorer.png)
 </Accordion>
 
 <Accordion title="Can you bring in non-finance related data from NetSuite?">

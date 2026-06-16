@@ -1,0 +1,56 @@
+---
+title: "SSO & authentication"
+description: "Configure authentication and single sign-on settings for your Runway organization."
+---
+
+Runway supports single sign-on for workspaces that need identity-provider controlled login. Use SSO when users with your company email domain should authenticate through your IdP instead of choosing a personal login method.
+
+## Login options
+
+The login page offers **Continue with Google**, **Continue with Rippling**, **Continue with Microsoft**, **Continue with Xero**, and **Sign in with SSO**.
+
+<Steps>
+  <Step title="Choose SSO">
+    Click **Sign in with SSO** on the login page.
+  </Step>
+  <Step title="Enter your workspace slug">
+    Enter the slug in the form with placeholder **org-url**. The page shows it as `app.runway.com/{slug}`.
+  </Step>
+  <Step title="Continue through your IdP">
+    Complete the login flow in your identity provider.
+  </Step>
+</Steps>
+
+## Enable SSO
+
+SSO is configured by Runway. Contact support to enable SSO for your workspace and connect your WorkOS-supported IdP, such as Okta, Azure AD, or Google SAML.
+
+## IdP-initiated login
+
+IdP-initiated login is supported. Users can start from the Runway tile in the IdP and continue into Runway.
+
+## Domain enforcement and provider pinning
+
+SSO enforcement is based on email domain. Users with matching email domains must use SSO. Outside collaborators, such as investors with non-matching domains, can still use Google, Microsoft, or another available login method.
+
+A user who previously signed in through SSO is pinned to that provider.
+
+## FAQ
+
+<Accordion title="Can I mix SSO and non-SSO users?" defaultOpen="false">
+  Yes. SSO enforcement is by email domain, so matching domains use SSO while outside collaborators can use another available login method.
+</Accordion>
+
+<Accordion title="Can I configure SSO in Runway settings?" defaultOpen="false">
+  No. Runway configures SSO for your workspace. Contact support to enable it.
+</Accordion>
+
+<Accordion title="Which identity providers are supported?" defaultOpen="false">
+  Runway uses WorkOS, so WorkOS-supported IdPs such as Okta, Azure AD, and Google SAML can be connected.
+</Accordion>
+
+## What's next
+
+- [Adding users](/guides/sharing/adding-users)
+- [Permissions](/guides/sharing/permissions)
+- [Roles and access](/reference/roles-and-access)

@@ -1,0 +1,75 @@
+---
+title: "Quickstart: build your first model"
+description: "Build a simple model in Runway and learn the core workflow from setup to sharing."
+---
+
+In this quickstart, you will import a small financial CSV, shape it into a database, create a modeled driver, build a page with a chart and driver table, and share that page with a teammate.
+
+## What you'll build
+
+By the end, you will have a Runway page that shows monthly financial data by department, a summary driver calculated from that data, a chart block, and a driver table block. The workflow uses [this sample CSV](/sample-data/runway-quickstart-financials.csv), so you can complete it before connecting your real systems.
+
+<Steps>
+  <Step title="Get data in">
+    Download [the sample financials CSV](/sample-data/runway-quickstart-financials.csv).
+
+    In Runway, connect the **CSV / Raw File Upload** source from the integrations directory. On the data source page, use **Upload a CSV file** to upload the sample file. The upload area notes: **Max size: 50MB. After uploading, click "Run query" to import/refresh the data.**
+
+    Click **Run query** to import the CSV.
+
+    {/* SCREENSHOT: CSV / Raw File Upload source with the sample CSV uploaded and the Run query action visible */}
+  </Step>
+
+  <Step title="Shape it into a database">
+    In the query settings, choose **Create database directly from query**.
+
+    Use the CSV columns this way:
+
+    - `Date` is the month for each row.
+    - `Account` classifies the financial line item.
+    - `Department` is the dimension you will segment by.
+    - `Amount` is the number you will model.
+
+    Create the database, then scan the rows to confirm that each account and department appears across the monthly date range.
+
+    {/* SCREENSHOT: Query settings showing Create database directly from query and a preview of Date, Account, Department, Amount */}
+  </Step>
+
+  <Step title="Create the page and driver">
+    Create a page for the quickstart model. Click the **+** next to a section, model, database, or page, then type a page name.
+
+    On the page, type **/** and select [**Driver table**](/concepts/pages/drivers-table-block#creating-a-driver-table-block). Use **+ Add driver** to create a number driver called **Total expenses** directly in the block. If you need to insert it next to an existing row, right-click the driver name or open its left-side menu, then select **+ Insert new driver above** or **+ Insert new driver below**.
+
+    Show **Forecast Formula**, open the new driver's formula, and search for the database name or the `Amount` column name. In the search results, select the database column reference in the `database_name.column_name` format. Runway wraps the reference in `sum()`. Click the database name in the formula pill and apply filters so `Account` includes Cost of Goods Sold, Payroll, Software, Travel, and Facilities.
+
+    Open the driver menu, hover over **Dimensions**, then select [**Expand by dimension**](/concepts/dimensions/segmenting-drivers#segmenting-drivers-in-a-model-using-expand-by-dimension). Select `Department` as the dimension so Runway creates one driver segmented by each department value.
+
+    {/* SCREENSHOT: Total expenses driver formula referencing the quickstart database and segmented by Department */}
+  </Step>
+
+  <Step title="Add a chart">
+    Above the driver table, type **/** and select [**Driver charts**](/concepts/pages/charts-block#creating-a-chart-block).
+
+    Choose the existing **Total expenses** driver. New driver charts default to line charts; use **Customize chart** if you want to change the chart type to **Column** or keep **Line**.
+
+    Keep the driver table on the page so the chart shows the trend and the table shows the underlying department segments.
+
+    {/* SCREENSHOT: Page with a chart block above a driver table block showing Total expenses by month */}
+  </Step>
+
+  <Step title="Share it">
+    Click **Share** on the page.
+
+    On the **People** tab, use the invite field with placeholder **Email, name or group, separated by commas**, choose an access level, and click **Add**. Leave **Notify via email** on if you want Runway to send the invite.
+
+    Or open the **Links** tab and use **Copy share link**. If the page should stay private, keep **Require login to access** enabled. If you create a guest link, decide whether to enable **Require password**.
+
+    {/* SCREENSHOT: Share sheet showing People and Links tabs for the finished quickstart page */}
+  </Step>
+</Steps>
+
+## Where to go next
+
+- [How Runway fits together](/get-started/how-runway-fits-together)
+- [Connect your real systems](/integrations/intro-to-integrations)
+- [Scenarios](/concepts/scenarios)

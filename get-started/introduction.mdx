@@ -1,89 +1,95 @@
 ---
 title: "Welcome to Runway"
-description: "Explore Runway with core concepts documentation and step-by-step guides."
+description: "Learn what Runway is, how its building blocks fit together, and where to start."
 ---
 
-![Runway Docs Intro Web](/images/brand/runway-docs-intro.webp)
+![Runway Docs Intro](/images/brand/runway-docs-intro.webp)
 
-Runway is the modern, intuitive way to model, plan, and align your business—built for everyone on your team.
+Runway is where your business gets modeled, planned, and understood — by everyone, not just the finance team. It connects to the systems you already run on, turns them into a living model of your business, and gives your whole team one place to plan against it.
 
-If you’re already a Runway customer, you’ve been assigned a dedicated CXM to support you throughout your journey. We’ve also created this documentation to help you become more self-sufficient and confident in using Runway.
+**New to Runway?** Start here:
 
-Have suggestions for the product or the docs? Drop us a note on Slack or via email—we’d love to hear from you\!
+<Steps>
+  <Step title="Quickstart">
+    [Build your first working model](/get-started/quickstart) in about 30 minutes.
+  </Step>
+  <Step title="How Runway fits together">
+    Learn [the five building blocks](/get-started/how-runway-fits-together) (drivers, dimensions, databases, models, pages) and how they relate.
+  </Step>
+  <Step title="Connect your data">
+    [Bring in accounting, HRIS, and revenue data](/integrations/intro-to-integrations).
+  </Step>
+  <Step title="Share it">
+    [Invite your team](/guides/sharing/adding-users) and control what they see.
+  </Step>
+</Steps>
 
-### Core concepts
-
-Let’s start with the basics. The **Concepts** section of the documentation helps you understand each core building block in Runway. These articles don’t walk through full workflows—instead, they focus on how each concept works on its own, so you can apply it confidently across different use cases.
+## Learn the concepts
 
 <CardGroup cols={3}>
-  <Card title="Drivers" icon="chart-mixed-up-circle-dollar" href="https://docs.runway.com/concepts/drivers">
-    
+  <Card title="Drivers" icon="chart-mixed-up-circle-dollar" href="/concepts/drivers/drivers-basics">
+    The metrics and assumptions that power your model
   </Card>
-  <Card title="Dimensions" icon="list-ul" href="https://docs.runway.com/concepts/dimensions">
-    
+  <Card title="Databases" icon="database" href="/concepts/databases/databases-basics">
+    Structured data from your systems, ready to model
   </Card>
-  <Card title="Databases" icon="database" href="https://docs.runway.com/concepts/databases">
-    
+  <Card title="Dimensions" icon="list" href="/concepts/dimensions/dimensions-basics">
+    Slice anything by department, region, product, and more
   </Card>
-  <Card title="Models" icon="table" href="https://docs.runway.com/concepts/models">
-    
+  <Card title="Models" icon="table" href="/concepts/models/models-basics">
+    Organized workspaces for the drivers behind a part of the business
   </Card>
-  <Card title="Pages" icon="page" href="https://docs.runway.com/concepts/pages">
-    
+  <Card title="Pages" icon="file" href="/concepts/pages/pages-basics">
+    Where models become charts, tables, and narratives
   </Card>
-  <Card title="Formulas" icon="function" href="https://docs.runway.com/concepts/formulas">
-    
+  <Card title="Scenarios" icon="code-branch" href="/concepts/scenarios">
+    Safely explore what-ifs without touching the main model
   </Card>
-  <Card title="Scenarios" icon="code-branch" href="https://docs.runway.com/concepts/scenarios">
-    
-  </Card>
-  <Card title="Plans" icon="timeline-arrow" href="https://docs.runway.com/concepts/plans">
-    
-  </Card>
-  <Card title="Sidebar" icon="sidebar" href="https://docs.runway.com/concepts/sidebar">
-    
+  <Card title="Plans" icon="timeline-arrow" href="/concepts/plans">
+    Tag changes to initiatives and see their impact
   </Card>
 </CardGroup>
 
-### Data integrations
+## Let AI do the work
 
-At the heart of everything you do in Runway is your data—pulled in from the various systems your business runs on. In the **Integrations** section, you’ll find guides for setting up the most common data sources, along with tips for [writing SQL](https://docs.runway.com/integrations/writing-sql) in Runway when needed.
-
-<CardGroup cols={4}>
-  <Card title="Accounting" icon="receipt" href="https://docs.runway.com/integrations/accounting">
-    
+<CardGroup cols={3}>
+  <Card title="Explain Mode" icon="sparkles" href="/ai/explain-mode">
+    Ask why any number is what it is
   </Card>
-  <Card title="HRIS" icon="people-group" href="https://docs.runway.com/integrations/hris">
-    
+  <Card title="Command Mode" icon="wand-magic-sparkles" href="/ai/command-mode">
+    Build charts, pages, and databases by describing them
   </Card>
-  <Card title="Revenue" icon="dollar-sign" href="https://docs.runway.com/integrations/revenue">
-    
-  </Card>
-  <Card title="Data storage" icon="server" href="https://docs.runway.com/integrations/data-storage">
-    
+  <Card title="Connecting AI tools" icon="plug" href="/ai/connecting-ai-tools">
+    Use Runway from Claude and other AI tools via MCP
   </Card>
 </CardGroup>
 
-### Guides
-
-Last but not least, it’s time to put all the concepts into action. In the **Guides** section, you’ll find step-by-step walkthroughs for common use cases—like headcount planning, quota attainment modeling, and more.
+## Follow a guide
 
 <Accordion title="Modeling guides">
-  - [Building a P&L](https://docs.runway.com/guides/modeling/building-p-and-l)
-  - [Revenue recognition](https://docs.runway.com/guides/modeling/revenue-recognition)
-  - [Creating lookups](https://docs.runway.com/guides/modeling/lookups)
-  - [FX rate normalization](https://docs.runway.com/guides/modeling/fx-rate)
-  - [Seasonal forecasting](https://docs.runway.com/guides/modeling/seasonal-forecasting)
-  - [Propagating sparse data](https://docs.runway.com/guides/modeling/propagating-sparse-data)
-  - [Headcount planning](https://docs.runway.com/guides/modeling/headcount-planning)
-  - [Prorated salaries](https://docs.runway.com/guides/modeling/prorated-salaries)
-  - [Quota attainment](https://docs.runway.com/guides/modeling/quota-attainment)
-  - [Cohorts modeling](https://docs.runway.com/guides/modeling/cohorts)
-  - [Budget vs. actuals](https://docs.runway.com/guides/modeling/bva)
+  - [Lookups](/guides/modeling/lookups)
+  - [FX rate](/guides/modeling/fx-rate)
+  - [Seasonal forecasting](/guides/modeling/seasonal-forecasting)
+  - [Propagating sparse data](/guides/modeling/propagating-sparse-data)
+  - [Headcount planning](/guides/modeling/headcount-planning)
+  - [Prorated salaries](/guides/modeling/prorated-salaries)
+  - [Quota attainment](/guides/modeling/quota-attainment)
+  - [Cohorts modeling](/guides/modeling/cohorts)
+  - [Budget vs. actuals](/guides/modeling/bva)
+  - [Revenue recognition](/guides/modeling/revenue-recognition)
+  - [Commissions](/guides/modeling/commissions)
+  - [Building a P&L](/guides/modeling/building-p-and-l)
+  - [Ranked Lists](/guides/modeling/ranked-lists)
 </Accordion>
 
-<Accordion title="Sharing guides">
-  - [Adding new users to your Runway organization](https://docs.runway.com/guides/sharing/adding-users)
-  - [The different user roles & access levels](https://docs.runway.com/guides/sharing/permissions)
-  - [Anonymizing senstitive data like salaries](https://docs.runway.com/guides/sharing/data-anonymization)
+<Accordion title="Sharing & collaboration">
+  - [Adding users](/guides/sharing/adding-users)
+  - [Permissions](/guides/sharing/permissions)
+  - [Share links & guest access](/guides/sharing/share-links)
+  - [Groups](/guides/sharing/groups)
+  - [SSO & authentication](/guides/sharing/sso)
+  - [Data anonymization](/guides/sharing/data-anonymization)
+  - [Comments](/guides/sharing/comments)
 </Accordion>
+
+Questions or feedback? Email [support@runway.com](mailto:support@runway.com). Customers also have a dedicated CXM.

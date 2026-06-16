@@ -1,0 +1,69 @@
+---
+title: "Groups"
+description: "Organize users into groups so you can manage Runway access more efficiently."
+---
+
+Groups let you assign the same access to several people at once. Use groups for teams, departments, board viewers, or any recurring audience that should receive the same sharing settings across resources.
+
+## Create a group from the Share sheet
+
+<Steps>
+  <Step title="Open sharing">
+    Open a resource and click **Share**.
+  </Step>
+  <Step title="Search for a group">
+    In the People tab, use **Type to search or create**.
+  </Step>
+  <Step title="Create the group">
+    Type the group name, choose **Create "\{name\}" group**, then click **Create group**.
+  </Step>
+  <Step title="Add members and access">
+    Add users to the group, then choose the group's access level for the resource.
+  </Step>
+</Steps>
+
+## Manage groups
+
+Use **Manage groups** from the Share sheet to review existing groups. From the group list, use **Add users to group** to update membership or **View group** to inspect a group before sharing with it.
+
+## Share to a group
+
+<Steps>
+  <Step title="Open the People tab">
+    Open **Share**, then select **People**.
+  </Step>
+  <Step title="Find the group">
+    Enter the group name in **Email, name or group, separated by commas**.
+  </Step>
+  <Step title="Choose access">
+    Select the access level, then add the group to the resource.
+  </Step>
+</Steps>
+
+## Inherited access
+
+Some rows show that access comes from a parent resource with **People in**. That means the current resource follows the default access settings from its parent.
+
+If you change inherited access for a resource, Runway asks you to **Change access for \{resourceName\}**. Choose **Change and unlink** when the resource should stop following the parent and keep its own access settings.
+
+Unlinked resources show the banner **Share settings on this \{resourceName\} are unlinked from the default access settings.** Use **Relink** and confirm **Relink share settings** to follow the parent again. Use **Reset to default access level** when you want to discard custom access and return to the default access level.
+
+## FAQ
+
+<Accordion title="Does changing a group update every resource shared with that group?" defaultOpen="false">
+  Membership changes affect the people who receive group access. Each resource still keeps its own access level for that group.
+</Accordion>
+
+<Accordion title="What does unlinking share settings mean?" defaultOpen="false">
+  It means the resource no longer follows the parent resource's default access settings. The resource keeps its own sharing rows until you relink or reset it.
+</Accordion>
+
+<Accordion title="Can I share with a group and individual users?" defaultOpen="false">
+  Yes. A resource can have group rows and individual user rows.
+</Accordion>
+
+## What's next
+
+- [Adding users](/guides/sharing/adding-users)
+- [Share links & guest access](/guides/sharing/share-links)
+- [Permissions](/guides/sharing/permissions)

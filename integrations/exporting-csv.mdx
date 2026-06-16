@@ -1,0 +1,72 @@
+---
+title: "Exporting to CSV"
+description: "Export Runway data to CSV when you need spreadsheet-ready output."
+---
+
+CSV exports give you spreadsheet-ready output from models, databases, driver tables, charts, and raw query results. Use them when you need to analyze Runway data outside the app or share a static extract with another workflow.
+
+## Export a block
+
+Database table blocks, driver grid blocks, and chart blocks include **Export to CSV** in the block menu. This option is also available in read-only views when you have export access.
+
+<Steps>
+  <Step title="Open the block menu">
+    Open the menu for the database table block, driver grid block, or chart block.
+  </Step>
+  <Step title="Export">
+    Select **Export to CSV**.
+  </Step>
+  <Step title="Save the file">
+    Runway downloads a CSV for the block.
+  </Step>
+</Steps>
+
+The filename uses `<Page> - <Block> - <Layer>.csv`. If the block name is unavailable, Runway falls back to `<Page> - <Layer>.csv`.
+
+## Export a page-level CSV
+
+Page-level **Export to CSV** is offered from the topbar page actions menu and the sidebar right-click menu for database pages and model pages with read access. Generic pages cannot be exported as a page-level CSV.
+
+<Steps>
+  <Step title="Open the page actions menu">
+    Open a database page or model page.
+  </Step>
+  <Step title="Choose export">
+    Select **Export to CSV**.
+  </Step>
+  <Step title="Save the file">
+    Runway downloads the CSV using the page and scenario context.
+  </Step>
+</Steps>
+
+## Date range
+
+CSV exports use the block's configured date range. When a block does not define a date range, Runway uses the default window of 12 months before last actuals through 6 months after.
+
+## Export raw query results
+
+Each data-source query's settings includes **Export CSV**. Use it when you need the raw query result rather than the shaped model or page output.
+
+## Permissions
+
+Export requires export permission. Guests can export where they have been granted export access. If you do not have access, Runway shows **You do not have the permissions to export this page.**
+
+## FAQ
+
+<Accordion title="Can I export from read-only mode?" defaultOpen="false">
+  Yes. Block-level **Export to CSV** is available in read-only views when export access is permitted.
+</Accordion>
+
+<Accordion title="Can every page be exported?" defaultOpen="false">
+  No. Page-level export is offered for database pages and model pages. Generic pages cannot be exported page-level.
+</Accordion>
+
+<Accordion title="Can I exclude external tables from a CSV export?" defaultOpen="false">
+  No. Runway does not offer an exclude-ext-tables option for CSV export.
+</Accordion>
+
+## What's next
+
+- [Export API](/integrations/export-api)
+- [Database block](/concepts/pages/database-block)
+- [Drivers table block](/concepts/pages/drivers-table-block)

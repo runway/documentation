@@ -1,0 +1,37 @@
+name: Docs checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  docs-checks:
+    runs-on: ubuntu-latest
+    env:
+      RUNWAY_REPO: ${{ vars.RUNWAY_REPO }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check Mintlify links
+        run: npx --yes mint broken-links
+
+      - name: Sweep Markdown artifacts
+        run: node scripts/sweep-artifacts.mjs --check
+
+      - name: Check generated reference pages
+        # Skip generated drift checks unless CI has a local runway/runway checkout path.
+        if: ${{ env.RUNWAY_REPO != '' }}
+        run: |
+          node scripts/generate-references.mjs functions --runway-repo "$RUNWAY_REPO" --check
+          node scripts/generate-references.mjs shortcuts --runway-repo "$RUNWAY_REPO" --check
+          node scripts/generate-references.mjs integrations --runway-repo "$RUNWAY_REPO" --check
+          node scripts/generate-references.mjs roles --runway-repo "$RUNWAY_REPO" --check

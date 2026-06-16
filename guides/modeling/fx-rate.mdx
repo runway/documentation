@@ -1,5 +1,5 @@
 ---
-title: "FX rate "
+title: "FX rate"
 description: "When working with multiple entities or subsidiaries across different regions, you often need to consolidate financial data into a single reporting currency. Runway makes this possible by allowing you to convert values denominated in different currencies into one unified currency."
 ---
 
@@ -9,7 +9,7 @@ This guide walks you through how to **import exchange rates** and **apply FX con
 
 Start by setting up a Google Sheet that will store your exchange rates.
 
-1. Open Google Sheets by typing `sheet.new` in your browser’s address bar, or go to Google Drive and click **\+ New \> Google Sheets \> Blank spreadsheet**.
+1. Open Google Sheets by typing `sheet.new` in your browser’s address bar, or go to Google Drive and click **+ New \> Google Sheets \> Blank spreadsheet**.
 2. Rename the sheet to something recognizable (e.g., **FX for Runway**).
 3. In cell **A1**, use the `IMPORTRANGE` function to pull in exchange rates from Runway’s [live FX sheet](https://docs.google.com/spreadsheets/d/1gAsVhuVDFbXsztrOShUc8bNEFTEa8h7LIInYUXc1opQ/edit?usp=sharing), powered by [XE.com](http://xe.com/)—the same rates used by QuickBooks and Xero:
 
@@ -23,7 +23,7 @@ Start by setting up a Google Sheet that will store your exchange rates.
    - Go to **Data \> Named ranges**.
    - Give it a name (e.g., `runway_xe_fx`) and click **Done**.
 
-![Step1 Sheet Pn](/images/fx/step1-sheet.png)
+![Step1 Sheet](/images/fx/step1-sheet.png)
 
 ## Step 2: Connect the FX sheet to Runway
 
@@ -182,14 +182,14 @@ Connect the FX Sheet to Runway using the **Google Sheets long data integration**
      - `TO_CURRENCY` — the currency you are converting **into.**
 6. Click **Confirm** to finish setting up the database.
 
-![Step3 Query Pn](/images/fx/step3-query.png)
+![Step3 Query](/images/fx/step3-query.png)
 
 ## Step 4: Apply FX translation to your entity’s financial data
 
 Now that you’ve imported exchange rates, you can use them to convert foreign-currency financial data into a unified currency (e.g., USD).
 
 1. Navigate to the database for a subsidiary operating in a foreign currency (e.g., GBP).
-2. Click **\+ Create New Property** and select **Number Driver**.
+2. Click **+ Create New Property** and select **Number Driver**.
 3. Give the new driver a clear name (e.g., **Amount in USD**) to distinguish it from the original amount driver.
 4. Click the new column’s header and select **Add default formula**.
 5. In the **Default Forecast**, enter your conversion formula:
@@ -199,4 +199,4 @@ Now that you’ve imported exchange rates, you can use them to convert foreign-c
    - Use **division** when converting from a foreign currency to USD, i.e., Amount [_This Segment_] / EOM_AMOUNT [GBP][USD]
    - Use **multiplication** when converting from USD to another currency, i.e., Amount [_This Segment_] \* EOM_AMOUNT [GBP][USD]
 
-   ![Step4 Formula Pn](/images/fx/step4-formula.png)
+   ![Step4 Formula](/images/fx/step4-formula.png)

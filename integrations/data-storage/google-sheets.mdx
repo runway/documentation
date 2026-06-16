@@ -17,7 +17,7 @@ Runway supports two primary formats when importing from Google Sheets: **long da
 
 **Long data** is structured so that each row represents a specific transaction or balance on a particular date. When preparing your Google Sheets data for Runway, ensure it follows a structure similar to the example below:
 
-![images/integrations/sheets/sheets-long-data.png](/images/integrations/sheets/sheets-long-data.png)
+![Sheets Long Data](/images/integrations/sheets/sheets-long-data.png)
 
 ### Wide data
 
@@ -25,26 +25,23 @@ Runway supports two primary formats when importing from Google Sheets: **long da
 
 When preparing your Google Sheets data for Runway, ensure it follows a structure similar to the example below:
 
-![images/integrations/sheets/sheets-wide-data.webp](/images/integrations/sheets/sheets-wide-data.webp)
+![Sheets Wide Data](/images/integrations/sheets/sheets-wide-data.webp)
 
 ## Before you start
 
 Before importing your Google Sheet into Runway, ensure it's clean and correctly formatted to avoid errors. Follow these best practices:
 
-- **Remove extra blank rows and columns**
-  - No empty rows **above, in between, or below** your data table.
-  - Every column should contain **at least one data point**—empty columns will not be imported.
-- **Use clear and simple column headers**
-  - Make headers **short and readable** (e.g., use `"account_name"` instead of `"Account Name (MAPPED)"`).
+- **Remove extra blank rows and columns** — No empty rows **above, in between, or below** your data table.
+  - Every column should contain **at least one data point** — empty columns will not be imported.
+- **Use clear and simple column headers** — Make headers **short and readable** (e.g., use `"account_name"` instead of `"Account Name (MAPPED)"`).
   - Use **consistent naming** for key fields (e.g., `"is_balance_sheet"` instead of `"Balance Sheet?"`).
 - **Format date columns properly**
   - **Long data**: Use **MM/DD/YYYY** format.
   - **Wide data**: Ensure month column headers are in one of these **supported formats**:`"Jan-2006"`, `"Jan 2006"`, `"Jan_2006"`, `"January 2006"`, `"01/2006"`, `"01/06"`, `"01_06"`, `"01_2006"`, `"01-2006"`, `"2006-01"`.
   - [Here’s a Loom on how to format dates correctly](https://www.loom.com/share/d5cedfd346ff4bb296d36eff23fbe5ee).
-- **Ensure numerical data is in proper format**
-  - Remove **currency symbols (\$, €)** and **percent signs (%)**—values should be **pure numbers**.
+- **Ensure numerical data is in proper format** — Remove **currency symbols (\$, €)** and **percent signs (%)** — values should be **pure numbers**.
   - **Wide data**: Replace blanks with `0` to maintain consistency.
-  - [Here’s a Loom on how to quickly fill blanks quickly](https://www.loom.com/share/08aeb90722de429185de299e03a10b45).
+  - [Here’s a Loom on how to quickly fill blanks](https://www.loom.com/share/08aeb90722de429185de299e03a10b45).
 
 ## Connecting a Google Sheet with wide data
 
@@ -56,39 +53,39 @@ Before importing your Google Sheet into Runway, ensure it's clean and correctly 
 
 1. Open Runway, navigate to **Integrations**, and install the Google Sheets integration listed under the **Spreadsheets** section.
 
-   ![images/integrations/sheets/sheets-spreadsheet.png](/images/integrations/sheets/sheets-spreadsheet.png)
+   ![Sheets Spreadsheet](/images/integrations/sheets/sheets-spreadsheet.png)
 2. Click **Sign in with Google** and leave the other settings as default.
 
-   ![images/integrations/sheets/sheets-spreadsheet-setup.png](/images/integrations/sheets/sheets-spreadsheet-setup.png)
-3. Once redirected back into **Runway**, click **\+** next to integration name in the sidebar to create a new query.
+   ![Sheets Spreadsheet Setup](/images/integrations/sheets/sheets-spreadsheet-setup.png)
+3. Once redirected back into **Runway**, click **+** next to integration name in the sidebar to create a new query.
 
-   ![/images/integrations/hubspot/create-query.png\+\_existingInIndexedDbMintlify](/images/integrations/hubspot/create-query.png)
-4. You can then change the default query name, \*\*New query, \*\*to something more descriptive. To do this, click the **three-dots button** next to the query name in the sidebar and select **Rename query**.
+   ![Create Query](/images/integrations/hubspot/create-query.png)
+4. You can then change the default query name, **New query**, to something more descriptive. To do this, click the **three-dots button** next to the query name in the sidebar and select **Rename query**.
 
-   ![/images/integrations/hubspot/rename-query.png\+\_existingInIndexedDbMintlify](/images/integrations/hubspot/rename-query.png)
+   ![Rename Query](/images/integrations/hubspot/rename-query.png)
 5. In **Google Sheets**, navigate to the tab you want to import into Runway. Add `#runway` to the tab name to ensure Runway recognizes it.
 
-   ![images/integrations/sheets/sheets-spreadsheet-tab.png](/images/integrations/sheets/sheets-spreadsheet-tab.png)
+   ![Sheets Spreadsheet Tab](/images/integrations/sheets/sheets-spreadsheet-tab.png)
 6. Copy the **Spreadsheet ID** from the URL:
    1. Example URL:
 
       ```bash
       https://docs.google.com/spreadsheets/d/1gk-Y0tJ64TDCak_z2ELqKHmR9rmqY0f5XR27H-ksxKY/edit?gid=0#gid=0
-      
+
       ```
    2. The Spreadsheet ID is everything between `/d/` and `/edit/`:
 
       ```bash
       1gk-Y0tJ64TDCak_z2ELqKHmR9rmqY0f5XR27H-ksxKY
-      
+
       ```
 7. Paste the **Spreadsheet ID** into Runway and click **Run Query**.
 
-   ![images/integrations/sheets/sheets-spreadsheet-id.png](/images/integrations/sheets/sheets-spreadsheet-id.png)
+   ![Sheets Spreadsheet Id](/images/integrations/sheets/sheets-spreadsheet-id.png)
 8. Verify the data preview:
    - If you see a column named **month** and a column named **value**, Runway successfully converted your **wide data** into a **long data set**.
    - If you see separate columns for each month, there may be formatting issues in your Google Sheet. Refer to the **video walkthrough** at the top of this section for troubleshooting.
-9. You’re all set\! [Now configure a new database.](https://docs.runway.com/concepts/databases/databases-basics#configuring-a-database)
+9. You’re all set! [Now configure a new database.](https://docs.runway.com/concepts/databases/databases-basics#configuring-a-database)
 
 ## Connecting a Google Sheet with long data
 
@@ -96,23 +93,23 @@ Before importing your Google Sheet into Runway, ensure it's clean and correctly 
 
  1. Open **Runway**, navigate to **Integrations**, and install the **Google Sheets integration** listed under the **Fivetran** section.
 
-    ![images/integrations/sheets/sheets-fivetran.png](/images/integrations/sheets/sheets-fivetran.png)
+    ![Sheets Fivetran](/images/integrations/sheets/sheets-fivetran.png)
  2. Leave the **Schema Name** as the default and enter a **Table Name** that accurately represents the data.
     - **Do not include spaces or special characters** in the table name.
     - Click **Authorize**.
 
-    ![images/integrations/sheets/sheets-fivetran-setup.png](/images/integrations/sheets/sheets-fivetran-setup.png)
+    ![Sheets Fivetran Setup](/images/integrations/sheets/sheets-fivetran-setup.png)
  3. You’ll be redirected to **Fivetran** to complete the setup.
  4. Under **Authentication Method**, choose **Authorize Service Account**, then copy the email address provided by Fivetran.
  5. In **Google Sheets**, open your spreadsheet in a **new tab** and **share it with that email address** as a **viewer**.
  6. Select the **headers of the data you want to import** (they must be side by side—**you cannot skip columns**) and create a **named range.** Navigate to **Data \> Named Range**, then give it a **unique and descriptive name**.
 
-    ![images/integrations/sheets/data-range.gif](/images/integrations/sheets/data-range.gif)
+    ![Data Range](/images/integrations/sheets/data-range.gif)
  7. Copy the **entire URL** of your Google Sheet. For example:
 
     ```bash
     https://docs.google.com/spreadsheets/d/1XVd9Qx7UdCiNaRXVPyBCJn_0eMQKF-qq193_KC4hyos/edit?gid=0#gid=0
-    
+
     ```
  8. Go back to **Fivetran** and paste this URL into the **Sheet URL** section.
  9. Click **Find sheet** and select the **named range** you just created.
@@ -122,17 +119,17 @@ Before importing your Google Sheet into Runway, ensure it's clean and correctly 
 13. Rename **New Query** to something descriptive by clicking the **three-dots button** next to the query name in the sidebar and select **Rename query**.
 14. Copy the **suggested commented query**, paste it below in the SQL editor, and click **Run query**.
 
-    ![images/integrations/sheets/sheets-fivetran-commented-query.gif](/images/integrations/sheets/sheets-fivetran-commented-query.gif)
-15. You’re done\\\\\! [Now configure a new database.](https://docs.runway.com/concepts/databases/databases-basics#configuring-a-database)
+    ![Sheets Fivetran Commented Query](/images/integrations/sheets/sheets-fivetran-commented-query.gif)
+15. You’re done! [Now configure a new database.](https://docs.runway.com/concepts/databases/databases-basics#configuring-a-database)
 
-## Google sheets FAQs
+## Google Sheets FAQs
 
 <Accordion title="Can I integrate multiple tabs from a single Google Sheet into Runway?" icon="sparkles">
   Yes. Follow the **Long data integration** instructions and set up multiple integrations—one for each tab you need. Each integration must be configured separately.
 </Accordion>
 
 <Accordion title="Can I integrate long data without using the Fivetran version?" icon="sparkles">
-  Yes, but the **non-Fivetran version only supports one tab at a time and 10,000 rows** per integration. If you need multiple tabs, either \*\*create separate spreadsheets \*\*or specify the tab Runway should pull from by adding #runway to the tab name.
+  Yes, but the **non-Fivetran version only supports one tab at a time and 10,000 rows** per integration. If you need multiple tabs, either **create separate spreadsheets** or specify the tab Runway should pull from by adding #runway to the tab name.
 </Accordion>
 
 <Accordion title="Why is my column not showing up in Runway?" icon="sparkles">
@@ -142,7 +139,7 @@ Before importing your Google Sheet into Runway, ensure it's clean and correctly 
 <Accordion title="How often does this sheet sync to Runway?" icon="sparkles">
   The sync runs **automatically every morning (US Pacific Time)**. You can also **manually trigger a sync** like this:
 
-  ![/images/integrations/resync.png\+\_existingInIndexedDbMintlify](/images/integrations/resync.png)
+  ![Resync](/images/integrations/resync.png)
 </Accordion>
 
 <Accordion title="Can the Fivetran version also sync wide data?" icon="sparkles">

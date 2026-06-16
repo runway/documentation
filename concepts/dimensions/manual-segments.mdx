@@ -1,0 +1,68 @@
+---
+title: "Manual segments"
+description: "Create and manage manual dimension segments when your model needs structure that does not come from a connected data source."
+---
+
+Manual segments let you segment drivers by a dimension you define by hand, without connecting a data source. Use them for planning structures such as departments, regions, products, or custom groups that you want to manage directly in Runway.
+
+## Add manual segments to a database
+
+Manual segments live in the database configuration editor and are available for databases without a data source.
+
+<Steps>
+  <Step title="Open the database configuration editor">
+    Open the database you want to segment and open its configuration editor.
+  </Step>
+  <Step title="Open Segment by">
+    Find the **Segment by** section. New databases without segments show **No segments**.
+  </Step>
+  <Step title="Add a segment">
+    Click **Add segment**.
+  </Step>
+  <Step title="Find or create a segment">
+    Use the **Find or create segment** search field.
+  </Step>
+  <Step title="Choose an existing dimension or create one">
+    Select an existing dimension and choose **Add to Database**, or type a new name and choose **Create segment**.
+  </Step>
+</Steps>
+
+Existing dimensions can show **Add to Database** or **Used by Database** depending on whether the database already uses them.
+
+## How manual segments behave
+
+Hand-made segments key the database the same way integration-derived segments do. After you add the segment, driver columns in the database can use the segment values for formulas, filtering, and dimensional driver references.
+
+## Remove a segment
+
+<Steps>
+  <Step title="Open Segment by">
+    Open the database configuration editor and find **Segment by**.
+  </Step>
+  <Step title="Remove the segment">
+    Remove the segment from the same panel where it was added.
+  </Step>
+  <Step title="Review dependent work">
+    Check formulas and driver references that used the removed segment.
+  </Step>
+</Steps>
+
+## FAQ
+
+<Accordion title="Do manual segments require an integration?" defaultOpen="false">
+  No. Manual segments are for databases without a data source.
+</Accordion>
+
+<Accordion title="Are manual segments different from integration-derived segments?" defaultOpen="false">
+  They are created by hand, but they key the database the same way integration-derived segment keys do.
+</Accordion>
+
+<Accordion title="Can I create a new dimension while segmenting a database?" defaultOpen="false">
+  Yes. Type a new name in **Find or create segment**, then choose **Create segment**.
+</Accordion>
+
+## What's next
+
+- [Segmenting drivers](/concepts/dimensions/segmenting-drivers)
+- [Databases basics](/concepts/databases/databases-basics)
+- [Dimensions basics](/concepts/dimensions/dimensions-basics)

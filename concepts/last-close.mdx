@@ -7,7 +7,7 @@ description: "Last close in Runway is a global, manually adjusted setting that d
 
 It defines the latest month through which **actuals formulas** apply, and from which point **forecast formulas** begin to take over. In other words, it sets the boundary between historical data and your forward-looking assumptions.
 
-![Lastclose Gi](/images/last-close/lastclose.gif)
+![Lastclose](/images/last-close/lastclose.gif)
 
 ## Where to find last close?
 
@@ -15,19 +15,19 @@ You’ll see the **last close** marker appear at the top of a month when viewing
 
 - In a driver table block on a [model](https://docs.runway.com/concepts/models/models-basics) or [page](https://docs.runway.com/concepts/pages/drivers-table-block):
 
-  ![Lastclose In Model Pn](/images/last-close/lastclose-in-model.png)
+  ![Lastclose In Model](/images/last-close/lastclose-in-model.png)
 - In the [detail pane](https://docs.runway.com/concepts/drivers/driver-details-pane) for a driver:
 
-  ![Lastclose In Details Pane Pn](/images/last-close/lastclose-in-details-pane.png)
+  ![Lastclose In Details Pane](/images/last-close/lastclose-in-details-pane.png)
 - When you [expand a database column as a time series](https://docs.runway.com/concepts/databases/databases-basics#show-a-column-as-timeseries):
 
-  ![Lastclose In Db Pn](/images/last-close/lastclose-in-db.png)
+  ![Lastclose In Db](/images/last-close/lastclose-in-db.png)
 - When displaying the entire [database as timeseries](https://docs.runway.com/concepts/databases/databases-basics#show-all-columns-as-timeseries):
 
-  ![Lastclose In Db As Timeseries Pn](/images/last-close/lastclose-in-db-as-timeseries.png)
+  ![Lastclose In Db As Timeseries](/images/last-close/lastclose-in-db-as-timeseries.png)
 - On a [chart](https://docs.runway.com/concepts/pages/charts-block):
 
-  ![Lastclose In Charts Pn](/images/last-close/lastclose-in-charts.png)
+  ![Lastclose In Charts](/images/last-close/lastclose-in-charts.png)
 
 ## When to update last close?
 
@@ -38,9 +38,7 @@ You can update **last close** at any time using the date picker. This setting co
 
 Here are the most common times users update last close:
 
-1. **After monthly close**
-
-   Once your accounting books are closed, move last close forward by one month to reflect the latest actuals in your model. This is typically the [**first step in running a BvA**](https://docs.runway.com/guides/modeling/bva) (Budget vs. Actuals) comparison.
+1. **After monthly close** Once your accounting books are closed, move last close forward by one month to reflect the latest actuals in your model. This is typically the [**first step in running a BvA**](https://docs.runway.com/guides/modeling/bva) (Budget vs. Actuals) comparison.
 2. **For intra-month analysis**
 
    Because Runway syncs actuals data daily, you can move Last Close forward into the current month to preview how actuals are progressing—before books are formally closed. This is especially helpful for keeping tabs on marketing spend, sales activity, or general ledger data mid-month.
@@ -56,12 +54,10 @@ Hardcoded values always take precedence over formulas—whether on the actuals o
 
   If you’ve entered a hardcoded value in a forecast cell after last close, and that driver doesn’t have an actuals formula, moving last close forward will bring that hardcoded value into the actuals section. It will continue to display, as there’s no formula to override it.
 
-  ![Hardcode 1 Gi](/images/last-close/hardcode-1.gif)
-- **Conflicting hardcoded actuals and forecasts**
+  ![Hardcode 1](/images/last-close/hardcode-1.gif)
+- **Conflicting hardcoded actuals and forecasts** If you’ve hardcoded a value **before last close**, and a different hardcoded value for the same month **after last close**, the actuals-side hardcode will take precedence when last close moves forward. For example, if March 2025 has a hardcoded actual of **10M** and a hardcoded forecast of **20M**, moving last close forward into March will display the **10M** value. Move last close back, and the **20M** forecast reappears.
 
-  If you’ve hardcoded a value **before last close**, and a different hardcoded value for the same month in the **after last close**, the actuals-side hardcode will take precedence when last close moves forward. For example, if March 2025 has a hardcoded actual of **10M** and a hardcoded forecast of **20M**, moving last close forward into March will display the **10M** value. Move last close back, and the **20M** forecast reappears.
-
-  ![Hardcodes2 Gi](/images/last-close/hardcodes2.gif)
+  ![Hardcodes2](/images/last-close/hardcodes2.gif)
 
 ## Last close and Plans
 

@@ -1,0 +1,74 @@
+---
+title: "Connecting AI tools (MCP)"
+description: "Connect Claude and other AI tools to Runway through MCP."
+---
+
+Runway exposes a hosted MCP endpoint so Claude and other MCP-capable AI tools can read from your Runway model. Use it when you want an external assistant to search your model, read pages, inspect drivers, or calculate values without giving it write access.
+
+## Setup
+
+<Steps>
+  <Step title="Add the remote MCP server">
+    In your AI client, add `https://api.runway.com/mcp` as a remote MCP server.
+  </Step>
+  <Step title="Sign in to Runway">
+    Your browser opens the Runway login flow through OAuth.
+  </Step>
+  <Step title="Approve access">
+    Approve the connection. The client receives OAuth tokens, so there are no API keys to manage.
+  </Step>
+</Steps>
+
+## Claude setup example
+
+<Steps>
+  <Step title="Open Claude settings">
+    In Claude, open the settings area.
+  </Step>
+  <Step title="Open connectors">
+    Go to the connectors area.
+  </Step>
+  <Step title="Add a custom connector">
+    Add a custom connector with `https://api.runway.com/mcp` as the URL.
+  </Step>
+</Steps>
+
+## What the connection can do
+
+All hosted MCP tools are read-only.
+
+| Capability | Tool | Description |
+|---|---|---|
+| List orgs | `runway_list_accessible_orgs` | List the Runway orgs accessible to the current authenticated user. |
+| Search | `runway_search` | Search a Runway org for pages, drivers, scenarios, and related entities. |
+| Read pages | `runway_read_page` | Read a Runway page and its visible contents. |
+| Read drivers and formulas | `runway_get_driver` | Read metadata and formulas for a Runway driver. |
+| Calculate values | `runway_get_driver_values` | Calculate driver values for one or more scenarios and month keys. |
+| List scenarios | `runway_list_scenarios` | List the published scenarios in a Runway org. |
+
+## Limits and security
+
+- The MCP endpoint is read-only.
+- Access is available to Admin and above.
+- The rate limit is 60 calls per minute per user, tool, and org.
+- Authentication uses OAuth. You do not need to create or store API keys.
+
+## FAQ
+
+<Accordion title="Can an AI tool change my Runway model through MCP?" defaultOpen="false">
+  No. The hosted MCP tools are read-only.
+</Accordion>
+
+<Accordion title="Do I need a Runway API key?" defaultOpen="false">
+  No. The connection uses OAuth through your browser login.
+</Accordion>
+
+<Accordion title="Who can connect an external AI tool?" defaultOpen="false">
+  Hosted MCP access is available to Admin and above.
+</Accordion>
+
+## What's next
+
+- [Command Mode](/ai/command-mode)
+- [Export API](/integrations/export-api)
+- [Roles and access](/reference/roles-and-access)

@@ -1,87 +1,111 @@
 ---
 title: "Drivers basics"
-description: "Drivers are the core building blocks of your model in Runway. They represent timeseries data, allowing you to define, interpret, and connect different parts of your model to track business performance over time."
+description: "Drivers are the core building blocks of your model in Runway. They represent time series data, allowing you to define, interpret, and connect different parts of your model to track business performance over time."
 ---
 
+Drivers are the numbers, dates, and dimension values that power your model over time. Use drivers when you need a business metric or assumption that can be referenced in formulas, shown in tables, visualized in charts, or segmented by dimensions.
+
 <Info>
-  This article focuses on the behavior of drivers in driver tables. Drivers can also be used in databases, which have some additional behavior you can read about [here](https://docs.runway.com/concepts/formulas/formulas-basics#%232-driver-default-column-formulas-in-a-database). 
+  This article focuses on drivers in driver tables. Drivers can also be used in databases, which have additional behavior covered in [Formulas in databases](/concepts/databases/formulas-in-databases).
 </Info>
 
-## What is a Driver?
+## What is a driver?
 
-A **Driver** in Runway is a structured chunk of **timeseries data**. It provides clarity with a **human-readable name**, representing the values that drive your business model—key metrics that shape your bottom line.
+A **driver** in Runway is a structured chunk of **time series data**. It has a human-readable name and represents values that shape your business model, such as revenue, expenses, headcount, renewal dates, or department attributes.
 
-Drivers act as **the primary elements in tables and formulas**, helping you quickly identify and interpret data. Conceptually, a driver is similar to:
+Drivers act as the primary elements in tables and formulas. Conceptually, a driver is similar to:
 
-- A **row** in an Excel model
-- A **variable** in other modeling systems
+- A row in an Excel model
+- A variable in other modeling systems
 
-## Why use Drivers?
+## Why use drivers?
 
 Drivers offer several advantages over traditional spreadsheet modeling:
 
-- **Portable** – Drivers can be referenced in formulas, added to tables, and visualized in charts without dealing with messy cell ranges. They stay synced across your model. You can add any driver to a table by clicking **"Add"** and searching for it.
-- **Time-native** – Every business assumption changes over time. Drivers make it easy to project these changes across different periods.
-- **Dimensional** – Drivers can have **dimensions** that structure your model as complexity grows. More on this in article (LINK: coming soon).
+- **Portable:** Drivers can be referenced in formulas, added to tables, and visualized in charts without dealing with cell ranges. They stay synced across your model.
+- **Time-native:** Every business assumption changes over time. Drivers make it easy to project those changes across months.
+- **Dimensional:** Drivers can use [dimensions](/concepts/dimensions/dimensions-basics) to structure your model as complexity grows.
 
-![images/drivers/basics/drivers.png](/images/drivers/basics/drivers.png)
+<Frame>
+  ![Driver table showing several drivers as monthly time series](/images/drivers/basics/drivers.png)
+</Frame>
 
 ## Driver formulas
 
-Drivers contain **formulas** that define their values across different time periods.
+Drivers contain formulas that define their values across different time periods.
 
-- **Forecast formula** – Calculates projected values for future periods (after the last close).
-- **Actuals formula** – Defines historical values (before the last close).
+- **Forecast formula:** Calculates projected values for future periods after the last close.
+- **Actuals formula:** Defines historical values through the last close.
 
-![images/drivers/basics/forecast-actuals.png](/images/drivers/basics/forecast-actuals.png)
+<Frame>
+  ![Driver table showing forecast and actuals formula columns](/images/drivers/basics/forecast-actuals.png)
+</Frame>
 
 ### Formula inheritance
 
-Runway applies smart defaults to fill in missing formulas when needed. The inheritance hierarchy determines how formulas are applied:
+Runway applies smart defaults to fill in missing formulas when needed. The inheritance hierarchy determines how formulas are applied.
 
-**Actuals formula** inheritance hierarchy:
+**Actuals formula inheritance hierarchy:**
 
-1. Explicitly set **actuals formula** for the driver.
-2. Default actuals formula set for the **database column** the driver belongs to.
-3. Driver's **forecast formula** (if no actuals formula is set).
+| Priority | Rule |
+|---|---|
+| First | Explicitly set actuals formula for the driver. |
+| Next | Default actuals formula set for the database column the driver belongs to. |
+| Fallback | Driver's forecast formula, if no actuals formula is set. |
 
-**Forecast formula** inheritance hierarchy:
+**Forecast formula inheritance hierarchy:**
 
-1. Explicitly set **forecast formula** for the driver.
-2. Default forecast formula set for the **database column** the driver belongs to.
-3. Global default formula: `self.last_month`.
+| Priority | Rule |
+|---|---|
+| First | Explicitly set forecast formula for the driver. |
+| Next | Default forecast formula set for the database column the driver belongs to. |
+| Fallback | Global default formula: the driver's own value from last month (shown in the editor as the driver's name with the **Last month** time period). |
 
-Learn more about formulas in databases
+Learn more about [formulas in databases](/concepts/databases/formulas-in-databases).
 
-![images/drivers/basics/formulas-default.png](/images/drivers/basics/formulas-default.png)
+<Frame>
+  ![Formula editor showing an inherited default formula](/images/drivers/basics/formulas-default.png)
+</Frame>
 
 ### Overriding formula values
 
-Learn more about Plans and hardcoding values, for overriding the value of a driver in a specific month (Coming soon).
+Hardcoding a cell value overrides the formula for that period. Overridden cells are visually marked so you can distinguish them from formula-driven values. You can also tag overrides to a plan to keep the business context attached to the change. Learn more in [Plans](/concepts/plans).
+
+### Drill-ins
+
+When you need to understand why a driver has a value, use [drill-ins](/concepts/drivers/drill-ins) to expand the driver row and inspect the inputs that feed its formula.
 
 ## Driver types
 
-Drivers store **timeseries data** in one of three formats:
+Drivers store time series data in one of three user-facing formats:
 
-- **Numbers** – Used for quantitative values like **revenue, expenses, or headcount**.
-- **Dates** – Used for time-based data like **project start dates or contract renewals**.
-- **Attributes** – Used for dimension values, enabling drivers to store categorical data from dimensions. This is particularly useful when working with HRIS data or other sources where you need to track dimension-based attributes over time.
+- **Number:** Quantitative values like revenue, expenses, or headcount.
+- **Date:** Time-based values like project start dates or contract renewals.
+- **Dimension:** Categorical values from dimensions, often used when working with HRIS data or other segmented sources.
 
 <Note>
-  When entering explicit dates in formulas, use the format 'YYYY-MM-DD' (enclosed in single quotes).
+  When entering explicit dates in formulas, use the format `YYYY-MM-DD` enclosed in single quotes.
 </Note>
 
-![images/drivers/basics/driver-types.png](/images/drivers/basics/driver-types.png)
+<Frame>
+  ![Driver type menu showing number, date, and dimension options](/images/drivers/basics/driver-types.png)
+</Frame>
 
-In **driver tables**, new drivers default to the **Number** type. You can change this by **right-clicking** the driver and selecting **Format and display.**
+In driver tables, new drivers default to the **Number** type. You can change the type later from **Format and display**.
 
-The type can be updated later, but with some constraints:
+The type can be updated later, but with constraints:
 
-- **Driver formulas must output values matching the driver’s type** (Number or Date).
-- **Certain functions only accept specific data types**.
+- Driver formulas must output values that match the driver's type.
+- Date functions that return dates require Date drivers.
 
 <Warning>
-  If these constraints aren’t met, the driver’s values will display a **TYPE error**, indicating a mismatch between the formula output and driver type.
+  If a driver formula outputs an incompatible type, the cell displays a `TYPE` error. The tooltip explains that the driver or one of its formula inputs is performing an operation across incompatible types or resolves to a non numeric value.
 </Warning>
 
-We tend to find that Date drivers are most useful when working with drivers in databases (LINK: coming soon).
+Date drivers are most useful when working with [drivers in databases](/concepts/databases/formulas-in-databases).
+
+## What's next
+
+- [Formulas basics](/concepts/formulas/formulas-basics)
+- [Drill-ins](/concepts/drivers/drill-ins)
+- [Segmenting drivers](/concepts/dimensions/segmenting-drivers)

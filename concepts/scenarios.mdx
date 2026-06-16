@@ -1,179 +1,224 @@
 ---
 title: "Scenarios"
-description: "Think of each scenario as a parallel version of your model—a sandbox where you can experiment with different assumptions, plans, and formulas. If you want to see the impact of doubling your marketing budget on your metrics—or compare different launch timelines—scenarios let you do that."
+description: "Scenarios are parallel versions of your model where you can test assumptions, compare outcomes, and merge approved changes back to Main."
 ---
 
-Changes made in a scenario stay local until merged, so your team can safely propose updates (independently), refine decisions, and see how your model responds. Once everyone’s aligned, you can merge your new scenario into the main model.
+Scenarios let you safely explore changes without immediately changing Main. Use them for budgets, hiring plans, downside cases, board scenarios, or any work where you want to compare assumptions before making them official.
 
 ## Main vs. draft scenarios
 
-Your _main scenario_ is your live, official model. To protect it from accidental changes, Runway automatically creates a _draft scenario_ anytime you make _data edits_.
+Your **Main** scenario is your live, official model. To protect it from accidental changes, Runway automatically creates a draft scenario when you make data edits in Main.
 
-Once in draft, all your edits remain local—they won’t affect main or any other scenario unless you merge them.![](/images/scenarios/draft-flow-charts.png)
+Once in draft, edits remain local. They do not affect Main or another scenario unless they are merged.
+
+<Frame>
+  ![Draft scenario flow showing edits staged before merge](/images/scenarios/draft-flow-charts.png)
+</Frame>
 
 ### What counts as a data edit?
 
-These specific actions—when performed in a main scenario—automatically move you into a draft scenario. When performed in a non-main scenario, the impact of these changes remains scoped to the scenario, until an Admin merges them into main.
+These actions create a draft when performed in Main. In a non-Main scenario, the impact stays scoped to that scenario until a user with merge access merges it into Main.
 
-- Drivers:
-  - Creating, renaming, or deleting drivers
-  - Editing forecast, actual, or rollup formulas
-  - Modifying values (actual or forecast)
-  - Moving drivers between models or driver groups
-  - Adding/removing drivers from blocks
-  - Marking or unmarking a driver as KPI
-  - Changing formatting (name, color, precision, type)
-- Models or databases:
-  - Creating or deleting models / databases
-  - Adding / removing database rows
-  - Editing formulas or modifying any database cell
-  - Changing database schema (data sources, dimensions, segmentation)
-- Pages
-  - Creating, renaming, or deleting a page
-  - Creating or deleting blocks (e.g. table, chart, or text blocks) on pages
-  - Editing blocks (e.g. adding drivers to a chart block, or
-  - Reordering pages in the sidebar
-  - Creating or updating sidebar sections
+- **Drivers:** Creating, renaming, deleting, editing formulas, modifying values, moving drivers, adding or removing drivers from blocks, marking KPIs, and changing formatting.
+- **Models or databases:** Creating or deleting models or databases, adding or removing database rows, editing formulas, modifying cells, or changing database schema.
+- **Pages:** Creating, renaming, deleting, reordering pages, creating or deleting blocks, editing blocks, or creating and updating sidebar sections.
 
-### What doesn't count?
+### What does not count?
 
-The following actions are applied directly to Main, and all scenarios with auto-updates enabled.
+The following changes apply directly to Main and to scenarios with automatic updates enabled:
 
-- Changes to the 'view' of tables — like updating filters, sorts, groups, visible columns, and column width
-- Adding, editing, or removing integration credentials
-- Adding, editing, or removing integration queries and configuration
+- Table view changes such as filters, sorts, groups, visible columns, and column width.
+- Adding, editing, or removing integration credentials.
+- Adding, editing, or removing integration queries and configuration.
 
-### How to tell you’re in a draft scenario
+### How to tell you're in a draft scenario
 
-Look for the `DRAFT` label in the scenario name.![](/images/scenarios/draft-label.png)
+Look for the `DRAFT` label in the scenario name.
+
+<Frame>
+  ![Scenario name with Draft label](/images/scenarios/draft-label.png)
+</Frame>
 
 ### Managing a draft scenario
 
-When working in a draft scenario, you’ll see these options (depending on your [permission](https://help.runway.com/planning--collaborating/uSijm9sGNmbhAY2BeSCfmf/roles-and-permissions/kPq48efbqLRPkY4qSepkAW) level):
+When working in a draft scenario, available actions depend on your [permissions](/guides/sharing/permissions):
 
-- **Save draft as** — creates a new standalone scenario for your edits.
-- **Compare & merge** — merges your edits into the main scenario. (Admins only.)
-- **Discard draft** — Removes all changes made in the drafts, and returns to main.
+- **Save draft as scenario...** creates a standalone scenario for your edits.
+- **Compare & merge** compares your edits with Main and merges them if you have merge access.
+- **Discard draft** removes the draft edits and returns you to Main.
 
-![](/images/scenarios/draft-settings.png)
+<Frame>
+  ![Draft scenario menu with save, compare, and discard actions](/images/scenarios/draft-settings.png)
+</Frame>
 
 ## Creating a new scenario
 
-To create a fresh scenario:
+<Steps>
+  <Step title="Open scenarios">
+    Open the scenarios list in the top-left area of Runway.
+  </Step>
+  <Step title="Create the scenario">
+    Click **+ New scenario**.
+  </Step>
+  <Step title="Name it">
+    Give the scenario a name and choose an icon or emoji.
+  </Step>
+  <Step title="Start editing">
+    The new scenario starts as a copy of Main. Edits you make affect only that scenario unless merged.
 
-1. Click **\+ New scenario** in the scenarios list (top left).
-2. Give it a name, and choose an icon/emoji.
-3. The new scenario will be an exact copy of your main scenario. From there, you can start making edits that will only affect this scenario.
-
-<Note>
-  Alternatively, you can save a draft scenario as a new scenario using the `Save draft as` option.
-</Note>
-
-![images/scenarios/create.gif](/images/scenarios/create.gif)
-
-## Merging scenarios
-
-### How to merge a scenario into main
-
-Only Admins can merge scenarios. To do so:
-
-1. Navigate to the scenario you want to merge (from the scenarios list).
-2. Click **Compare and merge** (top left). This will let you compare it against main scenario.
-3. Review the changes, and confirm the merge.
+    <Frame>
+      ![Create scenario dialog](/images/scenarios/create.gif)
+    </Frame>
+  </Step>
+</Steps>
 
 <Note>
-  Use `Cmd` / `Ctrl` \+ `Shift` \+ `M` to open the `Compare and merge` modal instantly.
+  You can also save a draft as a scenario using **Save draft as scenario...**.
 </Note>
 
-![](/images/scenarios/merge-button.png)
+## Duplicating scenarios
 
-If you don’t have Admin access, you can:
+Use **Duplicate scenario** when you want a new scenario that starts from an existing scenario's assumptions.
 
-- Ask an Admin to merge your scenario for you.
-- Share the scenario link by navigating to it from the scenarios list, and clicking **Copy link**.
+Duplicating a normal scenario creates a copy named `{Name} (Copy)` that keeps pulling updates from Main. Duplicating a locked scenario creates a locked copy. The menu item changes to **Duplicating...** while Runway creates the copy.
 
-![](/images/scenarios/copy-link.png)
+Duplication is not available on Main, on drafts, or when you do not have scenario-creation access. See [Permissions](/guides/sharing/permissions) for access details.
 
-### How merging affects other scenarios
+## Pulling updates from Main
 
-Scenarios work by layering edits on top of the main scenario.
+By default, scenarios inherit non-conflicting updates from Main. To prevent Main updates from affecting a scenario, open scenario settings and set **Pull updates from Main** to **Disabled**.
 
-For example:
+<Frame>
+  ![Scenario setting with Pull updates from Main disabled](/images/scenarios/disable-updates.png)
+</Frame>
 
-- Let’s say Bob and Alice both edit Driver A in separate draft scenarios.
-- At this point, both Bob and Alice see their own versions of Driver A in their separate draft scenarios.
-- If Bob merges first, Alice still sees her own version of Driver A in her draft scenario.
-- When Alice later merges, her changes overwrite Bob’s in the main scenario—which means Driver A in the main scenario will be updated to reflect Alice's version.
+To resume updates, set **Pull updates from Main** back to **Automatic**. Re-enabling automatic updates can pull in existing and future non-conflicting changes from Main, so review the scenario after switching it back.
 
-This ensures that every scenario operates independently—until its changes are merged.
+## Locked scenarios
 
-Let’s look at another example:
+Locked scenarios preserve a version of the model so it cannot be edited accidentally.
 
-- Bob creates a draft scenario where he modifies Driver B.
-- Alice creates a draft scenario where she modifies Driver A.
-  - Alice's version of Driver B is the same as the main scenario, because Bob’s edit isn’t merged into the main scenario they both share.
-- But when Bob merges his changes:
-  - Alice sees the updated Driver B (based on Bob's merge action).
-  - Alice still sees her own version of Driver A (based on her draft scenario).
+You can create locked scenarios from two places:
 
-### Preventing main scenario updates from affecting your scenario
+- On Main, use **Save draft as scenario...** to save the draft as a scenario.
+- In the activity history pane, use **Save as locked scenario** from a change's overflow menu.
 
-By default, all scenarios inherit updates from main unless they conflict with existing edits in that scenario.
-
-To prevent this, click the **Settings** icon next to a scenario name, then set **Pull updates from Main** to **Disabled**. After this, changes merged into main—including integration syncs—won't affect this scenario.![](/images/scenarios/disable-updates.png)
-
-If you decide to re-enable this setting for the scenario, you can switch it back to **Automatic**. Keep in mind that doing so will instantly pull in any non-conflicting changes from Main—both **existing** and **future** changes. Depending on how different your scenario is from Main, it may look different after switching back to Automatic.
+Locked scenarios are not editable. When managing access, the share sheet can show this notice: **To manage access in locked scenarios, please switch to the locked scenario and then open the share sheet again.**
 
 ## Scenario settings
 
-In the scenarios list, click the **Settings** icon next to a scenario name to adjust these options:
+In the scenarios list, open settings next to a scenario name to adjust:
 
-- **Renaming & changing icon** – Update the scenario name, or emoji/icon.
-- **Pull updates from Main** – Allow or block automatic updates from main scenario. This includes integration sync changes.
-- **Allow merging** – Allow or block merging into main.
-- **Editing** – Prevent anyone from making edits. (By default, any user with edit access to a page, model, or database can make edits across all scenarios they can view.)
-- **Who can view** – By default, scenarios are visible only to Admins and the scenario creator. You can use this option to control who can access the scenario (only Admins, or all Managers and Members). Guests need to be given access to a scenario at either the model or page level.
-- **Copy link** – Share any scenario with your team by sharing its link.
-- **Delete** – Remove any scenario you no longer need.
+- **Renaming and icon:** Update the scenario name or emoji/icon.
+- **Pull updates from Main:** Choose **Automatic** or **Disabled**.
+- **Allow Merging:** Allow or block merging into Main.
+- **Editing:** Control whether edits can be made.
+- **Who can view:** Control who can access the scenario.
+- **Copy link:** Copy a link to the scenario.
+- **Delete:** Remove a scenario you no longer need.
 
-![](/images/scenarios/settings.png)
+<Frame>
+  ![Scenario settings menu](/images/scenarios/settings.png)
+</Frame>
+
+## Merging scenarios
+
+Scenarios work by layering edits on top of Main. Merging applies the scenario's selected changes to Main. Merge access is controlled by permissions; see [Permissions](/guides/sharing/permissions).
+
+<Steps>
+  <Step title="Open the scenario">
+    Navigate to the scenario you want to merge.
+  </Step>
+  <Step title="Compare with Main">
+    Click **Compare and merge** to compare the scenario against Main.
+  </Step>
+  <Step title="Review and confirm">
+    Review the changes, then confirm the merge if the scenario should update Main.
+
+    <Frame>
+      ![Compare and merge button in a scenario](/images/scenarios/merge-button.png)
+    </Frame>
+  </Step>
+</Steps>
+
+If you cannot merge a scenario, share it with someone who has the right access. Open the scenario from the scenarios list and use **Copy link**.
+
+<Frame>
+  ![Scenario menu showing Copy link](/images/scenarios/copy-link.png)
+</Frame>
+
+### How merging affects other scenarios
+
+Each scenario keeps its own edits until those edits are merged.
+
+For example, if two people edit Driver A in separate drafts, each draft keeps its own version. If one draft merges first, the other draft still keeps its own Driver A edit until it is merged or discarded. When the second draft later merges, its Driver A change can overwrite the first merged version in Main.
+
+If a scenario has **Pull updates from Main** set to **Automatic**, non-conflicting changes merged into Main can appear in that scenario. Its own scenario-specific edits remain local.
 
 ## Comparing scenarios
 
-### Tabular comparison in pages & models
+### Tabular comparison in pages and models
 
-You can compare values across multiple scenarios in a table format:
+<Steps>
+  <Step title="Open a model or driver table">
+    Open a model or create a **Driver table** block on a page.
+  </Step>
+  <Step title="Add drivers">
+    Add the drivers you want to compare across scenarios.
+  </Step>
+  <Step title="Open Compare">
+    Click **Customize**, select **Compare**, then choose the scenarios.
+  </Step>
+  <Step title="Review variance">
+    The default comparison view includes variance rows. You can also add or remove **Variance** and **Variance %** from the same menu.
+  </Step>
+  <Step title="Choose layout">
+    Show scenarios as rows or columns.
 
-1. Open a model or create a **Driver table** in any page.
-2. Add the drivers you want to compare across different scenarios.
-3. Click **Customize** (top right) → Select **Compare** → Choose the scenarios you want to compare.
-   - Note that the default selection in this menu is "Current Scenario", which will track the scenario selected in the top navbar.
-   - If you'd like to ensure a given set of scenarios is shown no matter which scenario you've selected in the navigation bar, you can deselect "Current Scenario" and define the scenarios to show explicitly.
-4. The default view shows time series values from each scenario. You can add **Variance** and **Variance %** from the same menu.
-5. Adjust table layout to show scenarios as rows or columns.
+    <Frame>
+      ![Driver table comparing scenarios with variance rows](/images/scenarios/scenario-comparison.gif)
+    </Frame>
+  </Step>
+</Steps>
 
-![images/scenarios/scenario-comparison.gif](/images/scenarios/scenario-comparison.gif)
+Variance color follows the driver's comparison-color setting. To reverse colors for a driver, set its goal direction, such as lower is better for expenses.
 
-By default, **Variance** and **Variance %** appear in green when the current scenario's value is higher than the comparison scenario, and in red when it's lower. To reverse these colors, set your Driver's goal to be below 0.
+<Frame>
+  ![Driver comparison color setting](/images/scenarios/set-goal.gif)
+</Frame>
 
-![images/scenarios/set-goal.gif](/images/scenarios/set-goal.gif)
+When a block compares scenarios as rows, edits made in a scenario's comparison row write into that scenario without switching the page's active scenario. Variance and variance-% rows are computed and are not editable.
 
 ### Graphical comparison in pages
 
-You can also compare drivers across scenarios using line or column charts:
+<Steps>
+  <Step title="Create a chart">
+    Create a **Driver charts** block on a page.
+  </Step>
+  <Step title="Add drivers">
+    Add the drivers you want to compare.
+  </Step>
+  <Step title="Choose scenarios">
+    Click **Compare**, then choose the scenarios.
 
-1. Create a **Driver chart** in any page.
-2. Add the drivers you want to compare across different scenarios.
-3. Click the **Compare** icon (top right) → Choose the scenarios you want to compare.
-
-![/images/pages/charts/scenarios.gif\+\_existingInIndexedDbMintlify](/images/pages/charts/scenarios.gif)
+    <Frame>
+      ![Chart comparing a driver across scenarios](/images/pages/charts/scenarios.gif)
+    </Frame>
+  </Step>
+</Steps>
 
 ## FAQ
 
 <Accordion title="Can I re-enable Pull updates from Main after disabling it?" defaultOpen="false">
-  Yes\! However, when you switch back to `Automatic`, it will immediately pull in both **existing** and **upcoming** changes from Main that don't conflict with your scenario. Your scenario may look quite different after switching back to `Automatic`, depending on how much it differs from Main.
+  Yes. Switch **Pull updates from Main** back to **Automatic**. Runway will pull in non-conflicting existing and future changes from Main, so review the scenario after re-enabling it.
 </Accordion>
 
-<Accordion title="How do I duplicate a scenario?" defaultOpen="false">
-  Scenario duplication isn’t currently supported, but it’s on our radar. If this is important to you, please let us know—your feedback helps us prioritize future updates.
+<Accordion title="Can I duplicate a locked scenario?" defaultOpen="false">
+  Yes. **Duplicate scenario** preserves the locked state, so the copy is also locked.
 </Accordion>
+
+## What's next
+
+- [Plans](/concepts/plans)
+- [Budget vs. actuals](/guides/modeling/bva)
+- [Permissions](/guides/sharing/permissions)

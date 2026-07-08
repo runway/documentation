@@ -9,7 +9,7 @@
   },
   "favicon": "/runway-icon.svg",
   "navigation": {
-    "groups": [
+    "pages": [
       {
         "group": "Get started",
         "pages": [
@@ -203,7 +203,16 @@
           "reference/integration-catalog",
           "reference/errors-troubleshooting"
         ]
-      }
+      },
+      {
+        "group": "CFO.ai Docs",
+        "pages": [
+          "cfoai-docs/home",
+          "cfoai-docs/glossary",
+          "cfoai-docs/use-cases"
+        ]
+      },
+      "domain-migration"
     ]
   },
   "redirects": [

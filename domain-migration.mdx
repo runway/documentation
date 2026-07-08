@@ -1,0 +1,77 @@
+---
+title: "Domain migration FAQ"
+description: "Everything you need to know about our domain change from runway.com to cfo.ai."
+sidebarTitle: "Domain migration"
+icon: "globe"
+---
+
+We're moving from **runway.com** to **cfo.ai**. This page answers common questions about what's changing, when, and what you need to do.
+
+## What's changing
+
+<AccordionGroup>
+  <Accordion title="Which URLs are moving?">
+    | Old (runway.com) | New (cfo.ai) |
+    | --- | --- |
+    | `app.runway.com` | `v2.cfo.ai` |
+    | `runway.com` | `runway.cfo.ai` |
+    | `docs.runway.com` | `runway-docs.cfo.ai` |
+  </Accordion>
+
+  <Accordion title="Will my bookmarks and saved links still work?">
+    No. **Update any bookmarks or shared links to [<u>v2.cfo.ai</u>](http://v2.cfo.ai) domains before July 15th.** Temporary redirects will be in place starting Monday, July 13th from any [<u>app.runway.com</u>](http://app.runway.com) link to [<u>v2.cfo.ai</u>](http://v2.cfo.ai) but will not work beyond July 15th. 
+  </Accordion>
+
+  <Accordion title="Are email addresses changing?">
+    Team email addresses are moving to `@cfo.ai`. Mail sent to `@runway.com` addresses will continue to be delivered during the transition.
+
+    You may start to see support and account emails arrive from `@cfo.ai` senders. These are legitimate. Should you need support, please reach out to [support@cfo.ai](mailto:support@cfo.ai) or to [ar@cfo.ai](mailto:ar@cfo.ai) for contract questions.
+  </Accordion>
+</AccordionGroup>
+
+## What you need to do
+
+<AccordionGroup>
+  <Accordion title="Do I need to do anything?">
+    Update any saved bookmarks or shared links to the [v2.cfo.ai](http://v2.cfo.ai). This will look something like v2.cfo.ai/{your-workspace}.
+  </Accordion>
+
+  <Accordion title="Do I need to update my SSO configuration?">
+    If you have use SSO  (Okta, Google Workspace, Azure AD, etc.) to log in to runway.com, there is no additional action needed to maintain your login access. 
+  </Accordion>
+
+  <Accordion title="Do I need to update my firewall or allowlist?">
+    If your organization uses firewall, proxy, DNS, or other network security controls, please ask your IT team to allowlist the [<u>cfo.ai</u>](http://cfo.ai) domain before July 15th so your access continues without interruption. 
+
+    Recommended entries:
+
+    - `*.cfo.ai`
+    - `v2.cfo.ai`
+    - `runway.cfo.ai`
+    - `runway-docs.cfo.ai`
+  </Accordion>
+
+  <Accordion title="Do I need to update webhooks or API integrations?">
+    API requests to `api.runway.com` will require updating your base URL to `https://runway-api.cfo.ai`.
+
+    Webhook payloads sent from Runway will begin using `cfo.ai` in their signing domain. If you validate the sender host, update your allowlist to include `cfo.ai`.
+  </Accordion>
+</AccordionGroup>
+
+## Security & trust
+
+<AccordionGroup>
+  <Accordion title="How do I know an email from @cfo.ai is really from Runway?">
+    Legitimate emails from us are sent from `@cfo.ai` addresses and are authenticated with SPF, DKIM, and DMARC aligned to `cfo.ai`.
+
+    We will never ask for your password, MFA codes, or API keys over email. If in doubt, contact [support@cfo.ai](mailto:support@cfo.ai) or within your shared Slack channel with us. 
+  </Accordion>
+
+  <Accordion title="Is data or account access affected?">
+    No. Your account, data, integrations, and permissions are unchanged. The migration is a domain change only — no data is being moved between systems as part of this.
+  </Accordion>
+</AccordionGroup>
+
+## Still have questions?
+
+Reach out to our team at [support@cfo.ai](mailto:support@cfo.ai) and we'll help you through the transition.

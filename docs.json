@@ -210,7 +210,8 @@
           "cfoai-docs/home",
           "cfoai-docs/glossary",
           "cfoai-docs/use-cases"
-        ]
+        ],
+        "hidden": true
       },
       "domain-migration"
     ]

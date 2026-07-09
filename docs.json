@@ -99,7 +99,8 @@
         "pages": [
           "ai/explain-mode",
           "ai/command-mode",
-          "ai/connecting-ai-tools"
+          "ai/connecting-ai-tools",
+          "ai/data-and-privacy"
         ]
       },
       {

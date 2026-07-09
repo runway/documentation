@@ -7,6 +7,16 @@ icon: "globe"
 
 We're moving from **runway.com** to **cfo.ai**. This page answers common questions about what's changing, when, and what you need to do.
 
+## About the change
+
+<AccordionGroup>
+  <Accordion title="Is Runway changing its name to CFO.ai?">
+    No. Our **legal name is not changing** — we are still Runway. Only our **brand identity and domains** are moving to CFO.ai.
+
+    You'll see `cfo.ai` in URLs, email addresses, and some visual branding, but the company, product, contracts, and team are the same.
+  </Accordion>
+</AccordionGroup>
+
 ## What's changing
 
 <AccordionGroup>
@@ -37,11 +47,11 @@ We're moving from **runway.com** to **cfo.ai**. This page answers common questio
   </Accordion>
 
   <Accordion title="Do I need to update my SSO configuration?">
-    If you have use SSO  (Okta, Google Workspace, Azure AD, etc.) to log in to runway.com, there is no additional action needed to maintain your login access. 
+    If you have use SSO  (Okta, Google Workspace, Azure AD, etc.) to log in to runway.com, there is no additional action needed to maintain your login access.
   </Accordion>
 
   <Accordion title="Do I need to update my firewall or allowlist?">
-    If your organization uses firewall, proxy, DNS, or other network security controls, please ask your IT team to allowlist the [<u>cfo.ai</u>](http://cfo.ai) domain before July 15th so your access continues without interruption. 
+    If your organization uses firewall, proxy, DNS, or other network security controls, please ask your IT team to allowlist the [<u>cfo.ai</u>](http://cfo.ai) domain before July 15th so your access continues without interruption.
 
     Recommended entries:
 
@@ -52,7 +62,7 @@ We're moving from **runway.com** to **cfo.ai**. This page answers common questio
   </Accordion>
 
   <Accordion title="Do I need to update webhooks or API integrations?">
-    API requests to api.runway.com will require updating your base URL to https://runway-api.cfo.ai.
+    API requests to api.runway.com will require updating your base URL to [https://runway-api.cfo.ai](https://runway-api.cfo.ai).
 
     Webhook payloads sent from Runway will begin using cfo.ai in their signing domain. If you validate the sender host, update your allowlist to include cfo.ai.
   </Accordion>
@@ -64,7 +74,7 @@ We're moving from **runway.com** to **cfo.ai**. This page answers common questio
   <Accordion title="How do I know an email from @cfo.ai is really from Runway?">
     Legitimate emails from us are sent from @cfo.ai addresses and are authenticated with SPF, DKIM, and DMARC aligned to cfo.ai.
 
-    We will never ask for your password, MFA codes, or API keys over email. If in doubt, contact [support@cfo.ai](mailto:support@cfo.ai) or within your shared Slack channel with us. 
+    We will never ask for your password, MFA codes, or API keys over email. If in doubt, contact [support@cfo.ai](mailto:support@cfo.ai) or within your shared Slack channel with us.
   </Accordion>
 
   <Accordion title="Is data or account access affected?">

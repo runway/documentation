@@ -8,7 +8,7 @@ Use this reference when a formula cell, database refresh, or modeled value does 
 ## Formula errors
 
 | Error label | What it means | Example | How to fix |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `TYPE` | The tooltip says: "This driver, or one of its formula inputs, is performing an operation across incompatible types or resolves to a non numeric value." | A Number driver uses `dateAdd()` and returns a date. | Change the driver to a Date driver, or change the formula so it returns a number. |
 | `CIRC` | The driver depends on itself in the same period, directly or through another formula. | Revenue references Total revenue, while Total revenue references Revenue. | Remove the self-referential dependency. If the logic should use a prior period, reference the prior period instead of the current one. |
 
@@ -42,7 +42,7 @@ The alert can show a **LOOP** section with the cycle path joined by **→**, plu
 
 ## Getting help
 
-If you are still blocked, email [support@runway.com](mailto:support@runway.com) with the error label, the driver or database name, the scenario you are in, and the formula or data source you were editing.
+If you are still blocked, email [support@cfo.ai](mailto:support@cfo.ai) with the error label, the driver or database name, the scenario you are in, and the formula or data source you were editing.
 
 ## What's next
 

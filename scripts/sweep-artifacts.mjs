@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 
 const MDX_ONLY_EXTENSIONS = new Set([".mdx"]);
 const SKIP_DIRS = new Set([".git", "node_modules", ".next", ".mintlify"]);
-const EXTRA_REFERENCE_FILES = new Set(["docs.json", "inkeep.js"]);
+const EXTRA_REFERENCE_FILES = new Set(["docs.json", "inkeep.js", "nav-collapse.js"]);
 const FORBIDDEN_DOMAIN_PATTERN =
   /documentation\.runwaydev\.com|notion\.so|help\.runway\.com/g;
 const GLUED_ARTICLE_BOLD_PREFIXES = [

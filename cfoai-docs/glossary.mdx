@@ -5,63 +5,209 @@ description: "Get familiar with Runway's structure and the terms you'll see thro
 hidden: true
 ---
 
-Get familiar with Runway's structure and the terms you'll see throughout the product.
+## The basics
 
-## Terms
-
-<CardGroup cols={1}>
-  <Card title="Table blocks" icon="table-cells">
-    A mini spreadsheet built into CFO.ai — each report or forecast you build lives in its own table block.
-
-    <Frame>
-      ![Profit & Loss table block in CFO.ai showing monthly revenue, expenses, and margin rows](/images/cfoai-docs/table-blocks.png)
-    </Frame>
-  </Card>
-
-  <Card title="Integrations" icon="link">
+<AccordionGroup>
+  <Accordion title="Integrations" icon="link">
     The connections that pull your data in automatically — QuickBooks, Xero, NetSuite, Sheets, and CSV files.
+
+    Once connected, your numbers flow in automatically — no copy-paste, no re-typing. Syncs run on a schedule so your model stays current with your books.
 
     <Frame>
       ![CFO.ai integrations panel showing CSV upload, Google Sheets, NetSuite, QuickBooks Online, and Xero](/images/cfoai-docs/integrations.png)
     </Frame>
-  </Card>
+  </Accordion>
 
-  <Card title="Scenarios" icon="code-branch">
+  <Accordion title="Scenarios" icon="code-branch">
     Different "what if" versions of your plan, so you can compare outcomes before deciding what to do.
+
+    Like saving multiple copies of a budget — one assuming things go well, one assuming a slow quarter, one assuming two new hires — and comparing them side by side before committing.
 
     <Frame>
       ![Scenario picker in CFO.ai showing Main Scenario, Best Case, and Budget compared side by side on a P&L](/images/cfoai-docs/scenarios.png)
     </Frame>
-  </Card>
+  </Accordion>
 
-  <Card title="Page" icon="file-lines">
+  <Accordion title="Page" icon="file-lines">
     A single screen inside CFO.ai focused on one topic — like a folder or tab in your workspace.
+
+    You might keep one page for the overall budget and another just for marketing spend. Pages hold blocks — tables, charts, and text — arranged however you like.
 
     <Frame>
       ![CFO.ai sidebar showing pages like Profit & Loss, Default Page, and Integration import next to the Profit & Loss workspace](/images/cfoai-docs/page.png)
     </Frame>
-  </Card>
+  </Accordion>
 
-  <Card title="Database" icon="database">
+  <Accordion title="Database" icon="database">
     An organized list of similar items, like contacts or expenses, made up of rows and columns.
-  </Card>
 
-  <Card title="Metrics" icon="chart-simple">
+    Each item in the list is a row, and each piece of information about it — date, amount, category — is a property. Employees, customers, vendors, and contracts all live in databases.
+  </Accordion>
+
+  <Accordion title="Metrics" icon="chart-simple">
     The key numbers you track to understand the business — cash, burn, revenue, and more.
+
+    Cash, burn, runway, revenue, gross margin — reusable calculations you define once and reference anywhere in your model.
 
     <Frame>
       ![P&L snippet showing key metrics: Total revenue, Total cost of revenue, Gross profit, and Gross margin %](/images/cfoai-docs/metrics.png)
     </Frame>
-  </Card>
+  </Accordion>
 
-  <Card title="Rows" icon="bars">
+  <Accordion title="Rows" icon="bars">
     A single line of data in a table block, like an expense category, vendor, or line item.
+
+    Depending on what you're building, a row might be an expense category (travel, marketing), a vendor (Salesforce, AWS), or a line item (income, COGS). Its values then run across the columns, month by month.
 
     <Frame>
       ![P&L table showing individual rows like Marketing & advertising, Rent & lease costs, and Travel & meals](/images/cfoai-docs/rows.png)
     </Frame>
-  </Card>
-</CardGroup>
+  </Accordion>
+</AccordionGroup>
+
+## Blocks
+
+<AccordionGroup>
+  <Accordion title="Table blocks" icon="table-cells">
+    A mini spreadsheet built into CFO.ai — each report or forecast you build lives in its own table block.
+
+    Each report or forecast lives in its own block, so a single page can hold several side by side — an expense forecast next to a revenue model next to a list of contracts.
+
+    <Frame>
+      ![Profit & Loss table block in CFO.ai showing monthly revenue, expenses, and margin rows](/images/cfoai-docs/table-blocks.png)
+    </Frame>
+  </Accordion>
+
+  <Accordion title="Text blocks" icon="text">
+    Written notes and commentary on a page, right next to your numbers — turn any page into a readable report.
+
+    Use them to explain what a forecast assumes, leave commentary for your team, or turn a page into a narrative report instead of just tables.
+  </Accordion>
+
+  <Accordion title="Code blocks" icon="code">
+    A block for code on a page — keep queries, scripts, or technical snippets readable right next to your numbers.
+
+    Useful for the technical side of your model — a saved query, a transformation, or a snippet you want to keep alongside the tables it feeds.
+  </Accordion>
+</AccordionGroup>
+
+## Building your model
+
+<AccordionGroup>
+  <Accordion title="Formulas" icon="function">
+    The calculation rule behind every number — readable and editable, so nothing the AI builds is a black box.
+
+    When Ari builds something for you, every assumption stays transparent — open the formula, read it in plain terms, change it.
+  </Accordion>
+
+  <Accordion title="Properties" icon="tag">
+    A piece of information about the items in a database — if rows are the items, properties are the columns.
+
+    Properties have types (number, date, text), formats, and can act as metrics, dimensions, or plain attributes — they're the fields your formulas reference.
+  </Accordion>
+
+  <Accordion title="Drivers" icon="chart-mixed-up-circle-dollar">
+    Named numbers that drive your model, like headcount or churn — change one and everything built on it updates.
+
+    The value a driver takes in a given month and scenario is a driver value — e.g. January 2027 forecast headcount = 42. Drivers are the levers you pull when planning.
+  </Accordion>
+
+  <Accordion title="Dimensions" icon="list">
+    Ways to slice your data — department, product, customer — so one big number breaks into the pieces behind it.
+
+    Each value inside a dimension — like "engineering" inside department — is a dimension item you can filter, pin, and drill into.
+  </Accordion>
+
+  <Accordion title="Variants" icon="toggle-on">
+    Named assumptions you can toggle on and off — like "optimistic pricing" — without duplicating your whole plan.
+
+    Used heavily in sensitivity analysis: flip a variant on to see its impact ripple through the model, flip it off to return to base.
+  </Accordion>
+</AccordionGroup>
+
+## Time & versioning
+
+<AccordionGroup>
+  <Accordion title="Actuals vs. forecast" icon="clock">
+    Actuals are real history synced from your books; forecast is everything projected after your last closed month.
+
+    The dividing line — the most recent month your books are closed — is called the last close. A row can automatically switch from actuals to forecast logic at that boundary (a "formula break").
+  </Accordion>
+
+  <Accordion title="Snapshots" icon="camera">
+    A frozen, locked copy of a scenario at a moment in time — perfect for board decks and investor updates.
+
+    Nothing in a snapshot ever changes, which makes it easy to compare "what we thought in January" to what actually happened.
+  </Accordion>
+
+  <Accordion title="Version history" icon="clock-rotate-left">
+    A running record of every change to your model — what changed, who (or which AI) changed it, and when.
+
+    Every change is recorded in an append-only log, so you can always trace how a number came to be — and who or what touched it.
+  </Accordion>
+</AccordionGroup>
+
+## Ari & automation
+
+<AccordionGroup>
+  <Accordion title="Skills" icon="book">
+    Saved instructions that teach Ari a repeatable workflow — like "how we build our monthly board report."
+
+    Once saved, trigger a skill any time and Ari follows your playbook — same steps, same format, every month.
+  </Accordion>
+
+  <Accordion title="Triggers" icon="bell">
+    Standing instructions that run on a schedule — "refresh the data and flag anything unusual every Monday."
+
+    Triggers let Ari work for you even when you're not in the app — on a schedule, or in response to events like fresh data landing.
+  </Accordion>
+
+  <Accordion title="Memory" icon="brain">
+    Facts Ari remembers about you and your business across conversations — so you never have to repeat yourself.
+
+    Your fiscal year start, how you like reports formatted, which scenarios matter to you — remembered across sessions, for you and your whole workspace.
+  </Accordion>
+
+  <Accordion title="Guides" icon="compass">
+    Interactive walkthroughs that show you around a feature, step by step, right inside the product.
+
+    Guides come in three flavors — tours, walkthroughs, and explainers — authored once and reusable across your whole workspace.
+  </Accordion>
+</AccordionGroup>
+
+## Your team & sharing
+
+<AccordionGroup>
+  <Accordion title="Workspace" icon="building">
+    Your company's home in CFO.ai — the container that holds all your pages, data, scenarios, and teammates.
+
+    Everything your team does lives inside one workspace, with its own members, permissions, and data — fully separate from any other company's.
+  </Accordion>
+
+  <Accordion title="Members & roles" icon="users">
+    The people in your workspace and what each can see or edit — different access for your accountant and your board.
+
+    Roles map to permissions — admin, member, guest — and access can be scoped down to specific pages or blocks.
+  </Accordion>
+
+  <Accordion title="Groups" icon="user-group">
+    Named sets of members, like "finance team," so you can grant access to everyone at once.
+
+    Grant a page to "finance team" once instead of five people individually — membership changes propagate automatically.
+  </Accordion>
+
+  <Accordion title="Share links" icon="link-simple">
+    A URL that gives someone view or edit access to a page — with or without requiring them to log in.
+
+    Links carry their own privilege (read or write), can be password-protected, and can be revoked at any time — great for sending a read-only view to an investor.
+  </Accordion>
+
+  <Accordion title="MCP connections" icon="bolt">
+    Plug outside tools and AI agents into CFO.ai, and CFO.ai into them — like a slide tool for board reporting.
+
+    CFO.ai speaks MCP in both directions: connect external tools into Ari, or point other AI agents at your CFO.ai workspace.
+  </Accordion>
+</AccordionGroup>
 
 ## Still not sure what a term means?
 

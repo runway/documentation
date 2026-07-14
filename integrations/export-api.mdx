@@ -11,10 +11,10 @@ The Export API supports model pages and database pages. Generic pages are not su
 
 Example Runway URLs:
 
-- Main scenario model: `https://app.runway.com/your-org-slug/submodel/afd94c7e-1e7f-4e55-b99a-472aa5a43cd9`
-- Scenario model: `https://app.runway.com/your-org-slug/proposal/445f8fea-df2a-49cb-9cce-f805be588137/submodel/afd94c7e-1e7f-4e55-b99a-472aa5a43cd9`
-- Main scenario database: `https://app.runway.com/your-org-slug/page/5fb5f2a6-7a13-4085-a89c-86e2da66a17c`
-- Scenario database: `https://app.runway.com/your-org-slug/proposal/445f8fea-df2a-49cb-9cce-f805be588137/page/5fb5f2a6-7a13-4085-a89c-86e2da66a17c`
+- Main scenario model: `https://v2.cfo.ai/your-org-slug/submodel/afd94c7e-1e7f-4e55-b99a-472aa5a43cd9`
+- Scenario model: `https://v2.cfo.ai/your-org-slug/proposal/445f8fea-df2a-49cb-9cce-f805be588137/submodel/afd94c7e-1e7f-4e55-b99a-472aa5a43cd9`
+- Main scenario database: `https://v2.cfo.ai/your-org-slug/page/5fb5f2a6-7a13-4085-a89c-86e2da66a17c`
+- Scenario database: `https://v2.cfo.ai/your-org-slug/proposal/445f8fea-df2a-49cb-9cce-f805be588137/page/5fb5f2a6-7a13-4085-a89c-86e2da66a17c`
 
 ## Exporting with the API
 
@@ -30,11 +30,11 @@ Example Runway URLs:
     ```
   </Step>
   <Step title="Build the API URL">
-    Start from the model or database URL, remove the org slug, and use `https://api.runway.com/api`.
+    Start from the model or database URL, remove the org slug, and use `https://runway-api.cfo.ai/api`.
 
     ```txt
-    https://app.runway.com/your-org-slug/submodel/afd94c7e-1e7f-4e55-b99a-472aa5a43cd9
-    https://api.runway.com/api/submodel/afd94c7e-1e7f-4e55-b99a-472aa5a43cd9
+    https://v2.cfo.ai/your-org-slug/submodel/afd94c7e-1e7f-4e55-b99a-472aa5a43cd9
+    https://runway-api.cfo.ai/api/submodel/afd94c7e-1e7f-4e55-b99a-472aa5a43cd9
     ```
   </Step>
   <Step title="Send a GET request">

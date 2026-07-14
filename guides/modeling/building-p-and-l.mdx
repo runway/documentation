@@ -52,7 +52,7 @@ We’ll walk through how to:
 
 ## Step 2: Use a lookup table to map GL Accounts to your reporting categories
 
-If you typically recategorize your General Ledger Accounts into different reporting categories. Follow directions to create a[ Data source-powered lookup](https://docs.runway.com/guides/modeling/lookups#data-source-powered-lookup-recommended) that pairs `GL Account Names` with a `Reporting Category` dimension.
+If you typically recategorize your General Ledger Accounts into different reporting categories. Follow directions to create a[ Data source-powered lookup](/guides/modeling/lookups#data-source-powered-lookup-recommended) that pairs `GL Account Names` with a `Reporting Category` dimension.
 
 **Add a lookup column** in the `Level 1: Income Statement by Vendor` database
 
@@ -97,7 +97,7 @@ Repeat the steps to create interconnected databases segmented by `Level 4: Repor
 
 Your final database will be home to your top-level drivers by Account Type which are the aggregation of all underlying databases. Usually these are Revenue, Other Revenue, COGS, Expense and Other Expense
 
-It's helpful to organize the [sidebar](https://docs.runway.com/concepts/sidebar#sections-for-better-organization) using Sections for Income Statement Data and nest the databases to visually remind yourself of their hierarchy
+It's helpful to organize the [sidebar](/concepts/sidebar#sections-for-better-organization) using Sections for Income Statement Data and nest the databases to visually remind yourself of their hierarchy
 
 ![Income statement database hierarchy in the sidebar](/images/guides/p-and-l-sidebar-database-stack.png)
 
@@ -106,7 +106,7 @@ It's helpful to organize the [sidebar](https://docs.runway.com/concepts/sidebar#
 Creating the hierarchy of databases gave us the drivers you'll need to create an output on a page and start wiring up your P&L with other drivers like Gross Margin and Total Revenue
 
 1. **Create a Page** from the **sidebar**
-2. Add a [drivers table block](https://docs.runway.com/concepts/pages/drivers-table-block) by pressing the / key for options
+2. Add a [drivers table block](/concepts/pages/drivers-table-block) by pressing the / key for options
 3. Start typing Income Statement Amount in the search bar to call the drivers from the Income Statement databases you've set up
 
 ![Searching for income statement drivers on a page](/images/guides/p-and-l-page-driver-search.png)

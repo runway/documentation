@@ -36,7 +36,7 @@ Every page, in order:
 
 ## Linking
 
-- Relative links between docs pages (`/concepts/drivers/drivers-basics`), never absolute `https://docs.runway.com/...`.
+- Relative links between docs pages (`/concepts/drivers/drivers-basics`), never absolute `https://runway-docs.cfo.ai/...`.
 - Permissions are stated by linking to the roles matrix in Reference — never restated inline (restated claims drift).
 - Never link to Notion, private app URLs, internal org pages, or the old help center.
 - Section anchors: verify against the rendered heading; don't hand-encode punctuation.

@@ -33,7 +33,7 @@ We’ll walk through how to:
 
 1. Create a new **database** by clicking `+` next to any item in the sidebar
 2. Name the database `Level 1: Income Statement by Vendor`
-3. Click `edit` In the **database configuration menu** and choose the following inputs:
+3. Click `edit` in the **database configuration menu** and choose the following inputs:
    - **Data Source:** Choose the integration source query `IS Data`
    - **Driver:** Income Statement Amount
      - Set Using `transaction date` for dates
@@ -52,7 +52,7 @@ We’ll walk through how to:
 
 ## Step 2: Use a lookup table to map GL Accounts to your reporting categories
 
-If you typically recategorize your General Ledger Accounts into different reporting categories. Follow directions to create a[ Data source-powered lookup](/guides/modeling/lookups#data-source-powered-lookup-recommended) that pairs `GL Account Names` with a `Reporting Category` dimension.
+If you typically recategorize your General Ledger Accounts into different reporting categories, follow directions to create a [Data source-powered lookup](/guides/modeling/lookups#data-source-powered-lookup-recommended) that pairs `GL Account Names` with a `Reporting Category` dimension.
 
 **Add a lookup column** in the `Level 1: Income Statement by Vendor` database
 
@@ -73,7 +73,7 @@ You now want to simplify your view from the raw data by removing Vendor as a seg
    <Tip>
      It's recommended that the database names you choose help describe the segmentation — the database name indicates the granularity of the data it holds, e.g., Income Statement by GL Account Name and Class
    </Tip>
-3. **Click edit** In the database configuration menu and choose the following inputs:
+3. **Click edit** in the database configuration menu and choose the following inputs:
    - **Data Source:** Set the data source to your root database e.g., Level 1: Root Income Statement database
    - **Driver:** Amount
    - **Segments**: Select only `GL Account Name` and `Class`

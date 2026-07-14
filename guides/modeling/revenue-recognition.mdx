@@ -82,9 +82,9 @@ Here’s how to create a formula that will spread your revenue over the period t
 
 6. Click the driver pill to open the formula editor options.
 7. Click **+ Add Rule** to add **filters to the formula**. These will make sure the contract value hits your model only between Contract start and End dates.
-   - Set **Contract Start Date.Month** `is on or before`**This month**.
-   - Set **Contract End Date.Month** `is after`**This month**.
-   - Set **Segment** `is`**This Segment** to apply the rules across all slices of `Contract ID` x `Customer Name`. You can review how to **create dynamic formulas** using _This Segment_ [here](/concepts/databases/formulas-in-databases#example%3A-dynamic-default-formula-using-this-segment).
+   - Set **Contract Start Date.Month** `is on or before` **This month**.
+   - Set **Contract End Date.Month** `is after` **This month**.
+   - Set **Segment** `is` **This Segment** to apply the rules across all slices of `Contract ID` x `Customer Name`. You can review how to **create dynamic formulas** using _This Segment_ [here](/concepts/databases/formulas-in-databases#example%3A-dynamic-default-formula-using-this-segment).
 
    ![Formula filters for recognized revenue timing](/images/CleanShot2025-05-14at21.07.41@2x.png)
 
@@ -118,6 +118,6 @@ Finally, you will need to **wire up the Contract database** to **drive Revenue f
 3. **Click the caret** to the left of the Revenue driver to drill into inputs in-line.
    - This lets you quickly check that `Monthly Recognized Revenue` drivers for each `Customer x Contract ID` segment pull into the aggregation as expected.
    - Based on the drill-in, you will be able to see whether `Monthly Recognized Revenue` values begin and end on the correct dates.
-   - Each `Monthly Recognized Revenue` driver has a Runway arrow that will open up a [detail pane](/concepts/drivers/driver-details-pane#details-pane) that will let you investigate the drivers formulas, inputs and Plans.
+   - Each `Monthly Recognized Revenue` driver has a Runway arrow that will open up a [detail pane](/concepts/drivers/driver-details-pane#details-pane) that will let you investigate the driver's formulas, inputs and Plans.
 
 ![Revenue driver drill-in showing monthly recognized revenue inputs](/images/CleanShot2025-05-15at03.58.13@2x.png)

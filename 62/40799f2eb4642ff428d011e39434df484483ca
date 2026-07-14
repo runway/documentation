@@ -1,0 +1,95 @@
+README.md
+  s_a9327c625b6774::t_a3145f44c617a0 3
+STYLE.md
+  s_a9327c625b6774::t_89386511cd6b59 39
+ai/connecting-ai-tools.mdx
+  s_a9327c625b6774::t_b0f701616e1199 12,32
+cfoai-docs/home.mdx
+  s_a9327c625b6774::t_55edbdc624591f 43
+concepts/databases/hris-databases.mdx
+  s_a9327c625b6774::t_f44342bfd9c5ce 16,34,46-47,95
+concepts/drivers/driver-details-pane.mdx
+  s_a9327c625b6774::t_35d52c3feb1779 26,32-34,36,38
+concepts/drivers/driver-formatting.mdx
+  s_a9327c625b6774::t_a8a7541a41341b 68
+concepts/last-close.mdx
+  s_a9327c625b6774::t_b69ea70249a748 16,19,22,25,28,41,64
+concepts/models/models-basics.mdx
+  s_a9327c625b6774::t_20e762f8e00ddf 8,21-23,29-30
+concepts/pages/pages-basics.mdx
+  s_a9327c625b6774::t_0e887a06297097 21-27
+concepts/sidebar.mdx
+  s_a9327c625b6774::t_55c72071874273 72
+docs.json
+  s_a9327c625b6774::t_afaff6f346ae49 282,288
+guides/modeling/building-p-and-l.mdx
+  s_a9327c625b6774::t_7e3abdc48cdae2 55,100,109
+guides/modeling/cohorts.mdx
+  s_a9327c625b6774::t_21c1c42fd3f749 43,62,79
+guides/modeling/fx-rate.mdx
+  s_a9327c625b6774::t_d3d5a47ad0a3be 30
+guides/modeling/lookups.mdx
+  s_a9327c625b6774::t_1d897d95112a3a 40
+guides/modeling/prorated-salaries.mdx
+  s_a9327c625b6774::t_69d4cf73d1b93e 56
+guides/modeling/quota-attainment.mdx
+  s_a9327c625b6774::t_1a210ba33b417a 17,32,71,94-96
+guides/modeling/revenue-recognition.mdx
+  s_a9327c625b6774::t_24192d44419052 8,10,87,105,121
+guides/modeling/seasonal-forecasting.mdx
+  s_a9327c625b6774::t_2cffa8c74b27e1 18,23
+guides/sharing/sso.mdx
+  s_a9327c625b6774::t_d068eda6188640 17
+integrations/accounting/netsuite.mdx
+  s_a9327c625b6774::t_fdd6f576563a20 25,96,109
+integrations/accounting/quickbooks-online.mdx
+  s_a9327c625b6774::t_025aeb4774003a 21
+integrations/accounting/xero.mdx
+  s_a9327c625b6774::t_06817af3c77b63 19
+integrations/data-storage/data-warehouses.mdx
+  s_a9327c625b6774::t_d819e2dd451a8b 41
+integrations/data-storage/file-upload.mdx
+  s_a9327c625b6774::t_1e7e70e6313df6 64,71,79
+integrations/data-storage/google-sheets.mdx
+  s_a9327c625b6774::t_0d2cac7b560848 88,123
+integrations/data-storage/shared-directory.mdx
+  s_a9327c625b6774::t_d3a4543391fdfd 25
+integrations/export-api.mdx
+  s_a9327c625b6774::t_130bec3c0c7d82 14-17,33,36-37
+integrations/hris/deel.mdx
+  s_a9327c625b6774::t_d174e7146cdb2b 14
+integrations/hris/gusto.mdx
+  s_a9327c625b6774::t_cfe7270b804250 14
+integrations/hris/hibob.mdx
+  s_a9327c625b6774::t_ca480fec048d76 14
+integrations/hris/justworks.mdx
+  s_a9327c625b6774::t_d138e09d0e991a 14
+integrations/hris/rippling.mdx
+  s_a9327c625b6774::t_0c663b1c6bdc27 22
+integrations/multi-entity-integrations.mdx
+  s_a9327c625b6774::t_217a18ffaddf74 24
+integrations/revenue/hubspot.mdx
+  s_a9327c625b6774::t_bdd97c168c6560 26,37,63,68
+integrations/revenue/salesforce.mdx
+  s_a9327c625b6774::t_ac36e975375ca8 21,37,67
+integrations/revenue/stripe.mdx
+  s_a9327c625b6774::t_edfb824de5631c 28,33
+integrations/writing-sql.mdx
+  s_a9327c625b6774::t_1b09c8d37f4ab7 99
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.13",
+  "base_commit_sha": "6240799f2eb4642ff428d011e39434df484483ca",
+  "prompts": {},
+  "sessions": {
+    "s_a9327c625b6774": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ecc2dc64-d128-495e-82b2-4c0db991ccb4",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Samantha Stauffer <sam@runway.com>"
+    }
+  }
+}

@@ -5,9 +5,9 @@ description: "Generally accepted accounting principles (GAAP) require that busin
 
 ## Step 1: Prepare your integrations and databases
 
-First, connect the data sources you plan to use to model revenue recognition. Runway has [CRM](https://docs.runway.com/integrations/revenue/hubspot), [data warehouse](https://docs.runway.com/integrations/data-storage/data-warehouses#data-warehouses), and [Google Sheet](https://docs.runway.com/integrations/data-storage/google-sheets) integrations available.
+First, connect the data sources you plan to use to model revenue recognition. Runway has [CRM](/integrations/revenue/hubspot), [data warehouse](/integrations/data-storage/data-warehouses#data-warehouses), and [Google Sheet](/integrations/data-storage/google-sheets) integrations available.
 
-You can also manually copy data into a Runway database. You will need to follow [database configuration directions](https://docs.runway.com/concepts/databases/databases-basics#configuring-a-database).
+You can also manually copy data into a Runway database. You will need to follow [database configuration directions](/concepts/databases/databases-basics#configuring-a-database).
 
 The Runway team can help you write a query that will bring in the fields that you will need for revenue recognition modeling from your integration source.
 
@@ -84,7 +84,7 @@ Here’s how to create a formula that will spread your revenue over the period t
 7. Click **+ Add Rule** to add **filters to the formula**. These will make sure the contract value hits your model only between Contract start and End dates.
    - Set **Contract Start Date.Month** `is on or before`**This month**.
    - Set **Contract End Date.Month** `is after`**This month**.
-   - Set **Segment** `is`**This Segment** to apply the rules across all slices of `Contract ID` x `Customer Name`. You can review how to **create dynamic formulas** using _This Segment_ [here](https://docs.runway.com/concepts/databases/formulas-in-databases#example%3A-dynamic-default-formula-using-this-segment).
+   - Set **Segment** `is`**This Segment** to apply the rules across all slices of `Contract ID` x `Customer Name`. You can review how to **create dynamic formulas** using _This Segment_ [here](/concepts/databases/formulas-in-databases#example%3A-dynamic-default-formula-using-this-segment).
 
    ![Formula filters for recognized revenue timing](/images/CleanShot2025-05-14at21.07.41@2x.png)
 
@@ -102,7 +102,7 @@ Here’s how to create a formula that will spread your revenue over the period t
 
 Finally, you will need to **wire up the Contract database** to **drive Revenue forecasts** upstream in your model. This is the last step required to ensure that your topline is actively driven by the `Monthly Revenue Recognition` driver you've built.
 
-1. Navigate to a `Revenue` driver if it already exists in your Runway instance **or** create a new driver in a [Model](https://docs.runway.com/concepts/models/models-basics) or on a [Page](https://docs.runway.com/concepts/pages/pages-basics)
+1. Navigate to a `Revenue` driver if it already exists in your Runway instance **or** create a new driver in a [Model](/concepts/models/models-basics) or on a [Page](/concepts/pages/pages-basics)
 2. **Click into the forecast formula** of the driver and type `sum()`
    - You can create a `sum()` two ways:
      - Use a **driver reference** that directly references **Monthly Recognized Revenue** `All Customer Names All Contract IDs`.
@@ -118,6 +118,6 @@ Finally, you will need to **wire up the Contract database** to **drive Revenue f
 3. **Click the caret** to the left of the Revenue driver to drill into inputs in-line.
    - This lets you quickly check that `Monthly Recognized Revenue` drivers for each `Customer x Contract ID` segment pull into the aggregation as expected.
    - Based on the drill-in, you will be able to see whether `Monthly Recognized Revenue` values begin and end on the correct dates.
-   - Each `Monthly Recognized Revenue` driver has a Runway arrow that will open up a [detail pane](https://docs.runway.com/concepts/drivers/driver-details-pane#details-pane) that will let you investigate the drivers formulas, inputs and Plans.
+   - Each `Monthly Recognized Revenue` driver has a Runway arrow that will open up a [detail pane](/concepts/drivers/driver-details-pane#details-pane) that will let you investigate the drivers formulas, inputs and Plans.
 
 ![Revenue driver drill-in showing monthly recognized revenue inputs](/images/CleanShot2025-05-15at03.58.13@2x.png)

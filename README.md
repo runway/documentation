@@ -1,6 +1,6 @@
 # Runway Documentation
 
-This repo contains the Mintlify source for the public Runway docs site at docs.runway.com.
+This repo contains the Mintlify source for the public Runway docs site at runway-docs.cfo.ai.
 
 ## Local Preview
 

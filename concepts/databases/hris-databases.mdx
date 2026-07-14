@@ -13,7 +13,7 @@ You can also read our step-by-step guide on headcount modeling [here](/guides/mo
 
 ## Rows represent an employee defined by their name
 
-In typical Runway databases, [**segmentation determines the granularity of your database**](https://docs.runway.com/concepts/databases/databases-basics#adding-a-row). Each row has a **unique combination** of dimension values.
+In typical Runway databases, [**segmentation determines the granularity of your database**](/concepts/databases/databases-basics#adding-a-row). Each row has a **unique combination** of dimension values.
 
 In HRIS databases, each row represents a single **employee, identified by their name.**
 
@@ -31,7 +31,7 @@ The HRIS database stores data such as salaries, bonuses, and benefits for each e
 
 Here's how:
 
-1. Create a regular driver in a driver table block (on a [page](https://docs.runway.com/concepts/pages/drivers-table-block) or in a [model](https://docs.runway.com/concepts/models/models-basics)).
+1. Create a regular driver in a driver table block (on a [page](/concepts/pages/drivers-table-block) or in a [model](/concepts/models/models-basics)).
 2. In the formula editor, search for and reference the field column from the Employees database. You can search by the field column name, but not by the employee name or any of its attributes.
 
    ![Search For Field In Formula](/images/databases/hris/search-for-field-in-formula.png)
@@ -43,8 +43,8 @@ Here's how:
 
 When sharing or collaborating on HRIS data, you typically don't need to display the entire Employees database. Instead, you have a couple of focused options:
 
-1. Add the calculated drivers (as described in the previous section) to a [driver table block](https://docs.runway.com/concepts/pages/drivers-table-block) or a [chart block](https://docs.runway.com/concepts/pages/charts-block) to show totals or trends.
-2. Include a [filtered view of the Employees database](https://docs.runway.com/concepts/pages/database-block) to highlight specific roles, departments, or planned hires.
+1. Add the calculated drivers (as described in the previous section) to a [driver table block](/concepts/pages/drivers-table-block) or a [chart block](/concepts/pages/charts-block) to show totals or trends.
+2. Include a [filtered view of the Employees database](/concepts/pages/database-block) to highlight specific roles, departments, or planned hires.
 
 ## Adding rows to HRIS databases
 
@@ -92,4 +92,4 @@ This behavior works implicitly, similar to wrapping every field's formula in a c
 if(thisMonth() < this.Start Date, NULL, [column's formula])
 ```
 
-Start Date also defines which employees show up on your Plans timeline. [You can read more about how Plans work with employee start dates here.](https://docs.runway.com/concepts/plans#connecting-an-employee%E2%80%99s-start-date-to-a-plan)
+Start Date also defines which employees show up on your Plans timeline. [You can read more about how Plans work with employee start dates here.](/concepts/plans#connecting-an-employee%E2%80%99s-start-date-to-a-plan)
